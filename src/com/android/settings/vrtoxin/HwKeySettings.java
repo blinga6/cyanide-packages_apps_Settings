@@ -106,6 +106,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
     private static final String KEY_VOLUME_ANSWER_CALL = "volume_answer_call";
+    private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
 
     private static final int DLG_SHOW_WARNING_DIALOG = 0;
     private static final int DLG_SHOW_ACTION_DIALOG  = 1;
@@ -147,6 +148,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeKeyWakeControl;
     private SwitchPreference mSwapVolumeButtons;
     private SwitchPreference mVolumeAnswerCall;
+    private SwitchPreference mHomeAnswerCall;
 
     private boolean mCheckPreferences;
     private Map<String, String> mKeySettings = new HashMap<String, String>();
@@ -256,6 +258,8 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                 KEYS_APP_SWITCH_LONG_PRESS);
         mAppSwitchDoubleTapAction = (Preference) prefs.findPreference(
                 KEYS_APP_SWITCH_DOUBLE_TAP);
+        mHomeAnswerCall = (SwitchPreference)
+                    prefs.findPreference(KEY_HOME_ANSWER_CALL);
 
         if (hasBackKey) {
             // Back key
@@ -323,6 +327,10 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         }
 
         if (hasHomeKey) {
+            if (!Utils.isVoiceCapable(getActivity())) {
+                keysHomeCategory.removePreference(mHomeAnswerCall);
+                mHomeAnswerCall = null;
+            }
             // Home key
             setupOrUpdatePreference(mHomePressAction,
                     HwKeyHelper.getPressOnHomeBehavior(getActivity(), false),
@@ -564,6 +572,9 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
             int value = mVolumeAnswerCall.isChecked() ? 1 : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER, value);
+        } else if (preference == mHomeAnswerCall) {
+            handleToggleHomeButtonAnswersCallPreferenceClick();
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -617,6 +628,16 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+
+        // Home button answers calls.
+        if (mHomeAnswerCall != null) {
+            final int incallHomeBehavior = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                    Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DEFAULT);
+            final boolean homeButtonAnswersCall =
+                (incallHomeBehavior == Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER);
+            mHomeAnswerCall.setChecked(homeButtonAnswersCall);
+        }
     }
 
     @Override
@@ -764,6 +785,13 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                 return result;
             }
         };
+
+    private void handleToggleHomeButtonAnswersCallPreferenceClick() {
+        Settings.Secure.putInt(getContentResolver(),
+                Settings.Secure.RING_HOME_BUTTON_BEHAVIOR, (mHomeAnswerCall.isChecked()
+                        ? Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER
+                        : Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_DO_NOTHING));
+    }
 
     @Override
     protected int getMetricsCategory() {
