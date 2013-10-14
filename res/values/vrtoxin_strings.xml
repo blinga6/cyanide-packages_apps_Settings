@@ -1865,4 +1865,13 @@
     <string name="onthego_alpha_title">On-The-Go Alpha</string>
     <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay. Needs re-toggling.</string>
 
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">Show CPU info</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">Screen overlay showing current CPU info</string>
+
+    <!-- Alarm icon -->
+    <string name="alarm_indicator">Alarm Indicator</string>
+    <string name="alarm_indicator_summary">Show alarm clock indicator if alarm is set</string> 
+
 </resources>
