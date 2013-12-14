@@ -432,6 +432,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_USED_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 0);
+                                    Helpers.restartSystemUI();
                             getOwner().refreshSettings();
                         }
                     })
@@ -461,6 +464,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_USED_COLOR,
                                     0xff00ff00);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 1);
+                                    Helpers.restartSystemUI();
                             getOwner().refreshSettings();
                         }
                     })

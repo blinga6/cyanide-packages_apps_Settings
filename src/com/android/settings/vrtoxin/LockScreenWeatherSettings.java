@@ -292,7 +292,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.LOCK_SCREEN_SHOW_WEATHER_TIMESTAMP, 1);
+                                    Settings.System.LOCK_SCREEN_SHOW_WEATHER_TIMESTAMP, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_CONDITION_ICON, 2);
                             Settings.System.putInt(getOwner().mResolver,

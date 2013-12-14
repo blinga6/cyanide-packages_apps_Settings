@@ -321,7 +321,7 @@ public class StatusBarWeather extends SettingsPreferenceFragment
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_WEATHER_SIZE,
-                                    12);
+                                    16);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_WEATHER_FONT_STYLE,
                                     0);

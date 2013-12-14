@@ -159,6 +159,8 @@
     <string name="select_custom_app_title">Select custom app</string>
     <string name="select_custom_activity_title">Select custom activity</string>
 
+    <!-- Slim Shortcuts -->
+    <string name="slim_shortcut_picker">VRToxin Actions</string>
     <!-- Slim Action Shortcuts -->
     <string name="shortcut_action_none">None</string>
     <string name="shortcut_action_airplane_mode">Airplane mode</string>
@@ -181,7 +183,7 @@
     <string name="shortcut_action_ring_silent">Ringer/Silent</string>
     <string name="shortcut_action_ring_vib">Ringer/Vibrate</string>
     <string name="shortcut_action_ring_vib_silent">Silent/Vibrate</string>
-    <string name="shortcut_action_navbar">Navigation Bar</string>
+    <string name="shortcut_action_nav_bar">Navigation Bar</string>
     <string name="shortcut_action_pie">SlimPIE Control</string>
     <string name="shortcut_action_pa_pie">PA Pie Control</string>
     <string name="shortcut_action_expanded_desktop">Expanded Desktop</string>
@@ -460,6 +462,7 @@
     <string name="shortcut_action_ime">Open IME Switcher</string>
     <string name="shortcut_action_power_menu">Power menu</string>
     <string name="shortcut_action_qs">Quicksettings panel</string>
+    <string name="shortcut_action_settings_panel">Settings Panel</string>
     <string name="shortcut_action_smart">Smart pulldown</string>
     <string name="shortcut_action_recent">Recents</string>
     <string name="shortcut_action_ring_vib">Ring/Vib</string>
@@ -1759,5 +1762,9 @@
     <!-- Recents empty style -->
     <string name="recents_empty_style">Show VRToxin logo</string>
     <string name="recents_empty_style_summary">When recents is empty, show VRToxin logo instead of text.</string>
+
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">VRToxin Dungeon</string>
+    <string name="chamber_toast">The poison has been unleashed</string>
 
 </resources>
