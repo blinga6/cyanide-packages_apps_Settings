@@ -1362,4 +1362,7 @@
     <!-- USB debugging notification -->
     <string name="adb_notify">USB Debugging Notification</string>
     <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
+
+    <!-- SuperSU -->
+    <string name="supersu_title">SuperSU</string>
 </resources>
