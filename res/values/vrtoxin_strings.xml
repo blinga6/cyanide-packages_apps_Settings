@@ -1427,5 +1427,8 @@
     <!-- Media ducking -->
     <string name="interruptions_ignore_while_media_title">Prevent Audio Ducking</string>
     <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+
+    <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
  
 </resources>
