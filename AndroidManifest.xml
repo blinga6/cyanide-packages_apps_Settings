@@ -2492,6 +2492,7 @@
                   android:label="@string/regulatory_information"
                   android:taskAffinity=""
                   android:enabled="@bool/config_show_regulatory_info">
+
             <intent-filter>
                 <action android:name="android.settings.SHOW_REGULATORY_INFO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -2626,6 +2627,12 @@
                 <action android:name="android.intent.action.SIM_STATE_CHANGED"></action>
             </intent-filter>
         </receiver>
+        
+        <service android:name=".vrtoxin.identicons.IdenticonCreationService"
+                 android:exported="false" />
+
+        <service android:name=".vrtoxin.identicons.IdenticonRemovalService"
+                 android:exported="false" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

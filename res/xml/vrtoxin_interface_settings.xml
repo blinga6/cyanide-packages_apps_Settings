@@ -47,6 +47,13 @@
         android:summary="@string/gestureanywhere_settings_summary"
         android:title="@string/gesture_anywhere_title" />
 
+    <!-- Identicons -->
+    <PreferenceScreen
+        android:id="@+id/identicons"
+        android:title="@string/identicons_title"
+        android:summary="@string/identicons_summary"
+        android:fragment="com.android.settings.vrtoxin.identicons.IdenticonsSettings" />
+
     <!-- Pie control -->
     <PreferenceScreen
         android:key="pie_settings"

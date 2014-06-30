@@ -89,4 +89,8 @@
         <attr name="unitsRight" format="string" />
         <attr name="isSeconds" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="ImageListPreference">
+        <attr name="entryImages" format="reference" />
+    </declare-styleable>
 </resources>
