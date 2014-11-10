@@ -1386,4 +1386,10 @@
     <!-- Force expanded notifications -->
     <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
+
+    <!-- Share VRToxin -->
+    <string name="share_vrtoxin_title">Share VRToxin</string>
+    <string name="share_vrtoxin_summary">Let others know about VRToxin</string>
+    <string name="share_message">Check out what #VRToxin is all about @ https://plus.google.com/communities/108303487813436381401</string>
+    <string name="share_chooser_title">Share VRToxin</string>
 </resources>
