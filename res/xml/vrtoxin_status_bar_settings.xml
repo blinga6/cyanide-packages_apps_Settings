@@ -60,8 +60,8 @@
 
     <PreferenceScreen
         android:key="status_bar_notification_icons_settings"
-        android:title="@string/status_bar_notification_icons_settings_title"
-        android:summary="@string/status_bar_notification_icons_settings_summary"
+        android:title="@string/status_bar_notification_icon_settings_title"
+        android:summary="@string/status_bar_notification_icon_settings_summary"
         android:fragment="com.android.settings.vrtoxin.StatusBarNotificationIconsSettings" />
 
     <!-- Random Options -->

@@ -1321,4 +1321,9 @@
     <!-- EdgeGesture service -->
     <string name="edge_gesture_service_title">Block gesture touch events</string>
     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+
+    <!-- Increasing ring tone volume -->
+    <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
+    <string name="increasing_ring_min_volume_title">Start volume</string>
+    <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
 </resources>
