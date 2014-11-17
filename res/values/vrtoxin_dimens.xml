@@ -29,5 +29,6 @@
     <!-- Gesture Anywhere -->
     <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
     <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
+    <dimen name="fab_line_width">2dp</dimen>
 
 </resources>
