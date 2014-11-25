@@ -383,6 +383,7 @@
     <string name="keys_action_normal">Normal press</string>
     <string name="keys_action_long">Long press</string>
     <string name="keys_action_double">Double tap</string>
+    <string name="hardware_keys_volume_keys_title">Volume Keys</string>
     <string name="no_home_key">You have no button assigned any more to the \"Home\" action!\n\nThis can make your device unusable!</string>
 
     <!-- Button shorcut actions -->
@@ -453,5 +454,9 @@
 
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
+    <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+    <string name="volbtn_cursor_control_off">Disabled</string>
+    <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
+    <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
 
 </resources>

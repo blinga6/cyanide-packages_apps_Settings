@@ -32,6 +32,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.SwitchPreference;
 import android.preference.Preference;
+import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
@@ -93,6 +94,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private static final String KEYS_APP_SWITCH_PRESS = "keys_app_switch_press";
     private static final String KEYS_APP_SWITCH_LONG_PRESS = "keys_app_switch_long_press";
     private static final String KEYS_APP_SWITCH_DOUBLE_TAP = "keys_app_switch_double_tap";
+    private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
     private static final int DLG_SHOW_WARNING_DIALOG = 0;
     private static final int DLG_SHOW_ACTION_DIALOG  = 1;
@@ -128,6 +130,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private Preference mAppSwitchPressAction;
     private Preference mAppSwitchLongPressAction;
     private Preference mAppSwitchDoubleTapAction;
+    private ListPreference mVolumeKeyCursorControl;
 
     private boolean mCheckPreferences;
     private Map<String, String> mKeySettings = new HashMap<String, String>();
@@ -193,6 +196,8 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                 (PreferenceCategory) prefs.findPreference(CATEGORY_ASSIST);
         PreferenceCategory keysAppSwitchCategory =
                 (PreferenceCategory) prefs.findPreference(CATEGORY_APPSWITCH);
+        PreferenceCategory volumeCategory =
+                (PreferenceCategory) prefs.findPreference(CATEGORY_VOLUME);
 
         mEnableCustomBindings = (SwitchPreference) prefs.findPreference(
                 KEYS_ENABLE_CUSTOM);
@@ -250,6 +255,15 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                     Settings.System.KEY_BACK_DOUBLE_TAP_ACTION);
         } else {
             prefs.removePreference(keysBackCategory);
+        }
+
+        if (Utils.hasVolumeRocker(getActivity())) {
+            int cursorControlAction = Settings.System.getInt(resolver,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
+            mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
+                    cursorControlAction);
+        } else {
+            prefs.removePreference(volumeCategory);
         }
 
         if (hasCameraKey) {
@@ -476,6 +490,11 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getContentResolver(), Settings.System.HARDWARE_KEY_REBINDING,
                     value ? 1 : 0);
+            return true;
+        }
+        if (preference == mVolumeKeyCursorControl) {
+            handleActionListChange(mVolumeKeyCursorControl, newValue,
+                    Settings.System.VOLUME_KEY_CURSOR_CONTROL);
             return true;
         }
         return false;
