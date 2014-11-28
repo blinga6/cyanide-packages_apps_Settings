@@ -170,6 +170,14 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         mStylusGestures = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
 
+        // Enable or disable mStatusBarImeSwitcher based on boolean: config_show_cmIMESwitcher
+        boolean showImeSwitcher = getResources().getBoolean(
+                com.android.internal.R.bool.config_show_IMESwitcher);
+        if (!showImeSwitcher) {
+            getPreferenceScreen().removePreference(
+                    findPreference(Settings.System.STATUS_BAR_IME_SWITCHER));
+        }
+
         // Spell Checker
         final Preference spellChecker = findPreference(KEY_SPELL_CHECKERS);
         if (spellChecker != null) {
