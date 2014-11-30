@@ -1183,4 +1183,8 @@
     <!-- Zen mode icon switch -->
     <string name="show_volume_icon_title">Volume Mode Icon</string>
     <string name="show_volume_icon_summary">Show volume mode icon, enabled by default</string>
+
+    <!-- Turn on display when power connected; turn off display when power disconnected -->
+    <string name="wake_when_plugged_or_unplugged_title">Wake On Plug</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
 </resources>
