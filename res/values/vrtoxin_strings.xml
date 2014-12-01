@@ -20,4 +20,8 @@
     <string name="vrtoxin_version">VRToxin version</string>
     <string name="vrtoxin_version_default">Unknown</string>
 
+    <!-- About device screen, CPU and RAM info. -->
+    <string name="cpu_info">CPU</string>
+    <string name="mem_info">RAM</string>
+
 </resources>
