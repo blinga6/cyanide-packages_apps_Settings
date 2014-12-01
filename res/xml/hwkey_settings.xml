@@ -78,6 +78,12 @@
             android:key="button_keys_home"
             android:title="@string/keys_home_press_title">
 
+            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="home_wake_screen"
+                android:title="@string/button_wake_title"
+                android:summary="@string/home_wake_summary"
+                android:defaultValue="true" />
+
             <Preference
                 android:key="keys_home_press"
                 android:title="@string/keys_action_normal"

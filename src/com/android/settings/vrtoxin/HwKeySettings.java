@@ -292,6 +292,9 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         }
 
         if (hasHomeKey) {
+            if (!res.getBoolean(R.bool.config_show_homeWake)) {
+                homeCategory.removePreference(findPreference(Settings.System.HOME_WAKE_SCREEN));
+            }
             // Home key
             setupOrUpdatePreference(mHomePressAction,
                     HwKeyHelper.getPressOnHomeBehavior(getActivity(), false),
