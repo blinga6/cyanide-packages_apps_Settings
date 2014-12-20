@@ -54,6 +54,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.vrtoxin.ButtonBacklightBrightness;
 import com.android.settings.vrtoxin.util.ShortcutPickerHelper;
 
 import java.util.ArrayList;
@@ -66,6 +67,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, OnPreferenceClickListener,
         ShortcutPickerHelper.OnPickListener, Indexable {
 
+    private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
     private static final String CATEGORY_KEYS = "button_keys";
     private static final String CATEGORY_BACK = "button_keys_back";
     private static final String CATEGORY_CAMERA = "button_keys_camera";
@@ -182,6 +184,8 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
         boolean hasCameraKey = (deviceKeys & KEY_MASK_CAMERA) != 0;
 
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) prefs.findPreference(KEY_BUTTON_BACKLIGHT);
         PreferenceCategory keysCategory =
                 (PreferenceCategory) prefs.findPreference(CATEGORY_KEYS);
         PreferenceCategory keysBackCategory =
@@ -237,6 +241,8 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                 KEYS_APP_SWITCH_LONG_PRESS);
         mAppSwitchDoubleTapAction = (Preference) prefs.findPreference(
                 KEYS_APP_SWITCH_DOUBLE_TAP);
+        final ButtonBacklightBrightness backlight =
+                (ButtonBacklightBrightness) prefs.findPreference(KEY_BUTTON_BACKLIGHT);
 
         if (hasBackKey) {
             // Back key
