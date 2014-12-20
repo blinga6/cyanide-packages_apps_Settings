@@ -386,6 +386,8 @@
     <string name="hardware_keys_volume_keys_title">Volume Keys</string>
     <string name="button_wake_title">Home Wake</string>
     <string name="home_wake_summary">Allow home button to wake your device</string>
+    <string name="swap_volume_buttons_title">Reorient</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
     <string name="no_home_key">You have no button assigned any more to the \"Home\" action!\n\nThis can make your device unusable!</string>
 
     <!-- Button shorcut actions -->
