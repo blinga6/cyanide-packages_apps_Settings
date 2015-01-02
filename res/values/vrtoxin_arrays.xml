@@ -285,4 +285,21 @@
         <item>2</item>
     </string-array>
 
+    <!-- QS Tiles Columns -->
+    <string-array name="qs_num_columns_values" translatable="false">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="qs_num_columns_entries">
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+    </string-array>
+
 </resources>

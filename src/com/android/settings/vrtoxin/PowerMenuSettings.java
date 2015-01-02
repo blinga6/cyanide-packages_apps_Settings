@@ -256,25 +256,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                                     Settings.System.ADVANCED_REBOOT, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_ICON_ENABLED_SELECTED_COLOR,
-                                    MATERIAL_TEAL_500);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_RIPPLE_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_TEXT_COLOR, VRTOXIN_BLUE);
-                            getOwner().refreshSettings();
-                        }
-                    })
-                    .setPositiveButton(R.string.reset_cyanide,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.ADVANCED_REBOOT, 1);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
                                     0xff00ff00);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_ENABLED_SELECTED_COLOR,

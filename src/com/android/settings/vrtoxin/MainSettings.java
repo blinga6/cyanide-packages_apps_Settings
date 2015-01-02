@@ -53,6 +53,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.QuickSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.StatusBarSettings;
 
@@ -183,7 +184,8 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[1] = new ButtonSettings();
             frags[2] = new InterfaceSettings();
             frags[3] = new VrtoxinNotifs();
-            frags[4] = new StatusBarSettings();
+            frags[4] = new QuickSettings();
+            frags[5] = new StatusBarSettings();
         }
 
         @Override
@@ -210,6 +212,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
                     getString(R.string.vrtoxin_notifications_title),
+                    getString(R.string.quick_settings_title),
                     getString(R.string.status_bar_title)};
         } else {
         titleString = new String[]{
@@ -217,6 +220,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
                     getString(R.string.vrtoxin_notifications_title),
+                    getString(R.string.quick_settings_title),
                     getString(R.string.status_bar_title)};
         }
         return titleString;
