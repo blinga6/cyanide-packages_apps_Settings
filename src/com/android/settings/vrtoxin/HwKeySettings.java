@@ -105,6 +105,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+    private static final String KEY_VOLUME_ANSWER_CALL = "volume_answer_call";
 
     private static final int DLG_SHOW_WARNING_DIALOG = 0;
     private static final int DLG_SHOW_ACTION_DIALOG  = 1;
@@ -145,6 +146,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeControlRingStream;
     private SwitchPreference mVolumeKeyWakeControl;
     private SwitchPreference mSwapVolumeButtons;
+    private SwitchPreference mVolumeAnswerCall;
 
     private boolean mCheckPreferences;
     private Map<String, String> mKeySettings = new HashMap<String, String>();
@@ -292,6 +294,11 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
             mSwapVolumeButtons = (SwitchPreference)
                     prefs.findPreference(KEY_SWAP_VOLUME_BUTTONS);
             mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+            int volumeAnswerCall = Settings.System.getInt(getContentResolver(),
+                    Settings.System.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER, 0);
+            mVolumeAnswerCall = (SwitchPreference)
+                    prefs.findPreference(KEY_VOLUME_ANSWER_CALL);
+            mVolumeAnswerCall.setChecked(volumeAnswerCall > 0);
         } else {
             prefs.removePreference(volumeCategory);
         }
@@ -553,6 +560,10 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
             int value = mVolumeControlRingStream.isChecked() ? 1 : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, value);
+        } else if (preference == mVolumeAnswerCall) {
+            int value = mVolumeAnswerCall.isChecked() ? 1 : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ANSWER_VOLUME_BUTTON_BEHAVIOR_ANSWER, value);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

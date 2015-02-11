@@ -1999,4 +1999,8 @@
     <string name="lock_clock_font_condensed_bold_italic">Condensed Bold Italic</string>
     <string name="lock_clock_font_medium_normal">Medium</string>
     <string name="lock_clock_font_medium_italic">Medium Italic</string>
+
+    <!-- The volume key answer -->
+    <string name="volume_answer_call_title">Volume Key Answer</string>
+    <string name="volume_answer_call_summary">Answer phone calls with the volume up key</string>
 </resources>
