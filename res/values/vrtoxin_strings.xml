@@ -1630,6 +1630,9 @@
     <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen.</string>
     <string name="lockscreen_blur_radius">Blur Effect Intensity</string>
 
+    <!-- BitSyko Layers -->
+    <string name="bitsyko_layers">Layers</string>
+
     <!-- Display & Lights screen, setting options for LCD density -->
     <string name="category_interface">Interface</string>
     <string name="lcd_density">LCD Density</string>
