@@ -71,6 +71,11 @@
     <string name="number_of_notifications_five_title">5</string>
     <string name="number_of_notifications_six_title">6</string>
 
+    <string name="notification_color_mode_never_title">Never</string>
+    <string name="notification_icon_color_mode_greyscale_title">If the icon is an greyscale icon</string>
+    <string name="notification_bg_color_mode_no_color_title">If the notification doesn\`t include an own color</string>
+    <string name="notification_color_mode_always_title">Always</string>
+
     <!-- VRToxin Settings/Summaries and Menu Strings -->
     <string name="status_bar_random_title">Random Settings</string>
     <string name="status_bar_random_summary">Configure random status bar settings</string>
@@ -1326,4 +1331,14 @@
     <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
     <string name="increasing_ring_min_volume_title">Start volume</string>
     <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
+
+    <!-- Notification color settings -->
+    <string name="notification_color_settings_title">Custom Colors</string>
+    <string name="custom_notification_color_settings_summary">Customize notification background, text, icons &amp; app colors</string>
+    <string name="notification_media_bg_mode_title">Colorize the media background</string>
+    <string name="notification_app_icon_bg_mode_title">Colorize the app icon background</string>
+    <string name="notification_app_icon_color_mode_title">Colorize app icon</string>
+    <string name="notification_bg_guts_color_title">Background on longpress</string>
+    <string name="notification_app_icon_bg_color_title">App icon background</string>
+    <string name="notification_clear_all_icon_color_title">Clear all icon</string>
 </resources>

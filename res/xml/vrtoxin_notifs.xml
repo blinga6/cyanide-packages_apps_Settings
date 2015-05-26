@@ -23,6 +23,13 @@
         settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
         android:fragment="com.android.settings.notification.ZenModeSettings" />
 
+    <!-- Notification colors -->
+    <PreferenceScreen
+        android:id="@+id/notification_colors"
+        android:title="@string/notification_color_settings_title"
+        android:summary="@string/custom_notification_color_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.NotificationColorSettings" />
+
     <PreferenceCategory
         android:key="notification"
         android:title="@string/notification_section_header" >
