@@ -2912,6 +2912,13 @@
                 android:resource="@id/display_settings" />
         </activity>
 
+        <activity android:name=".vrtoxin.HiddenAnimActivity">
+            <intent-filter>
+                <action android:name=".vrtoxin.HiddenAnimActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".vrtoxin.MainSettings" />
         <activity android:name=".vrtoxin.Misc" />
         <activity android:name=".vrtoxin.StatusBarSettings" />

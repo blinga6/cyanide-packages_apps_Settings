@@ -92,6 +92,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_SM_AND = "ro.sm.android";
     private static final String PROPERTY_SM_KERNEL = "ro.sm.kernel";
     private static final String PROPERTY_SM_FLAGS = "ro.sm.flags";
+    private static final String KEY_HIDDEN_YOGA = "hidden_anim2";
+
+     // Package name of the yoga
+    public static final String YOGA_PACKAGE_NAME = "com.android.settings";
+    // Intent for launching the yoga actvity
+    public static Intent INTENT_YOGA = new Intent(Intent.ACTION_MAIN)
+            .setClassName(YOGA_PACKAGE_NAME, YOGA_PACKAGE_NAME + ".vrtoxin.HiddenAnimActivity2");
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     private static final String KEY_VRTOXIN_SHARE = "share";

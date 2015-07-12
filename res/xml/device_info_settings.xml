@@ -22,6 +22,12 @@
                 android:enabled="false"
                 android:layout="@layout/vrtoxin_logo_row" />
 
+        <!--<Preference
+                android:key="hidden_anim2"
+                android:title="@string/fake_bug_title" >
+                <intent android:action=".vrtoxin.HiddenAnimActivity2" />
+        </Preference>-->
+
         <!-- VRToxin Changelog -->
         <PreferenceScreen android:key="changelog"
                 android:title="@string/changelog_vrtoxin_title"

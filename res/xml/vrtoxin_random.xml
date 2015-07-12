@@ -68,4 +68,10 @@
             android:summary="@string/show_volume_icon_summary"
             android:defaultValue="true" />
 
+    <!-- Various shit -->
+    <PreferenceScreen
+        android:key="various_shit"
+        android:title="@string/various_shit_title"
+        android:fragment="com.android.settings.vrtoxin.VariousShit" />
+
 </PreferenceScreen>

@@ -2097,4 +2097,13 @@
     <!-- Screenshot sound -->
     <string name="screenshot_sound_title">Screenshot Sound</string>
     <string name="screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
+
+    <!-- Joke -->
+    <string name="various_shit_title"></string>
+    <string name="hidden_shit_toast">Hidden shit UNLEASHED!!!</string>
+    <string name="hidden_shit_title">Hidden shit</string>
+    <string name="hidden_shit_summary">You are now in unleashed mode!</string>
+    <string name="hidden_anim2_title">Bug reports?</string>
+    <string name="hidden_anim_title">Can\'t get enough VRToxin?!</string>
+    <string name="fake_bug_title">Bug Reports?!</string>
 </resources>
