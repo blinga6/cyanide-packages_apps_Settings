@@ -1611,4 +1611,8 @@
     <string name="battery_bar_animate_title">Charging Animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
 
+    <!-- Headphones icon switch -->
+    <string name="show_headset_icon_title">Headset Icon</string>
+    <string name="show_headset_icon_summary">Shows icon when headsets are connected.</string>
+
 </resources>
