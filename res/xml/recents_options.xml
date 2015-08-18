@@ -93,6 +93,13 @@
             android:summaryOff="@string/recents_fullscreen_summary_disabled"
             android:defaultValue="false" />
 
+        <!-- Shake to clear recents -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="shake_to_clean_recents"
+            android:title="@string/shake_to_clear_recents_title"
+            android:summary="@string/shake_to_clear_recents_summary"
+            android:defaultValue="false" />
+
         <!-- Search in Recents -->
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="recents_show_search_bar"

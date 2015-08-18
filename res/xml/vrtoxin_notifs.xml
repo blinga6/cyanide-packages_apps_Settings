@@ -27,6 +27,13 @@
         android:summary="@string/disable_immersive_message_summary"
         android:persistent="false" />
 
+    <!-- Shake to clean notifications -->
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="shake_to_clean_notifications"
+        android:title="@string/shake_to_clean_notifications_title"
+        android:summary="@string/shake_to_clean_notifications_summary"
+        android:defaultValue="false" />
+
     <!-- Interruptions -->
     <PreferenceScreen
         android:key="zen_mode"
