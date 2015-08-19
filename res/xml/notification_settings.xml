@@ -101,4 +101,67 @@
 
     </PreferenceCategory>
 
+<<<<<<< HEAD
+=======
+    <PreferenceCategory
+        android:key="notification"
+        android:title="@string/notification_section_header" >
+
+        <com.dirtyunicorns.dutweaks.preference.SystemSettingSwitchPreference
+                android:key="zen_disable_ducking_during_media_playback"
+                android:title="@string/interruptions_ignore_while_media_title"
+                android:summary="@string/interruptions_ignore_while_media_summary"
+                android:defaultValue="false" />
+
+        <!-- Pulse notification light -->
+        <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
+        <!-- Battery light -->
+        <PreferenceScreen
+                android:key="battery_light"
+                android:title="@string/battery_light_title"
+                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+
+         <!-- When device is locked -->
+        <com.android.settings.DropDownPreference
+                android:key="lock_screen_notifications"
+                android:title="@string/lock_screen_notifications_title"
+                android:persistent="false" />
+
+        <!-- App notifications -->
+        <PreferenceScreen
+                android:key="app_notifications"
+                android:title="@string/app_notifications_title"
+                android:fragment="com.android.settings.applications.ManageApplications">
+                <extra
+                    android:name="classname"
+                    android:value="com.android.settings.Settings$NotificationAppListActivity" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="advanced"
+        android:title="@string/advanced_section_header" >
+
+        <!-- Notification access -->
+        <Preference
+                android:key="manage_notification_access"
+                android:title="@string/manage_notification_access_title"
+                android:persistent="false"
+                android:fragment="com.android.settings.notification.NotificationAccessSettings" />
+
+        <!-- Do Not Disturb access -->
+        <Preference
+                android:key="manage_zen_access"
+                android:title="@string/manage_zen_access_title"
+                android:persistent="false"
+                android:fragment="com.android.settings.notification.ZenAccessSettings" />
+
+    </PreferenceCategory>
+
+>>>>>>> c67d739... Add ability to ignore interruptions while active media playback [2/2].
 </PreferenceScreen>
