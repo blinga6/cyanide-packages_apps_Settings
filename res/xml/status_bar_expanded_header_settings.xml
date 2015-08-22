@@ -24,6 +24,12 @@
         android:summary="@string/status_bar_battery_status_settings_summary"
         android:fragment="com.android.settings.vrtoxin.ExpandedHeaderBatterySettings" />
 
+    <PreferenceScreen
+        android:key="custom_header_shortcuts"
+        android:title="@string/custom_header_shortcuts_title"
+        android:summary="@string/custom_header_shortcuts_summary"
+        android:fragment="com.android.settings.vrtoxin.HeaderCustomShortcuts" />
+
     <ListPreference
         android:key="status_bar_header_font_style"
         android:entries="@array/status_bar_font_style_entries"
@@ -35,6 +41,12 @@
         android:title="@string/expanded_header_network_icons_settings_title"
         android:summary="@string/expanded_header_network_icons_settings_summary"
         android:fragment="com.android.settings.vrtoxin.ExpandedHeaderNetworkIconsSettings" />
+
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="vrtoxin_button"
+        android:title="@string/vrtoxin_button_title"
+        android:summary="@string/vrtoxin_button_summary"
+        android:defaultValue="true" />
 
     <PreferenceCategory
         android:title="@string/contextual_title" >
