@@ -134,6 +134,7 @@
     <string name="status_bar_carrier_label_settings_summary">Customize carrier label text, color &amp; auto hide options</string>
     <string name="carrier_label_cat_notification_icons_title">Notification Icons</string>
     <string name="carrier_label_show_title">Show</string>
+    <string name="status_bar_carrier_size">Text Size</string>
     <string name="carrier_label_show_summary">Enable to show the (custom) carrier label on the status bar</string>
     <string name="carrier_label_show_on_lock_screen_title">Show on lock screen</string>
     <string name="carrier_label_show_on_lock_screen_summary">Enable to show the (custom) carrier label on the status bar of the lock screen</string>
