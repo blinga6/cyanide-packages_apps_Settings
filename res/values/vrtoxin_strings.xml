@@ -638,6 +638,7 @@
     <string name="qs_tile_floating_windows">Floating Windows</string>
     <string name="qs_tile_slim_floats">Slim Floats</string>
     <string name="qs_tile_kernel_adiutor">Kernel Adiutor</string>
+    <string name="qs_tile_led">LED</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>
