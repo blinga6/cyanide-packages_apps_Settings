@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -48,6 +49,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String PREF_RIPPLE_COLOR = "expanded_header_ripple_color";
     private static final String PREF_TEXT_COLOR = "expanded_header_text_color";
     private static final String PREF_ICON_COLOR = "expanded_header_icon_color";
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 
     private static final int SYSTEMUI_SECONDARY = 0xff384248;
     private static final int BLACK = 0xff000000;
@@ -64,6 +66,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
+    private ListPreference mCustomHeaderDefault;
 
     private ContentResolver mResolver;
 
@@ -106,6 +109,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mStatusBarHeaderFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 0)));
         mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntry());
+
+        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeaderDefault.setOnPreferenceChangeListener(this);
+        mCustomHeaderDefault.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0)));
+        mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
 
         mBackgroundColor =
                 (ColorPickerPreference) findPreference(PREF_BG_COLOR);
@@ -196,6 +205,13 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_HEADER_FONT_STYLE, val);
             mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mCustomHeaderDefault) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, val);
+            mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
             return true;
         } else if (preference == mBackgroundColor) {
             hex = ColorPickerPreference.convertToARGB(
