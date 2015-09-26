@@ -315,6 +315,7 @@ public class PowerUsageSummary extends PowerUsageBase {
     protected void refreshStats() {
         super.refreshStats();
         updatePreference(mHistPref);
+
         mAppListGroup.removeAll();
         mAppListGroup.setOrderingAsAdded(false);
         boolean addedSome = false;
