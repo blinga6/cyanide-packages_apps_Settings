@@ -17,6 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/about_settings">
 
+        <!-- VRToxin logo -->
+        <PreferenceScreen android:key="vrtoxin_logo"
+                android:enabled="false"
+                android:layout="@layout/vrtoxin_logo_row" />
+
         <!-- System update settings - launches activity -->
         <PreferenceScreen android:key="system_update_settings"
                 android:title="@string/system_update_settings_list_item_title"
@@ -100,6 +105,12 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kernel_version"
                 android:summary="@string/device_info_default"/>
+
+        <!-- VRToxin version -->
+        <Preference android:key="vrtoxin_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/vrtoxin_version"
+                android:summary="@string/vrtoxin_version_default" />
 
         <!-- Detailed build version -->
         <Preference android:key="build_number"
