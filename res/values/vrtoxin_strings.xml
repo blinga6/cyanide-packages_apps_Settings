@@ -20,6 +20,10 @@
     <string name="vrtoxin_version">VRToxin version</string>
     <string name="vrtoxin_version_default">Unknown</string>
 
+    <!-- VRToxin Changelog -->
+    <string name="changelog_vrtoxin_title">Changelog</string>
+    <string name="changelog_vrtoxin_error">Unable to load changelog</string>
+
     <!-- About device screen, CPU and RAM info. -->
     <string name="cpu_info">CPU</string>
     <string name="mem_info">RAM</string>
