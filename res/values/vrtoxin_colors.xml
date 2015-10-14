@@ -16,23 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- VRToxin Settings/Summaries and Menu Strings -->
-    <string name="vrtoxin_settings_title">VRToxinMods</string>
-    <string name="interface_settings_title">Interface</string>
-
-    <!-- About phone screen, VRToxin version -->
-    <string name="vrtoxin_version">VRToxin Version</string>
-    <string name="vrtoxin_version_default">Unknown</string>
-
-    <!-- VRToxin Changelog -->
-    <string name="changelog_vrtoxin_title">Changelog</string>
-    <string name="changelog_vrtoxin_error">Unable to load changelog</string>
-
-    <!-- About device screen, CPU and RAM info. -->
-    <string name="cpu_info">CPU</string>
-    <string name="mem_info">RAM</string>
-
-    <!-- SuperSU -->
-    <string name="supersu_title">SuperSU</string>
+    <color name="white">#FFF</color>
+    <color name="background_tab_pressed">#00252525</color>
 
 </resources>
