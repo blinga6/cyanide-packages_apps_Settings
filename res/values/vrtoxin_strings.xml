@@ -87,6 +87,14 @@
     <string name="cpu_info">CPU</string>
     <string name="mem_info">RAM</string>
 
+    <!-- SaberMod GCC version info -->
+    <string name="sm_android">GCC Android Version</string>
+    <string name="sm_android_default">Unknown</string>
+
+    <!-- SaberMod GCC build flags info -->
+    <string name="sm_flags">Optimizations</string>
+    <string name="sm_flags_default">None</string>
+
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
 

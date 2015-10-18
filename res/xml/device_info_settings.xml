@@ -102,6 +102,18 @@
                 android:title="@string/vrtoxin_version"
                 android:summary="@string/vrtoxin_version_default" />
 
+        <Preference android:key="sm_android"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/sm_android"
+                android:summary="@string/sm_android_default"
+                android:selectable="false" />
+
+        <Preference android:key="sm_flags"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/sm_flags"
+                android:summary="@string/sm_flags_default"
+                android:selectable="false" />
+
         <!-- Device cpu info -->
         <Preference android:key="device_cpu"
                 style="?android:preferenceInformationStyle"
