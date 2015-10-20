@@ -14,17 +14,16 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
-    <!-- Color picker panel view buttons -->
-    <item type="id" name="panel_view_button_1" />
-    <item type="id" name="panel_view_button_2" />
-    <item type="id" name="panel_view_button_3" />
-    <item type="id" name="panel_view_button_4" />
-    <item type="id" name="panel_view_button_5" />
-    <item type="id" name="panel_view_button_6" />
-    <item type="id" name="panel_view_button_7" />
-    <item type="id" name="panel_view_button_8" />
+    <style name="Theme.ColorPickerDialog" parent="@android:style/Theme.Material">
+        <item name="android:colorBackground">@*android:color/material_blue_grey</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:colorPrimary">@color/theme_primary</item>
+        <item name="android:colorPrimaryDark">@color/theme_primary_dark</item>
+        <item name="android:colorAccent">@color/theme_accent</item>
+    </style>
 
-    <item type="id" name="drag_handle" />
 </resources>
