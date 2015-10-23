@@ -70,6 +70,13 @@
                 android:icon="@drawable/ic_settings_more"
                 />
 
+        <!-- Manufacturer hook -->
+        <dashboard-tile
+                android:id="@+id/manufacturer_settings"
+                android:fragment="com.android.settings.WirelessSettings">
+            <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+        </dashboard-tile>
+
     </dashboard-category>
 
     <!-- DEVICE -->
@@ -77,14 +84,6 @@
             android:id="@+id/device_section"
             android:key="@string/category_key_device"
             android:title="@string/header_category_device" >
-
-        <!-- Home -->
-        <dashboard-tile
-                android:id="@+id/home_settings"
-                android:title="@string/home_settings"
-                android:fragment="com.android.settings.HomeSettings"
-                android:icon="@drawable/ic_settings_home"
-                />
 
         <!-- VRToxin Settings -->
         <dashboard-tile
@@ -102,12 +101,28 @@
                 android:icon="@drawable/ic_settings_display"
                 />
 
-        <!-- Notifications -->
+        <!-- Sounds -->
         <dashboard-tile
-                android:id="@+id/notification_settings"
+                android:id="@+id/sound_settings"
                 android:title="@string/notification_settings"
                 android:fragment="com.android.settings.notification.NotificationSettings"
                 android:icon="@drawable/ic_settings_notifications"
+                />
+
+    </dashboard-category>
+
+    <!-- PERSONAL -->
+    <dashboard-category
+            android:id="@+id/personal_section"
+            android:key="@string/category_key_personal"
+            android:title="@string/header_category_personal" >
+
+        <!-- Account -->
+        <dashboard-tile
+                android:id="@+id/account_settings"
+                android:title="@string/account_settings_title"
+                android:fragment="com.android.settings.accounts.AccountSettings"
+                android:icon="@drawable/ic_settings_accounts"
                 />
 
         <!-- Application Settings -->
@@ -118,31 +133,15 @@
                 android:icon="@drawable/ic_settings_applications"
                 />
 
-        <!-- Storage -->
+        <!-- Misc -->
         <dashboard-tile
-                android:id="@+id/storage_settings"
-                android:title="@string/storage_usb_settings"
-                android:fragment="com.android.settings.deviceinfo.StorageSettings"
-                android:icon="@drawable/ic_settings_storage"
+                android:id="@+id/misc_settings"
+                android:fragment="com.android.settings.vrtoxin.Misc"
+                android:title="@string/vrtoxin_misc_title"
+                android:icon="@drawable/ic_settings_misc"
                 />
 
-        <!-- Battery -->
-        <dashboard-tile
-                android:id="@+id/battery_settings"
-                android:title="@string/power_usage_summary_title"
-                android:fragment="com.android.settings.fuelgauge.PowerUsageSummary"
-                android:icon="@drawable/ic_settings_battery"
-                />
-
-        <!-- Memory -->
-        <dashboard-tile
-                android:id="@+id/manage_memory"
-                android:title="@string/memory_settings_title"
-                android:fragment="com.android.settings.applications.ProcessStatsSummary"
-                android:icon="@drawable/ic_settings_memory"
-                />
-
-        <!-- Manage users -->
+        <!-- Users -->
         <dashboard-tile
                 android:id="@+id/user_settings"
                 android:title="@string/user_settings_title"
@@ -150,62 +149,23 @@
                 android:icon="@drawable/ic_settings_multiuser"
                 />
 
-        <!-- Manage NFC payment apps -->
-        <dashboard-tile
-                android:id="@+id/nfc_payment_settings"
-                android:title="@string/nfc_payment_settings_title"
-                android:fragment="com.android.settings.nfc.PaymentSettings"
-                android:icon="@drawable/ic_settings_nfc_payment"
-                />
-
-        <!-- Manufacturer hook -->
-        <dashboard-tile
-                android:id="@+id/manufacturer_settings"
-                android:fragment="com.android.settings.WirelessSettings">
-            <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
-        </dashboard-tile>
-
-    </dashboard-category>
-
-    <!-- PERSONAL -->
-    <dashboard-category
-            android:id="@+id/personal_section"
-            android:key="@string/category_key_personal"
-            android:title="@string/header_category_personal" >
-
-        <!-- Location -->
-        <dashboard-tile
-                android:id="@+id/location_settings"
-                android:title="@string/location_settings_title"
-                android:fragment="com.android.settings.location.LocationSettings"
-                android:icon="@drawable/ic_settings_location"
-                />
-
-        <!-- Security -->
-        <dashboard-tile
-                android:id="@+id/security_settings"
-                android:title="@string/security_settings_title"
-                android:fragment="com.android.settings.SecuritySettings"
-                android:icon="@drawable/ic_settings_security"
-                />
-
-        <!-- Account -->
-        <dashboard-tile
-                android:id="@+id/account_settings"
-                android:title="@string/account_settings_title"
-                android:fragment="com.android.settings.accounts.AccountSettings"
-                android:icon="@drawable/ic_settings_accounts"
-                />
-
         <!-- Marker for where to place external tiles in this category -->
         <external-tiles />
 
-        <!-- Language -->
+    </dashboard-category>
+
+    <!-- SYSTEM -->
+    <dashboard-category
+        android:id="@+id/system_section"
+        android:key="@string/category_key_system"
+        android:title="@string/header_category_system" >
+
+        <!-- Accessibility feedback -->
         <dashboard-tile
-                android:id="@+id/language_settings"
-                android:title="@string/language_settings"
-                android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings"
-                android:icon="@drawable/ic_settings_language"
+                android:id="@+id/accessibility_settings"
+                android:title="@string/accessibility_settings"
+                android:fragment="com.android.settings.accessibility.AccessibilitySettings"
+                android:icon="@drawable/ic_settings_accessibility"
                 />
 
         <!-- Backup and reset -->
@@ -216,14 +176,6 @@
                 android:icon="@drawable/ic_settings_backup"
                 />
 
-    </dashboard-category>
-
-    <!-- SYSTEM -->
-    <dashboard-category
-        android:id="@+id/system_section"
-        android:key="@string/category_key_system"
-        android:title="@string/header_category_system" >
-
         <!-- Date & Time -->
         <dashboard-tile
                 android:id="@+id/date_time_settings"
@@ -232,20 +184,20 @@
                 android:icon="@drawable/ic_settings_date_time"
                 />
 
-        <!-- Accessibility feedback -->
+        <!-- Language -->
         <dashboard-tile
-                android:id="@+id/accessibility_settings"
-                android:title="@string/accessibility_settings"
-                android:fragment="com.android.settings.accessibility.AccessibilitySettings"
-                android:icon="@drawable/ic_settings_accessibility"
+                android:id="@+id/language_settings"
+                android:title="@string/language_settings"
+                android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings"
+                android:icon="@drawable/ic_settings_language"
                 />
 
-        <!-- Print -->
+        <!-- Security -->
         <dashboard-tile
-                android:id="@+id/print_settings"
-                android:title="@string/print_settings"
-                android:fragment="com.android.settings.print.PrintSettingsFragment"
-                android:icon="@drawable/ic_settings_print"
+                android:id="@+id/security_settings"
+                android:title="@string/security_settings_title"
+                android:fragment="com.android.settings.SecuritySettings"
+                android:icon="@drawable/ic_settings_security"
                 />
 
         <!-- SuperSU -->

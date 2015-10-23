@@ -22,7 +22,6 @@ import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
-import com.android.settings.HomeSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.ScreenPinningSettings;
@@ -57,7 +56,9 @@ import com.android.settings.vrtoxin.MainSettings;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.Misc;
 import com.android.settings.vrtoxin.StatusBarSettings;
+import com.android.settings.vrtoxin.VrtoxinNotifs;
 
 import java.util.HashMap;
 
@@ -71,28 +72,29 @@ public final class Ranking {
     public static final int RANK_SIM = 3;
     public static final int RANK_DATA_USAGE = 4;
     public static final int RANK_WIRELESS = 5;
-    public static final int RANK_HOME = 6;
-    public static final int RANK_DISPLAY = 7;
-    public static final int RANK_WALLPAPER = 8;
-    public static final int RANK_NOTIFICATIONS = 9;
-    public static final int RANK_APPS = 10;
-    public static final int RANK_STORAGE = 11;
-    public static final int RANK_POWER_USAGE = 12;
-    public static final int RANK_USERS = 13;
-    public static final int RANK_LOCATION = 14;
-    public static final int RANK_SECURITY = 15;
-    public static final int RANK_IME = 16;
-    public static final int RANK_PRIVACY = 17;
-    public static final int RANK_DATE_TIME = 18;
-    public static final int RANK_ACCESSIBILITY = 19;
-    public static final int RANK_PRINTING = 20;
-    public static final int RANK_DEVELOPEMENT = 21;
-    public static final int RANK_DEVICE_INFO = 22;
-    public static final int RANK_VRTOXIN = 23;
-    public static final int RANK_INTERFACE = 24;
-    public static final int RANK_STATUSBAR = 25;
-    public static final int RANK_BUTTONS = 26;
-    public static final int RANK_HWKEYS = 27;
+    public static final int RANK_DISPLAY = 6;
+    public static final int RANK_WALLPAPER = 7;
+    public static final int RANK_NOTIFICATIONS = 8;
+    public static final int RANK_APPS = 9;
+    public static final int RANK_STORAGE = 10;
+    public static final int RANK_POWER_USAGE = 11;
+    public static final int RANK_USERS = 12;
+    public static final int RANK_LOCATION = 13;
+    public static final int RANK_SECURITY = 14;
+    public static final int RANK_IME = 15;
+    public static final int RANK_PRIVACY = 16;
+    public static final int RANK_DATE_TIME = 17;
+    public static final int RANK_ACCESSIBILITY = 18;
+    public static final int RANK_PRINTING = 19;
+    public static final int RANK_DEVELOPEMENT = 20;
+    public static final int RANK_DEVICE_INFO = 21;
+    public static final int RANK_VRTOXIN = 22;
+    public static final int RANK_INTERFACE = 23;
+    public static final int RANK_STATUSBAR = 24;
+    public static final int RANK_MISC = 25;
+    public static final int RANK_NOTIFS = 26;
+    public static final int RANK_BUTTONS = 27;
+    public static final int RANK_HWKEYS = 28;
 
     public static final int RANK_UNDEFINED = -1;
     public static final int RANK_OTHERS = 1024;
@@ -122,9 +124,6 @@ public final class Ranking {
         // Other wireless settinfs
         sRankMap.put(WirelessSettings.class.getName(), RANK_WIRELESS);
         sRankMap.put(WifiCallingSettings.class.getName(), RANK_WIRELESS);
-
-        // Home
-        sRankMap.put(HomeSettings.class.getName(), RANK_HOME);
 
         // Display
         sRankMap.put(DisplaySettings.class.getName(), RANK_DISPLAY);
@@ -185,13 +184,19 @@ public final class Ranking {
         sRankMap.put(LegalSettings.class.getName(), RANK_DEVICE_INFO);
 
         // VRToxinMods
-        sRankMap.put(DevelopmentSettings.class.getName(), RANK_VRTOXIN);
+        sRankMap.put(MainSettings.class.getName(), RANK_VRTOXIN);
 
         // Interface
-        sRankMap.put(DevelopmentSettings.class.getName(), RANK_INTERFACE);
+        sRankMap.put(InterfaceSettings.class.getName(), RANK_INTERFACE);
 
         // Status Bar
-        sRankMap.put(DevelopmentSettings.class.getName(), RANK_STATUSBAR);
+        sRankMap.put(StatusBarSettings.class.getName(), RANK_STATUSBAR);
+
+        // Misc Dashboard
+        sRankMap.put(Misc.class.getName(), RANK_MISC);
+
+        // Notifs
+        sRankMap.put(VrtoxinNotifs.class.getName(), RANK_NOTIFS);
 
         // Buttons
         sRankMap.put(ButtonSettings.class.getName(), RANK_BUTTONS);

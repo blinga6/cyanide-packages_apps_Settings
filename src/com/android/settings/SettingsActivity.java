@@ -263,11 +263,9 @@ public class SettingsActivity extends Activity
             R.id.sim_settings,
             R.id.wireless_settings,
             R.id.device_section,
-            R.id.notification_settings,
+            R.id.sound_settings,
             R.id.display_settings,
-            R.id.storage_settings,
             R.id.application_settings,
-            R.id.battery_settings,
             R.id.personal_section,
             R.id.location_settings,
             R.id.security_settings,
@@ -280,7 +278,6 @@ public class SettingsActivity extends Activity
             R.id.accessibility_settings,
             R.id.print_settings,
             R.id.nfc_payment_settings,
-            R.id.home_settings,
             R.id.dashboard
     };
 
@@ -300,7 +297,6 @@ public class SettingsActivity extends Activity
             SpellCheckersSettings.class.getName(),
             UserDictionaryList.class.getName(),
             UserDictionarySettings.class.getName(),
-            HomeSettings.class.getName(),
             DisplaySettings.class.getName(),
             DeviceInfoSettings.class.getName(),
             ManageApplications.class.getName(),
@@ -1262,16 +1258,6 @@ public class SettingsActivity extends Activity
                     if (!Utils.isBandwidthControlEnabled()) {
                         removeTile = true;
                     }
-                } else if (id == R.id.battery_settings) {
-                    // Remove battery settings when battery is not available. (e.g. TV)
-
-                    if (!mBatteryPresent) {
-                        removeTile = true;
-                    }
-                } else if (id == R.id.home_settings) {
-                    if (!updateHomeSettingTiles(tile)) {
-                        removeTile = true;
-                    }
                 } else if (id == R.id.user_settings) {
                     boolean hasMultipleUsers =
                             ((UserManager) getSystemService(Context.USER_SERVICE))
@@ -1279,24 +1265,6 @@ public class SettingsActivity extends Activity
                     if (!UserHandle.MU_ENABLED
                             || !UserManager.supportsMultipleUsers()
                             || Utils.isMonkeyRunning()) {
-                        removeTile = true;
-                    }
-                } else if (id == R.id.nfc_payment_settings) {
-                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC)) {
-                        removeTile = true;
-                    } else {
-                        // Only show if NFC is on and we have the HCE feature
-                        NfcAdapter adapter = NfcAdapter.getDefaultAdapter(this);
-                        if (adapter == null || !adapter.isEnabled() ||
-                                !getPackageManager().hasSystemFeature(
-                                        PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
-                            removeTile = true;
-                        }
-                    }
-                } else if (id == R.id.print_settings) {
-                    boolean hasPrintingSupport = getPackageManager().hasSystemFeature(
-                            PackageManager.FEATURE_PRINTING);
-                    if (!hasPrintingSupport) {
                         removeTile = true;
                     }
                 } else if (id == R.id.development_settings) {
@@ -1394,43 +1362,6 @@ public class SettingsActivity extends Activity
             }
         }
         return null;
-    }
-
-    private boolean updateHomeSettingTiles(DashboardTile tile) {
-        // Once we decide to show Home settings, keep showing it forever
-        SharedPreferences sp = getSharedPreferences(HomeSettings.HOME_PREFS, Context.MODE_PRIVATE);
-        if (sp.getBoolean(HomeSettings.HOME_PREFS_DO_SHOW, false)) {
-            return true;
-        }
-
-        try {
-            mHomeActivitiesCount = getHomeActivitiesCount();
-            if (mHomeActivitiesCount < 2) {
-                // When there's only one available home app, omit this settings
-                // category entirely at the top level UI.  If the user just
-                // uninstalled the penultimate home app candidiate, we also
-                // now tell them about why they aren't seeing 'Home' in the list.
-                if (sShowNoHomeNotice) {
-                    sShowNoHomeNotice = false;
-                    NoHomeDialogFragment.show(this);
-                }
-                return false;
-            } else {
-                // Okay, we're allowing the Home settings category.  Tell it, when
-                // invoked via this front door, that we'll need to be told about the
-                // case when the user uninstalls all but one home app.
-                if (tile.fragmentArguments == null) {
-                    tile.fragmentArguments = new Bundle();
-                }
-                tile.fragmentArguments.putBoolean(HomeSettings.HOME_SHOW_NOTICE, true);
-            }
-        } catch (Exception e) {
-            // Can't look up the home activity; bail on configuring the icon
-            Log.w(LOG_TAG, "Problem looking up home activity!", e);
-        }
-
-        sp.edit().putBoolean(HomeSettings.HOME_PREFS_DO_SHOW, true).apply();
-        return true;
     }
 
     private void getMetaData() {

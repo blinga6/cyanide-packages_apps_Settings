@@ -23,7 +23,6 @@ import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
 import com.android.settings.DeviceInfoSettings;
 import com.android.settings.DisplaySettings;
-import com.android.settings.HomeSettings;
 import com.android.settings.LegalSettings;
 import com.android.settings.PrivacySettings;
 import com.android.settings.R;
@@ -58,7 +57,9 @@ import com.android.settings.vrtoxin.MainSettings;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.Misc;
 import com.android.settings.vrtoxin.StatusBarSettings;
+import com.android.settings.vrtoxin.VrtoxinNotifs;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -126,13 +127,6 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         WirelessSettings.class.getName(),
                         R.drawable.ic_settings_more));
-
-        sResMap.put(HomeSettings.class.getName(),
-                new SearchIndexableResource(
-                        Ranking.getRankForClassName(HomeSettings.class.getName()),
-                        NO_DATA_RES_ID,
-                        HomeSettings.class.getName(),
-                        R.drawable.ic_settings_home));
 
         sResMap.put(DisplaySettings.class.getName(),
                 new SearchIndexableResource(
@@ -342,6 +336,20 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(ButtonSettings.class.getName()),
                         NO_DATA_RES_ID,
                         ButtonSettings.class.getName(),
+                        R.drawable.ic_settings_vrtoxin));
+
+        sResMap.put(Misc.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(Misc.class.getName()),
+                        NO_DATA_RES_ID,
+                        Misc.class.getName(),
+                        R.drawable.ic_settings_vrtoxin));
+
+        sResMap.put(VrtoxinNotifs.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(VrtoxinNotifs.class.getName()),
+                        NO_DATA_RES_ID,
+                        VrtoxinNotifs.class.getName(),
                         R.drawable.ic_settings_vrtoxin));
     }
 

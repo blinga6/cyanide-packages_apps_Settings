@@ -49,9 +49,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.internal.util.vrtoxin.ScreenType;
+import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.StatusBarSettings;
 
 import java.util.ArrayList;
@@ -177,9 +179,11 @@ public class MainSettings extends SettingsPreferenceFragment {
 
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
-            frags[0] = new ButtonSettings();
-            frags[1] = new InterfaceSettings();
-            frags[2] = new StatusBarSettings();
+            frags[0] = new PowerUsageSummary();
+            frags[1] = new ButtonSettings();
+            frags[2] = new InterfaceSettings();
+            frags[3] = new VrtoxinNotifs();
+            frags[4] = new StatusBarSettings();
         }
 
         @Override
@@ -202,13 +206,17 @@ public class MainSettings extends SettingsPreferenceFragment {
         String titleString[];
         if (!ScreenType.isPhone(getActivity())) {
         titleString = new String[]{
+                    getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
+                    getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.status_bar_title)};
         } else {
         titleString = new String[]{
+                    getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
+                    getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.status_bar_title)};
         }
         return titleString;

@@ -59,6 +59,8 @@
     <string name="vrtoxin_settings_title">VRToxinMods</string>
     <string name="buttons_settings_title">Buttons</string>
     <string name="interface_settings_title">Interface</string>
+    <string name="vrtoxin_misc_title">Miscellaneous</string>
+    <string name="vrtoxin_notifications_title">Notifications</string>
     <string name="status_bar_title">Status Bar</string>
 
     <!-- About phone screen, VRToxin version -->
