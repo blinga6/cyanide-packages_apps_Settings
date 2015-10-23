@@ -51,6 +51,7 @@ import android.widget.Toast;
 import com.android.internal.util.vrtoxin.ScreenType;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.StatusBarSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,6 +177,7 @@ public class MainSettings extends SettingsPreferenceFragment {
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
             frags[0] = new InterfaceSettings();
+            frags[1] = new StatusBarSettings();
         }
 
         @Override
@@ -198,10 +200,12 @@ public class MainSettings extends SettingsPreferenceFragment {
         String titleString[];
         if (!ScreenType.isPhone(getActivity())) {
         titleString = new String[]{
-                    getString(R.string.interface_settings_title)};
+                    getString(R.string.interface_settings_title),
+                    getString(R.string.status_bar_title)};
         } else {
         titleString = new String[]{
-                    getString(R.string.interface_settings_title)};
+                    getString(R.string.interface_settings_title),
+                    getString(R.string.status_bar_title)};
         }
         return titleString;
     }

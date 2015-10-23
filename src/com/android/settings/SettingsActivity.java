@@ -126,6 +126,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 // VRToxin Additions
 import com.android.settings.vrtoxin.MainSettings;
+import com.android.settings.vrtoxin.StatusBarSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -357,6 +358,7 @@ public class SettingsActivity extends Activity
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
             MainSettings.class.getName(),
+            StatusBarSettings.class.getName(),
     };
 
 

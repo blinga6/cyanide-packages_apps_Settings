@@ -16,9 +16,49 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- General strings -->
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="customize_title">Customize</string>
+    <string name="reset_android">Android</string>
+    <string name="reset_vrtoxin">VRToxin</string>
+    <string name="style_title">Style</string>
+    <string name="options_title">Options</string>
+    <string name="icons_normal_title">Icons normal</string>
+    <string name="icons_enabled_selected_title">Icons enabled&#47;selected</string>
+    <string name="help">Help</string>
+    <string name="attention">Attention</string>
+    <string name="enabled">Enabled</string>
+    <string name="default_string">Default</string>
+    <string name="always_title">Always</string>
+    <string name="never_title">Never</string>
+    <string name="color_title">Color</string>
+    <string name="colors_title">Colors</string>
+    <string name="background_title">Background</string>
+    <string name="hidden_title">Hidden</string>
+    <string name="icon_title">Icon</string>
+    <string name="icons_title">Icons</string>
+    <string name="ripple_title">Ripple Effect Color</string>
+    <string name="text_title">Text</string>
+    <string name="category_colors_title">Customize Colors</string>
+    <string name="reset_message">Reset all entries to default?</string>
+    <string name="reset_default_message">Reset default?</string>
+    <string name="additional_options_title">Additional options</string>
+
+    <!-- Global used -->
+    <string name="text_title">Text</string>
+    <string name="always_title">Always</string>
+    <string name="number_of_notifications_title">Number of notifications</string>
+    <string name="number_of_notifications_two_title">2</string>
+    <string name="number_of_notifications_three_title">3</string>
+    <string name="number_of_notifications_four_title">4</string>
+    <string name="number_of_notifications_five_title">5</string>
+    <string name="number_of_notifications_six_title">6</string>
+
     <!-- VRToxin Settings/Summaries and Menu Strings -->
     <string name="vrtoxin_settings_title">VRToxinMods</string>
     <string name="interface_settings_title">Interface</string>
+    <string name="status_bar_title">Status Bar</string>
 
     <!-- About phone screen, VRToxin version -->
     <string name="vrtoxin_version">VRToxin Version</string>
@@ -44,5 +84,21 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
     <string name="color_default">Default</string>
+
+    <!-- Carrier label settings -->
+    <string name="status_bar_carrier_label_settings_title">Custom Carrier Label</string>
+    <string name="status_bar_carrier_label_settings_summary">Customize carrier label text, color &amp; auto hide options</string>
+    <string name="carrier_label_cat_notification_icons_title">Notification icons</string>
+    <string name="carrier_label_show_title">Show</string>
+    <string name="carrier_label_show_summary">Enable to show the (custom) carrier label on the status bar</string>
+    <string name="carrier_label_show_on_lock_screen_title">Show on lock screen</string>
+    <string name="carrier_label_show_on_lock_screen_summary">Enable to show the (custom) carrier label on the status bar of the lock screen</string>
+    <string name="carrier_label_use_custom_title">Custom carrier label</string>
+    <string name="carrier_label_use_custom_summary">Enable to use a custom carrier label</string>
+    <string name="carrier_label_custom_label_title">Custom label</string>
+    <string name="carrier_label_custom_label_dlg_message">Enter a new custom label to display instead of the real carrier name. An empty field will revert the name to \'Darkkat\'</string>
+    <string name="carrier_label_hide_label_title">Hide</string>
+    <string name="carrier_label_hide_label_summary">Enable to choose a number of visible notification icons to hide the (custom) carrier label on the status bar</string>
+    <string name="carrier_label_number_of_notification_icons_title">Number of notification icons</string>
 
 </resources>

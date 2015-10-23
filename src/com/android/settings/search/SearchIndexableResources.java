@@ -55,6 +55,8 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 // VRToxin Additions
 import com.android.settings.vrtoxin.MainSettings;
+import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.StatusBarSettings;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -310,6 +312,20 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(MainSettings.class.getName()),
                         NO_DATA_RES_ID,
                         MainSettings.class.getName(),
+                        R.drawable.ic_settings_vrtoxin));
+
+        sResMap.put(InterfaceSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(InterfaceSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        InterfaceSettings.class.getName(),
+                        R.drawable.ic_settings_vrtoxin));
+
+        sResMap.put(StatusBarSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(StatusBarSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        StatusBarSettings.class.getName(),
                         R.drawable.ic_settings_vrtoxin));
     }
 

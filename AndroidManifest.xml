@@ -2609,8 +2609,20 @@
                 android:value="com.android.settings.vrtoxin.MainSettings" />
         </activity>
 
-        <activity
-             android:name=".vrtoxin.MainSettings" />
+        <!-- Status bar settings activity. -->
+        <activity android:name="Settings$StatusBarSettingsSettingsActivity"
+                android:label="@string/status_bar_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.vrtoxin.StatusBarSettings" />
+        </activity>
+
+        <activity android:name=".vrtoxin.MainSettings" />
+        <activity android:name=".vrtoxin.StatusBarSettings" />
 
     </application>
 </manifest>
