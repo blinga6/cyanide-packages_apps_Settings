@@ -18,5 +18,10 @@
 
     <color name="white">#FFF</color>
     <color name="background_tab_pressed">#00252525</color>
+    
+    <color name="dslv_divider">#1fffffff</color>
+    <color name="dslv_icon_dark">#ff009688</color>
+    <color name="dslv_float_background_color">#ff1976D2</color>
+    <color name="floating_action_button_touch_tint">#80ffffff</color>
 
 </resources>

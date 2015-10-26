@@ -54,6 +54,8 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 // VRToxin Additions
 import com.android.settings.vrtoxin.MainSettings;
+import com.android.settings.vrtoxin.HwKeySettings;
+import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
 import com.android.settings.vrtoxin.StatusBarSettings;
 
@@ -89,6 +91,8 @@ public final class Ranking {
     public static final int RANK_VRTOXIN = 23;
     public static final int RANK_INTERFACE = 24;
     public static final int RANK_STATUSBAR = 25;
+    public static final int RANK_BUTTONS = 26;
+    public static final int RANK_HWKEYS = 27;
 
     public static final int RANK_UNDEFINED = -1;
     public static final int RANK_OTHERS = 1024;
@@ -188,6 +192,12 @@ public final class Ranking {
 
         // Status Bar
         sRankMap.put(DevelopmentSettings.class.getName(), RANK_STATUSBAR);
+
+        // Buttons
+        sRankMap.put(ButtonSettings.class.getName(), RANK_BUTTONS);
+
+        // HwKeys
+        sRankMap.put(HwKeySettings.class.getName(), RANK_HWKEYS);
 
         sBaseRankMap.put("com.android.settings", 0);
     }
