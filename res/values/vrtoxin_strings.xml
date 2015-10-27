@@ -35,17 +35,27 @@
     <string name="always_title">Always</string>
     <string name="never_title">Never</string>
     <string name="colors_cat_title">Customize Colors</string>
+    <string name="color_options_title">Color Options</string>
     <string name="color_title">Color</string>
     <string name="colors_title">Colors</string>
+    <string name="colorize_icons_title">Colorize icons</string>
+    <string name="colorize_icons_dialog_title">Choose when to colorize the icon</string>
+    <string name="ripple_title">Ripple effect</string>
+    <string name="colorize_ripple_title">Colorize ripple effect</string>
+    <string name="colorize_ripple_dialog_title">Choose how to colorize the ripple effect</string>
+    <string name="icon_is_greyscale_title">If the icon is an greyscale icon</string>
     <string name="background_title">Background</string>
+    <string name="position_title">Position</string>
+    <string name="show_title">Show</string>
     <string name="hidden_title">Hidden</string>
     <string name="icon_title">Icon</string>
-    <string name="icons_title">Icons</string>
+    <string name="buttons_title">Buttons</string>
     <string name="ripple_title">Ripple Effect Color</string>
     <string name="text_title">Text</string>
     <string name="category_colors_title">Customize Colors</string>
     <string name="reset_message">Reset all entries to default?</string>
     <string name="reset_default_message">Reset default?</string>
+    <string name="dlg_reset_values_message">Reset values to\nAndroid- or VRToxin default?</string>
     <string name="dlg_reset_colors_message">Reset colors to\nAndroid- or VRToxin default?</string>
     <string name="additional_options_title">Additional options</string>
     <string name="always_title">Always</string>
@@ -408,6 +418,7 @@
     <string name="shortcut_action_back">Back</string>
     <string name="shortcut_action_app">Custom app</string>
     <string name="shortcut_action_expanded_desktop">Expanded desktop</string>
+    <string name="shortcut_action_pie">Pie Control</string>
     <string name="shortcut_action_home">Home</string>
     <string name="shortcut_action_kill">Kill app</string>
     <string name="shortcut_action_lastapp">Last app</string>
@@ -511,5 +522,181 @@
     <string name="qs_main_tiles_summary_off">Three tiles on each row</string>
 
     <string name="qs_tile_rotation">Rotation</string>
+
+    <!-- Pie control -->
+    <string name="pie_control_title">Pie control</string>
+    <string name="pie_control_summary">Enable pie on screen navigation</string>
+    <string name="pie_control_size">Navigation size</string>
+    <string name="pie_control_trigger_positions">Trigger options</string>
+    <string name="pie_control_trigger_left">Trigger left screen border</string>
+    <string name="pie_control_trigger_bottom">Trigger bottom screen border</string>
+    <string name="pie_control_trigger_right">Trigger right screen border</string>
+    <string name="pie_control_trigger_top">Trigger top screen border</string>
+    <string name="pie_control_trigger_top_summary">Top pie does not show status and clock information</string>
+    <string name="pie_trigger_warning">Minimum one of the main triggers (bottom, left or right) needs to be enabled.</string>
+    <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
+    <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
+    <string name="pie_trigger_sensitivity_title">Trigger sensitivity"</string>
+    <string name="pie_trigger_sensitivity_summary">Adjust the pie trigger sensitivity</string>
+    <string name="pie_button_style">Buttons style</string>
+    <string name="pie_button_color_title">Button color</string>
+    <string name="pie_button_alpha_title">Button transparency</string>
+    <string name="pie_button_outline_color_title">Button outline color</string>
+    <string name="pie_button_pressed_color_title">Button pressed color</string>
+    <string name="pie_button_long_pressed_color_title">Button long pressed color</string>
+    <string name="pie_button_pressed_alpha_title">Button pressed transparency</string>
+    <string name="pie_icon_style">Button icon style</string>
+    <string name="pie_icon_color_title">Button icon color</string>
+    <string name="pie_icon_color_mode_title">Button icon color mode</string>
+    <string name="pie_icon_color_mode_dialog_title">Colorize</string>
+    <string name="pie_icon_color_mode_summary">Change the button icon color mode</string>
+    <string name="pie_trigger_note_title">Note</string>
+    <string name="pie_trigger_note_summary">To avoid conflicts with status bar or navigation bar, the triggers on these edges are automatically turned off if one or both are available</string>
+    <string name="pie_background_color_title">Background color</string>
+    <string name="pie_snap_color_title">Snap point color</string>
+    <string name="pie_text_color_title">Text color</string>
+    <string name="pie_background_alpha_title">Background transparency</string>
+    <string name="pie_mirror_right_title">Mirror right pie</string>
+    <string name="pie_mirror_right_summary">Mirror right pie on the horizontal axis</string>
+    <string name="pie_style">Style and dimension</string>
+    <string name="pie_style_title">Style</string>
+    <string name="pie_dimens_title">Dimension</string>
+    <string name="pie_additional_options">Additional options</string>
+    <string name="pie_show_snap_title">Show snap points</string>
+    <string name="pie_show_snap_summary">Shows snap points to change the trigger edge dynamically</string>
+    <string name="pie_show_text_title">Show status and clock</string>
+    <string name="pie_show_text_summary">Shows phone status, time and date information</string>
+    <string name="pie_show_background_title">Show background</string>
+    <string name="pie_show_background_summary">Enable pie background screen</string>
+    <string name="pie_button">Buttons</string>
+    <string name="pie_button_second_layer">Buttons second layer</string>
+    <string name="pie_button_second_layer_summary">Change second layer buttons</string>
+    <string name="pie_button_style_summary">Change pie button style</string>
+    <string name="pie_style_reset_message">Reset style entries to default?</string>
+    <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Removing every %1$s in the list will disable the second pie layer entirely.</string>
+    <string name="icon_color_mode_all_icons">All icons</string>
+    <string name="icon_color_mode_system_icons">System icons</string>
+    <string name="icon_color_mode_system_custom_icons">System and custom icons</string>
+
+    <!-- Navigation bar visibility -->
+    <string name="navigation_menu_default_jb_behavior">Show on request (default)</string>
+    <string name="navigation_menu_never_show">Never show</string>
+    <string name="navigation_menu_always_show">Always show</string>
+    <string name="title_pref_menu_display">Menu visibility</string>
+    <string name="summary_pref_menu_display">How and when do you want the menu buttons to appear?</string>
+
+    <!-- Recents panel options -->
+    <string name="recents_panel_settings">Recents panel</string>
+    <string name="use_slim_recents_title">Slim recents</string>
+    <string name="recent_panel_category">Slim recents</string>
+    <string name="slim_recents_settings_title">Slim recent apps view</string>
+    <string name="recents_settings_summary">Customize recent apps view</string>
+    <string name="slim_recents_panel_category">Slim recents panel</string>
+    <string name="cat_appearance_title">Appearance</string>
+    <string name="cat_apps_title">Apps</string>
+
+    <!-- Slim recents options -->
+    <string name="slim_recents_scale_title">Size</string>
+    <string name="slim_recents_expanded_mode_title">Expanded mode</string>
+    <string name="slim_recents_mode_auto">Auto</string>
+    <string name="slim_recents_expanded_mode_always">Always</string>
+    <string name="slim_recents_expanded_mode_never">Never</string>
+
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="slim_recents_lefty_mode_title">Show on the left edge</string>
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="slim_recents_lefty_mode_summary">Show recent apps panel on the left edge</string>
+
+    <string name="slim_recents_popup_theme_mode_title">Popup menu theme</string>
+    <string name="slim_recents_popup_theme_mode_dark">Dark</string>
+    <string name="slim_recents_popup_theme_mode_light">Light</string>
+    <string name="slim_recents_only_show_running_tasks_title">Only show running</string>
+    <string name="slim_recents_only_show_running_tasks_summary">Enable to show only apps which are currently running</string>
+    <string name="slim_recents_show_topmost_title">Show topmost task</string>
+    <string name="slim_recents_show_topmost_summary">Enable to show the topmost task</string>
+    <string name="slim_recents_max_apps_title">Max allowed</string>
+
+    <!-- Slim recents colors -->
+    <string name="slim_recents_use_text_color_summary">Enable to use a custom color for the app name</string>
+    <string name="slim_recents_use_expand_icon_color_title">Expand button icon</string>
+    <string name="slim_recents_use_expand_icon_color_summary">Enable to use a custom color for the expand button icon</string>
+    <string name="slim_recents_use_empty_icon_color_title">Empty recents icon</string>
+    <string name="slim_recents_use_empty_icon_color_summary">Enable to use a custom color for the icon on empty recent apps view</string>
+    <string name="slim_recents_card_bg_color_title">Card background</string>
+    <string name="slim_recents_expand_icon_color_title">Expand button icon</string>
+    <string name="slim_recents_empty_icon_color_title">Empty recents icon</string>
+
+    <!-- Recent app sidebar -->
+    <string name="recent_app_sidebar_title">App sidebar</string>
+    <string name="recent_app_sidebar_summary">Show app shortcuts on the other edge</string>
+    <string name="recent_app_sidebar_style_title">Sidebar style</string>
+    <string name="recent_app_sidebar_style_summary">Change recent app sidebar style</string>
+    <string name="recent_app_sidebar_hide_labels_title">Hide icon labels</string>
+    <string name="recent_app_sidebar_label_color_title">Label color</string>
+    <string name="recent_app_sidebar_bg_color_title">Background color</string>
+    <string name="recent_app_sidebar_scale_title">Size</string>
+
+    <!-- Navigation bar settings -->
+    <string name="navigation_bar_settings_title">Navigation bar</string>
+    <string name="navigation_enable_bar">Enable navigation bar</string>
+    <string name="navigation_enable_bar_summary">Enable the navigation bar</string>
+    <string name="navigation_bar_cat_buttons_title">Buttons</string>
+    <string name="navigation_bar_cat_landscape_title">On landscape</string>
+    <string name="navigation_bar_cat_size_title">Size</string>
+    <string name="navigation_bar_button_settings_title">Customize</string>
+    <string name="navigation_bar_button_settings_summary">Arrange the buttons, and choose the buttons to display on the navigation bar.</string>
+    <string name="navigation_bar_button_advanced_title">Advanced settings</string>
+    <string name="navigation_bar_button_advanced_summary">Customize advanced functions and colors</string>
+    <string name="navigation_bar_can_move_title">Show on bottom</string>
+    <string name="navigation_bar_can_move_summary">Enable to show the navigation bar  on the bottom</string>
+    <string name="navigation_bar_height_title">Height (portrait)</string>
+    <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
+    <string name="navigation_bar_size_36_dp">36 dp</string>
+    <string name="navigation_bar_size_30_dp">30 dp</string>
+    <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp (default)</string>
+    <string name="navigation_bar_size_44_dp">44 dp</string>
+    <string name="navigation_bar_size_40_dp">40 dp</string>
+    <string name="navigation_bar_size_42_dp">42 dp</string>
+    <string name="navigation_bar_size_0_dp">0 dp (off)</string>
+    <string name="navigation_bar_height_landscape_title">Height (landscape)</string>
+    <string name="navigation_bar_width_title">Width</string>
+
+    <!-- Navigation bar advanced settings -->
+    <string name="navigation_bar_cat_menu_button_title">Menu button</string>
+    <string name="navigation_bar_show_ime_arrows_title">Show arrow keys</string>
+    <string name="navigation_bar_show_ime_arrows_summary">Show left and right cursor buttons while typing. Longpress to navigate up/down. Overrides IME switcher and menu buttons.</string>
+    <string name="navigation_bar_menu_visibility_title">Show</string>
+    <string name="navigation_bar_menu_visibility_request_title">On request (default)</string>
+    <string name="navigation_bar_menu_visibility_always_title">Always</string>
+    <string name="navigation_bar_menu_visibility_never_title">Never</string>
+    <string name="navigation_bar_menu_location_title">Position</string>
+    <string name="navigation_bar_menu_location_right_title">Right</string>
+    <string name="navigation_bar_menu_location_left_title">Left</string>
+    <string name="navigation_bar_menu_location_both_title">Left &amp; right</string>
+    <string name="navigation_bar_icon_color_mode_title">Colorize icon</string>
+    <string name="navigation_bar_icon_color_mode_dialog_title">Choose when to colorize the icon</string>
+    <string name="navigation_bar_button_ripple_color_mode_title">Ripple effect color mode</string>
+    <string name="navigation_bar_button_ripple_color_mode_dialog_title">Choose how to colorize the ripple effect</string>
+    <string name="navigation_bar_button_ripple_color_mode_auto_title">Auto</string>
+    <string name="navigation_bar_button_ripple_color_mode_custom_title">Custom color</string>
+    <string name="navigation_bar_button_ripple_color_mode_never_title">Don\`t colorize</string>
+    <string name="navigation_bar_button_ripple_color_title">Ripple effect</string>
+
+    <!-- SlimDim -->
+    <string name="dim_nav_buttons_category">SlimDim</string>
+    <string name="dim_nav_buttons_title">Dim buttons after inactivity</string>
+    <string name="dim_nav_buttons_summary">Dim navigation bar buttons after not interacting with navigation bar for a specified time</string>
+    <string name="dim_nav_buttons_timeout_title">Timeout before dimming</string>
+    <string name="dim_nav_buttons_timeout_summary">Time (in milliseconds) to wait before dimming buttons</string>
+    <string name="dim_nav_buttons_alpha_title">Dim alpha</string>
+    <string name="dim_nav_buttons_alpha_summary">Alpha value to dim buttons to</string>
+    <string name="dim_nav_buttons_animate_title">Dim animation</string>
+    <string name="dim_nav_buttons_animate_summary">Animate the alpha fade</string>
+    <string name="dim_nav_buttons_animate_duration_title">Animation duration</string>
+    <string name="dim_nav_buttons_animate_duration_summary">Duration (in milliseconds) of the alpha animation</string>
+    <string name="dim_nav_buttons_touch_anywhere_title">Listen for touches on entire screen</string>
+    <string name="dim_nav_buttons_touch_anywhere_summary_on">Touching anywhere on the screen will cause buttons to un-dim</string>
+    <string name="dim_nav_buttons_touch_anywhere_summary_off">Only touches on the navbar will cause buttons to un-dim</string>
 
 </resources>

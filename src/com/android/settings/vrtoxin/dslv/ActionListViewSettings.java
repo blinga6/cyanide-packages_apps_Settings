@@ -64,6 +64,7 @@ import com.android.internal.util.vrtoxin.ActionHelper;
 import com.android.internal.util.vrtoxin.ActionUtils;
 import com.android.internal.util.vrtoxin.ActionUtils.FilteredDeviceFeaturesArray;
 import com.android.internal.util.vrtoxin.ImageHelper;
+import com.android.internal.util.vrtoxin.NavigationBarColorHelper;
 //import com.android.internal.util.vrtoxin.LockScreenColorHelper;
 import com.android.internal.util.vrtoxin.PowerMenuColorHelper;
 import com.android.internal.util.vrtoxin.PowerMenuHelper;
@@ -546,13 +547,16 @@ public class ActionListViewSettings extends ListFragment implements
 
     private ArrayList<ActionConfig> getConfig() {
         switch (mActionMode) {
-            /*case PIE:
+            case NAV_BAR:
+                return ActionHelper.getNavBarConfigWithDescription(
+                    mActivity, mActionValuesKey, mActionEntriesKey);
+            case PIE:
                 return ActionHelper.getPieConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case PIE_SECOND:
                 return ActionHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            case LOCKSCREEN_BUTTONS_BAR:
+            /*case LOCKSCREEN_BUTTONS_BAR:
                 return ActionHelper.getLockscreenButtonBarConfig(mActivity);*/
             case POWER_MENU:
                 return PowerMenuHelper.getPowerMenuConfigWithDescription(
@@ -562,11 +566,11 @@ public class ActionListViewSettings extends ListFragment implements
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case QUICK_SETTINGS_BAR:
                 return QSBarHelper.getQSBarConfigWithDescription(
-                    mActivity, mActionValuesKey, mActionEntriesKey);
+                    mActivity, mActionValuesKey, mActionEntriesKey);*/
             case RECENT_APP_SIDEBAR:
                 return ActionHelper.getRecentAppSidebarConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            case PANEL_SHORTCUTS:
+            /*case PANEL_SHORTCUTS:
                 return ActionHelper.getPanelShortcutsConfig(mActivity);
             case BUTTONS_BAR_EXTENSION:
                 return ActionHelper.getLockscreenButtonBarExtensionConfig(mActivity);*/
@@ -576,7 +580,11 @@ public class ActionListViewSettings extends ListFragment implements
 
     private void setConfig(ArrayList<ActionConfig> actionConfigs, boolean reset) {
         switch (mActionMode) {
-            /*case PIE:
+            case NAV_BAR:
+                ActionHelper.setNavBarConfig(mActivity, actionConfigs, reset);
+                updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
+                break;
+            case PIE:
                 ActionHelper.setPieConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
@@ -584,7 +592,7 @@ public class ActionListViewSettings extends ListFragment implements
                 ActionHelper.setPieSecondLayerConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
-            case LOCKSCREEN_BUTTONS_BAR:
+            /*case LOCKSCREEN_BUTTONS_BAR:
                 ActionHelper.setLockscreenButtonBarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;*/
@@ -599,12 +607,12 @@ public class ActionListViewSettings extends ListFragment implements
             case QUICK_SETTINGS_BAR:
                 QSBarHelper.setQSBarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;
+                break;*/
             case RECENT_APP_SIDEBAR:
                 ActionHelper.setRecentAppSidebarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
-            case PANEL_SHORTCUTS:
+            /*case PANEL_SHORTCUTS:
                 ActionHelper.setPanelShortcutsConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
@@ -671,7 +679,24 @@ public class ActionListViewSettings extends ListFragment implements
                     + " " + getItem(position).getLongpressActionDescription());
             }
 
-            /*if (mActionMode == LOCKSCREEN_BUTTONS_BAR) {
+            if (mActionMode == NAV_BAR) {
+                d = ImageHelper.resize(
+                        mActivity, ActionHelper.getActionIconImage(mActivity,
+                        getItem(position).getClickAction(),
+                        iconUri), 24);
+                final int iconColor = NavigationBarColorHelper.getIconColor(mActivity, d);
+
+
+                if (NavigationBarColorHelper.getIconColorMode(mActivity) == 2
+                        && !NavigationBarColorHelper.isGrayscaleIcon(mActivity, d)) {
+                    holder.iconView.setImageBitmap(ImageHelper.getColoredBitmap(d, iconColor));
+                } else {
+                    holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                    if (iconColor != 0) {
+                        holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
+                    }
+                }
+            /*} else if (mActionMode == LOCKSCREEN_BUTTONS_BAR) {
                 final int iconSize = Settings.System.getInt(mActivity.getContentResolver(),
                         Settings.System.LOCK_SCREEN_BUTTONS_BAR_ICON_SIZE, 36);
                 d = ImageHelper.resize(
@@ -679,7 +704,7 @@ public class ActionListViewSettings extends ListFragment implements
                         getItem(position).getClickAction(), iconUri), iconSize);
                 final int iconColor = LockScreenColorHelper.getIconColor(mActivity, d);
 
-            if (LockScreenColorHelper.getIconColorMode(mActivity) == 2
+                if (LockScreenColorHelper.getIconColorMode(mActivity) == 2
                         && !LockScreenColorHelper.isGrayscaleIcon(mActivity, d)) {
                     holder.iconView.setImageBitmap(ImageHelper.getColoredBitmap(d, iconColor));
                 } else {
@@ -704,8 +729,8 @@ public class ActionListViewSettings extends ListFragment implements
                     if (iconColor != 0) {
                         holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
                     }
-                }
-   } else*/ if (mActionMode == POWER_MENU) {
+                }*/
+           } else if (mActionMode == POWER_MENU) {
                 final int textColor = PowerMenuColorHelper.getTextColor(mActivity);
                 holder.clickActionDescriptionView.setTextColor(textColor);
                 d = ImageHelper.resize(
@@ -815,14 +840,14 @@ public class ActionListViewSettings extends ListFragment implements
                     String actionMode;
                     String icon = "";
                     switch (getOwner().mActionMode) {
-                        /*case NAV_BAR:
+                        case NAV_BAR:
                         case PIE:
                         case PIE_SECOND:
-                        case LOCKSCREEN_BUTTONS_BAR:
+                        /*case LOCKSCREEN_BUTTONS_BAR:
                         case POWER_MENU:
-                        case QUICK_SETTINGS_BAR:
+                        case QUICK_SETTINGS_BAR:*/
                         case RECENT_APP_SIDEBAR:
-                        case PANEL_SHORTCUTS:
+                        /*case PANEL_SHORTCUTS:
                         case BUTTONS_BAR_EXTENSION:*/
                         default:
                             actionMode = res.getString(R.string.shortcut_action_help_button);
@@ -1039,7 +1064,12 @@ public class ActionListViewSettings extends ListFragment implements
                 TextView tt = (TextView) iView.findViewById(android.R.id.text1);
                 tt.setText(labels[position]);
                 Drawable ic = ImageHelper.resize(getOwner().mActivity, (Drawable) getItem(position), 24);
-                /*if (getOwner().mActionMode == LOCKSCREEN_BUTTONS_BAR) {
+                if (getOwner().mActionMode == NAV_BAR) {
+                    int iconColor = NavigationBarColorHelper.getIconColor(getOwner().mActivity, ic);
+                    if (NavigationBarColorHelper.getIconColorMode(getOwner().mActivity) != 0) {
+                        ic.setTint(iconColor);
+                    }
+                }/* else if (getOwner().mActionMode == LOCKSCREEN_BUTTONS_BAR) {
                     final int iconSize = Settings.System.getInt(getOwner().mActivity.getContentResolver(),
                             Settings.System.LOCK_SCREEN_BUTTONS_BAR_ICON_SIZE, 36);
                     ic = ImageHelper.resize(getOwner().mActivity, (Drawable) getItem(position), iconSize);
