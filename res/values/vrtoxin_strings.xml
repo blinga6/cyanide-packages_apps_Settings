@@ -16,12 +16,14 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- General strings -->
+    <!-- Global used -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="customize_title">Customize</string>
     <string name="reset_android">Android</string>
     <string name="reset_vrtoxin">VRToxin</string>
+    <string name="reset_fusion">Fusion</string>
+    <string name="reset_cyanide">Cyanide</string>
     <string name="style_title">Style</string>
     <string name="options_title">Options</string>
     <string name="icons_normal_title">Icons normal</string>
@@ -32,6 +34,7 @@
     <string name="default_string">Default</string>
     <string name="always_title">Always</string>
     <string name="never_title">Never</string>
+    <string name="colors_cat_title">Customize Colors</string>
     <string name="color_title">Color</string>
     <string name="colors_title">Colors</string>
     <string name="background_title">Background</string>
@@ -43,10 +46,8 @@
     <string name="category_colors_title">Customize Colors</string>
     <string name="reset_message">Reset all entries to default?</string>
     <string name="reset_default_message">Reset default?</string>
+    <string name="dlg_reset_colors_message">Reset colors to\nAndroid- or VRToxin default?</string>
     <string name="additional_options_title">Additional options</string>
-
-    <!-- Global used -->
-    <string name="text_title">Text</string>
     <string name="always_title">Always</string>
     <string name="number_of_notifications_title">Number of notifications</string>
     <string name="number_of_notifications_two_title">2</string>
@@ -121,7 +122,7 @@
 
     <!-- Slim Action Shortcuts -->
     <string name="shortcut_action_none">None</string>
-    <string name="shortcut_action_none">None</string>
+    <string name="shortcut_action_airplane_mode">Airplane mode</string>
     <string name="shortcut_action_app">Custom App</string>
     <string name="shortcut_action_home">Home</string>
     <string name="shortcut_action_back">Back</string>
@@ -133,6 +134,8 @@
     <string name="shortcut_action_menu">Menu</string>
     <string name="shortcut_action_ime">IME Switcher</string>
     <string name="shortcut_action_power_menu">Power Menu</string>
+    <string name="shortcut_action_system_settings">Settings</string>
+    <string name="shortcut_action_lock_down">Lock now</string>
     <string name="shortcut_action_recent">Recents</string>
     <string name="shortcut_action_power">Screen Off</string>
     <string name="shortcut_action_search">Search in app</string>
@@ -356,6 +359,17 @@
     <string name="yahoo">Yahoo</string>
     <string name="youtube">Youtube</string>
     <string name="zedge">Zedge</string>
+
+    <!-- Power menu -->
+    <string name="power_menu_settings_title">Power Menu</string>
+    <string name="power_menu_settings_summary">Customize power menu</string>
+    <string name="buttons_actions_title">Customize</string>
+    <string name="power_menu_actions_summary">Arrange the buttons, and choose the buttons to display in the power menu.</string>
+    <string name="colors_power_menu_ripple_color_title">Ripple effect</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Advanced reboot</string>
+    <string name="advanced_reboot_summary">When unlocked, include quick reboot, reboot into recovery and bootloader options in the power menu</string>
 
     <!-- Hardware keys -->
     <string name="button_keys_title">Hardware Buttons</string>

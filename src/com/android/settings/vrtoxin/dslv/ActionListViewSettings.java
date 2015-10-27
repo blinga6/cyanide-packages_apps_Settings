@@ -65,8 +65,8 @@ import com.android.internal.util.vrtoxin.ActionUtils;
 import com.android.internal.util.vrtoxin.ActionUtils.FilteredDeviceFeaturesArray;
 import com.android.internal.util.vrtoxin.ImageHelper;
 //import com.android.internal.util.vrtoxin.LockScreenColorHelper;
-//import com.android.internal.util.vrtoxin.PowerMenuColorHelper;
-//import com.android.internal.util.vrtoxin.PowerMenuHelper;
+import com.android.internal.util.vrtoxin.PowerMenuColorHelper;
+import com.android.internal.util.vrtoxin.PowerMenuHelper;
 //import com.android.internal.util.vrtoxin.QSBarHelper;
 //import com.android.internal.util.vrtoxin.QSColorHelper;
 
@@ -553,11 +553,11 @@ public class ActionListViewSettings extends ListFragment implements
                 return ActionHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case LOCKSCREEN_BUTTONS_BAR:
-                return ActionHelper.getLockscreenButtonBarConfig(mActivity);
+                return ActionHelper.getLockscreenButtonBarConfig(mActivity);*/
             case POWER_MENU:
                 return PowerMenuHelper.getPowerMenuConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            case QUICKTILE:
+            /*case QUICKTILE:
                 return ActionHelper.getQuickTileConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case QUICK_SETTINGS_BAR:
@@ -587,12 +587,12 @@ public class ActionListViewSettings extends ListFragment implements
             case LOCKSCREEN_BUTTONS_BAR:
                 ActionHelper.setLockscreenButtonBarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;
+                break;*/
             case POWER_MENU:
                 PowerMenuHelper.setPowerMenuConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
-            case QUICKTILE:
+            /*case QUICKTILE:
                 ActionHelper.setQuickTileConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
@@ -705,7 +705,7 @@ public class ActionListViewSettings extends ListFragment implements
                         holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
                     }
                 }
-           } else if (mActionMode == POWER_MENU) {
+   } else*/ if (mActionMode == POWER_MENU) {
                 final int textColor = PowerMenuColorHelper.getTextColor(mActivity);
                 holder.clickActionDescriptionView.setTextColor(textColor);
                 d = ImageHelper.resize(
@@ -714,16 +714,16 @@ public class ActionListViewSettings extends ListFragment implements
                 final int iconColor = PowerMenuColorHelper.getIconNormalColor(mActivity);
                 holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
                 holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
-            } else if (mActionMode == QUICK_SETTINGS_BAR) {
+            /*} else if (mActionMode == QUICK_SETTINGS_BAR) {
                 d = ImageHelper.resize(
                         mActivity, QSBarHelper.getQSBarIconImage(mActivity,
                         getItem(position).getClickAction()), 32);
                 final int iconColor = QSColorHelper.getIconColor(mActivity);
                 holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
-                holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
+                holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);*/
             } else {
                 holder.iconView.setImageDrawable(d);
-            }*/
+            }
 
             if (!mDisableIconPicker && holder.iconView.getDrawable() != null) {
                 holder.iconView.setOnClickListener(new OnClickListener() {
