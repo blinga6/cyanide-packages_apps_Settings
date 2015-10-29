@@ -380,6 +380,7 @@
     <string name="buttons_actions_title">Customize</string>
     <string name="power_menu_actions_summary">Arrange the buttons, and choose the buttons to display in the power menu.</string>
     <string name="colors_power_menu_ripple_color_title">Ripple effect</string>
+    <string name="powermenu_lockscreen_title">Show power menu lock screen</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
