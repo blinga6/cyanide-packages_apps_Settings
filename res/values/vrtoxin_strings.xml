@@ -1392,4 +1392,8 @@
     <string name="share_vrtoxin_summary">Let others know about VRToxin</string>
     <string name="share_message">Check out what #VRToxin is all about @ https://plus.google.com/communities/108303487813436381401</string>
     <string name="share_chooser_title">Share VRToxin</string>
+
+    <!-- Disabling immersive mode messages -->
+    <string name="disable_immersive_message_title">Immersive Mode Messages</string>
+    <string name="disable_immersive_message_summary">Allow/Block Immersive Mode Messages</string>
 </resources>
