@@ -2503,6 +2503,9 @@
 
         <activity android:name=".vrtoxin.PrivacySettings" />
 
+        <!-- Hide Apps from Recents (HAFR) -->
+        <activity android:name=".vrtoxin.recentshidden.HAFRAppListActivity" />
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
