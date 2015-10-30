@@ -47,5 +47,5 @@
             android:title="@string/show_volume_icon_title"
             android:summary="@string/show_volume_icon_summary"
             android:defaultValue="true" />
-	
+
 </PreferenceScreen>
