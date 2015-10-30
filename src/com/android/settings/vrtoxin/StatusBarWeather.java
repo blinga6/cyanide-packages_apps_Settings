@@ -250,7 +250,7 @@ public class StatusBarWeather extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.VRTOXIN_AOSP;
+        return MetricsLogger.VRTOXIN_SHIT;
     }
 
     private void showDialogInner(int id) {

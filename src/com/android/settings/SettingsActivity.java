@@ -55,6 +55,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.util.Xml;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -1162,7 +1163,7 @@ public class SettingsActivity extends Activity
                                     com.android.internal.R.styleable.PreferenceHeader_fragment);
                             sa.recycle();
 
-                            sa = obtainStyledAttributes(attrs, R.styleable.DashboardTile);
+                            sa = context.obtainStyledAttributes(attrs, R.styleable.DashboardTile);
                             tile.switchControl = sa.getString(
                                     R.styleable.DashboardTile_switchClass);
                             sa.recycle();

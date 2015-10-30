@@ -24,9 +24,10 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
+
 import android.widget.Switch;
 import android.widget.Toast;
-
+import android.widget.CompoundButton;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.dashboard.GenericSwitchToggle;
@@ -47,6 +48,8 @@ public final class BluetoothEnabler extends GenericSwitchToggle {
 
     private static final String EVENT_DATA_IS_BT_ON = "is_bluetooth_on";
     private static final int EVENT_UPDATE_INDEX = 0;
+
+    private Context context;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -74,11 +77,15 @@ public final class BluetoothEnabler extends GenericSwitchToggle {
     public BluetoothEnabler(Context context, SwitchBar switchBar) {
         super(context, switchBar);
 
+	this.context = context;
+
         init();
     }
 
     public BluetoothEnabler(Context context, Switch switch_) {
         super(context, switch_);
+
+        this.context = context;
 
         init();
     }
