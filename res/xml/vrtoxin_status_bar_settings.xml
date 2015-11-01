@@ -40,4 +40,11 @@
         android:summary="@string/network_traffic_summary"
         android:title="@string/network_traffic_title" />
 
+    <!-- Status bar weather -->
+    <PreferenceScreen
+        android:key="status_bar_weather_temperature"
+        android:title="@string/status_bar_weather_temperature_title"
+        android:summary="@string/status_bar_weather_temperature_summary"
+        android:fragment="com.android.settings.vrtoxin.StatusBarWeather" />
+
 </PreferenceScreen>
