@@ -1204,4 +1204,8 @@
     <string name="power_notifications_ringtone_title">Notification sound</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
+
+    <!-- Ability to disable hardware keys -->
+    <string name="hw_keys_title">Hardware Keys</string>
+    <string name="hw_keys_summary">On/off switch for hardware keys</string>
 </resources>
