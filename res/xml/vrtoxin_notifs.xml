@@ -16,6 +16,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <!-- Breathing notifications -->
+    <PreferenceScreen
+        android:key="breathing_notifications"
+        android:fragment="com.android.settings.vrtoxin.BreathingNotifications"
+        android:title="@string/breathing_notifications_title"
+        android:summary="@string/breathing_notifications_summary" />
+
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
         android:title="@string/force_expanded_notifications_title"
