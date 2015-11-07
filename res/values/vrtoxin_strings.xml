@@ -1598,4 +1598,17 @@
     <string name="vrtoxin_ls_shortcuts_title">Lock Screen Shortcuts</string>
     <string name="lockscreen_shortcuts_summary">View or change custom lock screen shortcuts</string>
 
+    <!-- Battery Bar -->
+    <string name="status_bar_battery_style">Battery Options</string>
+    <string name="battery_settings_summary">Customize the status bar battery icon &amp; percent style</string>
+    <string name="battery_bar_location">Location</string>
+    <string name="batterybar_settings_summary">Customize battery bar color &amp; thickness</string>
+    <string name="battery_bar_color">Color</string>
+    <string name="battery_bar">Battery Bar</string>
+    <string name="battery_bar_summary">Battery bar position and color customization</string>
+    <string name="battery_bar_style_title">Style</string>
+    <string name="battery_bar_thickness_title">Thickness</string>
+    <string name="battery_bar_animate_title">Charging Animation</string>
+    <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+
 </resources>
