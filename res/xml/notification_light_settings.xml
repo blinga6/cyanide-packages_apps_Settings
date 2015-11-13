@@ -41,6 +41,14 @@
             android:title="@string/notification_light_use_custom"
             android:dependency="notification_light_pulse" />
 
+        <!-- Whether to allow notification lights in zen mode -->
+        <!-- This is set to true to match the default state in Android 5.1 -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="allow_lights"
+            android:title="@string/allow_lights_title"
+            android:summary="@string/allow_lights_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

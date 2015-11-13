@@ -532,6 +532,8 @@
     <string name="notification_light_missed_call_title">Missed call</string>
     <string name="notification_light_voicemail_title">Voicemail</string>
     <string name="notification_light_screen_on">Screen On Lights</string>
+    <string name="allow_lights_title">Do Not Disturb</string>
+    <string name="allow_lights_summary">Allow lights to flash in Do Not Disturb mode</string>
 
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
