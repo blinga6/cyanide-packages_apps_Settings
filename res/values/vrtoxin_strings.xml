@@ -1365,4 +1365,9 @@
 
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
+
+    <!-- Status bar brightness control -->
+    <string name="status_bar_brightness_control_title">Brightness Control</string>
+    <string name="status_bar_brightness_control_summary">Adjust brightness by sliding across status bar</string>
+    <string name="status_bar_brightness_control_info">Automatic brightness must be disabled</string>
 </resources>

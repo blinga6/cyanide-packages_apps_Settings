@@ -26,6 +26,11 @@
             android:dependency="enable_adb" />
 
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="status_bar_brightness_control"
+            android:summary="@string/status_bar_brightness_control_summary"
+            android:title="@string/status_bar_brightness_control_title" />
+
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="show_volume_icon"
             android:title="@string/show_volume_icon_title"
             android:summary="@string/show_volume_icon_summary"
