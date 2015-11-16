@@ -90,6 +90,10 @@ public class QSTileHolder {
                 resourceName = "ic_hotspot_enable_animation";
                 stringId = R.string.hotspot;
                 break;
+            case QSConstants.TILE_VRTOXIN:
+                resourceName = "ic_qs_cyanide_on";
+                stringId = R.string.qs_tile_vrtoxin;
+                break;
             default:
                 return null;
         }
