@@ -73,7 +73,15 @@
         <attr name="useDefaultController" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="IntervalSeekBar">
+        <attr name="min" format="float" />
+        <attr name="max" format="float" />
+        <attr name="defaultValue" format="float" />
+        <attr name="digits" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="SeekBarPreference">
+        <attr name="minappbar" format="integer" />
         <attr name="maximum" format="integer" />
         <attr name="minimum" format="integer" />
         <attr name="interval" format="integer" />

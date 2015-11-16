@@ -53,6 +53,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.MasterAnimationControl;
 import com.android.settings.vrtoxin.QuickSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.StatusBarSettings;
@@ -180,12 +181,13 @@ public class MainSettings extends SettingsPreferenceFragment {
 
         public StatusBarAdapter(FragmentManager fm) {
             super(fm);
-            frags[0] = new PowerUsageSummary();
-            frags[1] = new ButtonSettings();
-            frags[2] = new InterfaceSettings();
-            frags[3] = new VrtoxinNotifs();
-            frags[4] = new QuickSettings();
-            frags[5] = new StatusBarSettings();
+            frags[0] = new MasterAnimationControl();
+            frags[1] = new PowerUsageSummary();
+            frags[2] = new ButtonSettings();
+            frags[3] = new InterfaceSettings();
+            frags[4] = new VrtoxinNotifs();
+            frags[5] = new QuickSettings();
+            frags[6] = new StatusBarSettings();
         }
 
         @Override
@@ -208,6 +210,7 @@ public class MainSettings extends SettingsPreferenceFragment {
         String titleString[];
         if (!ScreenType.isPhone(getActivity())) {
         titleString = new String[]{
+                    getString(R.string.vrtoxin_animations_settings),
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
@@ -216,6 +219,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.status_bar_title)};
         } else {
         titleString = new String[]{
+                    getString(R.string.vrtoxin_animations_settings),
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),

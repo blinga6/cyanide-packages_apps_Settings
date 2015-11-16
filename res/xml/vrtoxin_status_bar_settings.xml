@@ -26,4 +26,18 @@
         android:summary="@string/status_bar_carrier_label_settings_summary"
         android:fragment="com.android.settings.vrtoxin.CarrierLabel" />
 
+    <!-- Clock -->
+    <PreferenceScreen
+        android:key="status_bar_clock"
+        android:title="@string/status_bar_clock_settings_title"
+        android:summary="@string/status_bar_clock_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.StatusBarClockSettings" />
+
+    <!-- Network Traffic -->
+    <PreferenceScreen
+        android:key="network_traffic_state"
+        android:fragment="com.android.settings.vrtoxin.NetworkTraffic"
+        android:summary="@string/network_traffic_summary"
+        android:title="@string/network_traffic_title" />
+
 </PreferenceScreen>

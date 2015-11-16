@@ -2608,6 +2608,8 @@
         <activity android:name=".vrtoxin.Misc" />
         <activity android:name=".vrtoxin.StatusBarSettings" />
         <activity android:name=".vrtoxin.VrtoxinNotifs" />
+        <activity android:name=".vrtoxin.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".vrtoxin.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
     </application>
 </manifest>

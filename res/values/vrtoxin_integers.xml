@@ -14,20 +14,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <color name="white">#FFF</color>
-    <color name="background_tab_pressed">#00252525</color>
-    
-    <color name="dslv_divider">#1fffffff</color>
-    <color name="dslv_icon_dark">#ff009688</color>
-    <color name="dslv_float_background_color">#ff1976D2</color>
-    <color name="floating_action_button_touch_tint">#80ffffff</color>
-    <color name="theme_accent">#ff1976D2</color>
-    <color name="qs_dialog_add_tile_icon_color">#ff1976D2</color>
-    <color name="qs_background_color">#ff000000</color>
-
-    <!-- Gesture Anywhere -->
-    <color name="ga_gesture_color">#ff1976D2</color>
-
+<resources>
+    <!-- Overlays for NetworkTraffic to use -->
+    <integer name="maskUp">0x00000001</integer>
+    <integer name="maskDown">0x00000002</integer>
+    <integer name="maskUnit">0x00000004</integer>
+    <integer name="maskPeriod">0xFFFF0000</integer>
 </resources>
