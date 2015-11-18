@@ -61,6 +61,8 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
+    
+    private SwitchPreference mMemoryBar;
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
     private ColorPickerPreference mClearAllIconColor;
@@ -93,7 +95,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         boolean enableMemoryBar = Settings.System.getInt(mResolver,
                 Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 0) == 1;
         mMemoryBar = (SwitchPreference) findPreference(SYSTEMUI_RECENTS_MEM_DISPLAY);
-        mMemoryBar.setChecked(useSlimRecents);
+        mMemoryBar.setChecked(enableMemoryBar);
         mMemoryBar.setOnPreferenceChangeListener(this);
 
         mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
@@ -179,7 +181,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mUseSlimRecents) {
+        if (preference == mMemoryBar) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(mResolver,
                     Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY,

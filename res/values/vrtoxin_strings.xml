@@ -993,7 +993,7 @@
     <string name="ime_exit_animation_title">Exit animation</string>
     <string name="ime_interpolator_title">Interpolator</string>
     <string name="ime_duration_title">IME duration</string>
-    <string name="vrtoxin_animations_settings">Animations Settings</string>
+    <string name="vrtoxin_animations_settings">Animations</string>
     <string name="system_animations_cat_title">System Animations</string>
     <string name="keyboard_animations_cat_title">Keyboard Animations</string>
     <string name="scroll_animations_cat_title">Scrolling Animations</string>

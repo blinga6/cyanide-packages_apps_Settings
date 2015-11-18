@@ -337,12 +337,12 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
         if (clockStyle == 0) {
             mStatusBarDate.setEnabled(false);
             mStatusBarDateStyle.setEnabled(false);
-            mStatusBarDateSize.setEnabled(false);
+            mStatusBarClockFontSize.setEnabled(false);
             mStatusBarDateFormat.setEnabled(false);
         } else {
             mStatusBarDate.setEnabled(true);
             mStatusBarDateStyle.setEnabled(true);
-            mStatusBarDateSize.setEnabled(true);
+            mStatusBarClockFontSize.setEnabled(true);
             mStatusBarDateFormat.setEnabled(true);
         }
     }

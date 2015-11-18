@@ -31,6 +31,8 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.internal.logging.MetricsLogger;
+
 
 import java.util.Collections;
 import java.util.List;
@@ -60,6 +62,11 @@ public class StylusGestures extends SettingsPreferenceFragment implements
 
     private String[] mActionNames;
     private String[] mActionValues;
+
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsLogger.VRTOXIN_SHIT;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

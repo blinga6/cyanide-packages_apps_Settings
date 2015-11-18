@@ -168,19 +168,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mIm = (InputManager)activity.getSystemService(Context.INPUT_SERVICE);
         updateInputDevices();
 
-        PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
-                        findPreference(KEY_POINTER_SETTINGS_CATEGORY);
-
         mStylusGestures = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
-
-        if (pointerSettingsCategory != null) {
-            if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
-                pointerSettingsCategory.removePreference(mStylusGestures);
-            }
-            if (pointerSettingsCategory.getPreferenceCount() == 0) {
-                getPreferenceScreen().removePreference(pointerSettingsCategory);
-            }
-        }
 
         // Spell Checker
         final Preference spellChecker = findPreference(KEY_SPELL_CHECKERS);
