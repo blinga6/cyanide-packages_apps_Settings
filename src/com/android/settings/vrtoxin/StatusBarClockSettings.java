@@ -49,8 +49,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.internal.logging.MetricsLogger;
 
-import com.android.settings.vrtoxin.SeekBarPreference;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -71,7 +69,7 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
     private static final String PREF_COLOR_PICKER = "clock_color";
     private static final String PREF_FONT_STYLE = "font_style";
-    private static final String PREF_FONT_SIZE  = "font_size";
+    private static final String PREF_STATUS_BAR_CLOCK_FONT_SIZE  = "status_bar_clock_font_size";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -91,7 +89,7 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
     private ListPreference mClockDatePosition;
     private ListPreference mStatusBarDateFormat;
     private ListPreference mFontStyle;
-    private SeekBarPreference mStatusBarDateSize;
+    private ListPreference mStatusBarClockFontSize;
     private ColorPickerPreference mColorPicker;
 
     private boolean mCheckPreferences;
@@ -196,10 +194,12 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
                 0)));
         mFontStyle.setSummary(mFontStyle.getEntry());
 
-        mStatusBarDateSize = (SeekBarPreference) findPreference(PREF_FONT_SIZE);
-        mStatusBarDateSize.setValue(Settings.System.getInt(resolver,
-                Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 14));
-        mStatusBarDateSize.setOnPreferenceChangeListener(this);
+        mStatusBarClockFontSize = (ListPreference) findPreference(PREF_STATUS_BAR_CLOCK_FONT_SIZE);
+        mStatusBarClockFontSize.setOnPreferenceChangeListener(this);
+        mStatusBarClockFontSize.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 
+                14)));
+        mStatusBarClockFontSize.setSummary(mStatusBarClockFontSize.getEntry());
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
@@ -320,10 +320,12 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
                     Settings.System.STATUSBAR_CLOCK_FONT_STYLE, val);
             mFontStyle.setSummary(mFontStyle.getEntries()[index]);
             return true;
-        } else if (preference == mStatusBarDateSize) {
-            int width = ((Integer)newValue).intValue();
+        } else if (preference == mStatusBarClockFontSize) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mStatusBarClockFontSize.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver,
-                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, width);
+                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, val);
+            mStatusBarClockFontSize.setSummary(mStatusBarClockFontSize.getEntries()[index]);
             return true;
         }
         return false;

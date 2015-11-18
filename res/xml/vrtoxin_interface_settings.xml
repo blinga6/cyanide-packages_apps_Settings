@@ -41,12 +41,6 @@
         android:summary="@string/gestureanywhere_settings_summary"
         android:title="@string/gesture_anywhere_title" />
 
-    <!-- Navigation bar -->
-    <PreferenceScreen
-        android:id="@+id/navigation_bar_settings"
-        android:title="@string/navigation_bar_settings_title"
-        android:fragment="com.android.settings.vrtoxin.NavigationBarSettings" />
-
     <!-- Power menu -->
     <PreferenceScreen
         android:key="button_power_menu_settings"
@@ -59,11 +53,5 @@
         android:key="pie_settings"
         android:fragment="com.android.settings.vrtoxin.pie.PieControl"
         android:title="@string/pie_control_title" />
-
-    <!-- Recents Panel -->
-    <PreferenceScreen
-        android:key="recents_panel_settings"
-        android:fragment="com.android.settings.vrtoxin.RecentsPanelSettings"
-        android:title="@string/recents_panel_settings" />
 
 </PreferenceScreen>

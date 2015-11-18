@@ -427,7 +427,7 @@
     <string name="shortcut_action_home">Home</string>
     <string name="shortcut_action_kill">Kill app</string>
     <string name="shortcut_action_lastapp">Last app</string>
-    <string name="shortcut_action_navbar">Navigation bar</string>
+    <string name="shortcut_action_navbar">Navigation Bar</string>
     <string name="shortcut_action_notifications">Notifications</string>
     <string name="shortcut_action_menu_big">Menu</string>
     <string name="shortcut_action_ime">Open IME Switcher</string>
@@ -531,7 +531,7 @@
     <string name="qs_tile_vrtoxin">VRToxinMods</string>
 
     <!-- Pie control -->
-    <string name="pie_control_title">Pie control</string>
+    <string name="pie_control_title">SlimPie</string>
     <string name="pie_control_summary">Enable pie on screen navigation</string>
     <string name="pie_control_size">Navigation size</string>
     <string name="pie_control_trigger_positions">Trigger options</string>
@@ -593,11 +593,10 @@
     <string name="summary_pref_menu_display">How and when do you want the menu buttons to appear?</string>
 
     <!-- Recents panel options -->
-    <string name="recents_panel_settings">Recents panel</string>
     <string name="use_slim_recents_title">Slim recents</string>
     <string name="recent_panel_category">Slim recents</string>
     <string name="slim_recents_settings_title">Slim recent apps view</string>
-    <string name="recents_settings_summary">Customize recent apps view</string>
+    <string name="recents_settings_summary">Customize Slim recent app screen</string>
     <string name="slim_recents_panel_category">Slim recents panel</string>
     <string name="cat_appearance_title">Appearance</string>
     <string name="cat_apps_title">Apps</string>
@@ -644,8 +643,9 @@
     <string name="recent_app_sidebar_scale_title">Size</string>
 
     <!-- Navigation bar settings -->
-    <string name="navigation_bar_settings_title">Navigation bar</string>
+    <string name="navigation_bar_settings_title">Navigation Bar</string>
     <string name="navigation_enable_bar">Enable navigation bar</string>
+    <string name="navbar_settings_summary">Customize navbar &amp; select custom shortcuts &amp; actions</string>
     <string name="navigation_enable_bar_summary">Enable the navigation bar</string>
     <string name="navigation_bar_cat_buttons_title">Buttons</string>
     <string name="navigation_bar_cat_landscape_title">On landscape</string>
@@ -780,6 +780,27 @@
     <string name="status_bar_am_pm_small">Small</string>
     <string name="status_bar_am_pm_hidden">Hidden</string>
     <string name="status_bar_show_clock_second_title">Seconds</string>
+    <string name="clock_font_size_4">4</string>
+    <string name="clock_font_size_5">5</string>
+    <string name="clock_font_size_6">6</string>
+    <string name="clock_font_size_7">7</string>
+    <string name="clock_font_size_8">8</string>
+    <string name="clock_font_size_9">9</string>
+    <string name="clock_font_size_10">10</string>
+    <string name="clock_font_size_11">11</string>
+    <string name="clock_font_size_12">12</string>
+    <string name="clock_font_size_13">13</string>
+    <string name="clock_font_size_14">14</string>
+    <string name="clock_font_size_15">15</string>
+    <string name="clock_font_size_16">16</string>
+    <string name="clock_font_size_17">17</string>
+    <string name="clock_font_size_18">18</string>
+    <string name="clock_font_size_19">19</string>
+    <string name="clock_font_size_20">20</string>
+    <string name="clock_font_size_21">21</string>
+    <string name="clock_font_size_22">22</string>
+    <string name="clock_font_size_23">23</string>
+
 
     <!-- App Circle Bar -->
     <string name="category_app_circle_bar_title">Circle App Launcher</string>
@@ -1017,4 +1038,31 @@
     <string name="lock_screen_number_of_notifications_four_title">4</string>
     <string name="lock_screen_number_of_notifications_five_title">5</string>
     <string name="lock_screen_number_of_notifications_six_title">6</string>
+
+    <!-- Android recents settings -->
+    <string name="recents_panel">Recents Panel</string>
+    <string name="recents_control_title">Clear All Button Options</string>
+    <string name="recents_clear_all_location_title">Clear all recents location</string>
+    <string name="recents_clear_all_location_top_right">Top right</string>
+    <string name="recents_clear_all_location_top_left">Top left</string>
+    <string name="recents_clear_all_location_top_center">Top center</string>
+    <string name="recents_clear_all_location_bottom_right">Bottom right</string>
+    <string name="recents_clear_all_location_bottom_left">Bottom left</string>
+    <string name="recents_clear_all_location_bottom_center">Bottom center</string>
+    <string name="android_recents_cat_clear_all_button_title">Clear All Button</string>
+    <string name="android_recents_show_search_bar_title">Search Bar</string>
+    <string name="android_recents_show_search_bar_summary">Enable to show the search bar</string>
+    <string name="android_recents_show_clear_all_summary">Enable to show the clear all button</string>
+    <string name="slim_recent_category">Slim Recents</string>
+    <string name="recents_random_title">Misc Recents Options</string>
+    <string name="android_recents_clear_all_use_icon_color_title">Icon Color</string>
+    <string name="android_recents_clear_all_use_icon_color_summary">Enable to use a custom color for the clear all button icon</string>
+    <string name="recents_clear_all_dismiss_all_title">Clear All Tasks</string>
+    <string name="recents_clear_all_dismiss_all_summary">Choose whether to dismiss all tasks or ignore the foreground task</string>
+    <string name="memory_bar_options_title">Memory Bar Settings</string>
+    <string name="recents_show_membar_title">Memory Bar</string>
+    <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
+    <string name="membar_text_color">Bar Text Color</string>
+    <string name="membar_bar_color">Bar Free Color</string>
+    <string name="membar_bar_used_color">Bar Used Color</string>
 </resources>

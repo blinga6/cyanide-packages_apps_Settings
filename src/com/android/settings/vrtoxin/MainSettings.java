@@ -55,6 +55,7 @@ import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
 import com.android.settings.vrtoxin.MasterAnimationControl;
 import com.android.settings.vrtoxin.QuickSettings;
+import com.android.settings.vrtoxin.AndroidRecentsSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.StatusBarSettings;
 
@@ -187,7 +188,8 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[3] = new InterfaceSettings();
             frags[4] = new VrtoxinNotifs();
             frags[5] = new QuickSettings();
-            frags[6] = new StatusBarSettings();
+            frags[6] = new AndroidRecentsSettings();
+            frags[7] = new StatusBarSettings();
         }
 
         @Override
@@ -216,6 +218,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.interface_settings_title),
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
+                    getString(R.string.recents_panel),
                     getString(R.string.status_bar_title)};
         } else {
         titleString = new String[]{
@@ -225,6 +228,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.interface_settings_title),
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
+                    getString(R.string.recents_panel),
                     getString(R.string.status_bar_title)};
         }
         return titleString;
