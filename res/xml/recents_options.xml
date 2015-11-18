@@ -97,7 +97,7 @@
             android:key="slim_recents_settings"
             android:title="@string/slim_recent_category"
 		    android:summary="@string/recents_settings_summary"
-            android:fragment="com.android.settings.cyanide.SlimRecentsSettings" />
+            android:fragment="com.android.settings.vrtoxin.RecentsPanelSettings" />
 
     </PreferenceCategory>
 
