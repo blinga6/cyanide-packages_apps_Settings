@@ -934,6 +934,7 @@
     <string name="toast_Translucent_animation">Translucent Animation</string>
     <string name="toast_SlideLeftRight_animation">Slide left to right</string>
     <string name="toast_SlideRightLeft_animation">Slide right to left</string>
+    <string name="toast_text_color">Toast Text Color</string>
     <string name="toast_settings">Toast Settings</string>
     
     <!-- ListView animation -->
@@ -1143,5 +1144,9 @@
     <string name="battery_status_circle_dot_length_title">Circle dot length</string>
     <string name="battery_status_circle_dot_interval_title">Circle dot interval</string>
     <string name="battery_status_battery_color_title">Fill</string>
-    <string name="battery_status_text_color_title">Text</string>    
+    <string name="battery_status_text_color_title">Text</string>
+
+    <!-- Toast Icons -->
+    <string name="toast_icon_title">Toast App Icon</string>
+    <string name="toast_icon_summary">Whether to show the app icon which created the toast</string>
 </resources>

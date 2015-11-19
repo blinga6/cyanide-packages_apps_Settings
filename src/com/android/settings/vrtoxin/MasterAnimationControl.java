@@ -91,6 +91,15 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
+
+        mTextColor =
+                (ColorPickerPreference) findPreference(TOAST_TEXT_COLOR);
+        intColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.TOAST_TEXT_COLOR, 0xffffffff);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mTextColor.setNewPreviewColor(intColor);
+        mTextColor.setSummary(hexColor);
+        mTextColor.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -126,6 +135,14 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+        if (preference == mTextColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TOAST_TEXT_COLOR, intHex);
+            preference.setSummary(hex);
         }
         return true;
     }
