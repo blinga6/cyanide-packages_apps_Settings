@@ -94,6 +94,30 @@ public class QSTileHolder {
                 resourceName = "ic_qs_cyanide_on";
                 stringId = R.string.qs_tile_vrtoxin;
                 break;
+            case QSConstants.TILE_BRIGHTNESS:
+                resourceName = "ic_qs_brightness_auto_on_alpha";
+                stringId = R.string.qs_tile_brightness;
+                break;
+            case QSConstants.TILE_SCREENSHOT:
+                resourceName = "ic_qs_screenshot";
+                stringId = R.string.qs_tile_screenshot;
+                break;
+            case QSConstants.TILE_SCREENOFF:
+                resourceName = "ic_qs_power";
+                stringId = R.string.qs_tile_screen_off;
+                break;
+            case QSConstants.TILE_EXPANDED_DESKTOP:
+                resourceName = "ic_qs_expanded_desktop";
+                stringId = R.string.qs_tile_expanded_desktop;
+                break;
+            case QSConstants.TILE_VOLUME:
+                resourceName = "ic_qs_volume_panel";
+                stringId = R.string.qs_tile_volume_panel;
+                break;
+            case QSConstants.TILE_SCREEN_TIMEOUT:
+                resourceName = "ic_qs_screen_timeout_vector";
+                stringId = R.string.qs_tile_screen_timeout;
+                break;
             default:
                 return null;
         }

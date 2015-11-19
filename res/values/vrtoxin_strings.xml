@@ -529,6 +529,12 @@
     <!-- Tiles -->
     <string name="qs_tile_rotation">Rotation</string>
     <string name="qs_tile_vrtoxin">VRToxinMods</string>
+    <string name="qs_tile_brightness">Brightness</string>
+    <string name="qs_tile_screenshot">Screenshot</string>
+    <string name="qs_tile_screen_off">Screen Off</string>
+    <string name="qs_tile_volume_panel">Volume Panel</string>
+    <string name="qs_tile_expanded_desktop">Expanded Desktop</string>
+    <string name="qs_tile_screen_timeout">Screen Timeout</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>
