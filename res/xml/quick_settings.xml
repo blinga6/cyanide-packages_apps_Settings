@@ -38,7 +38,7 @@
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="sysui_qs_main_tiles"
             android:title="@string/qs_main_tiles_title"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="sysui_qs_num_columns"
