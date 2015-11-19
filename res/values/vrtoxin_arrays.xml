@@ -1077,5 +1077,32 @@
         <item>1</item>
         <item>3</item>
         <item>5</item>
-    </string-array> 
+    </string-array>
+
+    <!-- Status bar VRToxin logo position-->
+    <string-array name="status_bar_logo_position_entries" translatable="false">
+        <item>@string/status_bar_logo_position_left</item>
+        <item>@string/status_bar_logo_position_right</item>
+    </string-array>
+
+    <string-array name="status_bar_logo_position_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!-- VRToxin Logo -->
+    <string-array name="vrtoxin_logo_entries">
+        <item>@string/show_logo_disabled</item>
+        <item>@string/show_logo_keyguard</item>
+        <item>@string/show_logo_statusbar</item>
+        <item>@string/show_logo_enabled</item>
+    </string-array>
+
+    <string-array name="vrtoxin_logo_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>

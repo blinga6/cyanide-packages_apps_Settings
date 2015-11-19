@@ -1149,4 +1149,21 @@
     <!-- Toast Icons -->
     <string name="toast_icon_title">Toast App Icon</string>
     <string name="toast_icon_summary">Whether to show the app icon which created the toast</string>
+
+    <!-- Statusbar VRToxin logo -->
+    <string name="status_bar_vrtoxin_logo_title">VRToxin Logo</string>
+    <string name="status_bar_vrtoxin_logo_summary">Logo Switch &amp; Color</string>
+    <string name="status_bar_vrtoxin_logo_color">VRToxin Logo Color</string>
+    <string name="status_bar_vrtoxin_logo_position">Location</string>
+    <string name="status_bar_vrtoxin_logo_position_summary">Choose which side to display the logo on, left or right</string>
+    <string name="status_bar_logo_position_right">Right</string>
+    <string name="status_bar_logo_position_left">Left</string>
+    <string name="show_logo_disabled">Disabled</string>
+    <string name="show_logo_keyguard">Lockscreen only</string>
+    <string name="show_logo_statusbar">Statusbar only</string>
+    <string name="show_logo_enabled">Lockscreen &amp; Statusbar</string>
+    <string name="logo_cat_notification_icons_title">Notification icons</string>
+    <string name="logo_hide_logo_title">Hide</string>
+    <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the Cyanide logo on the status bar</string>
+    <string name="logo_number_of_notification_icons_title">Number of notification icons</string>
 </resources>
