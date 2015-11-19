@@ -536,6 +536,9 @@
     <string name="qs_tile_volume_panel">Volume Panel</string>
     <string name="qs_tile_expanded_desktop">Expanded Desktop</string>
     <string name="qs_tile_screen_timeout">Screen Timeout</string>
+    <string name="qs_tile_usb_tethering">USB Tethering</string>
+    <string name="qs_tile_ambient_display">Ambient Display</string>
+    <string name="qs_tile_nfc">MFC</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

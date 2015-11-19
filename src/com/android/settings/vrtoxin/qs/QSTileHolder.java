@@ -50,73 +50,85 @@ public class QSTileHolder {
         switch (tileType) {
             case TILE_ADD_DELETE:
                 break;
-            case QSConstants.TILE_WIFI:
-                resourceName = "ic_qs_wifi_full_4";
-                stringId = R.string.wifi_quick_toggle_title;
-                break;
-            case QSConstants.TILE_BLUETOOTH:
-                resourceName = "ic_qs_bluetooth_on";
-                stringId = R.string.bluetooth_settings_title;
-                break;
-            case QSConstants.TILE_INVERSION:
-                resourceName = "ic_invert_colors_enable_animation";
-                stringId = R.string.accessibility_display_inversion_preference_title;
-                break;
-            case QSConstants.TILE_CELLULAR:
-                resourceName = "ic_qs_signal_full_4";
-                stringId = R.string.cellular_data_title;
+            case QSConstants.TILE_AMBIENT_DISPLAY:
+                resourceName = "ic_qs_ambientdisplay_on";
+                stringId = R.string.qs_tile_ambient_display;
                 break;
             case QSConstants.TILE_AIRPLANE:
                 resourceName = "ic_signal_airplane_enable_animation";
                 stringId = R.string.airplane_mode;
                 break;
-            case QSConstants.TILE_ROTATION:
-                resourceName = "ic_portrait_to_auto_rotate_animation";
-                stringId = R.string.qs_tile_rotation;
-                break;
-            case QSConstants.TILE_FLASHLIGHT:
-                resourceName = "ic_signal_flashlight_enable_animation";
-                stringId = R.string.power_flashlight;
-                break;
-            case QSConstants.TILE_LOCATION:
-                resourceName = "ic_signal_location_enable_animation";
-                stringId = R.string.location_title;
-                break;
-            case QSConstants.TILE_CAST:
-                resourceName = "ic_qs_cast_on";
-                stringId = R.string.cast_screen;
-                break;
-            case QSConstants.TILE_HOTSPOT:
-                resourceName = "ic_hotspot_enable_animation";
-                stringId = R.string.hotspot;
-                break;
-            case QSConstants.TILE_VRTOXIN:
-                resourceName = "ic_qs_cyanide_on";
-                stringId = R.string.qs_tile_vrtoxin;
+            case QSConstants.TILE_BLUETOOTH:
+                resourceName = "ic_qs_bluetooth_on";
+                stringId = R.string.bluetooth_settings_title;
                 break;
             case QSConstants.TILE_BRIGHTNESS:
                 resourceName = "ic_qs_brightness_auto_on_alpha";
                 stringId = R.string.qs_tile_brightness;
                 break;
-            case QSConstants.TILE_SCREENSHOT:
-                resourceName = "ic_qs_screenshot";
-                stringId = R.string.qs_tile_screenshot;
+            case QSConstants.TILE_CAST:
+                resourceName = "ic_qs_cast_on";
+                stringId = R.string.cast_screen;
                 break;
-            case QSConstants.TILE_SCREENOFF:
-                resourceName = "ic_qs_power";
-                stringId = R.string.qs_tile_screen_off;
+            case QSConstants.TILE_CELLULAR:
+                resourceName = "ic_qs_signal_full_4";
+                stringId = R.string.cellular_data_title;
+                break;
+            case QSConstants.TILE_INVERSION:
+                resourceName = "ic_invert_colors_enable_animation";
+                stringId = R.string.accessibility_display_inversion_preference_title;
                 break;
             case QSConstants.TILE_EXPANDED_DESKTOP:
                 resourceName = "ic_qs_expanded_desktop";
                 stringId = R.string.qs_tile_expanded_desktop;
                 break;
-            case QSConstants.TILE_VOLUME:
-                resourceName = "ic_qs_volume_panel";
-                stringId = R.string.qs_tile_volume_panel;
+            case QSConstants.TILE_FLASHLIGHT:
+                resourceName = "ic_signal_flashlight_enable_animation";
+                stringId = R.string.power_flashlight;
+                break;
+            case QSConstants.TILE_HOTSPOT:
+                resourceName = "ic_hotspot_enable_animation";
+                stringId = R.string.hotspot;
+                break;
+            case QSConstants.TILE_LOCATION:
+                resourceName = "ic_signal_location_enable_animation";
+                stringId = R.string.location_title;
+                break;
+            case QSConstants.TILE_NFC:
+                resourceName = "ic_qs_nfc_on";
+                stringId = R.string.qs_tile_nfc;
+                break;
+            case QSConstants.TILE_ROTATION:
+                resourceName = "ic_portrait_to_auto_rotate_animation";
+                stringId = R.string.qs_tile_rotation;
+                break;
+            case QSConstants.TILE_SCREENOFF:
+                resourceName = "ic_qs_power";
+                stringId = R.string.qs_tile_screen_off;
+                break;
+            case QSConstants.TILE_SCREENSHOT:
+                resourceName = "ic_qs_screenshot";
+                stringId = R.string.qs_tile_screenshot;
                 break;
             case QSConstants.TILE_SCREEN_TIMEOUT:
                 resourceName = "ic_qs_screen_timeout_vector";
                 stringId = R.string.qs_tile_screen_timeout;
+                break;
+            case QSConstants.TILE_USB_TETHERING:
+                resourceName = "ic_qs_usb_tether_on";
+                stringId = R.string.qs_tile_usb_tethering;
+                break;
+            case QSConstants.TILE_VOLUME:
+                resourceName = "ic_qs_volume_panel";
+                stringId = R.string.qs_tile_volume_panel;
+                break;
+            case QSConstants.TILE_VRTOXIN:
+                resourceName = "ic_qs_cyanide_on";
+                stringId = R.string.qs_tile_vrtoxin;
+                break;
+            case QSConstants.TILE_WIFI:
+                resourceName = "ic_qs_wifi_full_4";
+                stringId = R.string.wifi_quick_toggle_title;
                 break;
             default:
                 return null;
