@@ -1123,7 +1123,7 @@
     <string name="expanded_desktop_title">Expanded desktop options</string>
 
     <!-- Status bar battery status settings -->
-    <string name="status_bar_battery_status_settings_title">Status Bar Battery Options</string>
+    <string name="status_bar_battery_status_settings_title">Battery Customizations</string>
     <string name="status_bar_battery_status_settings_summary">Customize the status bar battery style</string>
     <string name="battery_status_cat_circle_options_title">Customize the circle</string>
     <string name="battery_status_style_title">Indicator</string>
