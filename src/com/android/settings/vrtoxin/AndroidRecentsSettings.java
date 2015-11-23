@@ -46,8 +46,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
 
     private static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
     private static final String MEMORY_BAR_CAT_COLORS = "memory_bar";
+    private static final String PREF_CAT_CLEAR_ALL = "recents_panel";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+    private static final String PREF_CLEAR_ALL_USE_ICON_COLOR = "recents_clear_all_use_icon_color";
     private static final String PREF_CLEAR_ALL_BG_COLOR = "recent_apps_clear_all_bg_color";
     private static final String PREF_CLEAR_ALL_ICON_COLOR = "recent_apps_clear_all_icon_color";
     private static final String MEM_TEXT_COLOR = "mem_text_color";
@@ -65,6 +67,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private SwitchPreference mMemoryBar;
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
+    private SwitchPreference mClearAllUseIconColor;
     private ColorPickerPreference mClearAllIconColor;
     private ColorPickerPreference mClearAllBgColor;
     private ColorPickerPreference mMemTextColor;
@@ -92,6 +95,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         String hexColor;
         PackageManager pm = getPackageManager();
 
+        PreferenceCategory catClearAll =
+                (PreferenceCategory) findPreference(PREF_CAT_CLEAR_ALL);
+
         boolean enableMemoryBar = Settings.System.getInt(mResolver,
                 Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 0) == 1;
         mMemoryBar = (SwitchPreference) findPreference(SYSTEMUI_RECENTS_MEM_DISPLAY);
@@ -110,6 +116,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
         updateRecentsLocation(location);
         
+        mClearAllUseIconColor = (SwitchPreference) findPreference(PREF_CLEAR_ALL_USE_ICON_COLOR);
+        boolean clearAllUseIconColor = Settings.System.getInt(mResolver,
+               Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 0) == 1;
+        mClearAllUseIconColor.setChecked(clearAllUseIconColor);
+        mClearAllUseIconColor.setOnPreferenceChangeListener(this);
+
         mClearAllBgColor = (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_BG_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR, DEFAULT_COLOR); 
@@ -118,15 +130,19 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mClearAllBgColor.setSummary(hexColor);
         mClearAllBgColor.setOnPreferenceChangeListener(this);
 
-        mClearAllIconColor = (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_ICON_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR, WHITE); 
-        mClearAllIconColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mClearAllIconColor.setSummary(hexColor);
-        mClearAllIconColor.setOnPreferenceChangeListener(this);
+        if (clearAllUseIconColor) {
+            mClearAllIconColor = (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_ICON_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR, WHITE); 
+            mClearAllIconColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mClearAllIconColor.setSummary(hexColor);
+            mClearAllIconColor.setOnPreferenceChangeListener(this);
+        } else {
+            catClearAll.removePreference(findPreference(PREF_CLEAR_ALL_ICON_COLOR));
+        }
 
-        PreferenceCategory taskColors =
+        PreferenceCategory memColors =
                 (PreferenceCategory) findPreference(MEMORY_BAR_CAT_COLORS);
 
         if (enableMemoryBar) {
@@ -200,6 +216,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             updateRecentsLocation(location);
             refreshSettings();
             return true;
+        } else if (preference == mClearAllUseIconColor) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR,
+                    value ? 1 : 0);
+            refreshSettings();
         } else if (preference == mClearAllBgColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(objValue)));
@@ -312,6 +334,8 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR,
                                     DEFAULT_COLOR);
                             Settings.System.putInt(getOwner().mResolver,
@@ -336,6 +360,8 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                                     Settings.System.SHOW_CLEAR_ALL_RECENTS, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR,
                                     CYANIDE_BLUE);
