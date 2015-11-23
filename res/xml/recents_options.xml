@@ -37,7 +37,7 @@
             android:dependency="show_clear_all_recents" />
         
         <SwitchPreference
-            android:key="android_recents_clear_all_use_icon_color"
+            android:key="recents_clear_all_use_icon_color"
             android:title="@string/android_recents_clear_all_use_icon_color_title"
             android:summary="@string/android_recents_clear_all_use_icon_color_summary" />
 
