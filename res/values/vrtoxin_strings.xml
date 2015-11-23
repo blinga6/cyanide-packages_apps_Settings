@@ -67,6 +67,7 @@
     <string name="number_of_notifications_six_title">6</string>
 
     <!-- VRToxin Settings/Summaries and Menu Strings -->
+    <string name="status_bar_random_title">Random Settings</string>
     <string name="vrtoxin_settings_title">VRToxinMods</string>
     <string name="buttons_settings_title">Buttons</string>
     <string name="interface_settings_title">Interface</string>
@@ -1178,4 +1179,8 @@
     <string name="logo_hide_logo_title">Hide</string>
     <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the Cyanide logo on the status bar</string>
     <string name="logo_number_of_notification_icons_title">Number of notification icons</string>
+
+    <!-- Zen mode icon switch -->
+    <string name="show_volume_icon_title">Volume Mode Icon</string>
+    <string name="show_volume_icon_summary">Show volume mode icon, enabled by default</string>
 </resources>
