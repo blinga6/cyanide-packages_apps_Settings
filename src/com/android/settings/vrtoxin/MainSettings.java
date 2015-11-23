@@ -58,6 +58,7 @@ import com.android.settings.vrtoxin.QuickSettings;
 import com.android.settings.vrtoxin.AndroidRecentsSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.StatusBarSettings;
+import com.android.settings.vrtoxin.WeatherControl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,6 +191,7 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[5] = new QuickSettings();
             frags[6] = new AndroidRecentsSettings();
             frags[7] = new StatusBarSettings();
+            frags[8] = new WeatherControl();
         }
 
         @Override
@@ -219,7 +221,8 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),
-                    getString(R.string.status_bar_title)};
+                    getString(R.string.status_bar_title),
+                    getString(R.string.weather_control_master_title)};
         } else {
         titleString = new String[]{
                     getString(R.string.vrtoxin_animations_settings),
@@ -229,7 +232,8 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),
-                    getString(R.string.status_bar_title)};
+                    getString(R.string.status_bar_title),
+                    getString(R.string.weather_control_master_title)};
         }
         return titleString;
     }

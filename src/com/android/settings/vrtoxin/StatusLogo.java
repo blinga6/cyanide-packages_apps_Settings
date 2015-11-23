@@ -135,7 +135,7 @@ public class StatusLogo extends SettingsPreferenceFragment implements OnPreferen
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_RESET, 0, R.string.reset)
-                .setIcon(R.drawable.ic_settings_backup_restore)
+                .setIcon(com.android.internal.R.drawable.ic_settings_backup_restore)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
