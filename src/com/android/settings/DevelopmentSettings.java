@@ -418,16 +418,17 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             removePreferenceForProduction(hdcpChecking);
         }
 
+        mRootAccess = (ListPreference) findPreference(ROOT_ACCESS_KEY);
+        mRootAccess.setOnPreferenceChangeListener(this);
+        if (!removeRootOptionsIfRequired()) {
+            mAllPrefs.add(mRootAccess);
+        }
+
         mColorModePreference = (ColorModePreference) findPreference(KEY_COLOR_MODE);
         mColorModePreference.updateCurrentAndSupported();
         if (mColorModePreference.getTransformsCount() < 2) {
             removePreference(KEY_COLOR_MODE);
             mColorModePreference = null;
-
-        mRootAccess = (ListPreference) findPreference(ROOT_ACCESS_KEY);
-        mRootAccess.setOnPreferenceChangeListener(this);
-        if (!removeRootOptionsIfRequired()) {
-            mAllPrefs.add(mRootAccess);
         }
     }
 
