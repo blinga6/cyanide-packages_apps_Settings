@@ -284,13 +284,13 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             summary = R.string.recents_clear_all_location_top_center;
         } else if (value == 3) {
             Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3);
-            summary = R.string.recents_clear_all_location_bottom_right;
+            summary = R.string.recents_clear_all_location_bottom_left;
         } else if (value == 4) {
             Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 4);
-            summary = R.string.recents_clear_all_location_bottom_left;
+            summary = R.string.recents_clear_all_location_bottom_center;
         } else if (value == 5) {
             Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 5);
-            summary = R.string.recents_clear_all_location_bottom_center;
+            summary = R.string.recents_clear_all_location_bottom_right;
         }
         if (mRecentsClearAllLocation != null && summary != -1) {
             mRecentsClearAllLocation.setSummary(res.getString(summary));
@@ -359,7 +359,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SHOW_CLEAR_ALL_RECENTS, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, 1);
+                                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, 5);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 1);
                             Settings.System.putInt(getOwner().mResolver,
