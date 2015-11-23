@@ -49,6 +49,7 @@
     <string name="show_title">Show</string>
     <string name="hidden_title">Hidden</string>
     <string name="icon_title">Icon</string>
+    <string name="icons_title">Icons</string>
     <string name="buttons_title">Buttons</string>
     <string name="ripple_title">Ripple Effect Color</string>
     <string name="text_title">Text</string>
@@ -76,6 +77,8 @@
     <string name="vrtoxin_notifications_title">Notifications</string>
     <string name="status_bar_title">Status Bar</string>
     <string name="status_bar_battery_style">Battery Options</string>
+    <string name="status_bar_expanded_header_settings_title">Expanded Header</string>
+    <string name="header_settings_summary">Customize text &amp; icon color in the pulldown header</string>
 
     <!-- About phone screen, VRToxin version -->
     <string name="vrtoxin_version">VRToxin Version</string>
