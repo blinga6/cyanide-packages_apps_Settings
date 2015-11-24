@@ -25,32 +25,39 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
-import com.android.internal.logging.MetricsLogger;
 
 public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    private static final String PREF_BG_COLOR = "expanded_header_background_color";
-    private static final String PREF_TEXT_COLOR = "expanded_header_text_color";
-    private static final String PREF_ICON_COLOR = "expanded_header_icon_color";
+    private static final String PREF_BG_COLOR =
+            "expanded_header_background_color";
+    private static final String PREF_RIPPLE_COLOR =
+            "expanded_header_ripple_color";
+    private static final String PREF_TEXT_COLOR =
+            "expanded_header_text_color";
+    private static final String PREF_ICON_COLOR =
+            "expanded_header_icon_color";
 
-    private static final int DEFAULT_COLOR = 0xffffffff;
+    private static final int SYSTEMUI_SECONDARY = 0xff384248;
+    private static final int BLACK = 0xff000000;
+    private static final int WHITE = 0xffffffff;
     private static final int CYANIDE_BLUE = 0xff1976D2;
-    private static final int DEFAULT_BG_COLOR = 0xff384248;
 
     private static final int MENU_RESET = Menu.FIRST;
-    private static final int DLG_RESET = 0;
+    private static final int DLG_RESET  = 0;
 
     private ColorPickerPreference mBackgroundColor;
+    private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
 
@@ -68,7 +75,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             prefs.removeAll();
         }
 
-        addPreferencesFromResource(R.xml.vrtoxin_status_bar_expanded_header_settings);
+        addPreferencesFromResource(R.xml.status_bar_expanded_header_settings);
         mResolver = getActivity().getContentResolver();
 
         int intColor;
@@ -78,32 +85,45 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                 (ColorPickerPreference) findPreference(PREF_BG_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_BG_COLOR,
-                DEFAULT_BG_COLOR); 
+                SYSTEMUI_SECONDARY); 
         mBackgroundColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mBackgroundColor.setSummary(hexColor);
-        mBackgroundColor.setDefaultColors(DEFAULT_BG_COLOR, DEFAULT_BG_COLOR);
+        mBackgroundColor.setDefaultColors(SYSTEMUI_SECONDARY, SYSTEMUI_SECONDARY);
         mBackgroundColor.setOnPreferenceChangeListener(this);
 
-        mTextColor = (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
+        mRippleColor =
+                (ColorPickerPreference) findPreference(PREF_RIPPLE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_RIPPLE_COLOR,
+                WHITE); 
+        mRippleColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mRippleColor.setSummary(hexColor);
+        mRippleColor.setDefaultColors(WHITE, CYANIDE_BLUE);
+        mRippleColor.setOnPreferenceChangeListener(this);
+
+        mTextColor =
+                (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_TEXT_COLOR,
-                DEFAULT_COLOR); 
+                WHITE); 
         mTextColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mTextColor.setSummary(hexColor);
+        mTextColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mTextColor.setOnPreferenceChangeListener(this);
-        mTextColor.setAlphaSliderEnabled(true);
 
-        mIconColor = (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
+        mIconColor =
+                (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_ICON_COLOR,
-                DEFAULT_COLOR); 
+                WHITE); 
         mIconColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mIconColor.setSummary(hexColor);
+        mIconColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mIconColor.setOnPreferenceChangeListener(this);
-        mIconColor.setAlphaSliderEnabled(true);
 
         setHasOptionsMenu(true);
     }
@@ -127,7 +147,6 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean value;
         String hex;
         int intHex;
 
@@ -137,6 +156,14 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_BG_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mRippleColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_RIPPLE_COLOR, intHex);
             preference.setSummary(hex);
             return true;
         } else if (preference == mTextColor) {
@@ -186,20 +213,23 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                 case DLG_RESET:
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
-                    .setMessage(R.string.reset_message)
+                    .setMessage(R.string.dlg_reset_values_message)
                     .setNegativeButton(R.string.cancel, null)
                     .setNeutralButton(R.string.reset_android,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                             Settings.System.putInt(getOwner().mResolver,
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_BG_COLOR,
-                                    DEFAULT_BG_COLOR);
+                                    SYSTEMUI_SECONDARY);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_RIPPLE_COLOR,
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_TEXT_COLOR,
-                                    DEFAULT_COLOR);
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_ICON_COLOR,
-                                    DEFAULT_COLOR);
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -208,7 +238,10 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_BG_COLOR,
-                                    0xff000000);
+                                    BLACK);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_RIPPLE_COLOR,
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_TEXT_COLOR,
                                     CYANIDE_BLUE);

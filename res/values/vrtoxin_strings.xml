@@ -26,6 +26,10 @@
     <string name="reset_cyanide">Cyanide</string>
     <string name="style_title">Style</string>
     <string name="options_title">Options</string>
+    <string name="show_title">Show</string>
+    <string name="color_dark_mode_title">Color (light status bar)</string>
+    <string name="icon_color_dark_mode_title">Icon (light status bar)</string>
+    <string name="text_color_dark_mode_title">Text (light status bar)</string>
     <string name="icons_normal_title">Icons normal</string>
     <string name="icons_enabled_selected_title">Icons enabled&#47;selected</string>
     <string name="help">Help</string>
@@ -76,7 +80,7 @@
     <string name="vrtoxin_misc_title">Miscellaneous</string>
     <string name="vrtoxin_notifications_title">Notifications</string>
     <string name="status_bar_title">Status Bar</string>
-    <string name="status_bar_expanded_header_settings_title">Expanded Header</string>
+    <string name="status_bar_expanded_title">Expanded Header</string>
     <string name="header_settings_summary">Customize text &amp; icon color in the pulldown header</string>
 
     <!-- About phone screen, VRToxin version -->
@@ -1254,4 +1258,55 @@
     <string name="weather_number_of_notifications_four_title">4</string>
     <string name="weather_number_of_notifications_five_title">5</string>
     <string name="weather_number_of_notifications_six_title">6</string>
+
+    <!-- Status bar battery status settings -->
+    <string name="status_bar_network_status_icons_settings_title">Network Icons</string>
+    <string name="status_bar_network_status_icons_settings_summary">Customize the network- &amp; status icons</string>
+    <string name="network_status_icons_cat_signal_colors_title">Signal Colors</string>
+    <string name="network_status_icons_cat_no_sim_colors_title">No Sim Card Colors</string>
+    <string name="network_status_icons_cat_airplane_mode_colors_title">Airplane mode colors</string>
+    <string name="network_status_icons_cat_status_colors_title">Status Colors</string>
+    <string name="status_bar_notification_icon_settings_title">Notification icons</string>
+    <string name="status_bar_notification_icon_settings_summary">Customize the notification icons</string>
+    <string name="status_bar_battery_status_settings_title">Battery Customizations</string>
+    <string name="status_bar_battery_status_settings_summary">Customize the battery style, type and color</string>
+    <string name="battery_status_show_charge_animation_title">Show Charge Animation</string>
+    <string name="battery_status_show_charge_animation_summary">Enable to show a charge animation</string>
+    <string name="battery_status_text_charging_symbol_title">Battery Percentage &amp; Charging Symbol</string>
+    <string name="battery_status_cat_text_charge_icon_title">Percentage Text &amp; Charging Indicator</string>
+    <string name="battery_status_cat_charge_animation_title">Charging Animation</string>
+    <string name="battery_status_cat_circle_dotted_title">Circle Dotted</string>
+    <string name="battery_status_show_battery_summary">Enable to show the battery status</string>
+    <string name="battery_status_show_text_title">Show Battery Percentage</string>
+    <string name="battery_status_show_text_summary">Enable to show the percentage text</string>
+    <string name="battery_status_icon_indicator_title">Indicator</string>
+    <string name="battery_status_icon_indicator_battery_portrait">Portrait</string>
+    <string name="battery_status_icon_indicator_battery_landscape">Landscape</string>
+    <string name="battery_status_icon_indicator_circle">Circle</string>
+    <string name="battery_status_circle_dot_interval_title">Interval</string>
+    <string name="battery_status_circle_dot_length_title">Length</string>
+    <string name="battery_status_circle_dot_no_dot_summary">The circle won\'t be shown dotted</string>
+    <string name="battery_status_circle_dot_no_dot">No dots</string>
+    <string name="battery_status_circle_dot_1">1</string>
+    <string name="battery_status_circle_dot_2">2</string>
+    <string name="battery_status_circle_dot_3">3</string>
+    <string name="battery_status_circle_dot_4">4</string>
+    <string name="battery_status_circle_dot_5">5</string>
+    <string name="battery_status_circle_dot_6">6</string>
+    <string name="battery_status_circle_dot_7">7</string>
+    <string name="battery_status_circle_dot_8">8</string>
+    <string name="battery_status_circle_dot_9">9</string>
+    <string name="battery_status_circle_dot_10">10</string>
+    <string name="battery_status_cut_out_title">Cut out</string>
+    <string name="battery_status_cut_out_summary">Enable to cut the battery percentage or charging symbol out of the battery icon, if the battery fill reaches the battery percentage or charging symbol.</string>
+    <string name="battery_status_text_charging_symbol_color_dark_mode_title">Battery percentage &amp; charging symbol (light status bar)</string>
+    <string name="battery_status_text_charge_icon_color_dark_mode_title">Percentage text &amp; charging indicator (light status bar)</string>
+
+    <!-- Statusbar expanded -->
+    <string name="status_bar_expanded_header_settings_title">Header</string>
+    <string name="status_bar_expanded_header_settings_summary">Customize the header</string>
+    <string name="expanded_header_network_icons_settings_title">Network Icons</string>
+    <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
+    <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
+    <string name="header_network_icons_airplane_mode_color_title">Airplane Mode Color</string>
 </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2014 CyanideL
+<!-- Copyright (C) 2014 Darkkat
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,27 +16,21 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/status_bar_expanded_header_settings_title">
-    
+    android:title="@string/status_bar_notification_icon_settings_title">
+
     <PreferenceCategory
-        android:key="expanded_header_category_color"
+        android:key="notification_icon_colors"
         android:title="@string/colors_title">
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="expanded_header_background_color"
-            android:title="@string/background_title"
-            android:defaultValue="0xff384248" />
+            android:key="notification_icon_color"
+            android:title="@string/color_title"
+            android:defaultValue="#ffffffff" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="expanded_header_text_color"
-            android:title="@string/text_title"
-            android:defaultValue="0xffffffff" />
-
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="expanded_header_icon_color"
-            android:title="@string/icons_title"
-            android:defaultValue="0xffffffff" />
+            android:key="notification_icon_color_dark_mode"
+            android:title="@string/color_dark_mode_title"
+            android:defaultValue="#ff000000" />
 
 	</PreferenceCategory>
-
 </PreferenceScreen>
