@@ -342,6 +342,8 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                                     Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEM_TEXT_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
@@ -368,6 +370,8 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR,
                                     0xff00ff00);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEM_TEXT_COLOR,
                                     CYANIDE_BLUE);
