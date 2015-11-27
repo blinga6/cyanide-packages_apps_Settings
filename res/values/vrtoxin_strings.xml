@@ -560,7 +560,8 @@
     <string name="qs_tile_screen_timeout">Screen Timeout</string>
     <string name="qs_tile_usb_tethering">USB Tethering</string>
     <string name="qs_tile_ambient_display">Ambient Display</string>
-    <string name="qs_tile_nfc">MFC</string>
+    <string name="qs_tile_nfc">NFC</string>
+    <string name="qs_tile_heads_up">Heads Up</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>
@@ -1341,4 +1342,8 @@
     <string name="notification_bg_guts_color_title">Background on longpress</string>
     <string name="notification_app_icon_bg_color_title">App icon background</string>
     <string name="notification_clear_all_icon_color_title">Clear all icon</string>
+
+    <!-- Location QS tile mode -->
+    <string name="qs_advanced_location_title">Advanced Location Detail</string>
+    <string name="qs_advanced_location_summary">Enable advanced settings for location in quick settings</string>
 </resources>
