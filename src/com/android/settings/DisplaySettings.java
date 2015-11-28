@@ -59,7 +59,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.settings.du.DisplayRotation;
+import com.android.settings.vrtoxin.DisplayRotation;
 
 import java.util.ArrayList;
 import java.util.List;
