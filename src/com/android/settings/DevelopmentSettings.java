@@ -107,7 +107,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String ENABLE_ADB = "enable_adb";
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String ADB_TCPIP  = "adb_over_network";
-    private static final String ENABLE_TERMINAL = "enable_terminal";
     private static final String KEEP_SCREEN_ON_MODES = "keep_screen_on_modes";
     private static final String BT_HCI_SNOOP_LOG = "bt_hci_snoop_log";
     private static final String ENABLE_OEM_UNLOCK = "oem_unlock_enable";
@@ -116,8 +115,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String LOCAL_BACKUP_PASSWORD = "local_backup_password";
     private static final String HARDWARE_UI_PROPERTY = "persist.sys.ui.hw";
     private static final String MSAA_PROPERTY = "debug.egl.force_msaa";
-    private static final String BUGREPORT = "bugreport";
-    private static final String BUGREPORT_IN_POWER_KEY = "bugreport_in_power";
     private static final String OPENGL_TRACES_PROPERTY = "debug.egl.trace";
     private static final String TUNER_UI_KEY = "tuner_ui";
 
@@ -177,7 +174,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
-    private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
@@ -204,9 +200,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mEnableAdb;
     private Preference mClearAdbKeys;
-    private SwitchPreference mEnableTerminal;
-    private Preference mBugreport;
-    private SwitchPreference mBugreportInPower;
     private SwitchPreference mAdbOverNetwork;
     private ListPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
@@ -319,14 +312,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             }
         }
         mAllPrefs.add(mClearAdbKeys);
-        mEnableTerminal = findAndInitSwitchPref(ENABLE_TERMINAL);
-        if (!isPackageInstalled(getActivity(), TERMINAL_APP_PACKAGE)) {
-            debugDebuggingCategory.removePreference(mEnableTerminal);
-            mEnableTerminal = null;
-        }
-
-        mBugreport = findPreference(BUGREPORT);
-        mBugreportInPower = findAndInitSwitchPref(BUGREPORT_IN_POWER_KEY);
         mKeepScreenOn = addListPreference(KEEP_SCREEN_ON_MODES);
         mAdbOverNetwork = findAndInitSwitchPref(ADB_TCPIP);
         mBtHciSnoopLog = findAndInitSwitchPref(BT_HCI_SNOOP_LOG);
@@ -344,7 +329,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
-            disableForUser(mEnableTerminal);
             disableForUser(mPassword);
         }
 
@@ -601,13 +585,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mHaveDebugSettings = false;
         updateSwitchPreference(mEnableAdb, Settings.Global.getInt(cr,
                 Settings.Global.ADB_ENABLED, 0) != 0);
-        if (mEnableTerminal != null) {
-            updateSwitchPreference(mEnableTerminal,
-                    context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
-                            == PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
-        }
-        updateSwitchPreference(mBugreportInPower, Settings.Secure.getInt(cr,
-                Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0);
         updateStayAwakeOptions();
         updateSwitchPreference(mBtHciSnoopLog, Settings.Secure.getInt(cr,
                 Settings.Secure.BLUETOOTH_HCI_LOG, 0) != 0);
@@ -645,7 +622,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAppProcessLimitOptions();
         updateShowAllANRsOptions();
         updateVerifyAppsOverUsbOptions();
-        updateBugreportOptions();
         updateForceRtlOptions();
         updateLogdSizeValues();
         updateWifiDisplayCertificationOptions();
@@ -938,37 +914,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private void setEnableMultiWindow(boolean value) {
         SystemProperties.set(MULTI_WINDOW_SYSTEM_PROPERTY, String.valueOf(value));
         pokeSystemProperties();
-    }
-
-    private void updateBugreportOptions() {
-        final ComponentName bugreportStorageProviderComponentName =
-                new ComponentName("com.android.shell",
-                        "com.android.shell.BugreportStorageProvider");
-        if ("user".equals(Build.TYPE)) {
-            final ContentResolver resolver = getActivity().getContentResolver();
-            final boolean adbEnabled = Settings.Global.getInt(
-                    resolver, Settings.Global.ADB_ENABLED, 0) != 0;
-            if (adbEnabled) {
-                mBugreport.setEnabled(true);
-                mBugreportInPower.setEnabled(true);
-                getPackageManager().setComponentEnabledSetting(
-                        bugreportStorageProviderComponentName,
-                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0);
-            } else {
-                mBugreport.setEnabled(false);
-                mBugreportInPower.setEnabled(false);
-                mBugreportInPower.setChecked(false);
-                Settings.Secure.putInt(resolver, Settings.Secure.BUGREPORT_IN_POWER_MENU, 0);
-                getPackageManager().setComponentEnabledSetting(
-                        bugreportStorageProviderComponentName,
-                        PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, 0);
-            }
-        } else {
-            mBugreportInPower.setEnabled(true);
-            getPackageManager().setComponentEnabledSetting(
-                    bugreportStorageProviderComponentName,
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0);
-        }
     }
 
     // Returns the current state of the system property that controls
@@ -1704,7 +1649,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         Settings.Global.ADB_ENABLED, 0);
                 mVerifyAppsOverUsb.setEnabled(false);
                 mVerifyAppsOverUsb.setChecked(false);
-                updateBugreportOptions();
             }
         } else if (preference == mAdbOverNetwork) {
             if (mAdbOverNetwork.isChecked()) {
@@ -1731,15 +1675,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         .setPositiveButton(android.R.string.ok, this)
                         .setNegativeButton(android.R.string.cancel, null)
                         .show();
-        } else if (preference == mEnableTerminal) {
-            final PackageManager pm = getActivity().getPackageManager();
-            pm.setApplicationEnabledSetting(TERMINAL_APP_PACKAGE,
-                    mEnableTerminal.isChecked() ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                            : PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, 0);
-        } else if (preference == mBugreportInPower) {
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.BUGREPORT_IN_POWER_MENU,
-                    mBugreportInPower.isChecked() ? 1 : 0);
         } else if (preference == mBtHciSnoopLog) {
             writeBtHciSnoopLogOptions();
         } else if (preference == mEnableOemUnlock) {
@@ -1933,7 +1868,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         Settings.Global.ADB_ENABLED, 1);
                 mVerifyAppsOverUsb.setEnabled(true);
                 updateVerifyAppsOverUsbOptions();
-                updateBugreportOptions();
             } else {
                 // Reset the toggle
                 mEnableAdb.setChecked(false);

@@ -78,6 +78,7 @@
 
     <!-- VRToxin Settings/Summaries and Menu Strings -->
     <string name="status_bar_random_title">Random Settings</string>
+    <string name="randomtweaks_title">Random Tweaks</string>
     <string name="status_bar_random_summary">Configure random status bar settings</string>
     <string name="vrtoxin_settings_title">VRToxinMods</string>
     <string name="buttons_settings_title">Buttons</string>
@@ -1506,5 +1507,11 @@
     <string name="pulse_only_mode">Pulse (default)</string>
     <string name="doze_notification_color_invert_title">Color Inversion</string>
     <string name="doze_notification_color_invert_summary">Ambient display notification colors are inverted</string>
+
+    <!-- MediaScanner behavior on boot -->
+    <string name="media_scanner_on_boot_title">MediaScanner Boot Behavior</string>
+    <string name="media_scanner_on_boot_enabled">Scan Media</string>
+    <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
+    <string name="media_scanner_on_boot_disabled">Do not scan media</string>
  
 </resources>
