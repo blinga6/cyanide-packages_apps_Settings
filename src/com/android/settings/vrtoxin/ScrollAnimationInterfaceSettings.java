@@ -48,6 +48,9 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "ScrollAnimationInterfaceSettings";
 
+    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+    private static final String SCROLLINGCACHE_DEFAULT = "1";
     private static final String ANIMATION_FLING_VELOCITY = "animation_fling_velocity";
     private static final String ANIMATION_SCROLL_FRICTION = "animation_scroll_friction";
     private static final String ANIMATION_OVERSCROLL_DISTANCE = "animation_overscroll_distance";
@@ -57,6 +60,7 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
 
     private static final int MENU_RESET = Menu.FIRST;
 
+    private ListPreference mScrollingCachePref;
     private SeekBarPreference mAnimationFling;
     private SeekBarPreference mAnimationScroll;
     private SeekBarPreference mAnimationOverScroll;
@@ -75,6 +79,11 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        mScrollingCachePref = (ListPreference) prefSet.findPreference(SCROLLINGCACHE_PREF);
+        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+        mScrollingCachePref.setOnPreferenceChangeListener(this);
 
         mAnimNoScroll = (SwitchPreference) prefSet.findPreference(ANIMATION_NO_SCROLL);
         mAnimNoScroll.setChecked(Settings.System.getInt(resolver,
@@ -166,7 +175,12 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mAnimNoScroll) {
+        if (preference == mScrollingCachePref) {
+            if (objValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)objValue);
+            return true;
+            }
+        } else if (preference == mAnimNoScroll) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(resolver, Settings.System.ANIMATION_CONTROLS_NO_SCROLL, value ? 1 : 0);
         } else if (preference == mAnimationScroll) {
