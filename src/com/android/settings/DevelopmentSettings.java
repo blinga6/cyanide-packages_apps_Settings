@@ -208,7 +208,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private Preference mBugreport;
     private SwitchPreference mBugreportInPower;
     private SwitchPreference mAdbOverNetwork;
-    private SwitchPreference mKeepScreenOn;
+    private ListPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
     private SwitchPreference mEnableOemUnlock;
     private SwitchPreference mDebugViewAttributes;
@@ -1706,10 +1706,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mVerifyAppsOverUsb.setChecked(false);
                 updateBugreportOptions();
             }
-        } else if (preference == mAdbNotify) {
-            Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Global.ADB_NOTIFY,
-                    mAdbNotify.isChecked() ? 1 : 0);
         } else if (preference == mAdbOverNetwork) {
             if (mAdbOverNetwork.isChecked()) {
                 if (mAdbTcpDialog != null) {

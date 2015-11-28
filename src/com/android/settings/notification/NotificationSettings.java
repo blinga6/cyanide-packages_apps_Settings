@@ -170,7 +170,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     KEY_VOLUME_LINK_NOTIFICATION));
         }
 
-        initIncreasingRing(sound);
         initRingtones(mSoundCategory);
         initVibrateWhenRinging(mSoundCategory);
 
