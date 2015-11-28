@@ -78,8 +78,10 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 23;
 
-    private static final int MENU_RESET = Menu.FIRST;
+    private static final int DEFAULT_COLOR = 0xffffffff;
+    private static final int CYANIDE_BLUE = 0xff1976D2;
 
+    private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
     private ListPreference mStatusBarClock;
@@ -92,25 +94,28 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarClockFontSize;
     private ColorPickerPreference mColorPicker;
 
-    private boolean mCheckPreferences;
-
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.VRTOXIN_SHIT;
     }
 
+    private boolean mCheckPreferences;
+
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-	createCustomView();
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        createCustomView();
     }
 
     private PreferenceScreen createCustomView() {
         mCheckPreferences = false;
+        PreferenceScreen prefSet = getPreferenceScreen();
+        if (prefSet != null) {
+            prefSet.removeAll();
+        }
         addPreferencesFromResource(R.xml.status_bar_clock_settings);
 
         PreferenceCategory mCategory = (PreferenceCategory) findPreference("status_bar");
-        PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
         PackageManager pm = getPackageManager();
@@ -331,19 +336,21 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
         return false;
     }
 
-    private void enableStatusBarClockDependents() {
-        int clockStyle = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUS_BAR_CLOCK, 1);
-        if (clockStyle == 0) {
-            mStatusBarDate.setEnabled(false);
-            mStatusBarDateStyle.setEnabled(false);
-            mStatusBarClockFontSize.setEnabled(false);
-            mStatusBarDateFormat.setEnabled(false);
-        } else {
-            mStatusBarDate.setEnabled(true);
-            mStatusBarDateStyle.setEnabled(true);
-            mStatusBarClockFontSize.setEnabled(true);
-            mStatusBarDateFormat.setEnabled(true);
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.reset)
+                .setIcon(com.android.internal.R.drawable.ic_settings_backup_restore)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                showDialogInner(DLG_RESET);
+                return true;
+             default:
+                return super.onContextItemSelected(item);
         }
     }
 
@@ -377,6 +384,12 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
         mStatusBarDateFormat.setEntries(parsedDateEntries);
     }
 
+     private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
     public static class MyAlertDialogFragment extends DialogFragment {
 
         public static MyAlertDialogFragment newInstance(int id) {
@@ -398,13 +411,55 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
                 case DLG_RESET:
                     return new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.reset)
-                    .setMessage(R.string.status_bar_clock_style_reset_message)
+                    .setMessage(R.string.reset_message)
                     .setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.dlg_ok,
+                    .setNeutralButton(R.string.reset_android,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getActivity().getContentResolver(),
-                                Settings.System.STATUSBAR_CLOCK_COLOR, -2);
+                                    Settings.System.STATUS_BAR_CLOCK, 1);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_AM_PM, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE_STYLE, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_DATE_POSITION, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE_FORMAT, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_COLOR,
+                                    DEFAULT_COLOR);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 14);
+                            getOwner().createCustomView();
+                        }
+                    })
+                    .setPositiveButton(R.string.reset_vrtoxin,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_CLOCK, 2);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_AM_PM, 1);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE, 1);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE_STYLE, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_DATE_POSITION, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUS_BAR_DATE_FORMAT, 0);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_COLOR,
+                                    CYANIDE_BLUE);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, 3);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 16);
                             getOwner().createCustomView();
                         }
                     })
