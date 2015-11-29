@@ -1513,5 +1513,10 @@
     <string name="media_scanner_on_boot_enabled">Scan Media</string>
     <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
+
+    <!-- Recents Fullscreen -->
+    <string name="recents_show_fullscreen">Fullscreen Recents</string>
+    <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
+    <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
  
 </resources>
