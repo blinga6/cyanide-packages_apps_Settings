@@ -564,6 +564,9 @@
     <string name="qs_tile_ambient_display">Ambient Display</string>
     <string name="qs_tile_nfc">NFC</string>
     <string name="qs_tile_heads_up">Heads Up</string>
+    <string name="qs_tile_music_play">Play</string>
+    <string name="qs_tile_sync">Sync</string>
+    <string name="qs_tile_reboot">Reboot/Recovery</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

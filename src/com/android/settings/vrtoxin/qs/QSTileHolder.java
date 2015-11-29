@@ -98,9 +98,17 @@ public class QSTileHolder {
                 resourceName = "ic_signal_location_enable_animation";
                 stringId = R.string.location_title;
                 break;
+            case QSConstants.TILE_MUSIC:
+                resourceName = "ic_qs_media_play";
+                stringId = R.string.qs_tile_music_play;
+                break;
             case QSConstants.TILE_NFC:
                 resourceName = "ic_qs_nfc_on";
                 stringId = R.string.qs_tile_nfc;
+                break;
+            case QSConstants.TILE_REBOOT:
+                resourceName = "ic_qs_reboot";
+                stringId = R.string.qs_tile_reboot;
                 break;
             case QSConstants.TILE_ROTATION:
                 resourceName = "ic_portrait_to_auto_rotate_animation";
@@ -117,6 +125,10 @@ public class QSTileHolder {
             case QSConstants.TILE_SCREEN_TIMEOUT:
                 resourceName = "ic_qs_screen_timeout_vector";
                 stringId = R.string.qs_tile_screen_timeout;
+                break;
+            case QSConstants.TILE_SYNC:
+                resourceName = "ic_qs_sync_on";
+                stringId = R.string.qs_tile_sync;
                 break;
             case QSConstants.TILE_USB_TETHERING:
                 resourceName = "ic_qs_usb_tether_on";
