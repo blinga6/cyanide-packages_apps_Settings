@@ -89,7 +89,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
 
         mAdvancedReboot = (SwitchPreference) findPreference(ADVANCED_REBOOT_KEY);
         mAdvancedReboot.setChecked(Settings.System.getInt(mResolver,
-            Settings.System.ADVANCED_REBOOT, 0) == 1);
+            Settings.System.ADVANCED_REBOOT, 1) == 1);
         mAdvancedReboot.setOnPreferenceChangeListener(this);
 
         mIconNormalColor =
