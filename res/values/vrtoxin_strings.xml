@@ -1526,4 +1526,8 @@
     <string name="disable_animations">Disable Animations</string>
     <string name="disable_animations_summary">Disables transition animations such as when launching an app</string>
 
+    <!-- QuickSettings collapse panel -->
+    <string name="quick_settings_collapse_title">Auto Collapse Panel</string>
+    <string name="quick_settings_collapse_summary">Collapse the Quick Settings panel upon toggle. Note that this is only for certain tiles like toggles</string>
+
 </resources>
