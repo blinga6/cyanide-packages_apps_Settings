@@ -1530,4 +1530,8 @@
     <string name="quick_settings_collapse_title">Auto Collapse Panel</string>
     <string name="quick_settings_collapse_summary">Collapse the Quick Settings panel upon toggle. Note that this is only for certain tiles like toggles</string>
 
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Three Finger Gesture</string>
+    <string name="three_finger_gesture_summary">Swipe down with three fingers to screenshot</string>
+
 </resources>
