@@ -1546,4 +1546,8 @@
     <string name="shake_to_clean_notifications_title">Shake to clean notifications</string>
     <string name="shake_to_clean_notifications_summary">Use this switch, or longpress clear all notifications button to enable shake to clean the notifications feature</string>
 
+    <!-- Wifi Detailed View in QS -->
+    <string name="qs_wifi_detail_title">Detailed Wi\u2011Fi view</string>
+    <string name="qs_wifi_detail_summary">Enable detailed view for Wi\u2011Fi in Quick Settings</string>
+
 </resources>
