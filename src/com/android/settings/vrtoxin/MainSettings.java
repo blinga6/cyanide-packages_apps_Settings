@@ -53,6 +53,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.ButtonSettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
+import com.android.settings.vrtoxin.LockS;
 import com.android.settings.vrtoxin.MasterAnimationControl;
 import com.android.settings.vrtoxin.QuickSettings;
 import com.android.settings.vrtoxin.AndroidRecentsSettings;
@@ -188,12 +189,13 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[1] = new PowerUsageSummary();
             frags[2] = new ButtonSettings();
             frags[3] = new InterfaceSettings();
-            frags[4] = new VrtoxinNotifs();
-            frags[5] = new QuickSettings();
-            frags[6] = new AndroidRecentsSettings();
-            frags[7] = new StatusBarSettings();
-            frags[8] = new WakelockBlocker();
-            frags[9] = new WeatherControl();
+            frags[4] = new LockS();
+            frags[5] = new VrtoxinNotifs();
+            frags[6] = new QuickSettings();
+            frags[7] = new AndroidRecentsSettings();
+            frags[8] = new StatusBarSettings();
+            frags[9] = new WakelockBlocker();
+            frags[10] = new WeatherControl();
         }
 
         @Override
@@ -220,6 +222,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
+                    getString(R.string.lockscreen_settings),
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),
@@ -232,6 +235,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
                     getString(R.string.interface_settings_title),
+                    getString(R.string.lockscreen_settings),
                     getString(R.string.vrtoxin_notifications_title),
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),

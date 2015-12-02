@@ -1564,4 +1564,38 @@
     <string name="smart_pulldown_persistent">No persistent</string>
     <string name="smart_pulldown_all">No dismissable or persistent</string>
 
+    <!-- Keyguard Circle Shortcuts and More -->
+    <string name="lockscreen_settings">Lock Screen</string>
+    <string name="lock_screen_buttons_settings_title">Circle Shortcuts</string>
+    <string name="vrtoxin_ls_shortcuts_summary">Custom Circle Shortcuts</string>
+    <string name="lock_screen_buttons_settings_summary">Customize the additional buttons bar and the default buttons at the bottom</string>
+    <string name="button_ripple_color_mode_auto_title">Auto</string>
+    <string name="button_ripple_color_mode_custom_title">Custom Color</string>
+    <string name="button_ripple_color_mode_never_title">Don\`t Colorize</string>
+    <string name="buttons_actions_title">Customize</string>
+    <string name="buttons_bar_actions_summary">Arrange the order, and choose the shortcuts to display</string>
+    <string name="colors_buttons_bar_icon_color_mode_title">Colorize Icon</string>
+    <string name="colors_buttons_bar_icon_color_mode_dialog_title">Choose when to colorize the icon</string>
+    <string name="colors_buttons_bar_ripple_color_mode_title">Colorize Ripple Effect</string>
+    <string name="colors_buttons_bar_ripple_color_mode_dialog_title">Choose how to colorize the ripple effect</string>
+    <string name="colors_buttons_default_colorize_custom_icons_title">Colorize all icons</string>
+    <string name="colors_buttons_default_colorize_custom_icons_summary">Enable to colorize all icons, disable to colorize only default icons</string>
+    <string name="colors_buttons_bar_ripple_color_title">Ripple Effect</string>
+    <string name="buttons_bar_launch_type_title">Launch Type</string>
+    <string name="buttons_bar_launch_type_click_title">Single Tap</string>
+    <string name="buttons_bar_launch_type_double_click_title">Double Tap</string>
+    <string name="buttons_bar_launch_type_longpress_title">Longpress</string>
+    <string name="buttons_bar_icon_size_title">Icon Size</string>
+    <string name="buttons_bar_icon_size_24_title">24dp</string>
+    <string name="buttons_bar_icon_size_36_title">36dp</string>
+    <string name="buttons_bar_icon_size_48_title">48dp</string>
+    <string name="buttons_bar_hide_bar_title">Hide Shortcuts</string>
+    <string name="buttons_bar_hide_bar_dlg_title">Choose when the shortcuts should be hidden</string>
+    <string name="buttons_bar_hide_bar_auto_summary">The shortcuts will be hidden, when the visible notifications will reach the maximum allowed notifications on the lock screen</string>
+    <string name="buttons_bar_hide_bar_custom_summary">The shotcuts will be hidden, when the visible notifications will reach the choosen number of notifications (%s)</string>
+    <string name="buttons_bar_hide_bar_never_summary">The shortcuts won/`t be hidden</string>
+    <string name="buttons_bar_number_of_notifications_dlg_title">Choose the number of notifications to hide the shortcuts</string>
+    <string name="vrtoxin_ls_shortcuts_title">Lock Screen Shortcuts</string>
+    <string name="lockscreen_shortcuts_summary">View or change custom lock screen shortcuts</string>
+
 </resources>

@@ -73,7 +73,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
 
         mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getIntForUser(mResolver,
+        int quickPulldownValue = Settings.System.getIntForUser(resolver,
                 Settings.System.QS_QUICK_PULLDOWN, 1, UserHandle.USER_CURRENT);
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
@@ -81,7 +81,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         // Smart Pulldown
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
         mSmartPulldown.setOnPreferenceChangeListener(this);
-        int smartPulldown = Settings.System.getInt(mResolver,
+        int smartPulldown = Settings.System.getInt(resolver,
                 Settings.System.QS_SMART_PULLDOWN, 1);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
@@ -108,13 +108,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             return true;
 		} else if (preference == mQuickPulldown) {
             int quickPulldownValue = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(mResolver, Settings.System.QS_QUICK_PULLDOWN,
+            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
             return true;
         } else if (preference == mSmartPulldown) {
             int smartPulldown = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(mResolver, Settings.System.QS_SMART_PULLDOWN,
+            Settings.System.putIntForUser(resolver, Settings.System.QS_SMART_PULLDOWN,
                     smartPulldown, UserHandle.USER_CURRENT);
             updateSmartPulldownSummary(smartPulldown);
             return true;
