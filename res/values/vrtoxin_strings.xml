@@ -1371,9 +1371,6 @@
     <string name="adb_notify">USB Debugging Notification</string>
     <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
 
-    <!-- SuperSU -->
-    <string name="supersu_title">SuperSU</string>
-
     <!-- Status bar brightness control -->
     <string name="status_bar_brightness_control_title">Brightness Control</string>
     <string name="status_bar_brightness_control_summary">Adjust brightness by sliding across status bar</string>
