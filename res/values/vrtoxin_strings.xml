@@ -638,6 +638,8 @@
     <string name="slim_recents_panel_category">Slim recents panel</string>
     <string name="cat_appearance_title">Appearance</string>
     <string name="cat_apps_title">Apps</string>
+    <string name="recents_clear_all_dismiss_all_title">Clear All Tasks</string>
+    <string name="recents_clear_all_dismiss_all_summary">Choose whether to dismiss all tasks or ignore the foreground task</string>
 
     <!-- Slim recents options -->
     <string name="slim_recents_scale_title">Size</string>
