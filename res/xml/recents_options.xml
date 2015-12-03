@@ -89,8 +89,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-			android:key="recents_panel"
-			android:title="@string/recents_random_title">
+        android:key="recents_panel"
+        android:title="@string/recents_random_title">
             
         <!-- Fullscreen Recents -->
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
@@ -109,7 +109,7 @@
 
         <!-- Search in Recents -->
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="recents_show_search_bar"
+            android:key="recents_search_bar"
             android:title="@string/android_recents_show_search_bar_title"
             android:summary="@string/android_recents_show_search_bar_summary"
             android:defaultValue="true" />
@@ -117,13 +117,13 @@
     </PreferenceCategory>
     
     <PreferenceCategory
-		android:key="slim_recents"
-		android:title="@string/slim_recent_category">
+        android:key="slim_recents"
+        android:title="@string/slim_recent_category">
     
         <PreferenceScreen
             android:key="slim_recents_settings"
             android:title="@string/slim_recent_category"
-		    android:summary="@string/recents_settings_summary"
+            android:summary="@string/recents_settings_summary"
             android:fragment="com.android.settings.vrtoxin.RecentsPanelSettings" />
 
     </PreferenceCategory>
