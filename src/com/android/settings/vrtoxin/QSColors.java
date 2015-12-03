@@ -312,7 +312,7 @@ public class QSColors extends SettingsPreferenceFragment implements
                                     0xff00ff00);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_BRIGHTNESS_SLIDER_ICON_COLOR,
-                                    WHITE);
+                                    0xff00ff00);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_ICON_COLOR,
                                     CYANIDE_BLUE);
