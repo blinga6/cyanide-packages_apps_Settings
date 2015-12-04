@@ -37,6 +37,7 @@ import com.android.settings.WirelessSettings;
 import com.android.settings.search.Index;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settingslib.WirelessUtils;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -105,7 +106,7 @@ public class MobileNetworksEnabler extends GenericSwitchToggle  {
         if (mStateMachineEvent) {
             return;
         }
-        if (isChecked && !WirelessSettings.isRadioAllowed(mContext, Settings.Global.RADIO_CELL)) {
+        if (isChecked && !WirelessUtils.isRadioAllowed(mContext, Settings.Global.RADIO_CELL)) {
             Toast.makeText(mContext, R.string.wifi_in_airplane_mode, Toast.LENGTH_SHORT).show();
             setChecked(false);
             return;

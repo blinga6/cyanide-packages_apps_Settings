@@ -33,6 +33,8 @@ import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
+
+import com.android.settings.WirelessSettings;
 import com.android.settings.dashboard.GenericSwitchToggle;
 import com.android.settings.search.Index;
 import com.android.settings.widget.SwitchBar;

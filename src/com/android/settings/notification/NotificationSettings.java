@@ -172,6 +172,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
         initRingtones(mSoundCategory);
         initVibrateWhenRinging(mSoundCategory);
+        initIncreasingRing(mSoundCategory);
 
         updateRingerMode();
         updateEffectsSuppressor();

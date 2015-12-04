@@ -22,14 +22,16 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.internal.logging.MetricsLogger;
 
 public class BatteryLightSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -38,11 +40,16 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     private static final String LOW_COLOR_PREF = "low_color";
     private static final String MEDIUM_COLOR_PREF = "medium_color";
     private static final String FULL_COLOR_PREF = "full_color";
+    private static final String LIGHT_ENABLED_PREF = "battery_light_enabled";
+    private static final String PULSE_ENABLED_PREF = "battery_light_pulse";
 
     private PreferenceGroup mColorPrefs;
     private ApplicationLightPreference mLowColorPref;
     private ApplicationLightPreference mMediumColorPref;
     private ApplicationLightPreference mFullColorPref;
+    private SwitchPreference mLightEnabledPref;
+    private SwitchPreference mPulseEnabledPref;
+
     private static final int MENU_RESET = Menu.FIRST;
 
     @Override
@@ -51,6 +58,9 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.battery_light_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        mLightEnabledPref = (SwitchPreference) prefSet.findPreference(LIGHT_ENABLED_PREF);
+        mPulseEnabledPref = (SwitchPreference) prefSet.findPreference(PULSE_ENABLED_PREF);
 
         // Does the Device support changing battery LED colors?
         if (getResources().getBoolean(com.android.internal.R.bool.config_multiColorBatteryLed)) {
@@ -69,6 +79,11 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
             prefSet.removePreference(prefSet.findPreference("colors_list"));
             resetColors();
         }
+    }
+
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsLogger.VRTOXIN_SHIT;
     }
 
     @Override
@@ -120,7 +135,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.reset)
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
                 .setIcon(R.drawable.ic_settings_backup_restore)
                 .setAlphabeticShortcut('r')
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
@@ -130,7 +145,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case MENU_RESET:
-                resetColors();
+                resetToDefaults();
                 return true;
         }
         return false;
@@ -150,16 +165,22 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         refreshDefault();
     }
 
+    protected void resetToDefaults() {
+        final Resources res = getResources();
+        final boolean batteryLightEnabled = res.getBoolean(R.bool.def_battery_light_enabled);
+        final boolean batteryLightPulseEnabled = res.getBoolean(R.bool.def_battery_light_pulse);
+
+        if (mLightEnabledPref != null) mLightEnabledPref.setChecked(batteryLightEnabled);
+        if (mPulseEnabledPref != null) mPulseEnabledPref.setChecked(batteryLightPulseEnabled);
+
+        resetColors();
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ApplicationLightPreference lightPref = (ApplicationLightPreference) preference;
         updateValues(lightPref.getKey(), lightPref.getColor());
 
         return true;
-    }
-
-    @Override
-    protected int getMetricsCategory() {
-        return MetricsLogger.VRTOXIN_SHIT;
     }
 }

@@ -55,7 +55,6 @@ import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.util.Xml;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -1260,10 +1259,8 @@ public class SettingsActivity extends Activity
                     if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
                         removeTile = true;
                     }
-                } else if (id == R.id.mobile_networks) {
-                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-                        removeTile = true;
-                    } else if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+		} else if (id == R.id.mobile_networks) {
+                    if (TelephonyManager.getDefault().getPhoneCount() > 1) {
                         removeTile = true;
                     }
                 } else if (id == R.id.data_usage_settings) {

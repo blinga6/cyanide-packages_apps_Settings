@@ -171,12 +171,7 @@ public class DashboardTile implements Parcelable {
             userHandle.get(i).writeToParcel(dest, flags);
         }
         dest.writeBundle(extras);
-        if (switchControl != null) {
-            dest.writeInt(1);
-            dest.writeString(switchControl);
-        } else {
-            dest.writeInt(0);
-        }
+        dest.writeString(switchControl);
     }
 
     public void readFromParcel(Parcel in) {
@@ -197,9 +192,7 @@ public class DashboardTile implements Parcelable {
             userHandle.add(UserHandle.CREATOR.createFromParcel(in));
         }
         extras = in.readBundle();
-        if (in.readInt() != 0) {
-            switchControl = in.readString();
-        }
+        switchControl = in.readString();
     }
 
     DashboardTile(Parcel in) {

@@ -24,12 +24,12 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
-
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.CompoundButton;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
+import com.android.settings.WirelessSettings;
 import com.android.settings.dashboard.GenericSwitchToggle;
 import com.android.settings.search.Index;
 import com.android.settings.widget.SwitchBar;
@@ -85,7 +85,7 @@ public final class BluetoothEnabler extends GenericSwitchToggle {
     public BluetoothEnabler(Context context, Switch switch_) {
         super(context, switch_);
 
-        this.context = context;
+	this.context = context;
 
         init();
     }

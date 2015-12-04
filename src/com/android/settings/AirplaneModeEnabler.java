@@ -88,11 +88,6 @@ public class AirplaneModeEnabler implements Preference.OnPreferenceChangeListene
         mContext.getContentResolver().unregisterContentObserver(mAirplaneModeObserver);
     }
 
-    public static boolean isAirplaneModeOn(Context context) {
-        return Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
-    }
-
     private void setAirplaneModeOn(boolean enabling) {
         // Change the system setting
         Settings.Global.putInt(mContext.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 

@@ -149,4 +149,6 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
     public Switch getSwitchView() {
         return mSwitch;
     }
+
+
 }
