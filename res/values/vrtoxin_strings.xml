@@ -1321,8 +1321,8 @@
     <string name="battery_status_text_charge_icon_color_dark_mode_title">Percentage text &amp; charging indicator (light status bar)</string>
 
     <!-- Statusbar expanded -->
-    <string name="status_bar_expanded_header_settings_title">Header</string>
-    <string name="status_bar_expanded_header_settings_summary">Customize the header</string>
+    <string name="status_bar_expanded_header_settings_title">Expanded Header</string>
+    <string name="status_bar_expanded_header_settings_summary">Customize expanded header colors and more</string>
     <string name="expanded_header_network_icons_settings_title">Network Icons</string>
     <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
     <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
@@ -1652,5 +1652,18 @@
     <string name="heads_up_notifications">Heads Up</string>
     <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
     <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
+
+    <!-- Status bar greeting settings -->
+    <string name="status_bar_greeting_settings_title">Greeting</string>
+    <string name="status_bar_greeting_settings_summary">Customize greeting</string>
+    <string name="greeting_show_greeting_always_summary">The greeting will be shown after the device gets unlocked</string>
+    <string name="greeting_show_greeting_once_summary">The greeting will be shown only the first time the device gets unlocked after the boot</string>
+    <string name="greeting_show_greeting_never_summary">The greeting will never be shown</string>
+    <string name="greeting_show_greeting_once_title">Once after boot</string>
+    <string name="greeting_custom_text_title">Custom text</string>
+    <string name="greeting_custom_text_dlg_message">Enter a new text, which will be shown as greeting. An empty field will revert the text to:\n\'%s\'</string>
+    <string name="greeting_timeout_title">Time out</string>
+    <string name="greeting_preview_title">Preview</string>
+    <string name="greeting_preview_summary">Click to show a preview</string>
 
 </resources>
