@@ -678,20 +678,9 @@ public class ActionListViewSettings extends ListFragment implements
                     getResources().getString(R.string.shortcut_action_longpress)
                     + " " + getItem(position).getLongpressActionDescription());
             }
-<<<<<<< HEAD:src/com/android/settings/vrtoxin/dslv/ActionListViewSettings.java
 
             if (mActionMode == NAV_BAR) {
                 d = ImageHelper.resize(
-=======
-            if (mActionMode == POWER_MENU_SHORTCUT) {
-/* Disabled for now till slims power menu is back!!!!!!!!!!!!!!
-                holder.iconView.setImageDrawable(ImageHelper.resize(
-                        mActivity, PolicyHelper.getPowerMenuIconImage(mActivity,
-                        getItem(position).getClickAction(),
-                        getItem(position).getIcon(), false), 36)); */
-            } else {
-                holder.iconView.setImageDrawable(ImageHelper.resize(
->>>>>>> 0b5d13f... Settings :Add new lockscreen shortcus icons:src/com/android/settings/slim/dslv/ActionListViewSettings.java
                         mActivity, ActionHelper.getActionIconImage(mActivity,
                         getItem(position).getClickAction(),
                         iconUri), 24);
