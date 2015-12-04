@@ -1357,7 +1357,7 @@
     <string name="qs_advanced_location_summary">Enable advanced settings for location in quick settings</string>
 
     <!-- Display : Rotation -->
-    <string name="display_rotation_title">Rotation</string>
+    <string name="display_rotation_title">Screen Rotation</string>
     <string name="display_rotation_disabled">Disabled</string>
     <string name="display_rotation_unit">degrees</string>
     <string name="display_rotation_category_title">Rotation modes</string>
@@ -1636,7 +1636,7 @@
     <string name="restarting_ui">Restarting UI\u2026</string>
 
     <!-- Breathing Notifications -->
-    <string name="breathing_notifications_title">Breathing notifications</string>
+    <string name="breathing_notifications_title">Breathing Notifications</string>
     <string name="breathing_notifications_summary">Select what notifications you want to breath in the status bar</string>
     <string name="sms_breath_title">Breathing SMS</string>
     <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar</string>

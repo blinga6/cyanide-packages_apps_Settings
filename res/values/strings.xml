@@ -1989,13 +1989,13 @@
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
     <string name="accelerometer_summary_off" product="default">Switch orientation automatically when rotating phone</string>
     <!-- Sound & display settings screen, setting option name to change brightness level -->
-    <string name="brightness">Brightness level</string>
+    <string name="brightness">Brightness Level</string>
     <!-- Sound & display settings screen, setting option name to change brightness level [CHAR LIMIT=30] -->
     <string name="brightness_title">Brightness</string>
     <!-- Sound & display settings screen, setting option summary to change brightness level -->
     <string name="brightness_summary">Adjust the brightness of the screen</string>
     <!-- Sound & display settings screen, setting option name to enable adaptive brightness [CHAR LIMIT=30] -->
-    <string name="auto_brightness_title">Adaptive brightness</string>
+    <string name="auto_brightness_title">Adaptive Brightness</string>
     <!-- Sound & display settings screen, setting option summary to enable adaptive brightness [CHAR LIMIT=100] -->
     <string name="auto_brightness_summary">Optimize brightness level for available light</string>
     <!-- Sound & display settings screen, setting option name to change the user interface theme [CHAR LIMIT=30] -->
@@ -2043,7 +2043,7 @@
     <!-- [CHAR LIMIT=40] Display settings screen, setting option name to change whether the device wakes up when a lift gesture is detected. -->
     <string name="lift_to_wake_title">Lift to wake</string>
     <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
-    <string name="doze_title">Ambient display</string>
+    <string name="doze_title">Ambient Display</string>
     <!-- [CHAR LIMIT=NONE] Display settings screen, setting description for the ambient display feature. -->
     <string name="doze_summary">Wake screen when you pick up device or receive notifications</string>
     <!-- [CHAR LIMIT=30] Sound & display settings screen, setting option name to change font size -->
@@ -2051,7 +2051,7 @@
     <!-- Sound & display settings screen, setting option summary displaying the currently selected font size -->
     <string name="summary_font_size" translatable="false">%1$s</string>
     <!-- [CHAR LIMIT=40] Sound & display settings screen, title of dialog for picking font size -->
-    <string name="dialog_title_font_size">Font size</string>
+    <string name="dialog_title_font_size">Font Size</string>
 
     <!-- SIM lock settings title  [CHAR LIMIT=40] -->
     <string name="sim_lock_settings">SIM card lock settings</string>
@@ -2165,7 +2165,7 @@
     <!-- Main settings screen item's title to go into the storage & USB settings screen [CHAR LIMIT=25] -->
     <string name="storage_usb_settings" >Storage &amp; USB</string>
     <!-- Storage settings screen title -->
-    <string name="storage_settings_title">Storage settings</string>
+    <string name="storage_settings_title">Storage Settings</string>
     <!-- [CHAR LIMIT=100] Main settings screen item's summary for the SD card and storage settings -->
     <string name="storage_settings_summary" product="nosdcard">Unmount USB storage, view available storage</string>
     <!-- [CHAR LIMIT=100] Main settings screen item's summary for the SD card and storage settings -->

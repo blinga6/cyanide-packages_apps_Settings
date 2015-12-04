@@ -18,7 +18,6 @@ package com.android.settings;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.view.RotationPolicy;
-import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
