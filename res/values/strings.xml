@@ -1315,7 +1315,7 @@
     <string name="wifi_assistant_title">Wi\u2011Fi Assistant</string>
 
     <!-- Wifi Display settings. The title of the screen. [CHAR LIMIT=40] -->
-    <string name="wifi_display_settings_title">Cast</string>
+    <string name="wifi_display_settings_title">Screen Cast/Mirroring</string>
     <!-- Wifi Display settings. The title of a menu item to enable wireless display [CHAR LIMIT=40] -->
     <string name="wifi_display_enable_menu_item">Enable wireless display</string>
     <!-- Wifi Display settings. Text that appears when scanning for devices is finished and no nearby device was found [CHAR LIMIT=40]-->
@@ -2009,7 +2009,7 @@
     <!-- Sound & display settings screen, theme setting value to automatically switch between a light- or dark-colored user interface [CHAR LIMIT=30] -->
     <string name="night_mode_auto">Automatic</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout -->
-    <string name="screen_timeout">Sleep</string>
+    <string name="screen_timeout">Screen Timeout</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout [CHAR LIMIT=30] -->
     <string name="screen_timeout_title">Screen turns off</string>
     <!-- Sound & display settings screen, setting option summary to change screen timeout -->
@@ -2041,7 +2041,7 @@
     <!-- Sound & display settings screen, setting option name to change whether the screen adjusts automatically based on lighting conditions -->
     <string name="automatic_brightness">Automatic brightness</string>
     <!-- [CHAR LIMIT=40] Display settings screen, setting option name to change whether the device wakes up when a lift gesture is detected. -->
-    <string name="lift_to_wake_title">Lift to wake</string>
+    <string name="lift_to_wake_title">Lift To Wake</string>
     <!-- [CHAR LIMIT=30] Display settings screen, setting option name to change whether the ambient display feature is enabled. -->
     <string name="doze_title">Ambient Display</string>
     <!-- [CHAR LIMIT=NONE] Display settings screen, setting description for the ambient display feature. -->
@@ -6610,7 +6610,7 @@
    <string name="app_permissions_group_summary"><xliff:g id="count" example="10">%d</xliff:g> of <xliff:g id="count" example="10">%d</xliff:g> apps allowed</string>
 
    <!-- Label for tap to wake setting [CHAR LIMIT=30] -->
-   <string name="tap_to_wake">Tap to wake</string>
+   <string name="tap_to_wake">Tap To Wake</string>
 
    <!-- Summary for take to wake setting [CHAR LIMIT=90] -->
    <string name="tap_to_wake_summary">Double-tap anywhere on the screen to wake device</string>
@@ -7012,10 +7012,10 @@
     <string name="camera_gesture_desc">Open the camera app by twisting your wrist twice</string>
 
     <!-- Title of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=40] -->
-    <string name="camera_double_tap_power_gesture_title">Press power button twice for camera</string>
+    <string name="camera_double_tap_power_gesture_title">Camera Gesture</string>
 
     <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
-    <string name="camera_double_tap_power_gesture_desc">Quickly open camera without unlocking your screen</string>
+    <string name="camera_double_tap_power_gesture_desc">Double tap power button to quickly open camera</string>
 
     <!-- Name of each color mode for the display. [CHAR LIMIT=40] -->
     <string-array name="color_mode_names">

@@ -15,7 +15,7 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/display_settings"
         settings:keywords="@string/keywords_display">
 
@@ -39,20 +39,53 @@
             <intent android:action="android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
         </PreferenceScreen>
 
-        <ListPreference
-            android:key="night_mode"
-            android:title="@string/night_mode_title"
-            settings:keywords="@string/keywords_display_night_mode"
-            android:summary="@string/night_mode_summary"
-            android:persistent="false"
-            android:entries="@array/night_mode_entries"
-            android:entryValues="@array/night_mode_values" />
+        <SwitchPreference
+                android:key="camera_double_tap_power_gesture"
+                android:title="@string/camera_double_tap_power_gesture_title"
+                android:summary="@string/camera_double_tap_power_gesture_desc"
+                android:persistent="false" />
 
         <PreferenceScreen
-                android:key="wallpaper"
-                android:title="@string/wallpaper_settings_title"
-                settings:keywords="@string/keywords_display_wallpaper"
-                android:fragment="com.android.settings.WallpaperTypeSettings" />
+                android:key="screensaver"
+                android:title="@string/screensaver_settings_title"
+                android:fragment="com.android.settings.DreamSettings" />
+
+        <SwitchPreference
+                android:key="camera_gesture"
+                android:title="@string/camera_gesture_title"
+                android:summary="@string/camera_gesture_desc"
+                android:persistent="false" />
+
+        <com.android.settings.WarnedListPreference
+                android:key="font_size"
+                android:title="@string/title_font_size"
+                settings:keywords="@string/keywords_display_font_size"
+                android:summary="@string/summary_font_size"
+                android:entries="@array/entries_font_size"
+                android:entryValues="@array/entryvalues_font_size"
+                android:dialogTitle="@string/dialog_title_font_size" />
+
+        <ListPreference
+                android:key="lcd_density"
+                android:title="@string/lcd_density"
+                android:summary="@string/lcd_density_summary"
+                android:persistent="false" />
+
+        <SwitchPreference
+                android:key="lift_to_wake"
+                android:title="@string/lift_to_wake_title"
+                android:persistent="false" />
+
+        <PreferenceScreen
+                android:key="wifi_display"
+                android:title="@string/wifi_display_settings_title"
+                settings:keywords="@string/keywords_display_cast_screen"
+                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
+        <PreferenceScreen
+                android:key="display_rotation"
+                android:fragment="com.android.settings.vrtoxin.DisplayRotation"
+                android:title="@string/display_rotation_title" />
 
         <ListPreference
                 android:key="screen_timeout"
@@ -61,23 +94,6 @@
                 android:persistent="false"
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
-
-        <SwitchPreference
-                android:key="camera_gesture"
-                android:title="@string/camera_gesture_title"
-                android:summary="@string/camera_gesture_desc"
-                android:persistent="false" />
-
-        <SwitchPreference
-                android:key="camera_double_tap_power_gesture"
-                android:title="@string/camera_double_tap_power_gesture_title"
-                android:summary="@string/camera_double_tap_power_gesture_desc"
-                android:persistent="false" />
-
-        <SwitchPreference
-                android:key="lift_to_wake"
-                android:title="@string/lift_to_wake_title"
-                android:persistent="false" />
 
         <SwitchPreference
                 android:key="tap_to_wake"
@@ -94,51 +110,16 @@
                 android:entries="@array/night_mode_entries"
                 android:entryValues="@array/night_mode_values" />
 
-        <PreferenceScreen
-                android:key="wallpaper"
-                android:title="@string/wallpaper_settings_title"
-                settings:keywords="@string/keywords_display_wallpaper"
-                android:fragment="com.android.settings.WallpaperTypeSettings" />
-
-    <PreferenceCategory
-            android:key="interface"
-            android:title="@string/category_interface">
-
-        <PreferenceScreen
-                android:key="wifi_display"
-                android:title="@string/wifi_display_settings_title"
-                settings:keywords="@string/keywords_display_cast_screen"
-                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
-
-        <PreferenceScreen
-                android:key="screensaver"
-                android:title="@string/screensaver_settings_title"
-                android:fragment="com.android.settings.DreamSettings" />
-
-        <com.android.settings.WarnedListPreference
-                android:key="font_size"
-                android:title="@string/title_font_size"
-                settings:keywords="@string/keywords_display_font_size"
-                android:summary="@string/summary_font_size"
-                android:entries="@array/entries_font_size"
-                android:entryValues="@array/entryvalues_font_size"
-                android:dialogTitle="@string/dialog_title_font_size" />
-
-        <ListPreference
-                android:key="lcd_density"
-                android:title="@string/lcd_density"
-                android:persistent="false" />
-
-        <PreferenceScreen
-                android:key="display_rotation"
-                android:fragment="com.android.settings.vrtoxin.DisplayRotation"
-                android:title="@string/display_rotation_title" />
-
         <SwitchPreference
                 android:key="wake_when_plugged_or_unplugged"
                 android:title="@string/wake_when_plugged_or_unplugged_title"
                 android:summary="@string/wake_when_plugged_or_unplugged_summary"
                 android:defaultValue="false" />
-    </PreferenceCategory>
+
+        <PreferenceScreen
+                android:key="wallpaper"
+                android:title="@string/wallpaper_settings_title"
+                settings:keywords="@string/keywords_display_wallpaper"
+                android:fragment="com.android.settings.WallpaperTypeSettings" />
 
 </PreferenceScreen>
