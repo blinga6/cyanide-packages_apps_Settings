@@ -2677,6 +2677,7 @@
         <activity android:name=".vrtoxin.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".vrtoxin.gestureanywhere.GestureAnywhereCreateGestureActivity" />
         <activity android:name=".vrtoxin.WeatherSettings" />
+        <activity android:name=".vrtoxin.SlimSizer" />
 
         <!-- Anti-piracy support -->
         <service android:name="org.antipiracy.support.AntiPiracyNotifyServices"

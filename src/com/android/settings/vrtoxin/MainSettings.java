@@ -58,6 +58,7 @@ import com.android.settings.vrtoxin.MasterAnimationControl;
 import com.android.settings.vrtoxin.QuickSettings;
 import com.android.settings.vrtoxin.AndroidRecentsSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
+import com.android.settings.vrtoxin.SlimSizer;
 import com.android.settings.vrtoxin.StatusBarSettings;
 import com.android.settings.vrtoxin.WakelockBlocker;
 import com.android.settings.vrtoxin.WeatherControl;
@@ -194,8 +195,9 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[6] = new QuickSettings();
             frags[7] = new AndroidRecentsSettings();
             frags[8] = new StatusBarSettings();
-            frags[9] = new WakelockBlocker();
-            frags[10] = new WeatherControl();
+            frags[9] = new SlimSizer();
+            frags[10] = new WakelockBlocker();
+            frags[11] = new WeatherControl();
         }
 
         @Override
@@ -227,6 +229,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),
                     getString(R.string.status_bar_title),
+                    getString(R.string.sizer_title),
                     getString(R.string.wakelock_blocker_title),
                     getString(R.string.weather_control_master_title)};
         } else {
@@ -240,6 +243,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.quick_settings_title),
                     getString(R.string.recents_panel),
                     getString(R.string.status_bar_title),
+                    getString(R.string.sizer_title),
                     getString(R.string.wakelock_blocker_title),
                     getString(R.string.weather_control_master_title)};
         }
