@@ -54,13 +54,13 @@
         android:baselineAligned="false"
         android:padding="10dip" >
 
-        <CheckBox android:id="@+id/incoming_calls"
+        <Switch android:id="@+id/incoming_calls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/blacklist_policy_block_calls"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <CheckBox android:id="@+id/incoming_messages"
+        <Switch android:id="@+id/incoming_messages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/blacklist_policy_block_messages"
