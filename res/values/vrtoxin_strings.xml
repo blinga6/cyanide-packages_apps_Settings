@@ -1667,4 +1667,7 @@
     <string name="greeting_preview_title">Preview</string>
     <string name="greeting_preview_summary">Click to show a preview</string>
 
+    <!-- NFC PreferenceCategory title -->
+    <string name="nfc_title_category">NFC</string>
+
 </resources>

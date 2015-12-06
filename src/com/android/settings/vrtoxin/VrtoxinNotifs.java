@@ -24,6 +24,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -47,6 +48,8 @@ import java.util.List;
 public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "VRToxinNotificationSettings";
     
+    private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_NOTIFICATION = "notification";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
@@ -111,25 +114,14 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
     // === Pulse notification light ===
 
     private void initPulse(PreferenceCategory parent) {
-        mNotificationPulse = (TwoStatePreference) parent.findPreference(KEY_NOTIFICATION_PULSE);
-        if (mNotificationPulse == null) {
-            Log.i(TAG, "Preference not found: " + KEY_NOTIFICATION_PULSE);
-            return;
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            parent.removePreference(parent.findPreference(KEY_NOTIFICATION_LIGHT));
         }
-        if (!getResources()
-                .getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            parent.removePreference(mNotificationPulse);
-        } else {
-            updatePulse();
-            mNotificationPulse.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    final boolean val = (Boolean)newValue;
-                    return Settings.System.putInt(getContentResolver(),
-                            Settings.System.NOTIFICATION_LIGHT_PULSE,
-                            val ? 1 : 0);
-                }
-            });
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed)
+                || UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            parent.removePreference(parent.findPreference(KEY_BATTERY_LIGHT));
         }
     }
 
