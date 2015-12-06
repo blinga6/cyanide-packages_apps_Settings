@@ -21,6 +21,7 @@ import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -32,12 +33,14 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.internal.logging.MetricsLogger;
 
@@ -55,6 +58,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String MEM_TEXT_COLOR = "mem_text_color";
     private static final String MEMORY_BAR_COLOR = "memory_bar_color";
     private static final String MEMORY_BAR_USED_COLOR = "memory_bar_used_color";
+    private static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
+    private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
+    public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
+    public static Intent INTENT_OMNISWITCH_SETTINGS = new Intent(Intent.ACTION_MAIN)
+            .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
+    private static final String CATEGORY_OMNI_RECENTS = "omni_recents";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -73,6 +82,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private ColorPickerPreference mMemTextColor;
     private ColorPickerPreference mMemBarColor;
     private ColorPickerPreference mMemBarUsedColor;
+    private SwitchPreference mRecentsUseOmniSwitch;
+    private Preference mOmniSwitchSettings;
+    private boolean mOmniSwitchInitCalled;
+    private PreferenceCategory mOmniSwitch;
 
     private ContentResolver mResolver;
 
@@ -175,6 +188,27 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         } else {
             removePreference(MEMORY_BAR_CAT_COLORS);
         }
+
+        mRecentsUseOmniSwitch = (SwitchPreference)
+                findPreference(RECENTS_USE_OMNISWITCH);
+
+        try {
+            mRecentsUseOmniSwitch.setChecked(Settings.System.getInt(mResolver,
+                    Settings.System.RECENTS_USE_OMNISWITCH) == 1);
+            mOmniSwitchInitCalled = true;
+        } catch(SettingNotFoundException e){
+            // if the settings value is unset
+        }
+        mRecentsUseOmniSwitch.setOnPreferenceChangeListener(this);
+
+        mOmniSwitchSettings = (Preference)
+                findPreference(OMNISWITCH_START_SETTINGS);
+        mOmniSwitchSettings.setEnabled(mRecentsUseOmniSwitch.isChecked());
+
+        mOmniSwitch = (PreferenceCategory) findPreference(CATEGORY_OMNI_RECENTS);
+        if (!Utils.isPackageInstalled(getActivity(), OMNISWITCH_PACKAGE_NAME)) {
+            prefSet.removePreference(mOmniSwitch);
+        }
         
         setHasOptionsMenu(true);
     }
@@ -195,6 +229,15 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                 return super.onContextItemSelected(item);
         }
     }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mOmniSwitchSettings){
+            startActivity(INTENT_OMNISWITCH_SETTINGS);
+            return true;
+         }
+         return super.onPreferenceTreeClick(preferenceScreen, preference);
+     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mMemoryBar) {
@@ -262,6 +305,17 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Settings.System.MEMORY_BAR_USED_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mRecentsUseOmniSwitch) {
+            boolean value = (Boolean) objValue;
+            if (value && !mOmniSwitchInitCalled){
+                openOmniSwitchFirstTimeWarning();
+                mOmniSwitchInitCalled = true;
+            }
+            Settings.System.putInt(mResolver,
+                    Settings.System.RECENTS_USE_OMNISWITCH,
+                    value ? 1 : 0);
+            mOmniSwitchSettings.setEnabled(value);
+            return true;
         }
         return false;
     }
@@ -295,6 +349,16 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         if (mRecentsClearAllLocation != null && summary != -1) {
             mRecentsClearAllLocation.setSummary(res.getString(summary));
         }
+    }
+
+    private void openOmniSwitchFirstTimeWarning() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle(getResources().getString(R.string.omniswitch_first_time_title))
+                .setMessage(getResources().getString(R.string.omniswitch_first_time_message))
+                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        }
+                }).show();
     }
     
     private void showDialogInner(int id) {
