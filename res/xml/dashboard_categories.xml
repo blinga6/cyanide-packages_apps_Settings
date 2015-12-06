@@ -110,6 +110,14 @@
                 android:icon="@drawable/ic_settings_vrtoxin"
                 />
 
+        <!-- Blacklist and App Ops -->
+        <dashboard-tile
+                android:id="@+id/privacy_settings_vrtoxin"
+                android:title="@string/privacy_settings_vrtoxin_title"
+                android:fragment="com.android.settings.vrtoxin.PrivacySettings"
+                android:icon="@drawable/ic_settings_appops"
+                />
+
         <!-- Display -->
         <dashboard-tile
                 android:id="@+id/display_settings"
