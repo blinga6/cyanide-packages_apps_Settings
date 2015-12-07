@@ -1321,8 +1321,8 @@
     <string name="battery_status_text_charge_icon_color_dark_mode_title">Percentage text &amp; charging indicator (light status bar)</string>
 
     <!-- Statusbar expanded -->
-    <string name="status_bar_expanded_header_settings_title">Header</string>
-    <string name="status_bar_expanded_header_settings_summary">Customize the header</string>
+    <string name="status_bar_expanded_header_settings_title">Expanded Header</string>
+    <string name="status_bar_expanded_header_settings_summary">Customize expanded header colors and more</string>
     <string name="expanded_header_network_icons_settings_title">Network Icons</string>
     <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
     <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
@@ -1636,6 +1636,7 @@
     <!-- Display & Lights screen, setting options for LCD density -->
     <string name="category_interface">Interface</string>
     <string name="lcd_density">LCD Density</string>
+    <string name="lcd_density_summary">WARNING!!! This will soft reboot your device</string>
     <string name="dialog_title_lcd_density">LCD Density</string>
     <string name="lcd_density_value_format">%d DPI</string>
     <string name="lcd_density_default_value_format">%d DPI (default)</string>
@@ -1655,5 +1656,65 @@
     <string name="heads_up_notifications">Heads Up</string>
     <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
     <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
+
+    <!-- Status bar greeting settings -->
+    <string name="status_bar_greeting_settings_title">Greeting</string>
+    <string name="status_bar_greeting_settings_summary">Customize greeting</string>
+    <string name="greeting_show_greeting_always_summary">The greeting will be shown after the device gets unlocked</string>
+    <string name="greeting_show_greeting_once_summary">The greeting will be shown only the first time the device gets unlocked after the boot</string>
+    <string name="greeting_show_greeting_never_summary">The greeting will never be shown</string>
+    <string name="greeting_show_greeting_once_title">Once after boot</string>
+    <string name="greeting_custom_text_title">Custom text</string>
+    <string name="greeting_custom_text_dlg_message">Enter a new text, which will be shown as greeting. An empty field will revert the text to:\n\'%s\'</string>
+    <string name="greeting_timeout_title">Time out</string>
+    <string name="greeting_preview_title">Preview</string>
+    <string name="greeting_preview_summary">Click to show a preview</string>
+
+    <!-- NFC PreferenceCategory title -->
+    <string name="nfc_title_category">NFC</string>
+
+    <!-- OmniSwitch -->
+    <string name="omniswitch_recents_title">OmniSwitch Recents</string>
+    <string name="omniswitch_category">OmniSwitch</string>
+    <string name="recents_use_omniswitch_title">Use for recents</string>
+    <string name="recents_use_omniswitch_summary">Use OmniSwitch instead of default recents view</string>
+    <string name="omniswitch_start_settings_summary">Open OmniSwitch settings</string>
+    <string name="omniswitch_first_time_title">Information</string>
+    <string name="omniswitch_first_time_message">Make sure you have enabled OmniSwitch. You can do this by using \"Settings\" below</string>
+
+    <!-- Blacklist preferences -->
+    <string name="blacklist_title">Blocked caller list</string>
+    <string name="blacklist_edit_dialog_title">Edit blocked phone number</string>
+    <string name="blacklist_prefs">Settings</string>
+    <string name="blacklist_button_delete">Delete</string>
+    <string name="blacklist_empty_text">You don\'t have any blocked numbers. Add an entry by touching the Add (+) button.</string>
+    <string name="blacklist_disabled_empty_text">To prevent phone numbers from calling or messaging you, enable the blocked caller list.</string>
+    <string name="blacklist_summary_disabled">Disabled</string>
+    <string name="blacklist_summary">You will not receive incoming calls or messages from phone numbers on the blocked caller list</string>
+    <string name="blacklist_notify">Show notification</string>
+    <string name="blacklist_private_numbers_title">Private numbers</string>
+    <string name="blacklist_private_numbers_summary_disabled">Don\'t block calls from private numbers</string>
+    <string name="blacklist_private_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from private numbers</string>
+    <string name="blacklist_unknown_numbers_title">Unknown numbers</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Don\'t block calls or messages from numbers not in the contact list</string>
+    <string name="blacklist_unknown_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from numbers not in the contact list</string>
+    <string name="blacklist_summary_type_calls_only">calls</string>
+    <string name="blacklist_summary_type_messages_only">messages</string>
+    <string name="blacklist_summary_type_calls_and_messages">calls and messages</string>
+    <string name="blacklist_regex_title">Use wildcards</string>
+    <string name="blacklist_regex_summary">Use . as a wildcard and * for repetition. E.g. 123.* blocks numbers starting with 123 and .*123.* blocks numbers containing 123</string>
+    <string name="blacklist_policy_block_calls">Block incoming calls</string>
+    <string name="blacklist_policy_block_messages">Block incoming messages</string>
+    <string name="blacklist_bad_number_add">Unable to add invalid phone number to blocked caller list</string>
+
+    <!-- Blacklist management -->
+    <string name="remove_blacklist_number_title">Remove number</string>
+    <string name="remove_blacklist_entry">Do you want to remove this blocked phone number?</string>
+    <string name="select_contact">Select contact</string>
+
+    <!-- Privacy Settings Header item -->
+    <string name="privacy_settings_vrtoxin_title">Privacy</string>
+    <string name="app_ops_summary">Control apps permissions with more power</string>
+    <string name="privacy_settings_vrtoxin_category" translatable="false">VRToxin</string>
 
 </resources>

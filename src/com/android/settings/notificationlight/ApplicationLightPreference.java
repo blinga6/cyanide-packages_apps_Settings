@@ -22,7 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
@@ -36,7 +36,7 @@ public class ApplicationLightPreference extends DialogPreference {
 
     private static String TAG = "AppLightPreference";
     public static final int DEFAULT_TIME = 1000;
-    public static final int DEFAULT_COLOR = 0xffffff;
+    public static final int DEFAULT_COLOR = 0xeeeeee; //off-White since white does not show in UI
 
     private ImageView mLightColorView;
     private TextView mOnValueView;
@@ -132,22 +132,17 @@ public class ApplicationLightPreference extends DialogPreference {
     }
 
     private void updatePreferenceViews() {
-        final int width = (int) mResources.getDimension(R.dimen.device_memory_usage_button_width);
-        final int height = (int) mResources.getDimension(R.dimen.device_memory_usage_button_height);
+        final int size = (int) mResources.getDimension(R.dimen.oval_notification_size);
 
         if (mLightColorView != null) {
             mLightColorView.setEnabled(true);
-            // adjust if necessary to prevent material whiteout
-            final int imageColor = ((mColorValue & 0xF0F0F0) == 0xF0F0F0) ?
-                    (mColorValue - 0x101010) : mColorValue;
-            mLightColorView.setImageDrawable(createRectShape(width, height,
-                    0xFF000000 + imageColor));
+            mLightColorView.setImageDrawable(createOvalShape(size, 0xFF000000 + mColorValue));
         }
         if (mOnValueView != null) {
             mOnValueView.setText(mapLengthValue(mOnValue));
         }
         if (mOffValueView != null) {
-            if (mOnValue == 1 || !mOnOffChangeable) {
+            if (mOnValue == 1) {
                 mOffValueView.setVisibility(View.GONE);
             } else {
                 mOffValueView.setVisibility(View.VISIBLE);
@@ -225,6 +220,7 @@ public class ApplicationLightPreference extends DialogPreference {
         mColorValue = color;
         mOnValue = onValue;
         mOffValue = offValue;
+        mOnOffChangeable = true;
         updatePreferenceViews();
     }
 
@@ -249,18 +245,15 @@ public class ApplicationLightPreference extends DialogPreference {
     /**
      * Utility methods
      */
-    private static ShapeDrawable createRectShape(int width, int height, int color) {
-        ShapeDrawable shape = new ShapeDrawable(new RectShape());
-        shape.setIntrinsicHeight(height);
-        shape.setIntrinsicWidth(width);
+    private static ShapeDrawable createOvalShape(int size, int color) {
+        ShapeDrawable shape = new ShapeDrawable(new OvalShape());
+        shape.setIntrinsicHeight(size);
+        shape.setIntrinsicWidth(size);
         shape.getPaint().setColor(color);
         return shape;
     }
 
     private String mapLengthValue(Integer time) {
-        if (!mOnOffChangeable) {
-            return getContext().getString(R.string.pulse_length_always_on);
-        }
         if (time == DEFAULT_TIME) {
             return getContext().getString(R.string.default_time);
         }

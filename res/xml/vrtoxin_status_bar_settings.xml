@@ -40,11 +40,19 @@
         android:summary="@string/status_bar_clock_settings_summary"
         android:fragment="com.android.settings.vrtoxin.StatusBarClockSettings" />
 
+    <!-- Expanded Header -->
     <PreferenceScreen
         android:key="status_bar_expanded_header"
         android:title="@string/status_bar_expanded_header_settings_title"
         android:summary="@string/status_bar_expanded_header_settings_summary"
         android:fragment="com.android.settings.vrtoxin.StatusBarExpandedHeaderSettings" />
+
+    <!-- Greeting -->
+    <PreferenceScreen
+        android:key="status_bar_greeting_settings"
+        android:title="@string/status_bar_greeting_settings_title"
+        android:summary="@string/status_bar_greeting_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.StatusBarGreetingSettings" />
 
     <PreferenceScreen
         android:key="status_bar_network_status_icons_settings"
