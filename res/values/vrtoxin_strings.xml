@@ -1177,7 +1177,7 @@
     <string name="show_logo_enabled">Lockscreen &amp; Statusbar</string>
     <string name="logo_cat_notification_icons_title">Notification icons</string>
     <string name="logo_hide_logo_title">Hide</string>
-    <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the Cyanide logo on the status bar</string>
+    <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the VRToxin logo on the status bar</string>
     <string name="logo_number_of_notification_icons_title">Number of notification icons</string>
 
     <!-- Zen mode icon switch -->
@@ -1629,6 +1629,9 @@
     <string name="lockscreen_see_through_title">Lockscreen Blur</string>
     <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen.</string>
     <string name="lockscreen_blur_radius">Blur Effect Intensity</string>
+
+    <!-- BitSyko Layers -->
+    <string name="bitsyko_layers">Layers</string>
 
     <!-- Display & Lights screen, setting options for LCD density -->
     <string name="category_interface">Interface</string>
