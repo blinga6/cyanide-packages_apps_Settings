@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014-2015 Slimroms
+ * Copyright (C) 2015 VRToxin Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +38,7 @@ import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -99,7 +101,9 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private static final String KEYS_APP_SWITCH_LONG_PRESS = "keys_app_switch_long_press";
     private static final String KEYS_APP_SWITCH_DOUBLE_TAP = "keys_app_switch_double_tap";
     private static final String CATEGORY_VOLUME = "volume_keys";
+    private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private static final int DLG_SHOW_WARNING_DIALOG = 0;
@@ -138,6 +142,8 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
     private Preference mAppSwitchLongPressAction;
     private Preference mAppSwitchDoubleTapAction;
     private ListPreference mVolumeKeyCursorControl;
+    private SwitchPreference mVolumeControlRingStream;
+    private SwitchPreference mVolumeKeyWakeControl;
     private SwitchPreference mSwapVolumeButtons;
 
     private boolean mCheckPreferences;
@@ -269,10 +275,18 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         }
 
         if (hasVolumeKeys) {
+            int volumeControlRingtone = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1);
+            mVolumeControlRingStream = (SwitchPreference)
+                    prefs.findPreference(KEY_VOLUME_CONTROL_RING_STREAM);
+            mVolumeControlRingStream.setChecked(volumeControlRingtone > 0);
             int cursorControlAction = Settings.System.getInt(getContentResolver(),
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
             mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
                     cursorControlAction);
+            int wakeControlAction = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_WAKE_SCREEN, 0);
+            mVolumeKeyWakeControl = initSwitch(KEY_VOLUME_WAKE_DEVICE, (wakeControlAction == 1));
             int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
             mSwapVolumeButtons = (SwitchPreference)
@@ -407,6 +421,22 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         return list;
     }
 
+    private SwitchPreference initSwitch(String key, boolean checked) {
+        SwitchPreference switchPreference = (SwitchPreference) getPreferenceManager()
+                .findPreference(key);
+        if (switchPreference != null) {
+            switchPreference.setChecked(checked);
+            switchPreference.setOnPreferenceChangeListener(this);
+        }
+        return switchPreference;
+    }
+
+    private void handleSwitchChange(SwitchPreference pref, Object newValue, String setting) {
+        Boolean value = (Boolean) newValue;
+        int intValue = (value) ? 1 : 0;
+        Settings.System.putInt(getContentResolver(), setting, intValue);
+    }
+
     private void handleActionListChange(ListPreference pref, Object newValue, String setting) {
         String value = (String) newValue;
         int index = pref.findIndexOfValue(value);
@@ -519,6 +549,10 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
                     ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+        } else if (preference == mVolumeControlRingStream) {
+            int value = mVolumeControlRingStream.isChecked() ? 1 : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, value);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -537,6 +571,10 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         if (preference == mVolumeKeyCursorControl) {
             handleActionListChange(mVolumeKeyCursorControl, newValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);
+            return true;
+        } else if (preference == mVolumeKeyWakeControl) {
+            handleSwitchChange(mVolumeKeyWakeControl, newValue,
+                    Settings.System.VOLUME_WAKE_SCREEN);
             return true;
         }
         return false;

@@ -1742,4 +1742,9 @@
     <string name="contrast_str">Contrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
     <string name="intensity_str">Intensity: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
 
+    <string name="volbtn_wake_device_title">Wake up device</string>
+    <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
+    <string name="volume_keys_control_ring_stream_title">Volume keys control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream_summary">If on, volume keys control ringtone volume. If off, volume keys control media volume.</string>
+
 </resources>
