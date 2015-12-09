@@ -23,7 +23,7 @@
     <PreferenceScreen
         android:key="hardwarekeys_settings"
         android:title="@string/button_keys_title"
-        android:summary="@string/navbar_settings_summary" 
+        android:summary="@string/hwkeys_settings_summary" 
         android:fragment="com.android.settings.vrtoxin.HwKeySettings" />
 
     <!-- Navigation bar -->
