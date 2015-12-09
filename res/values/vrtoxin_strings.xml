@@ -1717,4 +1717,8 @@
     <string name="app_ops_summary">Control apps permissions with more power</string>
     <string name="privacy_settings_vrtoxin_category" translatable="false">VRToxin</string>
 
+    <!--- Advanced Settings -->
+    <string name="advanced_settings">Advanced Settings</string>
+    <string name="advanced_settings_summary">Enable more settings options</string>
+
 </resources>

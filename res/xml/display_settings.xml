@@ -122,4 +122,10 @@
                 settings:keywords="@string/keywords_display_wallpaper"
                 android:fragment="com.android.settings.WallpaperTypeSettings" />
 
+        <PreferenceCategory
+                android:key="advanced_display_prefs"
+                android:title="@string/advanced_settings">
+
+        </PreferenceCategory>
+
 </PreferenceScreen>
