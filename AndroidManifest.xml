@@ -143,8 +143,8 @@
         </receiver>
 
         <!-- Xposed support -->
-        <service android:name=".cyanide.XposedNotifyService" />
-        <receiver android:name=".cyanide.XposedCheckReceiver" android:enabled="true">
+        <service android:name=".vrtoxin.XposedNotifyService" />
+        <receiver android:name=".vrtoxin.XposedCheckReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.PACKAGE_INSTALL" />
