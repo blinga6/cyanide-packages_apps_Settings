@@ -213,6 +213,7 @@
     <string name="shortcut_action_power_off">Power off</string>
     <string name="shortcut_action_reboot">Reboot</string>
     <string name="shortcut_action_restartui">Restart SystemUI</string>
+    <string name="shortcut_action_screenrecord">Screen Record</string>
     <string name="shortcut_action_sound">Sound</string>
     <string name="shortcut_action_users">Users</string>
     <string name="shortcut_action_settings">Settings</string>
