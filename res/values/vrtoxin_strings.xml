@@ -1747,4 +1747,11 @@
     <string name="volume_keys_control_ring_stream_title">Volume keys control ringtone volume</string>
     <string name="volume_keys_control_ring_stream_summary">If on, volume keys control ringtone volume. If off, volume keys control media volume.</string>
 
+    <!-- Expanded Header Weather -->
+    <string name="header_weather_title">Weather</string>
+    <string name="expanded_header_show_weather_title">Show Weather</string>
+    <string name="expanded_header_show_weather_summary">Enable to show the weather</string>
+    <string name="expanded_header_show_weather_location_title">Show Location</string>
+    <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
+
 </resources>

@@ -446,7 +446,7 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
                             Settings.System.putInt(getActivity().getContentResolver(),
                                     Settings.System.STATUS_BAR_AM_PM, 1);
                             Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.STATUS_BAR_DATE, 1);
+                                    Settings.System.STATUS_BAR_DATE, 0);
                             Settings.System.putInt(getActivity().getContentResolver(),
                                     Settings.System.STATUS_BAR_DATE_STYLE, 0);
                             Settings.System.putInt(getActivity().getContentResolver(),

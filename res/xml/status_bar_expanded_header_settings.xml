@@ -31,6 +31,24 @@
         android:fragment="com.android.settings.vrtoxin.ExpandedHeaderNetworkIconsSettings" />
 
     <PreferenceCategory
+        android:key="expanded_header_weather_category"
+        android:title="@string/header_weather_title">
+    
+		<SwitchPreference
+			android:key="expanded_header_show_weather"
+			android:title="@string/expanded_header_show_weather_title"
+			android:summary="@string/expanded_header_show_weather_summary"
+			android:defaultValue="false" />
+
+		<SwitchPreference
+			android:key="expanded_header_show_weather_location"
+			android:title="@string/expanded_header_show_weather_location_title"
+			android:summary="@string/expanded_header_show_weather_location_summary"
+			android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="expanded_header_cat_color"
         android:title="@string/colors_title">
 

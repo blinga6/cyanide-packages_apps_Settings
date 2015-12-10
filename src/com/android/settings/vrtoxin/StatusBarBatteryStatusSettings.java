@@ -415,7 +415,7 @@ public class StatusBarBatteryStatusSettings extends SettingsPreferenceFragment i
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_BATTERY_STATUS_ICON_INDICATOR, 2);
+                                    Settings.System.STATUS_BAR_BATTERY_STATUS_ICON_INDICATOR, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_BATTERY_STATUS_SHOW_TEXT, 1);
                             Settings.System.putInt(getOwner().mResolver,
