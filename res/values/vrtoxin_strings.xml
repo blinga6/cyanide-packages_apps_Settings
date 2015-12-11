@@ -1147,7 +1147,7 @@
 
     <!-- Expanded desktop -->
     <string name="power_menu_expanded_desktop">Expanded Desktop</string>
-    <string name="expanded_desktop_summary">Some shit I\'ve never used</string>
+    <string name="expanded_desktop_summary">Customize expanded desktop</string>
     <string name="expanded_hide_nothing">Hide nothing</string>
     <string name="expanded_hide_status">Hide status bar</string>
     <string name="expanded_hide_navigation">Hide navigation bar</string>
@@ -1754,5 +1754,9 @@
     <string name="expanded_header_show_weather_summary">Enable to show the weather</string>
     <string name="expanded_header_show_weather_location_title">Show Location</string>
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
+
+    <!-- Recents empty style -->
+    <string name="recents_empty_style">Show VRToxin logo</string>
+    <string name="recents_empty_style_summary">When recents is empty, show VRToxin logo instead of text.</string>
 
 </resources>

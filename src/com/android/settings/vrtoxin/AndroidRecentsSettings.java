@@ -41,6 +41,9 @@ import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+
+import com.android.settings.vrtoxin.util.Helpers;
+
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.internal.logging.MetricsLogger;
 
@@ -64,6 +67,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     public static Intent INTENT_OMNISWITCH_SETTINGS = new Intent(Intent.ACTION_MAIN)
             .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
     private static final String CATEGORY_OMNI_RECENTS = "omni_recents";
+    private static final String RECENTS_EMPTY_VRTOXIN_LOGO = "recents_empty_vrtoxin_logo";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -86,6 +90,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private Preference mOmniSwitchSettings;
     private boolean mOmniSwitchInitCalled;
     private PreferenceCategory mOmniSwitch;
+    private SwitchPreference mRecentsStyle;
 
     private ContentResolver mResolver;
 
@@ -110,6 +115,11 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
 
         PreferenceCategory catClearAll =
                 (PreferenceCategory) findPreference(PREF_CAT_CLEAR_ALL);
+
+        mRecentsStyle = (SwitchPreference) prefSet.findPreference(RECENTS_EMPTY_VRTOXIN_LOGO);
+        mRecentsStyle.setChecked(Settings.System.getInt(mResolver,
+            Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 0) == 1);
+        mRecentsStyle.setOnPreferenceChangeListener(this);
 
         boolean enableMemoryBar = Settings.System.getInt(mResolver,
                 Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 0) == 1;
@@ -315,6 +325,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Settings.System.RECENTS_USE_OMNISWITCH,
                     value ? 1 : 0);
             mOmniSwitchSettings.setEnabled(value);
+            return true;
+        } else if (preference == mRecentsStyle) {
+            boolean show = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, show ? 1 : 0);
+            Helpers.restartSystemUI();
             return true;
         }
         return false;

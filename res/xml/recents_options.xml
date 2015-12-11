@@ -114,6 +114,13 @@
             android:summary="@string/android_recents_show_search_bar_summary"
             android:defaultValue="true" />
 
+        <!-- Recents empty VRToxin logo -->
+        <SwitchPreference
+            android:key="recents_empty_vrtoxin_logo"
+            android:title="@string/recents_empty_style"
+            android:summary="@string/recents_empty_style_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
     
     <PreferenceCategory
