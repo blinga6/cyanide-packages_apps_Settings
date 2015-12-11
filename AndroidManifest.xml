@@ -2642,10 +2642,10 @@
         <activity android:name=".vrtoxin.WeatherSettings" />
 
         <!-- Anti-piracy support -->
-        <service android:name="org.antipiracy.support.AntiPiracyNotifyService"
+        <service android:name="org.antipiracy.support.AntiPiracyNotifyServices"
             android:enabled="true"
             android:permission="android.permission.DELETE_PACKAGES" />
-        <receiver android:name="org.antipiracy.support.AntiPiracyInstallReceiver"
+        <receiver android:name="org.antipiracy.support.AntiPiracyInstallReceivers"
             android:enabled="true"
             android:priority="1000"
             android:exported="true">
