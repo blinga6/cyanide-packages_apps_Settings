@@ -3293,7 +3293,7 @@
 
     <!-- App Ops Settings --> <skip />
     <!-- [CHAR LIMIT=NONE] App ops settings title, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
-    <string name="app_ops_settings">App ops</string>
+    <string name="app_ops_settings">App Ops</string>
     <!-- [CHAR LIMIT=NONE] App ops settings summary, on main settings screen. If clicked, the user is taken to a settings screen for app operations -->
     <string name="app_ops_settings_summary">View or change app permissions</string>
     <!-- [CHAR LIMIT=NONE] Time label for an operation that is currently running. -->
@@ -6075,7 +6075,7 @@
     <string name="notification_ringtone_title">Default notification ringtone</string>
 
     <!-- Sound & notification > Sound section: Title for the option managing whether or not to vibrate when ringing. [CHAR LIMIT=30] -->
-    <string name="vibrate_when_ringing_title">Also vibrate for calls</string>
+    <string name="vibrate_when_ringing_title">Vibrate For Calls</string>
 
     <!-- Sound & notification: Notification section header [CHAR LIMIT=30] -->
     <string name="notification_section_header">Notification</string>

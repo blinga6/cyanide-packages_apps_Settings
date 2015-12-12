@@ -75,6 +75,7 @@
     <string name="notification_icon_color_mode_greyscale_title">If the icon is an greyscale icon</string>
     <string name="notification_bg_color_mode_no_color_title">If the notification doesn\`t include an own color</string>
     <string name="notification_color_mode_always_title">Always</string>
+    <string name="notification_ringtone_title">Notification Tone</string>
 
     <!-- VRToxin Settings/Summaries and Menu Strings -->
     <string name="status_bar_random_title">Random Settings</string>
@@ -1342,7 +1343,7 @@
     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
 
     <!-- Increasing ring tone volume -->
-    <string name="increasing_ring_volume_option_title">Increasing ring volume</string>
+    <string name="increasing_ring_volume_option_title">Increasing Ring Volume</string>
     <string name="increasing_ring_min_volume_title">Start volume</string>
     <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
 
@@ -1441,7 +1442,7 @@
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
     <!-- Linked / unlinked notification volume -->
-    <string name="link_volume_option_title">Link ring and notification volumes</string>
+    <string name="link_volume_option_title">Link Ring &amp; Notif Volumes</string>
     <string name="notification_volume_option_title">Notification Volume</string>
 
     <!-- Doze pulse (ambient display) options -->
@@ -1684,7 +1685,7 @@
     <string name="omniswitch_first_time_message">Make sure you have enabled OmniSwitch. You can do this by using \"Settings\" below</string>
 
     <!-- Blacklist preferences -->
-    <string name="blacklist_title">Blocked caller list</string>
+    <string name="blacklist_title">Blocked Caller List</string>
     <string name="blacklist_edit_dialog_title">Edit blocked phone number</string>
     <string name="blacklist_prefs">Settings</string>
     <string name="blacklist_button_delete">Delete</string>

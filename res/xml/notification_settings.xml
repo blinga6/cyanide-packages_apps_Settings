@@ -24,17 +24,17 @@
         android:key="sound"
         android:title="@string/sound_settings" >
 
-        <!-- Media volume -->
-        <com.android.settings.notification.VolumeSeekBarPreference
-                android:key="media_volume"
-                android:icon="@*android:drawable/ic_audio_media"
-                android:title="@string/media_volume_option_title" />
-
         <!-- Alarm volume -->
         <com.android.settings.notification.VolumeSeekBarPreference
                 android:key="alarm_volume"
                 android:icon="@*android:drawable/ic_audio_alarm"
                 android:title="@string/alarm_volume_option_title" />
+
+        <!-- Media volume -->
+        <com.android.settings.notification.VolumeSeekBarPreference
+                android:key="media_volume"
+                android:icon="@*android:drawable/ic_audio_media"
+                android:title="@string/media_volume_option_title" />
 
         <!-- Ring volume -->
         <com.android.settings.notification.VolumeSeekBarPreference
@@ -66,17 +66,12 @@
                 android:icon="@drawable/ring_notif_increasing"
                 android:dependency="increasing_ring" />
 
-        <!-- Also vibrate for calls -->
-        <SwitchPreference
-                android:key="vibrate_when_ringing"
-                android:title="@string/vibrate_when_ringing_title"
-                android:persistent="false" />
-
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-                android:key="zen_disable_ducking_during_media_playback"
-                android:title="@string/interruptions_ignore_while_media_title"
-                android:summary="@string/interruptions_ignore_while_media_summary"
-                android:defaultValue="false" />
+        <!-- Other sounds -->
+        <Preference
+                android:key="other_sounds"
+                android:title="@string/other_sound_settings"
+                android:persistent="false"
+                android:fragment="com.android.settings.notification.OtherSoundSettings" />
 
         <!-- Phone ringtone -->
         <com.android.settings.DefaultRingtonePreference
@@ -86,18 +81,24 @@
                 android:persistent="false"
                 android:ringtoneType="ringtone" />
 
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="zen_disable_ducking_during_media_playback"
+                android:title="@string/interruptions_ignore_while_media_title"
+                android:summary="@string/interruptions_ignore_while_media_summary"
+                android:defaultValue="false" />
+
+        <!-- Also vibrate for calls -->
+        <SwitchPreference
+                android:key="vibrate_when_ringing"
+                android:title="@string/vibrate_when_ringing_title"
+                android:persistent="false" />
+
         <!-- Default notification ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="notification_ringtone"
+                android:title="@string/notification_ringtone_title"
                 android:persistent="false"
                 android:ringtoneType="notification" />
-
-        <!-- Other sounds -->
-        <Preference
-                android:key="other_sounds"
-                android:title="@string/other_sound_settings"
-                android:persistent="false"
-                android:fragment="com.android.settings.notification.OtherSoundSettings" />
 
     </PreferenceCategory>
 
