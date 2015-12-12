@@ -444,7 +444,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SHOW_CLEAR_ALL_RECENTS, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, 5);
+                                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, 4);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 1);
                             Settings.System.putInt(getOwner().mResolver,

@@ -341,7 +341,7 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_SHOW_CHARGE_ANIMATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    0xff00ff00);
                             getOwner().refreshSettings();
                         }
                     })
