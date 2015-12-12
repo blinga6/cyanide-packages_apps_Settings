@@ -34,6 +34,11 @@
             android:summary="@string/lock_screen_color_settings_summary"
             android:fragment="com.android.settings.vrtoxin.LockScreenColorSettings" />
 
+        <com.android.settings.vrtoxin.SecureSettingSwitchPreference
+            android:key="lockscreen_visualizer"
+            android:title="@string/lockscreen_visualizer_title"
+            android:defaultValue="true" />
+
         <PreferenceScreen
             android:key="lockscreen_wallpaper"
             android:title="@string/lockscreen_wallpaper_title"
