@@ -1797,4 +1797,8 @@
     <string name="sizer_message_noselect">Nothing selected.</string>
     <string name="system_app_remover">System App Remover</string>
 
+    <!-- Override theme colors  -->
+    <string name="theme_override_custom_colors_title">Use custom colors</string>
+    <string name="theme_override_custom_colors_summary">This will override theme colors</string>
+
 </resources>

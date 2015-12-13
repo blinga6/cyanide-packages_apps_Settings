@@ -46,24 +46,34 @@
         android:key="power_menu_cat_colors"
         android:title="@string/colors_cat_title">
 
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="override_custom_colors"
+        android:title="@string/theme_override_custom_colors_title"
+        android:summary="@string/theme_override_custom_colors_summary"
+        android:defaultValue="false" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="power_menu_icon_normal_color"
             android:title="@string/icons_normal_title"
-            android:defaultValue="0xffffffff" />
-
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="power_menu_icon_enabled_selected_color"
-            android:title="@string/icons_enabled_selected_title"
+            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-             android:key="power_menu_ripple_color"
-             android:title="@string/colors_power_menu_ripple_color_title"
-             android:defaultValue="0xffffffff" />
+            android:key="power_menu_icon_enabled_selected_color"
+            android:title="@string/icons_enabled_selected_title"
+            android:dependency="override_custom_colors"
+            android:defaultValue="0xffffffff" />
 
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="power_menu_ripple_color"
+            android:title="@string/colors_power_menu_ripple_color_title"
+            android:dependency="override_custom_colors"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="power_menu_text_color"
             android:title="@string/text_title"
+            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
     </PreferenceCategory>
