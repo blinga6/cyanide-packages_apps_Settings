@@ -39,6 +39,7 @@
     <string-array name="power_menu_action_entries">
         <item>@string/shortcut_action_power_off</item>
         <item>@string/shortcut_action_reboot</item>
+        <item>@string/shortcut_action_onthego</item>
         <item>@string/shortcut_action_restartui</item>
         <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_airplane_mode</item>
@@ -56,6 +57,7 @@
     <string-array name="power_menu_action_values" translatable="false">
         <item>**poweroff**</item>
         <item>**reboot**</item>
+        <item>**onthego**</item>
         <item>**restartui**</item>
         <item>**screenrecord**</item>
         <item>**airplane**</item>
