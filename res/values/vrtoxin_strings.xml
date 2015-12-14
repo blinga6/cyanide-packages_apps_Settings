@@ -131,7 +131,7 @@
     <!-- Carrier label settings -->
     <string name="status_bar_carrier_label_settings_title">Custom Carrier Label</string>
     <string name="status_bar_carrier_label_settings_summary">Customize carrier label text, color &amp; auto hide options</string>
-    <string name="carrier_label_cat_notification_icons_title">Notification icons</string>
+    <string name="carrier_label_cat_notification_icons_title">Notification Icons</string>
     <string name="carrier_label_show_title">Show</string>
     <string name="carrier_label_show_summary">Enable to show the (custom) carrier label on the status bar</string>
     <string name="carrier_label_show_on_lock_screen_title">Show on lock screen</string>
@@ -508,7 +508,7 @@
     <string name="pulse_speed_very_slow">Very slow</string>
 
     <!-- Battery light settings -->
-    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_title">Battery Lights</string>
     <string name="battery_low_pulse_title">Pulse if battery low</string>
     <string name="battery_light_list_title">Colors</string>
     <string name="battery_light_low_color_title">Battery low</string>
@@ -516,7 +516,7 @@
     <string name="battery_light_full_color_title">Fully charged</string>
 
     <!-- Lights settings screen, notification light settings -->
-    <string name="notification_light_title">Notification light</string>
+    <string name="notification_light_title">Notification Lights</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Apps</string>
     <string name="notification_light_phonelist_title">Phone</string>
@@ -1090,7 +1090,7 @@
     <string name="status_bar_weather_font_condensed_bold_italic">Condensed Bold Italic</string>
     <string name="status_bar_weather_font_medium">Medium</string>
     <string name="status_bar_weather_font_medium_italic">Medium Italic</string>
-    <string name="weather_cat_notification_icons_title">Notification icons</string>
+    <string name="weather_cat_notification_icons_title">Notification Icons</string>
     <string name="weather_hide_weather_title">Hide</string>
     <string name="weather_hide_weather_summary">Enable to choose a number of visible notification icons to hide the weather temperature on the status bar</string>
     <string name="weather_number_of_notification_icons_title">Number of notification icons</string>
@@ -1104,7 +1104,7 @@
     <!-- Android recents settings -->
     <string name="recents_panel">Recents Panel</string>
     <string name="recents_control_title">Clear All Button Options</string>
-    <string name="recents_clear_all_location_title">Clear all recents location</string>
+    <string name="recents_clear_all_location_title">Clear All Location</string>
     <string name="android_recents_clear_all_use_icon_color_title">Icon Color</string>
     <string name="android_recents_clear_all_use_icon_color_summary">Enable to use a custom color for the clear all button icon</string>
     <string name="recents_clear_all_location_top_right">Top right</string>
@@ -1191,7 +1191,7 @@
     <string name="show_logo_keyguard">Lockscreen only</string>
     <string name="show_logo_statusbar">Statusbar only</string>
     <string name="show_logo_enabled">Lockscreen &amp; Statusbar</string>
-    <string name="logo_cat_notification_icons_title">Notification icons</string>
+    <string name="logo_cat_notification_icons_title">Notification Icons</string>
     <string name="logo_hide_logo_title">Hide</string>
     <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the VRToxin logo on the status bar</string>
     <string name="logo_number_of_notification_icons_title">Number of notification icons</string>
@@ -1290,7 +1290,7 @@
     <string name="network_status_icons_cat_no_sim_colors_title">No Sim Card Colors</string>
     <string name="network_status_icons_cat_airplane_mode_colors_title">Airplane mode colors</string>
     <string name="network_status_icons_cat_status_colors_title">Status Colors</string>
-    <string name="status_bar_notification_icon_settings_title">Notification icons</string>
+    <string name="status_bar_notification_icon_settings_title">Notification Icons</string>
     <string name="status_bar_notification_icon_settings_summary">Customize the notification icons</string>
     <string name="status_bar_battery_status_settings_title">Battery Customizations</string>
     <string name="status_bar_battery_status_settings_summary">Customize the battery style, type and color</string>
@@ -1761,7 +1761,7 @@
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
 
     <!-- Recents empty style -->
-    <string name="recents_empty_style">Show VRToxin logo</string>
+    <string name="recents_empty_style">VRToxin logo</string>
     <string name="recents_empty_style_summary">When recents is empty, show VRToxin logo instead of text.</string>
 
     <!-- Chamber of Secrets -->

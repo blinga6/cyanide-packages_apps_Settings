@@ -68,6 +68,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
     private static final String CATEGORY_OMNI_RECENTS = "omni_recents";
     private static final String RECENTS_EMPTY_VRTOXIN_LOGO = "recents_empty_vrtoxin_logo";
+    private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -86,6 +87,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private ColorPickerPreference mMemTextColor;
     private ColorPickerPreference mMemBarColor;
     private ColorPickerPreference mMemBarUsedColor;
+    private PreferenceScreen mScreenPinning;
     private SwitchPreference mRecentsUseOmniSwitch;
     private Preference mOmniSwitchSettings;
     private boolean mOmniSwitchInitCalled;
@@ -197,6 +199,14 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             mMemBarUsedColor.setOnPreferenceChangeListener(this);
         } else {
             removePreference(MEMORY_BAR_CAT_COLORS);
+        }
+
+        final boolean screenPinning = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCK_TO_APP_ENABLED, 0) == 1;
+        if (mScreenPinning != null) {
+            mScreenPinning.setSummary(screenPinning ?
+                getResources().getString(R.string.switch_on_text) :
+                getResources().getString(R.string.switch_off_text));
         }
 
         mRecentsUseOmniSwitch = (SwitchPreference)
@@ -314,6 +324,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             Settings.System.putInt(mResolver,
                     Settings.System.MEMORY_BAR_USED_COLOR, intHex);
             preference.setSummary(hex);
+            return true;
+        } else if (preference == mScreenPinning) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.LOCK_TO_APP_ENABLED,
+                    value ? 1 : 0);
             return true;
         } else if (preference == mRecentsUseOmniSwitch) {
             boolean value = (Boolean) objValue;

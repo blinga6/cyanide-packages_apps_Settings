@@ -23,16 +23,17 @@
         android:title="@string/breathing_notifications_title"
         android:summary="@string/breathing_notifications_summary" />
 
+    <!-- Notification colors -->
+    <PreferenceScreen
+        android:id="@+id/notification_colors"
+        android:title="@string/notification_color_settings_title"
+        android:summary="@string/custom_notification_color_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.NotificationColorSettings" />
+
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
         android:title="@string/force_expanded_notifications_title"
         android:summary="@string/force_expanded_notifications_summary" />
-
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="disable_immersive_message"
-        android:title="@string/disable_immersive_message_title"
-        android:summary="@string/disable_immersive_message_summary"
-        android:persistent="false" />
 
     <!-- Heads up -->
     <com.android.settings.vrtoxin.GlobalSettingSwitchPreference
@@ -41,6 +42,12 @@
         android:summaryOn="@string/summary_heads_up_enabled"
         android:summaryOff="@string/summary_heads_up_disabled" />
 
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="disable_immersive_message"
+        android:title="@string/disable_immersive_message_title"
+        android:summary="@string/disable_immersive_message_summary"
+        android:persistent="false" />
+
     <!-- Shake to clean notifications -->
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="shake_to_clean_notifications"
@@ -48,22 +55,9 @@
         android:summary="@string/shake_to_clean_notifications_summary"
         android:defaultValue="false" />
 
-    <!-- Notification colors -->
-    <PreferenceScreen
-        android:id="@+id/notification_colors"
-        android:title="@string/notification_color_settings_title"
-        android:summary="@string/custom_notification_color_settings_summary"
-        android:fragment="com.android.settings.vrtoxin.NotificationColorSettings" />
-
     <PreferenceCategory
         android:key="notification"
         android:title="@string/notification_section_header" >
-
-        <!-- Pulse notification light -->
-        <PreferenceScreen
-                android:key="notification_light"
-                android:title="@string/notification_light_title"
-                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
         <!-- Battery light -->
         <PreferenceScreen
@@ -71,11 +65,23 @@
                 android:title="@string/battery_light_title"
                 android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
+        <!-- Pulse notification light -->
+        <PreferenceScreen
+                android:key="notification_light"
+                android:title="@string/notification_light_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
     </PreferenceCategory>
 
-    <PreferenceScreen
-        android:id="@+id/notification_manager"
-        android:title="@string/notification_manager"
-        android:fragment="com.android.settings.notification.NotificationManagerSettings" />
+    <PreferenceCategory
+		android:key="notification_manager"
+		android:title="@string/notification_manager">
+
+        <PreferenceScreen
+            android:id="@+id/notification_manager"
+            android:title="@string/notification_manager"
+            android:fragment="com.android.settings.notification.NotificationManagerSettings" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

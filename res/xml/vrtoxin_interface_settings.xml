@@ -20,19 +20,19 @@
     android:title="@string/interface_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <!-- Appbar -->
-    <PreferenceScreen
-        android:key="app_sidebar"
-        android:fragment="com.android.settings.vrtoxin.AppSideBar"
-        android:title="@string/app_sidebar_title"
-        android:summary="@string/app_sidebar_summary" />
-
     <!-- App Circle Bar -->
     <PreferenceScreen
         android:key="app_circle_bar"
         android:fragment="com.android.settings.vrtoxin.AppCircleBar"
         android:summary="@string/appcirclebar_settings_summary"
         android:title="@string/app_circle_bar_title" />
+
+    <!-- Appbar -->
+    <PreferenceScreen
+        android:key="app_sidebar"
+        android:fragment="com.android.settings.vrtoxin.AppSideBar"
+        android:title="@string/app_sidebar_title"
+        android:summary="@string/app_sidebar_summary" />
 
     <PreferenceScreen
         android:key="expanded_desktop"
