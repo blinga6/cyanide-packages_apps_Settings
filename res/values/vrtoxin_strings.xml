@@ -580,6 +580,11 @@
     <string name="qs_tile_music_play">Play</string>
     <string name="qs_tile_sync">Sync</string>
     <string name="qs_tile_reboot">Reboot/Recovery</string>
+    <string name="qs_tile_adb">Adb-Over-Network</string>
+    <string name="qs_tile_compass">Compass</string>
+    <string name="qs_tile_lockscreen">LockScreen</string>
+    <string name="qs_tile_batterysaver">Battery Saver</string>
+    <string name="qs_tile_dnd">Do Not Disturb</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

@@ -75,7 +75,7 @@ public class QSTileHolder {
                 stringId = R.string.cellular_data_title;
                 break;
             case QSConstants.TILE_INVERSION:
-                resourceName = "ic_invert_colors_enable_animation";
+                resourceName = "ic_qs_inversion_on";
                 stringId = R.string.accessibility_display_inversion_preference_title;
                 break;
             case QSConstants.TILE_EXPANDED_DESKTOP:
@@ -91,7 +91,7 @@ public class QSTileHolder {
                 stringId = R.string.qs_tile_heads_up;
                 break;
             case QSConstants.TILE_HOTSPOT:
-                resourceName = "ic_hotspot_enable_animation";
+                resourceName = "ic_qs_hotspot_on";
                 stringId = R.string.hotspot;
                 break;
             case QSConstants.TILE_LOCATION:
@@ -145,6 +145,26 @@ public class QSTileHolder {
             case QSConstants.TILE_WIFI:
                 resourceName = "ic_qs_wifi_full_4";
                 stringId = R.string.wifi_quick_toggle_title;
+                break;
+            case QSConstants.TILE_BATTERY_SAVER:
+                resourceName = "ic_qs_battery_saver_on";
+                stringId = R.string.qs_tile_batterysaver;
+                break;
+            case QSConstants.TILE_COMPASS:
+                resourceName = "ic_qs_compass_on";
+                stringId = R.string.qs_tile_compass;
+                break;
+            case QSConstants.TILE_ADB_NETWORK:
+                resourceName = "ic_qs_network_adb_on";
+                stringId = R.string.qs_tile_adb;
+                break;
+            case QSConstants.TILE_LOCKSCREEN:
+                resourceName = "ic_qs_lock_screen_on";
+                stringId = R.string.qs_tile_lockscreen;
+                break;
+            case QSConstants.TILE_DND:
+                resourceName = "ic_qs_dnd_on";
+                stringId = R.string.qs_tile_dnd;
                 break;
             default:
                 return null;
