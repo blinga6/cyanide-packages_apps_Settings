@@ -55,7 +55,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
 
     private SwitchPreference mShow;
     private SwitchPreference mShowOnLockScreen;
-    private SwitchPreference mUseCustom;
+    //private SwitchPreference mUseCustom;
     private EditTextPreference mCustomLabel;
     private SwitchPreference mHideLabel;
     private ListPreference mNumberOfNotificationIcons;
@@ -82,8 +82,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                Settings.System.STATUS_BAR_CARRIER_LABEL_SHOW, 0) == 1;
         final boolean showOnLockScreen = Settings.System.getInt(mResolver,
                Settings.System.STATUS_BAR_CARRIER_LABEL_SHOW_ON_LOCK_SCREEN, 1) == 1;
-        final boolean useCustom = Settings.System.getInt(mResolver,
-               Settings.System.STATUS_BAR_CARRIER_LABEL_USE_CUSTOM, 0) == 1;
+        //final boolean useCustom = Settings.System.getInt(mResolver,
+        //       Settings.System.STATUS_BAR_CARRIER_LABEL_USE_CUSTOM, 0) == 1;
         final boolean hideLabel = Settings.System.getInt(mResolver,
                Settings.System.STATUS_BAR_CARRIER_LABEL_HIDE_LABEL, 1) == 1;
         final boolean isHidden = !show && !showOnLockScreen;
@@ -102,19 +102,19 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
         mShowOnLockScreen.setOnPreferenceChangeListener(this);
 
         if (!isHidden) {
-            mUseCustom = (SwitchPreference) findPreference(PREF_CARRIER_LABEL_USE_CUSTOM);
+            /*mUseCustom = (SwitchPreference) findPreference(PREF_CARRIER_LABEL_USE_CUSTOM);
             mUseCustom.setChecked(useCustom);
             mUseCustom.setOnPreferenceChangeListener(this);
 
-            if (useCustom) {
+            if (useCustom) {*/
                 mCustomLabel = (EditTextPreference) findPreference(PREF_CARRIER_LABEL_CUSTOM_LABEL);
                 mCustomLabel.getEditText().setHint(getResources().getString(
                         com.android.internal.R.string.default_custom_label));
                 mCustomLabel.setOnPreferenceChangeListener(this);
                 updateCustomLabelPreference();
-            } else {
+            /*} else {
                 removePreference(PREF_CARRIER_LABEL_CUSTOM_LABEL);
-            }
+            }*/
 
             if (show) {
                 mHideLabel =
@@ -176,13 +176,13 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                     value ? 1 : 0);
             refreshSettings();
             return true;
-        } else if (preference == mUseCustom) {
+        /*} else if (preference == mUseCustom) {
             value = (Boolean) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.STATUS_BAR_CARRIER_LABEL_USE_CUSTOM,
                     value ? 1 : 0);
             refreshSettings();
-            return true;
+            return true;*/
         } else if (preference == mCustomLabel) {
             String label = (String) newValue;
             Settings.System.putString(mResolver,

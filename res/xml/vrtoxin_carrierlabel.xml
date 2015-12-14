@@ -30,11 +30,11 @@
         android:summary="@string/carrier_label_show_on_lock_screen_summary"
         android:persistent="false" />
 
-    <SwitchPreference
+    <!--<SwitchPreference
         android:key="carrier_label_use_custom"
         android:title="@string/carrier_label_use_custom_title"
         android:summary="@string/carrier_label_use_custom_summary"
-        android:persistent="false" />
+        android:persistent="false" />-->
 
     <EditTextPreference
         android:key="carrier_label_custom_label"
