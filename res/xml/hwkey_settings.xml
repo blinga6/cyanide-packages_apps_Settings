@@ -178,6 +178,12 @@
             android:defaultValue="false" />
 
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="volume_keys_control_ring_stream"
             android:title="@string/volume_keys_control_ring_stream_title"
             android:summary="@string/volume_keys_control_ring_stream_summary" />

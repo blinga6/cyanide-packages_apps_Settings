@@ -450,6 +450,8 @@
     <string name="home_wake_summary">Allow home button to wake your device</string>
     <string name="swap_volume_buttons_title">Reorient</string>
     <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
+    <string name="volbtn_music_controls_title">Playback control</string>
+    <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
     <string name="no_home_key">You have no button assigned any more to the \"Home\" action!\n\nThis can make your device unusable!</string>
 
     <!-- Button shorcut actions -->
