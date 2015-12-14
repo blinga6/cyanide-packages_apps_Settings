@@ -20,6 +20,9 @@
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
     <string name="customize_title">Customize</string>
+    <string name="notification_manager">Notification Manager</string>
+    <string name="category_misc">Miscellaneous</string>
+    <string name="title_general">General</string>
     <string name="reset_android">Android</string>
     <string name="reset_vrtoxin">VRToxin</string>
     <string name="reset_fusion">Fusion</string>

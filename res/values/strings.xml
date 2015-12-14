@@ -6078,7 +6078,7 @@
     <string name="vibrate_when_ringing_title">Vibrate For Calls</string>
 
     <!-- Sound & notification: Notification section header [CHAR LIMIT=30] -->
-    <string name="notification_section_header">Notification</string>
+    <string name="notification_section_header">Light Settings</string>
 
     <!-- Sound & notification: Advanced section header [CHAR LIMIT=30] -->
     <string name="advanced_section_header">Advanced</string>
