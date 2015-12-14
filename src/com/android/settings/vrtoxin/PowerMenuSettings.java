@@ -25,6 +25,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.preference.SlimSeekBarPreference;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
@@ -42,15 +43,12 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
 
     private static final String ADVANCED_REBOOT_KEY =
             "advanced_reboot";
-
-    private static final String PREF_ICON_NORMAL_COLOR =
-            "power_menu_icon_normal_color";
-    private static final String PREF_ICON_ENABLED_SELECTED_COLOR =
-            "power_menu_icon_enabled_selected_color";
-    private static final String PREF_RIPPLE_COLOR =
-            "power_menu_ripple_color";
-    private static final String PREF_TEXT_COLOR =
-            "power_menu_text_color";
+    private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
+    private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
+    private static final String PREF_ICON_NORMAL_COLOR = "power_menu_icon_normal_color";
+    private static final String PREF_ICON_ENABLED_SELECTED_COLOR = "power_menu_icon_enabled_selected_color";
+    private static final String PREF_RIPPLE_COLOR = "power_menu_ripple_color";
+    private static final String PREF_TEXT_COLOR = "power_menu_text_color";
 
     private static final int WHITE = 0xffffffff;
     private static final int VRTOXIN_BLUE = 0xff33b5e5;
@@ -61,6 +59,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
     private static final int DLG_RESET = 0;
 
     private SwitchPreference mAdvancedReboot;
+    private SwitchPreference mOnTheGoPowerMenu;
+    private SlimSeekBarPreference mOnTheGoAlphaPref;
 
     private ColorPickerPreference mIconNormalColor;
     private ColorPickerPreference mIconEnabledSelectedColor;
@@ -91,6 +91,16 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
         mAdvancedReboot.setChecked(Settings.System.getInt(mResolver,
             Settings.System.ADVANCED_REBOOT, 1) == 1);
         mAdvancedReboot.setOnPreferenceChangeListener(this);
+
+        mOnTheGoPowerMenu = (SwitchPreference) findPreference(POWER_MENU_ONTHEGO_ENABLED);
+        mOnTheGoPowerMenu.setChecked(Settings.System.getInt(mResolver,
+                Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1);
+        mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
+
+        mOnTheGoAlphaPref = (SlimSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+        mOnTheGoAlphaPref.setDefault(50);
+        mOnTheGoAlphaPref.setInterval(1);
+        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
 
         mIconNormalColor =
                 (ColorPickerPreference) findPreference(PREF_ICON_NORMAL_COLOR);
@@ -160,6 +170,15 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                     Settings.System.ADVANCED_REBOOT,
             (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mOnTheGoPowerMenu) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(mResolver, Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mOnTheGoAlphaPref) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(mResolver, Settings.System.ON_THE_GO_ALPHA,
+                    val / 100);
             return true;
         } else if (preference == mIconNormalColor) {
             hex = ColorPickerPreference.convertToARGB(
@@ -238,6 +257,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.ADVANCED_REBOOT, 0);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR, WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_ENABLED_SELECTED_COLOR,
@@ -254,6 +275,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.ADVANCED_REBOOT, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
                                     0xff00ff00);
