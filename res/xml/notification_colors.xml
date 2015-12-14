@@ -18,12 +18,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/notification_color_settings_title">
 
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="override_custom_colors"
-        android:title="@string/theme_override_custom_colors_title"
-        android:summary="@string/theme_override_custom_colors_summary"
-        android:defaultValue="false" />
-
     <PreferenceCategory
         android:key="notification_cat_background"
         android:title="@string/background_title">
@@ -32,14 +26,12 @@
             android:key="notification_media_bg_mode"
             android:title="@string/notification_media_bg_mode_title"
             android:entries="@array/notification_bg_mode_entries"
-            android:dependency="override_custom_colors"
             android:entryValues="@array/notification_color_mode_values" />
 
         <ListPreference
             android:key="notification_app_icon_bg_mode"
             android:title="@string/notification_app_icon_bg_mode_title"
             android:entries="@array/notification_bg_mode_entries"
-            android:dependency="override_custom_colors"
             android:entryValues="@array/notification_color_mode_values" />
 
 	</PreferenceCategory>
@@ -52,7 +44,6 @@
         android:key="notification_app_icon_color_mode"
         android:title="@string/notification_app_icon_color_mode_title"
         android:entries="@array/notification_icons_color_mode_entries"
-        android:dependency="override_custom_colors"
         android:entryValues="@array/notification_color_mode_values" />
 
 	</PreferenceCategory>
@@ -64,37 +55,31 @@
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_bg_color"
             android:title="@string/background_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_bg_guts_color"
             android:title="@string/notification_bg_guts_color_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xff384248" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_app_icon_bg_color"
             android:title="@string/notification_app_icon_bg_color_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffe5e5e5" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_text_color"
             android:title="@string/text_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xff000000" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_icon_color"
             android:title="@string/icons_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xff009688" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_clear_all_icon_color"
             android:title="@string/notification_clear_all_icon_color_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
 	</PreferenceCategory>

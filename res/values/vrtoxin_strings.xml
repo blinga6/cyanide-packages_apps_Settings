@@ -126,6 +126,7 @@
     <string name="palette_rgb_title">RGB</string>
     <string name="reset_android_title">Android default</string>
     <string name="reset_vrtoxin_title">VRToxin default</string>
+    <string name="theme_settings_category">Theme Settings</string>
 
     <!-- Carrier label settings -->
     <string name="status_bar_carrier_label_settings_title">Custom Carrier Label</string>
@@ -1801,8 +1802,8 @@
     <string name="system_app_remover">System App Remover</string>
 
     <!-- Override theme colors  -->
-    <string name="theme_override_custom_colors_title">Use custom colors</string>
-    <string name="theme_override_custom_colors_summary">This will override theme colors</string>
+    <string name="theme_override_custom_colors_title">Custom Colors</string>
+    <string name="theme_override_custom_colors_summary">This will allow custom color selection in the rom to override any changes made by theme</string>
 
     <!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3">3x3</string>

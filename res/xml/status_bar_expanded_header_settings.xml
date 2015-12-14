@@ -52,34 +52,24 @@
         android:key="expanded_header_cat_color"
         android:title="@string/colors_title">
 
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="override_custom_colors"
-            android:title="@string/theme_override_custom_colors_title"
-            android:summary="@string/theme_override_custom_colors_summary"
-            android:defaultValue="false" />
-
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expanded_header_background_color"
             android:title="@string/background_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xff384248" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expanded_header_ripple_color"
             android:title="@string/ripple_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expanded_header_text_color"
             android:title="@string/text_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expanded_header_icon_color"
             android:title="@string/icons_title"
-            android:dependency="override_custom_colors"
             android:defaultValue="0xffffffff" />
 
 	</PreferenceCategory>
