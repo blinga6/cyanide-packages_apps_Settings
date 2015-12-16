@@ -120,8 +120,8 @@
                 android:entries="@array/night_mode_entries"
                 android:entryValues="@array/night_mode_values" />
 
-            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-                android:key="override_custom_colors"
+        <SwitchPreference
+                android:key="pref_override_custom_colors"
                 android:title="@string/theme_override_custom_colors_title"
                 android:summary="@string/theme_override_custom_colors_summary"
                 android:defaultValue="false" />

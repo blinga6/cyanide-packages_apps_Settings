@@ -101,6 +101,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
+    private static final String OVERRIDE_CUSTOM_COLORS = "pref_override_custom_colors";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -121,6 +122,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
+    private SwitchPreference mOverrideCustomColor;
 
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -162,6 +164,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mScreenTimeoutPreference.setOnPreferenceChangeListener(this);
         disableUnusableTimeouts(mScreenTimeoutPreference);
         updateTimeoutPreferenceDescription(currentTimeout);
+
+        mOverrideCustomColor = (SwitchPreference) findPreference(OVERRIDE_CUSTOM_COLORS);
+        mOverrideCustomColor.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.OVERRIDE_CUSTOM_COLORS, 0) == 1));
+        mOverrideCustomColor.setOnPreferenceChangeListener(this);
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
@@ -671,6 +678,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                     value ? 0 : 1 /* Backwards because setting is for disabling */);
+        }
+        if (preference == mOverrideCustomColor) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.OVERRIDE_CUSTOM_COLORS, value ? 1 : 0);
         }
         if (preference == mNightModePreference) {
             try {
