@@ -181,7 +181,7 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
-    <style name="Theme.AlertDialog" parent="@*android:style/Theme.Material.Settings.Dialog.Alert">
+    <style name="Theme.AlertDialog" parent="@*android:style/Theme.Material.DayNight.Dialog.Alert">
         <item name="android:windowSoftInputMode">adjustResize</item>
 
         <!-- Redefine the ActionBar style for contentInsetStart -->

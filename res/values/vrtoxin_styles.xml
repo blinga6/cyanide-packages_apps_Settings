@@ -15,13 +15,13 @@
 -->
 
 <resources>
-    <style name="Theme.DateTimeSettingsSetupWizard" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="Theme.DateTimeSettingsSetupWizard" parent="@android:style/Theme.Material.DayNight.NoActionBar" />
 
-    <style name="Theme.SettingsLicenseActivity" parent="@android:style/Theme.Material.Light.Panel" />
+    <style name="Theme.SettingsLicenseActivity" parent="@android:style/Theme.Material.DayNight.Panel" />
 
-    <style name="Theme.AppPicker" parent="@android:style/Theme.Material.Light.Dialog" />
+    <style name="Theme.AppPicker" parent="@android:style/Theme.Material.DayNight.Dialog" />
 
-    <style name="Theme.SettingsDialog" parent="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
+    <style name="Theme.SettingsDialog" parent="@android:style/Theme.Material.DayNight.Dialog.NoActionBar" />
 
-    <style name="Theme.SettingsAlertDialog" parent="@*android:style/Theme.Material.Light.Dialog.Alert" />
+    <style name="Theme.SettingsAlertDialog" parent="@*android:style/Theme.Material.DayNight.Dialog.Alert" />
 </resources>
