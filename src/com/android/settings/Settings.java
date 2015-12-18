@@ -119,7 +119,14 @@ public class Settings extends SettingsActivity {
     public static class AppDrawOverlaySettingsActivity extends SettingsActivity { /* empty */ }
     public static class AppWriteSettingsActivity extends SettingsActivity { /* empty */ }
     public static class MainSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AmbientDisplaySettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PieControlSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class GestureAnywhereSettingsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NavigationSettingsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AppCircleBarSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AppSideBarSettingsActivity extends SettingsActivity { /* empty */ }
     public static class StatusBarSettingsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class BlacklistSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ButtonSettingsSettingsActivity extends SettingsActivity { /* empty */ }
 }

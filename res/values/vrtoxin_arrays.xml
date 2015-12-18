@@ -1720,25 +1720,47 @@
 
     <string-array name="qab_button_entries">
         <item>@string/qab_button_airplane_mode</item>
+        <item>@string/qab_button_ambient_display</item>
+        <item>@string/qab_button_appcirclebar</item>
+        <item>@string/qab_button_appsidebar</item>
         <item>@string/qab_button_bluetooth</item>
         <item>@string/qab_button_display_inversion</item>
         <item>@string/qab_button_display_rotation</item>
         <item>@string/qab_button_flashlight</item>
+        <item>@string/qab_button_gesture_anywhere</item>
         <item>@string/qab_button_hotspot</item>
+        <item>@string/qab_button_hwkeys</item>
         <item>@string/qab_button_location</item>
         <item>@string/qab_button_mobile_data</item>
+        <item>@string/qab_button_navbar</item>
+        <item>@string/qab_button_powermenu</item>
+        <item>@string/qab_button_systemui_restart</item>
+        <item>@string/qab_button_screen_off</item>
+        <item>@string/qab_button_slimpie</item>
+        <item>@string/qab_button_vrtoxin</item>
         <item>@string/qab_button_wifi</item>
     </string-array>
 
     <string-array name="qab_button_values" translatable="false">
         <item>airplane</item>
+        <item>ambient</item>
+        <item>appcirclebar</item>
+        <item>appsidebar</item>
         <item>bt</item>
         <item>inversion</item>
         <item>rotation</item>
         <item>flashlight</item>
+        <item>gestureanywhere</item>
         <item>hotspot</item>
+        <item>hwkeys</item>
         <item>location</item>
         <item>data</item>
+        <item>navbar</item>
+        <item>powermenu</item>
+        <item>restartui</item>
+        <item>screenoff</item>
+        <item>slimpie</item>
+        <item>vrtoxin</item>
         <item>wifi</item>
     </string-array>
 </resources>

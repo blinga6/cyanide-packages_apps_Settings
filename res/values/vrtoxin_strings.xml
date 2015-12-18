@@ -553,7 +553,7 @@
     <string name="qs_panel_tiles_summary">Arrange &amp; choose the tiles to display on the panel</string>
     <string name="qs_bar_buttons_summary">Arrange &amp; choose the buttons to display on the bar</string>
     <string name="quick_settings_title">Quick Settings</string>
-    <string name="qs_colors_title">Custom Color Options</string>
+    <string name="qs_colors_title">Custom Colors</string>
     <string name="qs_num_columns_title">Number of Tiles Per Row</string>
     <string name="qs_num_columns_showing">%1$s tiles per row showing</string>
     <string name="qs_brightness_slider_title">Brightness Slider</string>
@@ -582,6 +582,17 @@
     <string name="qab_button_location">Location</string>
     <string name="qab_button_hotspot">Hotspot</string>
     <string name="qab_button_mobile_data">Mobile Data</string>
+    <string name="qab_button_ambient_display">Ambient Display</string>
+    <string name="qab_button_appcirclebar">AppCircleBar</string>
+    <string name="qab_button_appsidebar">AppSideBar</string>
+    <string name="qab_button_gesture_anywhere">Gesture Anywhere</string>
+    <string name="qab_button_hwkeys">HWKeys</string>
+    <string name="qab_button_navbar">Navigation Bar</string>
+    <string name="qab_button_powermenu">Power Menu</string>
+    <string name="qab_button_systemui_restart">RestartUI</string>
+    <string name="qab_button_screen_off">Screen Off</string>
+    <string name="qab_button_slimpie">SlimPie</string>
+    <string name="qab_button_vrtoxin">VRToxinMods</string>
 
     <!-- Tiles -->
     <string name="qs_tile_rotation">Rotation</string>

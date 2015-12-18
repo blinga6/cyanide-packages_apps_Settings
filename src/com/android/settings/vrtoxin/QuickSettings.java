@@ -42,16 +42,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private static final String PREF_QS_TYPE = "qs_type";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    private static final String PREF_NUM_OF_COLUMNS = "sysui_qs_num_columns";
 
     private static final int QS_TYPE_PANEL  = 0;
     private static final int QS_TYPE_BAR    = 1;
     private static final int QS_TYPE_HIDDEN = 2;
 
     private ListPreference mQSType;
-    private ListPreference mNumColumns;
-    private Preference mQSTiles;
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
+    private ListPreference mNumColumns;
 
     private ContentResolver mResolver;
 
@@ -73,7 +73,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             prefs.removeAll();
         }
 
-        PreferenceScreen prefSet = getPreferenceScreen();
+        addPreferencesFromResource(R.xml.quick_settings);
         mResolver = getActivity().getContentResolver();
 
         final int qsType = Settings.System.getInt(mResolver,
@@ -108,6 +108,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             removePreference("quick_settings_vibrate");
         }
 
+        if (qsType == QS_TYPE_PANEL || qsType == QS_TYPE_HIDDEN) {
+            removePreference("qs_bar_buttons");
+        }
+
         mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
         int quickPulldownValue = Settings.System.getIntForUser(mResolver,
@@ -124,14 +128,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         updateSmartPulldownSummary(smartPulldown);
     }
 
-    @Override
+    /*@Override
     public void onResume() {
         super.onResume();
 
         int qsTileCount = QSTiles.determineTileCount(getActivity());
         mQSTiles.setSummary(getResources().getQuantityString(R.plurals.qs_tiles_summary,
                     qsTileCount, qsTileCount));
-    }
+    }*/
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
