@@ -68,8 +68,8 @@ import com.android.internal.util.vrtoxin.NavigationBarColorHelper;
 import com.android.internal.util.vrtoxin.LockScreenColorHelper;
 import com.android.internal.util.vrtoxin.PowerMenuColorHelper;
 import com.android.internal.util.vrtoxin.PowerMenuHelper;
-//import com.android.internal.util.vrtoxin.QSBarHelper;
-//import com.android.internal.util.vrtoxin.QSColorHelper;
+import com.android.internal.util.vrtoxin.QSBarHelper;
+import com.android.internal.util.vrtoxin.QSColorHelper;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -565,10 +565,10 @@ public class ActionListViewSettings extends ListFragment implements
                     mActivity, mActionValuesKey, mActionEntriesKey);
             /*case QUICKTILE:
                 return ActionHelper.getQuickTileConfigWithDescription(
-                    mActivity, mActionValuesKey, mActionEntriesKey);
+                    mActivity, mActionValuesKey, mActionEntriesKey);*/
             case QUICK_SETTINGS_BAR:
                 return QSBarHelper.getQSBarConfigWithDescription(
-                    mActivity, mActionValuesKey, mActionEntriesKey);*/
+                    mActivity, mActionValuesKey, mActionEntriesKey);
             case RECENT_APP_SIDEBAR:
                 return ActionHelper.getRecentAppSidebarConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
@@ -607,11 +607,11 @@ public class ActionListViewSettings extends ListFragment implements
             /*case QUICKTILE:
                 ActionHelper.setQuickTileConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;
+                break;*/
             case QUICK_SETTINGS_BAR:
                 QSBarHelper.setQSBarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;*/
+                break;
             case RECENT_APP_SIDEBAR:
                 ActionHelper.setRecentAppSidebarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
@@ -722,13 +722,13 @@ public class ActionListViewSettings extends ListFragment implements
                 final int iconColor = PowerMenuColorHelper.getIconNormalColor(mActivity);
                 holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
                 holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
-            /*} else if (mActionMode == QUICK_SETTINGS_BAR) {
+            } else if (mActionMode == QUICK_SETTINGS_BAR) {
                 d = ImageHelper.resize(
                         mActivity, QSBarHelper.getQSBarIconImage(mActivity,
                         getItem(position).getClickAction()), 32);
                 final int iconColor = QSColorHelper.getIconColor(mActivity);
                 holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
-                holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);*/
+                holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
             } else {
                 holder.iconView.setImageDrawable(d);
             }
@@ -829,7 +829,7 @@ public class ActionListViewSettings extends ListFragment implements
                         case PIE:
                         case PIE_SECOND:
                         case POWER_MENU:
-                        //case QUICK_SETTINGS_BAR:
+                        case QUICK_SETTINGS_BAR:
                         case RECENT_APP_SIDEBAR:
                         default:
                             actionMode = res.getString(R.string.shortcut_action_help_button);

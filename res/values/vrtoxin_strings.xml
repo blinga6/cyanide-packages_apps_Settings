@@ -546,6 +546,12 @@
     <string name="backlight_summary_enabled">Enabled</string>
 
     <!-- Quick Settings -->
+    <string name="qs_type_title">Type</string>
+    <string name="qs_type_dlg_title">Choose Quick Settings Mode</string>
+    <string name="qs_type_panel">Panel</string>
+    <string name="qs_type_bar">Bar</string>
+    <string name="qs_panel_tiles_summary">Arrange &amp; choose the tiles to display on the panel</string>
+    <string name="qs_bar_buttons_summary">Arrange &amp; choose the buttons to display on the bar</string>
     <string name="quick_settings_title">Quick Settings</string>
     <string name="qs_colors_title">Custom Color Options</string>
     <string name="qs_num_columns_title">Number of Tiles Per Row</string>
@@ -565,6 +571,17 @@
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
     <string name="qs_main_tiles_summary_off">Three tiles on each row</string>
+
+    <!-- QS Buttons -->
+    <string name="qab_button_wifi">Wi\u2011Fi</string>
+    <string name="qab_button_bluetooth">Bluetooth</string>
+    <string name="qab_button_display_inversion">Color Inversion</string>
+    <string name="qab_button_airplane_mode">Airplane Mode</string>
+    <string name="qab_button_display_rotation">Rotation</string>
+    <string name="qab_button_flashlight">Flashlight</string>
+    <string name="qab_button_location">Location</string>
+    <string name="qab_button_hotspot">Hotspot</string>
+    <string name="qab_button_mobile_data">Mobile Data</string>
 
     <!-- Tiles -->
     <string name="qs_tile_rotation">Rotation</string>

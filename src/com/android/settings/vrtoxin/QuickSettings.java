@@ -39,41 +39,78 @@ import java.util.List;
 
 public class QuickSettings extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
+    private static final String PREF_QS_TYPE = "qs_type";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
+    private static final int QS_TYPE_PANEL  = 0;
+    private static final int QS_TYPE_BAR    = 1;
+    private static final int QS_TYPE_HIDDEN = 2;
+
+    private ListPreference mQSType;
     private ListPreference mNumColumns;
     private Preference mQSTiles;
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
 
+    private ContentResolver mResolver;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.quick_settings);
-
-        mQSTiles = findPreference("qs_order");
+        refreshSettings();
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        refreshSettings();
+    }
+
+    public void refreshSettings() {
+        PreferenceScreen prefs = getPreferenceScreen();
+        if (prefs != null) {
+            prefs.removeAll();
+        }
 
         PreferenceScreen prefSet = getPreferenceScreen();
-        ContentResolver resolver = getActivity().getContentResolver();
+        mResolver = getActivity().getContentResolver();
 
-        mNumColumns = (ListPreference) prefSet.findPreference("sysui_qs_num_columns");
-        int numColumns = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
-                UserHandle.USER_CURRENT);
-        mNumColumns.setValue(String.valueOf(numColumns));
-        updateNumColumnsSummary(numColumns);
-        mNumColumns.setOnPreferenceChangeListener(this);
-        DraggableGridView.setColumnCount(numColumns);
+        final int qsType = Settings.System.getInt(mResolver,
+               Settings.System.QS_TYPE, QS_TYPE_PANEL);
+
+        mQSType = (ListPreference) findPreference(PREF_QS_TYPE);
+        mQSType.setValue(String.valueOf(qsType));
+        mQSType.setSummary(mQSType.getEntry());
+        mQSType.setOnPreferenceChangeListener(this);
+
+        if (qsType == QS_TYPE_PANEL) {
+            mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
+            int numColumns = Settings.System.getIntForUser(mResolver,
+                    Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
+                    UserHandle.USER_CURRENT);
+            mNumColumns.setValue(String.valueOf(numColumns));
+            updateNumColumnsSummary(numColumns);
+            mNumColumns.setOnPreferenceChangeListener(this);
+            DraggableGridView.setColumnCount(numColumns);
+
+        } else {
+            removePreference("sysui_qs_num_columns");
+        }
+
+        if (qsType == QS_TYPE_BAR || qsType == QS_TYPE_HIDDEN) {
+            removePreference("qs_panel_tiles");
+            removePreference("sysui_qs_num_columns");
+            removePreference("sysui_qs_main_tiles");
+            removePreference("qs_location_advanced");
+            removePreference("quick_settings_collapse_panel");
+            removePreference("qs_wifi_detail");
+            removePreference("quick_settings_vibrate");
+        }
 
         mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getIntForUser(resolver,
+        int quickPulldownValue = Settings.System.getIntForUser(mResolver,
                 Settings.System.QS_QUICK_PULLDOWN, 1, UserHandle.USER_CURRENT);
         mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
         updatePulldownSummary(quickPulldownValue);
@@ -81,7 +118,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         // Smart Pulldown
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
         mSmartPulldown.setOnPreferenceChangeListener(this);
-        int smartPulldown = Settings.System.getInt(resolver,
+        int smartPulldown = Settings.System.getInt(mResolver,
                 Settings.System.QS_SMART_PULLDOWN, 1);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
@@ -98,23 +135,30 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        ContentResolver resolver = getContentResolver();
-        if (preference == mNumColumns) {
+        if (preference == mQSType) {
+            int intValue = Integer.valueOf((String) newValue);
+            int index = mQSType.findIndexOfValue((String) newValue);
+            Settings.System.putInt(mResolver,
+                Settings.System.QS_TYPE, intValue);
+            preference.setSummary(mQSType.getEntries()[index]);
+            refreshSettings();
+            return true;
+        } else if (preference == mNumColumns) {
             int numColumns = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_COLUMNS,
+            Settings.System.putIntForUser(mResolver, Settings.System.QS_NUM_TILE_COLUMNS,
                     numColumns, UserHandle.USER_CURRENT);
             updateNumColumnsSummary(numColumns);
             DraggableGridView.setColumnCount(numColumns);
             return true;
 		} else if (preference == mQuickPulldown) {
             int quickPulldownValue = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
+            Settings.System.putIntForUser(mResolver, Settings.System.QS_QUICK_PULLDOWN,
                     quickPulldownValue, UserHandle.USER_CURRENT);
             updatePulldownSummary(quickPulldownValue);
             return true;
         } else if (preference == mSmartPulldown) {
             int smartPulldown = Integer.valueOf((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_SMART_PULLDOWN,
+            Settings.System.putIntForUser(mResolver, Settings.System.QS_SMART_PULLDOWN,
                     smartPulldown, UserHandle.USER_CURRENT);
             updateSmartPulldownSummary(smartPulldown);
             return true;
