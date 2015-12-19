@@ -2003,11 +2003,13 @@
     <!-- Sound & display settings screen, setting option summary to change the user interface theme [CHAR LIMIT=100] -->
     <string name="night_mode_summary">%s</string>
     <!-- Sound & display settings screen, theme setting value to prefer a light-colored user interface [CHAR LIMIT=30] -->
-    <string name="night_mode_no">Light</string>
+    <string name="night_mode_no">Material Light</string>
     <!-- Sound & display settings screen, theme setting value to prefer a dark-colored user interface [CHAR LIMIT=30] -->
-    <string name="night_mode_yes">Dark</string>
+    <string name="night_mode_yes">Material Dark</string>
+    <!-- Sound & display settings screen, theme setting value to prefer a black-colored user interface [CHAR LIMIT=30] -->
+    <string name="night_mode_blackout">Blackout</string>
     <!-- Sound & display settings screen, theme setting value to automatically switch between a light- or dark-colored user interface [CHAR LIMIT=30] -->
-    <string name="night_mode_auto">Automatic</string>
+    <string name="night_mode_auto">Automatic (Light-Dark)</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout -->
     <string name="screen_timeout">Screen Timeout</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout [CHAR LIMIT=30] -->
