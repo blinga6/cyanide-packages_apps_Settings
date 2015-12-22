@@ -1763,4 +1763,17 @@
         <item>vrtoxin</item>
         <item>wifi</item>
     </string-array>
+
+    <!-- DayNight Automatic mode -->
+    <string-array name="night_auto_mode_entries">
+        <item>@string/night_auto_mode_off</item>
+        <item>@string/night_auto_mode_lightsensor</item>
+        <item>@string/night_auto_mode_twilight</item>
+    </string-array>
+
+    <string-array name="night_auto_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>
