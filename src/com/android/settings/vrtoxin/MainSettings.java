@@ -51,7 +51,7 @@ import android.widget.Toast;
 import com.android.internal.util.vrtoxin.ScreenType;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
-import com.android.settings.vrtoxin.ButtonSettings;
+import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
 import com.android.settings.vrtoxin.LockS;
 import com.android.settings.vrtoxin.MasterAnimationControl;
@@ -188,7 +188,7 @@ public class MainSettings extends SettingsPreferenceFragment {
             super(fm);
             frags[0] = new MasterAnimationControl();
             frags[1] = new PowerUsageSummary();
-            frags[2] = new ButtonSettings();
+            frags[2] = new HwKeySettings();
             frags[3] = new InterfaceSettings();
             frags[4] = new LockS();
             frags[5] = new VrtoxinNotifs();
