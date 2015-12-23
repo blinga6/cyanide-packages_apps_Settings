@@ -1382,7 +1382,7 @@
         <!-- Do not translate. -->
         <item>@string/night_mode_blackout</item>
         <!-- Do not translate. -->
-        <item>@string/night_mode_auto</item>
+        <!-- <item>@string/night_mode_auto</item> -->
     </string-array>
 
     <!-- These values should match up with the MODE_NIGHT constants in UiModeManager.
@@ -1395,7 +1395,7 @@
         <!-- Do not translate. -->
         <item>3</item>
         <!-- Do not translate. -->
-        <item>0</item>
+        <!-- <item>0</item> -->
     </string-array>
 
 </resources>
