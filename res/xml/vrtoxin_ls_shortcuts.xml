@@ -39,10 +39,11 @@
             android:summary="@string/lock_screen_color_settings_summary"
             android:fragment="com.android.settings.vrtoxin.LockScreenColorSettings" />
 
-        <com.android.settings.vrtoxin.SecureSettingSwitchPreference
-            android:key="lockscreen_visualizer"
-            android:title="@string/lockscreen_visualizer_title"
-            android:defaultValue="true" />
+        <PreferenceScreen
+            android:key="lock_screen_visualizer_settings"
+            android:title="@string/lock_screen_visualizer_settings_title"
+            android:summary="@string/lock_screen_visualizer_settings_summary"
+            android:fragment="com.android.settings.vrtoxin.LockScreenVisualizerSettings" />
 
         <com.android.settings.SingleLineSummaryPreference
             android:key="owner_info_settings"

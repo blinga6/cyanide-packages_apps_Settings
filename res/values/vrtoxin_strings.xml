@@ -1797,7 +1797,11 @@
     <string name="chamber_toast">The poison has been unleashed</string>
 
     <!-- Lockscreen visualizer -->
-    <string name="lockscreen_visualizer_title">Music Visualizer</string>
+    <string name="lock_screen_visualizer_settings_title">Music Visualizer</string>
+    <string name="lock_screen_visualizer_settings_summary">Customize the music visualizer</string>
+    <string name="visualizer_show_summary">Enable to show the music visualizer on the lock screen</string>
+    <string name="visualizer_use_custom_color_title">Customize the color</string>
+    <string name="visualizer_use_custom_color_summary">Enable to use a custom color, disable to create the color from the lock screen background automatically</string>
 
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume Steps</string>
