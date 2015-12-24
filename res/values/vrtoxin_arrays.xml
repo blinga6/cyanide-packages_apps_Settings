@@ -1737,6 +1737,7 @@
         <item>@string/qab_button_systemui_restart</item>
         <item>@string/qab_button_screen_off</item>
         <item>@string/qab_button_slimpie</item>
+        <item>@string/qab_button_themes</item>
         <item>@string/qab_button_vrtoxin</item>
         <item>@string/qab_button_wifi</item>
     </string-array>
@@ -1760,6 +1761,7 @@
         <item>restartui</item>
         <item>screenoff</item>
         <item>slimpie</item>
+        <item>themes</item>
         <item>vrtoxin</item>
         <item>wifi</item>
     </string-array>

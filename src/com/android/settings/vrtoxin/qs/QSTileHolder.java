@@ -166,6 +166,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_dnd_on";
                 stringId = R.string.qs_tile_dnd;
                 break;
+            case QSConstants.TILE_THEMES:
+                resourceName = "ic_settings_themes_alpha";
+                stringId = R.string.qs_tile_themes;
+                break;
             default:
                 return null;
         }

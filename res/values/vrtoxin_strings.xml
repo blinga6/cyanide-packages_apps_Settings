@@ -593,6 +593,7 @@
     <string name="qab_button_systemui_restart">RestartUI</string>
     <string name="qab_button_screen_off">Screen Off</string>
     <string name="qab_button_slimpie">SlimPie</string>
+    <string name="qab_button_themes">Themes</string>
     <string name="qab_button_vrtoxin">VRToxinMods</string>
 
     <!-- Tiles -->
@@ -616,6 +617,7 @@
     <string name="qs_tile_lockscreen">LockScreen</string>
     <string name="qs_tile_batterysaver">Battery Saver</string>
     <string name="qs_tile_dnd">Do Not Disturb</string>
+    <string name="qs_tile_themes">Themes</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

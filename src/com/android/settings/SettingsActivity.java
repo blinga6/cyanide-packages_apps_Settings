@@ -137,6 +137,7 @@ import com.android.settings.vrtoxin.NavigationBarSettings;
 import com.android.settings.vrtoxin.AppCircleBar;
 import com.android.settings.vrtoxin.AppSideBar;
 import com.android.settings.vrtoxin.HwKeySettings;
+import com.android.settings.vrtoxin.ThemeSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -373,7 +374,8 @@ public class SettingsActivity extends Activity
             NavigationBarSettings.class.getName(),
             AppCircleBar.class.getName(),
             AppSideBar.class.getName(),
-            HwKeySettings.class.getName()
+            HwKeySettings.class.getName(),
+            ThemeSettings.class.getName()
     };
 
 
