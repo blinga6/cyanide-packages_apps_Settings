@@ -24,6 +24,7 @@ import android.app.IUiModeManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -42,6 +43,7 @@ import android.view.MenuItem;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class ThemeSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -50,6 +52,10 @@ public class ThemeSettings extends SettingsPreferenceFragment implements
     private static final String NIGHT_MODE = "night_mode";
     private static final String NIGHT_AUTO_MODE = "night_auto_mode";
     private static final String OVERRIDE_CUSTOM_COLORS = "override_custom_colors";
+    public static final String LAYERS_PACKAGE_NAME = "com.lovejoy777.rroandlayersmanager";
+    public static Intent INTENT_LAYERS_SETTINGS = new Intent(Intent.ACTION_MAIN)
+            .setClassName(LAYERS_PACKAGE_NAME, LAYERS_PACKAGE_NAME + ".menu");
+    private static final String CATEGORY_LAYERS = "layers_manager";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -57,6 +63,7 @@ public class ThemeSettings extends SettingsPreferenceFragment implements
     private ListPreference mNightModePreference;
     private ListPreference mNightAutoMode;
     private SwitchPreference mOverrideCustomColor;
+    private PreferenceCategory mLayers;
 
     private ContentResolver mResolver;
 
@@ -118,6 +125,11 @@ public class ThemeSettings extends SettingsPreferenceFragment implements
         mOverrideCustomColor.setChecked((Settings.System.getInt(mResolver,
                 Settings.System.OVERRIDE_CUSTOM_COLORS, 0) == 1));
         mOverrideCustomColor.setOnPreferenceChangeListener(this);
+
+        mLayers = (PreferenceCategory) findPreference(CATEGORY_LAYERS);
+        if (!Utils.isPackageInstalled(getActivity(), LAYERS_PACKAGE_NAME)) {
+            prefSet.removePreference(mLayers);
+        }
 
         setHasOptionsMenu(true);
     }

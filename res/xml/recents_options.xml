@@ -145,7 +145,7 @@
             android:summary="@string/omniswitch_start_settings_summary"
             android:persistent="false" />
 
-        </PreferenceCategory>
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="slim_recents"

@@ -1091,7 +1091,7 @@
     <string name="more_animations_cat_title">More</string>
 
     <!-- Status bar temperature -->
-    <string name="status_bar_weather_temperature_title">Weather temperature</string>
+    <string name="status_bar_weather_temperature_title">Weather Temperature</string>
     <string name="status_bar_weather_temperature_summary">Show weather temperature icon on the status bar</string>
     <string name="status_bar_temperature_title">Temperature</string>
     <string name="status_bar_temperature_hidden">Hidden</string>
@@ -1842,7 +1842,7 @@
     <string name="theme_override_custom_colors_summary">This will allow custom color selection in the rom to override any changes made by theme</string>
 
     <!-- DayNight Automatic mode -->
-    <string name="night_auto_mode_title">Automatic mode</string>
+    <string name="night_auto_mode_title">Automatic Mode</string>
     <string name="night_auto_mode_off">Manual</string>
     <string name="night_auto_mode_lightsensor">On light condition change</string>
     <string name="night_auto_mode_twilight">On daytime</string>

@@ -1376,11 +1376,11 @@
          Do not translate. -->
     <string-array name="night_mode_entries" translatable="false">
         <!-- Do not translate. -->
-        <item>@string/night_mode_no</item>
+        <item>@string/night_mode_blackout</item>
         <!-- Do not translate. -->
         <item>@string/night_mode_yes</item>
         <!-- Do not translate. -->
-        <item>@string/night_mode_blackout</item>
+        <item>@string/night_mode_no</item>
         <!-- Do not translate. -->
         <!-- <item>@string/night_mode_auto</item> -->
     </string-array>
@@ -1389,11 +1389,11 @@
          Do not translate. -->
     <string-array name="night_mode_values" translatable="false">
         <!-- Do not translate. -->
-        <item>1</item>
+        <item>3</item>
         <!-- Do not translate. -->
         <item>2</item>
         <!-- Do not translate. -->
-        <item>3</item>
+        <item>1</item>
         <!-- Do not translate. -->
         <!-- <item>0</item> -->
     </string-array>
