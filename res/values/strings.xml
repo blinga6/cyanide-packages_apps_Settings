@@ -7056,12 +7056,6 @@
     <!-- Description of setting that controls gesture to open camera [CHAR LIMIT=NONE] -->
     <string name="camera_gesture_desc">Open the camera app by twisting your wrist twice</string>
 
-    <!-- Title of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=40] -->
-    <string name="camera_double_tap_power_gesture_title">Camera Gesture</string>
-
-    <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
-    <string name="camera_double_tap_power_gesture_desc">Double tap power button to quickly open camera</string>
-
     <!-- Name of each color mode for the display. [CHAR LIMIT=40] -->
     <string-array name="color_mode_names">
         <item>Vibrant (default)</item>

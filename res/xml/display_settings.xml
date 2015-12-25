@@ -39,12 +39,6 @@
             <intent android:action="android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
         </PreferenceScreen>
 
-        <SwitchPreference
-                android:key="camera_double_tap_power_gesture"
-                android:title="@string/camera_double_tap_power_gesture_title"
-                android:summary="@string/camera_double_tap_power_gesture_desc"
-                android:persistent="false" />
-
         <PreferenceScreen
                 android:key="screensaver"
                 android:title="@string/screensaver_settings_title"
@@ -108,8 +102,26 @@
                 android:defaultValue="false" />
 
         <PreferenceCategory
-                android:key="advanced_display_prefs"
-                android:title="@string/advanced_settings">
+            android:key="dt2l_target_category"
+            android:title="@string/dt2l_target_category">
+
+            <SwitchPreference
+                android:key="camera_double_tap_power_gesture"
+                android:title="@string/camera_double_tap_power_gesture_title"
+                android:summary="@string/camera_double_tap_power_gesture_desc"
+                android:persistent="false" />
+
+            <com.android.settings.vrtoxin.NumberPickerPreference
+                android:key="dt2l_target_vibrate_config"
+                android:title="@string/dt2l_target_vib_title"
+                android:summary="@string/dt2l_target_vib_summary"
+                android:dependency="camera_double_tap_power_gesture" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:key="advanced_display_prefs"
+            android:title="@string/advanced_settings">
 
             <com.android.settings.vrtoxin.SystemSettingSwitchPreference
                     android:key="proximity_on_wake"
