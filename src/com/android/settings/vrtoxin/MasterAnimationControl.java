@@ -45,11 +45,14 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String TOAST_TEXT_COLOR = "toast_text_color";
+    private static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
     private ColorPickerPreference mTextColor;
+
+    ListPreference mPowerMenuAnimations;
 
     @Override
     protected int getMetricsCategory() {
@@ -100,6 +103,12 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
         mTextColor.setNewPreviewColor(intColor);
         mTextColor.setSummary(hexColor);
         mTextColor.setOnPreferenceChangeListener(this);
+
+        mPowerMenuAnimations = (ListPreference) findPreference(POWER_MENU_ANIMATIONS);
+        mPowerMenuAnimations.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS, 0)));
+        mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+        mPowerMenuAnimations.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -143,6 +152,13 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
             Settings.System.putInt(getContentResolver(),
                     Settings.System.TOAST_TEXT_COLOR, intHex);
             preference.setSummary(hex);
+        }
+        if (preference == mPowerMenuAnimations) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.POWER_MENU_ANIMATIONS,
+                    Integer.valueOf((String) objValue));
+            mPowerMenuAnimations.setValue(String.valueOf(objValue));
+            mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
         }
         return true;
     }
