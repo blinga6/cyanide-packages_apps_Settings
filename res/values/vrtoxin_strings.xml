@@ -618,6 +618,13 @@
     <string name="qs_tile_batterysaver">Battery Saver</string>
     <string name="qs_tile_dnd">Do Not Disturb</string>
     <string name="qs_tile_themes">Themes</string>
+    <string name="qs_tile_stweaks">STweaks</string>
+    <string name="qs_tile_appsidebar">AppSideBar</string>
+    <string name="qs_tile_slimpie">SlimPie</string>
+	<string name="qs_tile_gesture_anywhere">Gesture Anywhere</string>
+	<string name="qs_tile_navbar">Navigation Bar</string>
+	<string name="qs_tile_hwkeys">Hardware Keys</string>
+	<string name="qs_tile_appcirclebar">AppCircleBar</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

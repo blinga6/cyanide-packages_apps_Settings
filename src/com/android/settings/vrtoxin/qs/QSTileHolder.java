@@ -170,6 +170,34 @@ public class QSTileHolder {
                 resourceName = "ic_settings_themes_alpha";
                 stringId = R.string.qs_tile_themes;
                 break;
+            case QSConstants.TILE_SLIMPIE:
+                resourceName = "ic_qs_pie_global_on";
+                stringId = R.string.qs_tile_slimpie;
+                break;
+            case QSConstants.TILE_GESTURE_ANYWHERE:
+                resourceName = "ic_qs_gestures_on";
+                stringId = R.string.qs_tile_gesture_anywhere;
+                break;
+            case QSConstants.TILE_NAVBAR:
+                resourceName = "ic_qs_navbar_on";
+                stringId = R.string.qs_tile_navbar;
+                break;
+            case QSConstants.TILE_HWKEYS:
+                resourceName = "ic_qs_buttons_on";
+                stringId = R.string.qs_tile_hwkeys;
+                break;
+            case QSConstants.TILE_APPCIRCLEBAR:
+                resourceName = "ic_qs_appcirclebar_on";
+                stringId = R.string.qs_tile_appcirclebar;
+                break;
+            case QSConstants.TILE_APPSIDEBAR:
+                resourceName = "ic_qs_sidebar_off";
+                stringId = R.string.qs_tile_appsidebar;
+                break;
+            case QSConstants.TILE_STWEAKS:
+                resourceName = "ic_qs_stweaks";
+                stringId = R.string.qs_tile_stweaks;
+                break;
             default:
                 return null;
         }
