@@ -36,5 +36,6 @@
     <color name="cardview_dark_background">#ff000000</color>
     <color name="theme_accent">#ff1976D2</color>
     <color name="background_tab_pressed">#ff1976D2</color>
+    <color name="qs_background_color">#ff000000</color>
 
 </resources>
