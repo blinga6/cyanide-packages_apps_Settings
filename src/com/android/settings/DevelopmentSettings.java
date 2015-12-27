@@ -105,6 +105,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
      */
     public static final String PREF_SHOW = "show";
 
+    private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
     private static final String ENABLE_ADB = "enable_adb";
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String ADB_TCPIP  = "adb_over_network";
@@ -202,6 +203,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private boolean mHaveDebugSettings;
     private boolean mDontPokeProperties;
 
+    private ListPreference mMSOB;
     private SwitchPreference mEnableAdb;
     private Preference mClearAdbKeys;
     private SwitchPreference mAdbOverNetwork;
@@ -420,6 +422,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             removePreference(KEY_COLOR_MODE);
             mColorModePreference = null;
         }
+
+        mMSOB = (ListPreference) findPreference(MEDIA_SCANNER_ON_BOOT);
+        mAllPrefs.add(mMSOB);
+        mMSOB.setOnPreferenceChangeListener(this);
 
         mChamber = (Preference) findPreference(KEY_CHAMBER_OF_SECRETS);
         mAllPrefs.add(mChamber);
@@ -643,6 +649,26 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateMobileDataAlwaysOnOptions();
         updateSimulateColorSpace();
         updateUSBAudioOptions();
+        updateMSOBOptions();
+    }
+
+    private void resetMSOBOptions() {
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.MEDIA_SCANNER_ON_BOOT, 0);
+    }
+
+    private void writeMSOBOptions(Object newValue) {
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.MEDIA_SCANNER_ON_BOOT,
+                Integer.valueOf((String) newValue));
+        updateMSOBOptions();
+    }
+
+    private void updateMSOBOptions() {
+        int value = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.MEDIA_SCANNER_ON_BOOT, 0);
+        mMSOB.setValue(String.valueOf(value));
+        mMSOB.setSummary(mMSOB.getEntry());
     }
 
     private void resetDangerousOptions() {
@@ -656,6 +682,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
         resetDebuggerOptions();
         writeLogdSizeOption(null);
+        resetMSOBOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -1833,6 +1860,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (preference == mKeepScreenOn) {
             writeStayAwakeOptions(newValue);
             return true;
+        } else if (preference == mMSOB) {
+            writeMSOBOptions(newValue);
         } else if (preference == mChamberUnlocked) {
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.CHAMBER_OF_SECRETS,
