@@ -25,20 +25,22 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
 import com.android.settings.vrtoxin.SeekBarPreference;
+
+import com.android.internal.logging.MetricsLogger;
 
 public class AppSideBar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
-    private static final String TAG = "PowerMenu";
+    private static final String TAG = "AppSideBar";
 
     private static final String KEY_ENABLED = "sidebar_enable";
     private static final String KEY_TRANSPARENCY = "sidebar_transparency";
     private static final String KEY_SETUP_ITEMS = "sidebar_setup_items";
     private static final String KEY_POSITION = "sidebar_position";
+    private static final String KEY_HIDE_LABELS = "sidebar_hide_labels";
     private static final String KEY_TRIGGER_WIDTH = "trigger_width";
     private static final String KEY_TRIGGER_TOP = "trigger_top";
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
@@ -46,6 +48,7 @@ public class AppSideBar extends SettingsPreferenceFragment implements
     private SwitchPreference mEnabledPref;
     private SeekBarPreference mTransparencyPref;
     private ListPreference mPositionPref;
+    private SwitchPreference mHideLabelsPref;
     private SeekBarPreference mTriggerWidthPref;
     private SeekBarPreference mTriggerTopPref;
     private SeekBarPreference mTriggerBottomPref;
@@ -65,6 +68,10 @@ public class AppSideBar extends SettingsPreferenceFragment implements
         mEnabledPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_SIDEBAR_ENABLED, 0) == 1));
         mEnabledPref.setOnPreferenceChangeListener(this);
+
+        mHideLabelsPref = (SwitchPreference) findPreference(KEY_HIDE_LABELS);
+        mHideLabelsPref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.APP_SIDEBAR_DISABLE_LABELS, 0) == 1));
 
         PreferenceScreen prefSet = getPreferenceScreen();
         mPositionPref = (ListPreference) prefSet.findPreference(KEY_POSITION);
@@ -129,6 +136,22 @@ public class AppSideBar extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+
+        if (preference == mHideLabelsPref) {
+            value = mHideLabelsPref.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.APP_SIDEBAR_DISABLE_LABELS,
+                    value ? 1 : 0);
+        } else {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+
+        return true;
     }
 
     @Override
