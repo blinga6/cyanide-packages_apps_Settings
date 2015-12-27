@@ -66,6 +66,13 @@
                 android:icon="@drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title" />
 
+        <!-- Advanced options -->
+        <PreferenceScreen
+                android:key="advanced_sound_settings"
+                android:title="@string/advanced_sound_title"
+                android:persistent="false"
+                android:fragment="com.android.settings.vrtoxin.SoundSettings" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
