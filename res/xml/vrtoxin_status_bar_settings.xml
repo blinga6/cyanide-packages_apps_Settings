@@ -20,11 +20,11 @@
         android:title="@string/status_bar_title">
 
     <!-- Battery Options -->
-	<PreferenceScreen
-		android:key="battery_style_pref"
-		android:title="@string/status_bar_battery_status_settings_title"
-		android:summary="@string/battery_settings_summary"
-		android:fragment="com.android.settings.vrtoxin.BatteryStyle" />
+    <PreferenceScreen
+        android:key="battery_style_pref"
+        android:title="@string/status_bar_battery_status_settings_title"
+        android:summary="@string/battery_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.BatteryStyle" />
 
     <!-- Clock -->
     <PreferenceScreen
