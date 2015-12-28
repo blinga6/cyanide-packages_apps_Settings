@@ -22,7 +22,14 @@
 		android:key="lockscreen_shortcuts"
 		android:title="@string/vrtoxin_ls_shortcuts_title">
 
-		<PreferenceScreen
+        <PreferenceScreen
+            android:title="@string/lockscreen_targets_message" >
+            <intent
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.vrtoxin.LockscreenShortcutsActivity" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
              android:key="lock_screen_buttons_settings"
              android:title="@string/lock_screen_buttons_settings_title"
              android:summary="@string/lockscreen_shortcuts_summary"
