@@ -259,14 +259,17 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_ICON_NORMAL_COLOR, WHITE);
+                                    Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_ENABLED_SELECTED_COLOR,
                                     MATERIAL_TEAL_500);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_RIPPLE_COLOR, WHITE);
+                                    Settings.System.POWER_MENU_RIPPLE_COLOR,
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_TEXT_COLOR, WHITE);
+                                    Settings.System.POWER_MENU_TEXT_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -276,7 +279,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.ADVANCED_REBOOT, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0);
+                                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
                                     0xff00ff00);
@@ -287,7 +290,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                                     Settings.System.POWER_MENU_RIPPLE_COLOR,
                                     CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_TEXT_COLOR, CYANIDE_BLUE);
+                                    Settings.System.POWER_MENU_TEXT_COLOR,
+                                    CYANIDE_BLUE);
                             getOwner().refreshSettings();
                         }
                     })

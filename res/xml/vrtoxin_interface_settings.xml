@@ -47,13 +47,6 @@
         android:summary="@string/gestureanywhere_settings_summary"
         android:title="@string/gesture_anywhere_title" />
 
-    <!-- Power menu -->
-    <PreferenceScreen
-        android:key="button_power_menu_settings"
-        android:title="@string/power_menu_settings_title"
-        android:summary="@string/power_menu_settings_summary"
-        android:fragment="com.android.settings.vrtoxin.PowerMenuSettings" />
-
     <!-- Pie control -->
     <PreferenceScreen
         android:key="pie_settings"
@@ -65,7 +58,7 @@
     <PreferenceScreen
         android:key="wallpaper"
         android:title="@string/wallpaper_settings_title"
-        settings:keywords="@string/keywords_display_wallpaper"
+        android:summary="@string/lockscreen_wallpaper_summary"
         android:fragment="com.android.settings.WallpaperTypeSettings" />
 
 </PreferenceScreen>

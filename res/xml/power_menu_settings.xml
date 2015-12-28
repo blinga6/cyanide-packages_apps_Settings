@@ -16,12 +16,36 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/power_menu_settings_title">
 
     <SwitchPreference
         android:key="advanced_reboot"
         android:title="@string/advanced_reboot_title"
         android:summary="@string/advanced_reboot_summary" />
+
+    <ListPreference
+        android:key="power_menu_animations"
+        android:title="@string/power_menu_animation_title"
+        android:dialogTitle="@string/power_menu_animation_dialog_title"
+        android:entries="@array/power_menu_animations_entries"
+        android:entryValues="@array/power_menu_animations_values"
+        android:summary="@string/power_menu_animation_summary"
+        android:persistent="false" />
+
+    <PreferenceScreen
+        android:key="power_menu_actions"
+        android:title="@string/buttons_actions_title"
+        android:summary="@string/power_menu_actions_summary"
+        android:fragment="com.android.settings.vrtoxin.dslv.ActionListViewSettings">
+            <extra android:name="actionMode" android:value="4" />
+            <extra android:name="maxAllowedActions" android:value="12" />
+            <extra android:name="disableLongpress" android:value="true" />
+            <extra android:name="disableIconPicker" android:value="true" />
+            <extra android:name="disableDeleteLastEntry" android:value="true" />
+            <extra android:name="actionValues" android:value="power_menu_action_values" />
+            <extra android:name="actionEntries" android:value="power_menu_action_entries" />
+    </PreferenceScreen>
 
     <SwitchPreference
         android:key="power_menu_onthego_enabled"
@@ -39,20 +63,6 @@
         android:key="power_menu_lockscreen"
         android:title="@string/powermenu_lockscreen_title"
         android:defaultValue="true" />
-
-    <PreferenceScreen
-        android:key="power_menu_actions"
-        android:title="@string/buttons_actions_title"
-        android:summary="@string/power_menu_actions_summary"
-        android:fragment="com.android.settings.vrtoxin.dslv.ActionListViewSettings">
-            <extra android:name="actionMode" android:value="4" />
-            <extra android:name="maxAllowedActions" android:value="12" />
-            <extra android:name="disableLongpress" android:value="true" />
-            <extra android:name="disableIconPicker" android:value="true" />
-            <extra android:name="disableDeleteLastEntry" android:value="true" />
-            <extra android:name="actionValues" android:value="power_menu_action_values" />
-            <extra android:name="actionEntries" android:value="power_menu_action_entries" />
-    </PreferenceScreen>
 
     <PreferenceCategory
         android:key="power_menu_cat_colors"

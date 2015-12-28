@@ -410,20 +410,21 @@
     <!-- Power menu -->
     <string name="power_menu_settings_title">Power Menu</string>
     <string name="power_menu_settings_summary">Customize power menu</string>
-    <string name="buttons_actions_title">Customize</string>
-    <string name="power_menu_actions_summary">Arrange the buttons, and choose the buttons to display in the power menu.</string>
-    <string name="colors_power_menu_ripple_color_title">Ripple effect</string>
-    <string name="powermenu_lockscreen_title">Show power menu lock screen</string>
+    <string name="buttons_actions_title">Customize Actions</string>
+    <string name="power_menu_actions_summary">Choose actions and layout for power menu</string>
+    <string name="power_menu_colors_category">Colors</string>
+    <string name="colors_power_menu_ripple_color_title">Ripple</string>
+    <string name="powermenu_lockscreen_title">Show On Lock Screen</string>
 
     <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">When unlocked, include quick reboot, reboot into recovery and bootloader options in the power menu</string>
+    <string name="advanced_reboot_title">Advanced Reboot</string>
+    <string name="advanced_reboot_summary">Enable the more useful reboot options</string>
 
     <!-- Hardware keys -->
     <string name="button_keys_title">Hardware Buttons</string>
     <string name="hwkeys_settings_summary">Customize hwkeys &amp; select custom shortcuts &amp; actions</string>
-    <string name="keys_bindings_title">Key actions</string>
-    <string name="keys_enable_custom_title">Enable custom actions</string>
+    <string name="keys_bindings_title">Key Actions</string>
+    <string name="keys_enable_custom_title">Allow Custom Actions</string>
     <string name="keys_enable_custom_summary">Enable custom hardware key actions</string>
     <string name="keys_back_press_title">Back key</string>
     <string name="keys_back_long_press_title">Back key (long press)</string>
@@ -443,32 +444,32 @@
     <string name="keys_camera_press_title">Camera key</string>
     <string name="keys_camera_long_press_title">Camera key (long press)</string>
     <string name="keys_camera_double_tap_title">Camera key (double tap)</string>
-    <string name="keys_action_normal">Normal press</string>
-    <string name="keys_action_long">Long press</string>
-    <string name="keys_action_double">Double tap</string>
+    <string name="keys_action_normal">Normal Press</string>
+    <string name="keys_action_long">Long Press</string>
+    <string name="keys_action_double">Double Tap</string>
     <string name="hardware_keys_volume_keys_title">Volume Keys</string>
     <string name="button_wake_title">Home Wake</string>
     <string name="home_wake_summary">Allow home button to wake your device</string>
     <string name="swap_volume_buttons_title">Reorient</string>
     <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
-    <string name="volbtn_music_controls_title">Playback control</string>
+    <string name="volbtn_music_controls_title">Playback Control</string>
     <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
     <string name="no_home_key">You have no button assigned any more to the \"Home\" action!\n\nThis can make your device unusable!</string>
 
     <!-- Button shorcut actions -->
     <string name="shortcut_action_back">Back</string>
-    <string name="shortcut_action_app">Custom app</string>
-    <string name="shortcut_action_expanded_desktop">Expanded desktop</string>
+    <string name="shortcut_action_app">Custom App</string>
+    <string name="shortcut_action_expanded_desktop">Expanded Desktop</string>
     <string name="shortcut_action_pie">Pie Control</string>
     <string name="shortcut_action_home">Home</string>
-    <string name="shortcut_action_kill">Kill app</string>
-    <string name="shortcut_action_lastapp">Last app</string>
+    <string name="shortcut_action_kill">Kill App</string>
+    <string name="shortcut_action_lastapp">Last App</string>
     <string name="shortcut_action_navbar">Navigation Bar</string>
     <string name="shortcut_action_notifications">Notifications</string>
     <string name="shortcut_action_menu_big">Menu</string>
     <string name="shortcut_action_ime">Open IME Switcher</string>
-    <string name="shortcut_action_power_menu">Power menu</string>
-    <string name="shortcut_action_qs">Quicksettings panel</string>
+    <string name="shortcut_action_power_menu">Power Menu</string>
+    <string name="shortcut_action_qs">QS Panel</string>
     <string name="shortcut_action_settings_panel">Settings Panel</string>
     <string name="shortcut_action_smart">Smart pulldown</string>
     <string name="shortcut_action_recent">Recents</string>
@@ -481,7 +482,7 @@
     <string name="shortcut_action_search">Search in app</string>
     <string name="shortcut_action_theme_switch">Theme switcher</string>
     <string name="shortcut_action_torch">Torch</string>
-    <string name="shortcut_action_voice_search">Voice search</string>
+    <string name="shortcut_action_voice_search">Voice Search</string>
     <string name="shortcut_action_none">None</string>
 
     <!-- Notification light dialogs -->
@@ -1669,7 +1670,7 @@
 
     <!-- Lockscreen wallpaper -->
     <string name="lockscreen_wallpaper_title">Wallpaper</string>
-    <string name="lockscreen_wallpaper_summary">Set lockscreen wallpaper</string>
+    <string name="lockscreen_wallpaper_summary">Customize the wallpaper</string>
     <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
     <string name="reset_lockscreen_wallpaper">Set to default</string>
@@ -1887,9 +1888,9 @@
     <string name="double_tap_sleep_anywhere_summary">Double tap lockscreen to put the device to sleep</string>
 
     <!-- On-The-Go -->
-    <string name="power_menu_onthego_title">On-The-Go Mode</string>
+    <string name="power_menu_onthego_title">On-The-Go</string>
     <string name="power_menu_onthego_summary">Enable the On-The-Go mode service</string>
-    <string name="onthego_alpha_title">On-The-Go Alpha</string>
+    <string name="onthego_alpha_title">On-The-Go Alpha Settings</string>
     <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay. Needs re-toggling.</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
