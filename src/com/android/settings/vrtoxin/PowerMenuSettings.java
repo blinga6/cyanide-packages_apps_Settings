@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.ListPreference;
 import android.preference.PreferenceScreen;
 import android.preference.SlimSeekBarPreference;
 import android.preference.SwitchPreference;
@@ -49,10 +50,10 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
     private static final String PREF_ICON_ENABLED_SELECTED_COLOR = "power_menu_icon_enabled_selected_color";
     private static final String PREF_RIPPLE_COLOR = "power_menu_ripple_color";
     private static final String PREF_TEXT_COLOR = "power_menu_text_color";
+    private static final String POWER_MENU_ANIMATIONS = "power_menu_animations";
 
     private static final int WHITE = 0xffffffff;
-    private static final int VRTOXIN_BLUE = 0xff33b5e5;
-    private static final int CYANIDE_BLUE = 0xff1976D2;
+    private static final int VRTOXIN_BLUE = 0xff1976D2;
     private static final int MATERIAL_TEAL_500 = 0xff009688;
 
     private static final int MENU_RESET = Menu.FIRST;
@@ -66,6 +67,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mIconEnabledSelectedColor;
     private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mTextColor;
+    ListPreference mPowerMenuAnimations;
 
     private ContentResolver mResolver;
 
@@ -141,6 +143,12 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
         mTextColor.setSummary(hexColor);
         mTextColor.setOnPreferenceChangeListener(this);
 
+        mPowerMenuAnimations = (ListPreference) findPreference(POWER_MENU_ANIMATIONS);
+        mPowerMenuAnimations.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.POWER_MENU_ANIMATIONS, 0)));
+        mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+        mPowerMenuAnimations.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -212,6 +220,12 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                     Settings.System.POWER_MENU_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mPowerMenuAnimations) {
+            Settings.System.putInt(mResolver, Settings.System.POWER_MENU_ANIMATIONS,
+                    Integer.valueOf((String) newValue));
+            mPowerMenuAnimations.setValue(String.valueOf(newValue));
+            mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
+            return true;
         }
 
         return false;
@@ -270,6 +284,8 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_TEXT_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_ANIMATIONS, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -285,13 +301,15 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                                     0xff00ff00);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_ENABLED_SELECTED_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_RIPPLE_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_TEXT_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_ANIMATIONS, 1);
                             getOwner().refreshSettings();
                         }
                     })
