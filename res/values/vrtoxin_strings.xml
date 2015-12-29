@@ -1926,6 +1926,7 @@
     <string name="power_menu_animation_dialog_title">Select power menu animation</string>
     <string name="power_menu_animation_aosp">AOSP (default)</string>
     <string name="power_menu_animation_bottom">Bottom</string>
+    <string name="power_menu_animation_grow">Grow/Shrink</string>
     <string name="power_menu_animation_top">Top</string>
     <string name="power_menu_animation_left">Left</string>
     <string name="power_menu_animation_right">Right</string>
@@ -1954,4 +1955,6 @@
     <string name="less_notification_sounds_2m">2 minutes</string>
     <string name="less_notification_sounds_5m">5 minutes</string>
 
+    <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
+    <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen.</string>
 </resources>
