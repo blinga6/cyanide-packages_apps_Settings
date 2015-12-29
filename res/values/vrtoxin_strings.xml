@@ -1930,6 +1930,7 @@
     <string name="power_menu_animation_left">Left</string>
     <string name="power_menu_animation_right">Right</string>
     <string name="power_menu_animation_rotate">Rotate</string>
+    <string name="power_menu_animation_grow">Grow</string>
 
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Safe Headset Volume</string>
