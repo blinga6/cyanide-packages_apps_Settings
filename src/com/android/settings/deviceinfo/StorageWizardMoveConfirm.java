@@ -66,7 +66,7 @@ public class StorageWizardMoveConfirm extends StorageWizardBase {
         setHeaderText(R.string.storage_wizard_move_confirm_title, appName);
         final String forceText = forcedMove ?
                 getString(R.string.storage_wizard_move_confirm_force_info) : "";
-        setBodyText(R.string.storage_wizard_move_confirm_body, appName, volumeName, forceText);
+        setBodyText(R.string.storage_wizard_move_confirm_body_cm, appName, volumeName, forceText);
 
         getNextButton().setText(R.string.move_app);
     }
