@@ -34,6 +34,8 @@ import com.android.settings.vrtoxin.qs.DraggableGridView;
 import com.android.settings.vrtoxin.qs.QSTiles;
 import com.android.internal.logging.MetricsLogger;
 
+import com.android.internal.widget.LockPatternUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +45,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String PREF_NUM_OF_COLUMNS = "sysui_qs_num_columns";
+    private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 
     private static final int QS_TYPE_PANEL  = 0;
     private static final int QS_TYPE_BAR    = 1;
@@ -52,6 +55,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     private ListPreference mNumColumns;
+    private SwitchPreference mBlockOnSecureKeyguard;
 
     private ContentResolver mResolver;
 
@@ -123,9 +127,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
         mSmartPulldown.setOnPreferenceChangeListener(this);
         int smartPulldown = Settings.System.getInt(mResolver,
-                Settings.System.QS_SMART_PULLDOWN, 1);
+                Settings.System.QS_SMART_PULLDOWN, 0);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
+
+        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
+        mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
+        if (lockPatternUtils.isSecure(UserHandle.myUserId())) {
+            mBlockOnSecureKeyguard.setChecked(Settings.Secure.getInt(mResolver,
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1) == 1);
+            mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
+        } else {
+            prefs.removePreference(mBlockOnSecureKeyguard);
+        }
     }
 
     /*@Override
@@ -166,7 +180,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                     smartPulldown, UserHandle.USER_CURRENT);
             updateSmartPulldownSummary(smartPulldown);
             return true;
-		}
+        } else if (preference == mBlockOnSecureKeyguard) {
+            Settings.Secure.putInt(mResolver,
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
+                    (Boolean) newValue ? 1 : 0);
+            return true;
+        }
         return false;
     }
 
