@@ -240,6 +240,7 @@
     <string name="shortcut_action_media_play_pause">Music - Play/Pause</string>
     <string name="shortcut_action_media_previous">Music - Previous Track</string>
     <string name="shortcut_action_wake_device">Wake Up Device</string>
+    <string name="shortcut_action_now_on_tap">Google Now On Tap</string>
 
     <string name="shortcuts_applications">Applications</string>
     <string name="shortcuts_select_custom_app_title">Select Custom Application</string>

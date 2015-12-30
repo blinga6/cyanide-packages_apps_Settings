@@ -503,6 +503,7 @@
         <item>@string/shortcut_action_lastapp</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_now_on_tap</item>
         <item>@string/shortcut_action_none</item>
     </string-array>
 
@@ -520,6 +521,7 @@
         <item>**lastapp**</item>
         <item>**kill**</item>
         <item>**screenshot**</item>
+        <item>**now_on_tap**</item>
         <item>**null**</item>
     </string-array>
 
