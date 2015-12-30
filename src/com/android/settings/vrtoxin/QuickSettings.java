@@ -138,7 +138,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1) == 1);
             mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
         } else {
-            prefs.removePreference(mBlockOnSecureKeyguard);
+            removePreference("block_on_secure_keyguard");
         }
     }
 
