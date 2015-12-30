@@ -570,7 +570,7 @@
     <string name="qs_action_delete">Delete</string>
     <string name="qs_action_add">Add</string>
     <string name="qs_action_no_more_tiles">No more tiles available</string>
-    <string name="qs_main_tiles_title">Enlarge first row</string>
+    <string name="qs_main_tiles_title">Enlarge First Row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
     <string name="qs_main_tiles_summary_off">Three tiles on each row</string>
 
@@ -1915,9 +1915,9 @@
     <string name="camera_sound_warning_dialog_text">Disabling the camera shutter sound is illegal in some areas! Please check the applicable law in your country</string>
 
     <!-- Notification fragment -->
-    <string name="battery_saver_notif_title">Battery saver notification</string>
+    <string name="battery_saver_notif_title">Battery Saver</string>
     <string name="battery_saver_notif_summary">Show battery saver notification when enabled</string>
-    <string name="battery_low_notif_title">Low battery notification</string>
+    <string name="battery_low_notif_title">Low Battery</string>
     <string name="battery_low_notif_summary">Show low battery notification when enabled</string>
 
     <!-- Power menu Animations  -->
@@ -1955,6 +1955,6 @@
     <string name="less_notification_sounds_2m">2 minutes</string>
     <string name="less_notification_sounds_5m">5 minutes</string>
 
-    <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
+    <string name="block_on_secure_keyguard_title">Lockscreen Disable</string>
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen.</string>
 </resources>
