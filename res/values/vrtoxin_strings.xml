@@ -2362,4 +2362,7 @@
     <string name="app_ops_reset_confirm_title">Confirm counters reset</string>
     <string name="app_ops_reset_confirm_mesg">Are you sure you wish to reset counters?</string>
 
+    <!-- Memory -->
+    <string name="memory_startup_apps_title">Apps started on boot</string>
+
 </resources>
