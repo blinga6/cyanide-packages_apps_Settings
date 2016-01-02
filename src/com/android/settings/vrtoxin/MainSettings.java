@@ -43,6 +43,7 @@ import com.android.internal.util.vrtoxin.ScreenType;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.vrtoxin.PagerSlidingTabStrip;
 import com.android.settings.vrtoxin.AndroidRecentsSettings;
+import com.android.settings.vrtoxin.FloatingWindows;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.InterfaceSettings;
 import com.android.settings.vrtoxin.LockS;
@@ -116,16 +117,17 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[0] = new MasterAnimationControl();
             frags[1] = new PowerUsageSummary();
             frags[2] = new HwKeySettings();
-            frags[3] = new InterfaceSettings();
-            frags[4] = new LockS();
-            frags[5] = new VrtoxinNotifs();
-            frags[6] = new PowerMenuSettings();
-            frags[7] = new QuickSettings();
-            frags[8] = new AndroidRecentsSettings();
-            frags[9] = new StatusBarSettings();
-            frags[10] = new SlimSizer();
-            frags[11] = new WakelockBlocker();
-            frags[12] = new WeatherControl();
+            frags[3] = new FloatingWindows();
+            frags[4] = new InterfaceSettings();
+            frags[5] = new LockS();
+            frags[6] = new VrtoxinNotifs();
+            frags[7] = new PowerMenuSettings();
+            frags[8] = new QuickSettings();
+            frags[9] = new AndroidRecentsSettings();
+            frags[10] = new StatusBarSettings();
+            frags[11] = new SlimSizer();
+            frags[12] = new WakelockBlocker();
+            frags[13] = new WeatherControl();
         }
 
         @Override
@@ -151,6 +153,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.vrtoxin_animations_settings),
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
+                    getString(R.string.floating_windows),
                     getString(R.string.interface_settings_title),
                     getString(R.string.lockscreen_settings),
                     getString(R.string.vrtoxin_notifications_title),
@@ -166,6 +169,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.vrtoxin_animations_settings),
                     getString(R.string.power_usage_summary_title),
                     getString(R.string.buttons_settings_title),
+                    getString(R.string.floating_windows),
                     getString(R.string.interface_settings_title),
                     getString(R.string.lockscreen_settings),
                     getString(R.string.vrtoxin_notifications_title),

@@ -138,6 +138,7 @@ import com.android.settings.vrtoxin.AppCircleBar;
 import com.android.settings.vrtoxin.AppSideBar;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.ThemeSettings;
+import com.android.settings.vrtoxin.FloatingWindows;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -375,7 +376,8 @@ public class SettingsActivity extends Activity
             AppCircleBar.class.getName(),
             AppSideBar.class.getName(),
             HwKeySettings.class.getName(),
-            ThemeSettings.class.getName()
+            ThemeSettings.class.getName(),
+            FloatingWindows.class.getName(),
     };
 
 
