@@ -1307,8 +1307,6 @@
     <string name="weather_show_weather_summary">Enable to show weather informations</string>
     <string name="weather_show_location_title">Show Location</string>
     <string name="weather_show_location_summary">Enable to show the location</string>
-    <string name="weather_show_timestamp_title">Show Timestamp</string>
-    <string name="weather_show_timestamp_summary">Enable to show the timestamp</string>
     <string name="weather_condition_icon_title">Condition Icon</string>
     <string name="weather_condition_icon_dlg_title">Coose an icon for displaying the weather condition</string>
     <string name="weather_condition_icon_monochrome_title">Monochrome</string>
