@@ -46,6 +46,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             "weather_show_weather";
     private static final String PREF_SHOW_LOCATION =
             "weather_show_location";
+    private static final String LOCK_CLOCK_FONTS =
+            "lock_clock_fonts";
     private static final String PREF_CONDITION_ICON =
             "weather_condition_icon";
     private static final String PREF_HIDE_WEATHER =
@@ -62,6 +64,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
 
     private SwitchPreference mShowWeather;
     private SwitchPreference mShowLocation;
+    private ListPreference mLockClockFonts;
     private ListPreference mConditionIcon;
     private ListPreference mHideWeather;
     private ListPreference mNumberOfNotifications;
@@ -105,6 +108,12 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             mShowLocation.setChecked(Settings.System.getInt(mResolver,
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1) == 1);
             mShowLocation.setOnPreferenceChangeListener(this);
+
+            mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+            mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                    mResolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+            mLockClockFonts.setOnPreferenceChangeListener(this);
 
             mConditionIcon =
                     (ListPreference) findPreference(PREF_CONDITION_ICON);
@@ -189,6 +198,12 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION,
                     value ? 1 : 0);
             return true;
+        } else if (preference == mLockClockFonts) {
+            Settings.System.putInt(mResolver, Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+            return true;
         } else if (preference == mConditionIcon) {
             intValue = Integer.valueOf((String) newValue);
             index = mConditionIcon.findIndexOfValue((String) newValue);
@@ -255,6 +270,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONTS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_CONDITION_ICON,
                                     MONOCHROME_ICON);
                             Settings.System.putInt(getOwner().mResolver,
@@ -273,6 +290,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONTS, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_CONDITION_ICON, 2);
                             Settings.System.putInt(getOwner().mResolver,
