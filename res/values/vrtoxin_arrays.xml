@@ -405,6 +405,7 @@
         <item>@string/shortcut_action_back</item>
         <item>@string/shortcut_action_camera</item>
         <item>@string/shortcut_action_app</item>
+        <item>@string/shortcut_action_now_on_tap</item>
         <item>@string/shortcut_action_home</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_lastapp</item>
@@ -425,6 +426,7 @@
         <item>**back**</item>
         <item>**camera**</item>
         <item>**app**</item>
+        <item>**now_on_tap**</item>
         <item>**home**</item>
         <item>**kill**</item>
         <item>**lastapp**</item>
