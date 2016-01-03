@@ -90,8 +90,8 @@
 
     <PreferenceCategory
         android:key="recents_panel"
-        android:title="@string/recents_random_title">
-            
+        android:title="@string/recents_full_screen_cat">
+
         <!-- Fullscreen Recents -->
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="recents_full_screen"
@@ -99,6 +99,26 @@
             android:summaryOn="@string/recents_fullscreen_summary_enabled"
             android:summaryOff="@string/recents_fullscreen_summary_disabled"
             android:defaultValue="false" />
+
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="recents_full_screen_clock"
+            android:title="@string/recents_full_screen_clock_title"
+            android:summary="@string/recents_full_screen_clock_summary"
+            android:defaultValue="false"
+            android:dependency="recents_full_screen" />
+
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="recents_full_screen_date"
+            android:title="@string/recents_full_screen_date_title"
+            android:summary="@string/recents_full_screen_date_summary"
+            android:defaultValue="false"
+            android:dependency="recents_full_screen" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="recents_panel"
+        android:title="@string/recents_random_title">
 
         <!-- Shake to clear recents -->
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
