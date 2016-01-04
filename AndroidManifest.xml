@@ -1762,7 +1762,7 @@
         </activity-alias>
 
         <activity android:name=".AppPicker" android:label="@string/select_application"
-                android:theme="@style/Theme.AppPicker" />
+                android:theme="@android:style/Theme.Material.DayNight.Dialog" />
 
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name="UsbSettings"
