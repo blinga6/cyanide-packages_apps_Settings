@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2014 CyanideL
+<!--
+     Copyright (C) 2015 The VRToxin Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -29,11 +30,11 @@
             android:defaultValue="true" />
         
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-			android:key="recents_clear_all_dismiss_all"
-			android:title="@string/recents_clear_all_dismiss_all_title"
-			android:summary="@string/recents_clear_all_dismiss_all_summary"
-			android:defaultValue="true"
-			android:dependency="show_clear_all_recents" />
+            android:key="recents_clear_all_dismiss_all"
+            android:title="@string/recents_clear_all_dismiss_all_title"
+            android:summary="@string/recents_clear_all_dismiss_all_summary"
+            android:defaultValue="true"
+            android:dependency="show_clear_all_recents" />
 
         <ListPreference
             android:key="recents_clear_all_location"
@@ -42,7 +43,7 @@
             android:entryValues="@array/recents_clear_all_location_values"
             android:defaultValue="3"
             android:dependency="show_clear_all_recents" />
-        
+
         <SwitchPreference
             android:key="recents_clear_all_use_icon_color"
             android:title="@string/android_recents_clear_all_use_icon_color_title"
@@ -59,19 +60,52 @@
             android:title="@string/icon_title"
             android:defaultValue="0xffffffff"
             android:dependency="show_clear_all_recents" />
-        
+
     </PreferenceCategory>
 
-    <SwitchPreference
-        android:key="systemui_recents_mem_display"
-        android:title="@string/recents_show_membar_title"
-        android:summary="@string/recents_show_membar_summary" />
+    <PreferenceCategory
+        android:key="recents_panel"
+        android:title="@string/recents_random_title">
 
-    <SwitchPreference
-        android:key="recents_full_screen"
-        android:title="@string/recents_show_fullscreen"
-        android:summaryOn="@string/recents_fullscreen_summary_enabled"
-        android:summaryOff="@string/recents_fullscreen_summary_disabled" />
+        <SwitchPreference
+            android:key="systemui_recents_mem_display"
+            android:title="@string/recents_show_membar_title"
+            android:summary="@string/recents_show_membar_summary" />
+
+        <SwitchPreference
+            android:key="recents_full_screen"
+            android:title="@string/recents_show_fullscreen"
+            android:summaryOn="@string/recents_fullscreen_summary_enabled"
+            android:summaryOff="@string/recents_fullscreen_summary_disabled" />
+
+        <!-- Shake to clear recents -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="shake_to_clean_recents"
+            android:title="@string/shake_to_clear_recents_title"
+            android:summary="@string/shake_to_clear_recents_summary"
+            android:defaultValue="false" />
+
+        <!-- Search in Recents -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="recents_search_bar"
+            android:title="@string/android_recents_show_search_bar_title"
+            android:summary="@string/android_recents_show_search_bar_summary"
+            android:defaultValue="true" />
+
+        <!-- Recents empty VRToxin logo -->
+        <SwitchPreference
+            android:key="recents_empty_vrtoxin_logo"
+            android:title="@string/recents_empty_style"
+            android:summary="@string/recents_empty_style_summary"
+            android:defaultValue="false" />
+
+        <PreferenceScreen
+            android:key="screen_pinning_settings"
+            android:title="@string/screen_pinning_title"
+            android:summary="@string/switch_off_text"
+            android:fragment="com.android.settings.ScreenPinningSettings"/>
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="memory_bar"
@@ -123,39 +157,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="recents_panel"
-        android:title="@string/recents_random_title">
-
-        <!-- Shake to clear recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="shake_to_clean_recents"
-            android:title="@string/shake_to_clear_recents_title"
-            android:summary="@string/shake_to_clear_recents_summary"
-            android:defaultValue="false" />
-
-        <!-- Search in Recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="recents_search_bar"
-            android:title="@string/android_recents_show_search_bar_title"
-            android:summary="@string/android_recents_show_search_bar_summary"
-            android:defaultValue="true" />
-
-        <!-- Recents empty VRToxin logo -->
-        <SwitchPreference
-            android:key="recents_empty_vrtoxin_logo"
-            android:title="@string/recents_empty_style"
-            android:summary="@string/recents_empty_style_summary"
-            android:defaultValue="false" />
-
-        <PreferenceScreen
-            android:key="screen_pinning_settings"
-            android:title="@string/screen_pinning_title"
-            android:summary="@string/switch_off_text"
-            android:fragment="com.android.settings.ScreenPinningSettings"/>
-
-    </PreferenceCategory>
-    
-    <PreferenceCategory
             android:key="omni_recents"
             android:title="@string/omniswitch_recents_title" >
 
@@ -171,7 +172,7 @@
             android:summary="@string/omniswitch_start_settings_summary"
             android:persistent="false" />
 
-    </PreferenceCategory>
+        </PreferenceCategory>
 
     <PreferenceCategory
         android:key="slim_recents"
