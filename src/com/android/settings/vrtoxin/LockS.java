@@ -16,10 +16,13 @@
 
 package com.android.settings.vrtoxin;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
@@ -28,15 +31,39 @@ import android.provider.Settings.SettingNotFoundException;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.OwnerInfoSettings;
 import com.android.internal.logging.MetricsLogger;
+import com.android.internal.widget.LockPatternUtils;
 
 public class LockS extends SettingsPreferenceFragment {
+
+    private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
+
+    private static final int MY_USER_ID = UserHandle.myUserId();
+    private LockPatternUtils mLockPatternUtils;
+    private Preference mOwnerInfoPref;
+
+    private boolean mIsPrimary;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.vrtoxin_ls_shortcuts);
+
+        // Add options for device encryption
+        mIsPrimary = MY_USER_ID == UserHandle.USER_OWNER;
+
+        mOwnerInfoPref = findPreference(KEY_OWNER_INFO_SETTINGS);
+        if (mOwnerInfoPref != null) {
+            mOwnerInfoPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    OwnerInfoSettings.show(LockS.this);
+                    return true;
+                }
+            });
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -46,7 +73,16 @@ public class LockS extends SettingsPreferenceFragment {
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
+        updateOwnerInfo();
  		return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    public void updateOwnerInfo() {
+        if (mOwnerInfoPref != null) {
+            mOwnerInfoPref.setSummary(mLockPatternUtils.isOwnerInfoEnabled(MY_USER_ID)
+                    ? mLockPatternUtils.getOwnerInfo(MY_USER_ID)
+                    : getString(R.string.owner_info_settings_summary));
+        }
     }
 
     @Override
