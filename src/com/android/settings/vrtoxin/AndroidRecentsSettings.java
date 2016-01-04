@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2014 CyanideL
+* Copyright (C) 2015 The VRToxin Project
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
-    private static final int CYANIDE_BLUE = 0xff1976D2;
+    private static final int VRTOXIN_BLUE = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -534,7 +534,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                                     Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR,
                                     0xff00ff00);
@@ -542,10 +542,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                                     Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEM_TEXT_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_USED_COLOR,
                                     0xff00ff00);

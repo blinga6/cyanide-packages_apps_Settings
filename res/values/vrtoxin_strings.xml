@@ -1575,7 +1575,7 @@
 
     <!-- Recents Fullscreen -->
     <string name="recents_full_screen_cat_options">Fullscreen Recents Options</string>
-    <string name="recents_show_fullscreen">Enable</string>
+    <string name="recents_show_fullscreen">Fullscreen Recents</string>
     <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
     <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
     <string name="recents_full_screen_clock_title">Show clock</string>
