@@ -69,6 +69,11 @@
         android:title="@string/colors_cat_title">
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="power_menu_bg_color"
+            android:title="@string/background_title"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="power_menu_icon_normal_color"
             android:title="@string/icons_normal_title"
             android:defaultValue="0xffffffff" />

@@ -46,6 +46,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
             "advanced_reboot";
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
     private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
+    private static final String PREF_BG_COLOR = "power_menu_bg_color";
     private static final String PREF_ICON_NORMAL_COLOR = "power_menu_icon_normal_color";
     private static final String PREF_ICON_ENABLED_SELECTED_COLOR = "power_menu_icon_enabled_selected_color";
     private static final String PREF_RIPPLE_COLOR = "power_menu_ripple_color";
@@ -63,6 +64,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mOnTheGoPowerMenu;
     private SlimSeekBarPreference mOnTheGoAlphaPref;
 
+    private ColorPickerPreference mBgColor;
     private ColorPickerPreference mIconNormalColor;
     private ColorPickerPreference mIconEnabledSelectedColor;
     private ColorPickerPreference mRippleColor;
@@ -103,6 +105,16 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
         mOnTheGoAlphaPref.setDefault(50);
         mOnTheGoAlphaPref.setInterval(1);
         mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
+
+        mBgColor =
+                (ColorPickerPreference) findPreference(PREF_BG_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.POWER_MENU_BG_COLOR,
+                WHITE); 
+        mBgColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mBgColor.setSummary(hexColor);
+        mBgColor.setOnPreferenceChangeListener(this);
 
         mIconNormalColor =
                 (ColorPickerPreference) findPreference(PREF_ICON_NORMAL_COLOR);
@@ -187,6 +199,14 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
             float val = Float.parseFloat((String) newValue);
             Settings.System.putFloat(mResolver, Settings.System.ON_THE_GO_ALPHA,
                     val / 100);
+            return true;
+        } else if (preference == mBgColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.POWER_MENU_BG_COLOR, intHex);
+            preference.setSummary(hex);
             return true;
         } else if (preference == mIconNormalColor) {
             hex = ColorPickerPreference.convertToARGB(
@@ -273,6 +293,9 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_BG_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
@@ -296,6 +319,9 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                                     Settings.System.ADVANCED_REBOOT, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ONTHEGO_ENABLED, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.POWER_MENU_BG_COLOR,
+                                    0x00000000);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_ICON_NORMAL_COLOR,
                                     0xff00ff00);
