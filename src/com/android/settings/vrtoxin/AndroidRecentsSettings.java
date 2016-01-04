@@ -69,6 +69,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String CATEGORY_OMNI_RECENTS = "omni_recents";
     private static final String RECENTS_EMPTY_VRTOXIN_LOGO = "recents_empty_vrtoxin_logo";
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
+    private static final String RECENTS_FULL_SCREEN_CAT_OPTIONS = "recents_full_screen_cat_options";
+    private static final String RECENTS_FULL_SCREEN = "recents_full_screen";
+    private static final String RECENTS_FULL_SCREEN_CLOCK_COLOR = "recents_full_screen_clock_color";
+    private static final String RECENTS_FULL_SCREEN_DATE_COLOR = "recents_full_screen_date_color";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -93,6 +97,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private boolean mOmniSwitchInitCalled;
     private PreferenceCategory mOmniSwitch;
     private SwitchPreference mRecentsStyle;
+    private SwitchPreference mRecentsFullScreen;
+    private ColorPickerPreference mClockColor;
+    private ColorPickerPreference mDateColor;
 
     private ContentResolver mResolver;
 
@@ -229,6 +236,37 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         if (!Utils.isPackageInstalled(getActivity(), OMNISWITCH_PACKAGE_NAME)) {
             prefSet.removePreference(mOmniSwitch);
         }
+
+        boolean enableRecentsFullScreen = Settings.System.getInt(mResolver,
+                Settings.System.RECENTS_FULL_SCREEN, 0) == 1;
+        mRecentsFullScreen = (SwitchPreference) findPreference(RECENTS_FULL_SCREEN);
+        mRecentsFullScreen.setChecked(enableRecentsFullScreen);
+        mRecentsFullScreen.setOnPreferenceChangeListener(this);
+
+        PreferenceCategory recentsOptions =
+                (PreferenceCategory) findPreference(RECENTS_FULL_SCREEN_CAT_OPTIONS);
+
+        if (enableRecentsFullScreen) {
+            mClockColor =
+                    (ColorPickerPreference) findPreference(RECENTS_FULL_SCREEN_CLOCK_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR, WHITE);
+            mClockColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mClockColor.setSummary(hexColor);
+            mClockColor.setOnPreferenceChangeListener(this);
+
+            mDateColor =
+                    (ColorPickerPreference) findPreference(RECENTS_FULL_SCREEN_DATE_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR, WHITE);
+            mDateColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mDateColor.setSummary(hexColor);
+            mDateColor.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(RECENTS_FULL_SCREEN_CAT_OPTIONS);
+        }
         
         setHasOptionsMenu(true);
     }
@@ -348,6 +386,29 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, show ? 1 : 0);
             Helpers.restartSystemUI();
             return true;
+        } else if (preference == mRecentsFullScreen) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.RECENTS_FULL_SCREEN,
+                    value ? 1 : 0);
+            refreshSettings();
+            return true;
+        } else if (preference == mClockColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mDateColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         }
         return false;
     }
@@ -451,6 +512,14 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 0);
                                     Helpers.restartSystemUI();
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -483,6 +552,14 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 1);
                                     Helpers.restartSystemUI();
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })

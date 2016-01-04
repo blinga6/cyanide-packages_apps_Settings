@@ -67,6 +67,12 @@
         android:title="@string/recents_show_membar_title"
         android:summary="@string/recents_show_membar_summary" />
 
+    <SwitchPreference
+        android:key="recents_full_screen"
+        android:title="@string/recents_show_fullscreen"
+        android:summaryOn="@string/recents_fullscreen_summary_enabled"
+        android:summaryOff="@string/recents_fullscreen_summary_disabled" />
+
     <PreferenceCategory
         android:key="memory_bar"
         android:title="@string/memory_bar_options_title">
@@ -89,30 +95,30 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="recents_panel"
-        android:title="@string/recents_full_screen_cat">
-
-        <!-- Fullscreen Recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="recents_full_screen"
-            android:title="@string/recents_show_fullscreen"
-            android:summaryOn="@string/recents_fullscreen_summary_enabled"
-            android:summaryOff="@string/recents_fullscreen_summary_disabled"
-            android:defaultValue="false" />
+        android:key="recents_full_screen_cat_options"
+        android:title="@string/recents_full_screen_cat_options">
 
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="recents_full_screen_clock"
             android:title="@string/recents_full_screen_clock_title"
             android:summary="@string/recents_full_screen_clock_summary"
-            android:defaultValue="false"
-            android:dependency="recents_full_screen" />
+            android:defaultValue="false" />
 
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="recents_full_screen_date"
             android:title="@string/recents_full_screen_date_title"
             android:summary="@string/recents_full_screen_date_summary"
-            android:defaultValue="false"
-            android:dependency="recents_full_screen" />
+            android:defaultValue="false" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="recents_full_screen_clock_color"
+            android:title="@string/recents_full_screen_clock_color"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="recents_full_screen_date_color"
+            android:title="@string/recents_full_screen_date_color"
+            android:defaultValue="0xffffffff" />
 
     </PreferenceCategory>
 

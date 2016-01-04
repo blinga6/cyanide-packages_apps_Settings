@@ -1574,7 +1574,7 @@
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
 
     <!-- Recents Fullscreen -->
-    <string name="recents_full_screen_cat">Fullscreen Recents</string>
+    <string name="recents_full_screen_cat_options">Fullscreen Recents Options</string>
     <string name="recents_show_fullscreen">Enable</string>
     <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
     <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
@@ -1582,6 +1582,8 @@
     <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
     <string name="recents_full_screen_date_title">Show date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
+    <string name="recents_full_screen_clock_color">Clock color</string>
+    <string name="recents_full_screen_date_color">Date color</string>
 
     <!-- Disable animations -->
     <string name="disable_animations">Disable Animations</string>
