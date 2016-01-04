@@ -1304,6 +1304,7 @@
     <string name="lock_screen_number_of_notifications_six_title">6</string>
     <string name="weather_cat_notifications_title">Notifications</string>
     <string name="lock_screen_weather_settings_title">Lockscreen Weather</string>
+    <string name="lock_screen_clock_font_size_title">LockClock Size</string>
     <string name="lock_screen_weather_settings_summary">Customize Lockscreen Weather Display</string>
     <string name="lock_screen_color_settings_summary">Customize Colors</string>
     <string name="weather_show_weather_title">Show Weather</string>
@@ -1981,7 +1982,7 @@
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
 
     <!-- Lock Clock Fonts -->
-    <string name="lock_clock_font_title">Lock Clock Fonts</string>
+    <string name="lock_clock_font_title">LockClock Fonts</string>
     <string name="lock_clock_font_summary">Change the default font of the lockscreen clock widget</string>
     <string name="lock_clock_font_dialog_title">Select lock clock font</string>
     <string name="lock_clock_font_stock">Normal (default)</string>

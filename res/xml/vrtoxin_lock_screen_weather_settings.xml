@@ -14,6 +14,7 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lock_screen_weather_settings_title" >
 
     <SwitchPreference
@@ -33,6 +34,15 @@
         android:entries="@array/lock_clock_fonts_entries"
         android:entryValues="@array/lock_clock_fonts_values"
         android:summary="@string/lock_clock_font_summary"
+        android:persistent="false" />
+
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="lock_clock_font_size"
+        android:title="@string/lock_screen_clock_font_size_title"
+        android:max="130"
+        settings:minimum="30"
+        settings:unitsLeft=""
+        settings:unitsRight="dp"
         android:persistent="false" />
 
     <ListPreference

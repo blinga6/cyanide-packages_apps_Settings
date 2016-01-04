@@ -35,6 +35,7 @@ import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.vrtoxin.SeekBarPreference;
 import com.android.internal.logging.MetricsLogger;
 
 public class LockScreenWeatherSettings extends SettingsPreferenceFragment implements
@@ -46,6 +47,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             "weather_show_weather";
     private static final String PREF_SHOW_LOCATION =
             "weather_show_location";
+    private static final String LOCK_CLOCK_FONT_SIZE  =
+            "lock_clock_font_size";
     private static final String LOCK_CLOCK_FONTS =
             "lock_clock_fonts";
     private static final String PREF_CONDITION_ICON =
@@ -64,6 +67,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
 
     private SwitchPreference mShowWeather;
     private SwitchPreference mShowLocation;
+    private SeekBarPreference mLCFontSize;
     private ListPreference mLockClockFonts;
     private ListPreference mConditionIcon;
     private ListPreference mHideWeather;
@@ -108,6 +112,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             mShowLocation.setChecked(Settings.System.getInt(mResolver,
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1) == 1);
             mShowLocation.setOnPreferenceChangeListener(this);
+
+            mLCFontSize = (SeekBarPreference) findPreference(LOCK_CLOCK_FONT_SIZE);
+            mLCFontSize.setValue(Settings.System.getInt(mResolver,
+                    Settings.System.LOCK_CLOCK_FONT_SIZE, 88));
+            mLCFontSize.setOnPreferenceChangeListener(this);
 
             mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
             mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
@@ -198,6 +207,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION,
                     value ? 1 : 0);
             return true;
+        } else if (preference == mLCFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(mResolver,
+                    Settings.System.LOCK_CLOCK_FONT_SIZE, width);
+            return true;
         } else if (preference == mLockClockFonts) {
             Settings.System.putInt(mResolver, Settings.System.LOCK_CLOCK_FONTS,
                     Integer.valueOf((String) newValue));
@@ -270,6 +284,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE, 88);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_CLOCK_FONTS, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_CONDITION_ICON,
@@ -291,7 +307,9 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.LOCK_CLOCK_FONTS, 1);
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE, 75);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONTS, 3);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_CONDITION_ICON, 2);
                             Settings.System.putInt(getOwner().mResolver,
