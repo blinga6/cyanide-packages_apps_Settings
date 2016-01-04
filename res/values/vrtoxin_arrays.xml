@@ -50,6 +50,8 @@
         <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_appcirclebar</item>
         <item>@string/shortcut_action_appsidebar</item>
+        <item>@string/shortcut_action_gesture_anywhere</item>
+        <item>@string/shortcut_action_floating_windows</item>
         <item>@string/shortcut_action_screenshot</item>
         <item>@string/shortcut_action_sound</item>
     </string-array>
@@ -68,6 +70,8 @@
         <item>**pie**</item>
         <item>**appcirclebar**</item>
         <item>**appsidebar**</item>
+        <item>**gesture_anywhere**</item>
+        <item>**floating_windows**</item>
         <item>**screenshot**</item>
         <item>**sound**</item>
     </string-array>
