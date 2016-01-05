@@ -54,8 +54,16 @@
 
         <com.android.settings.SingleLineSummaryPreference
             android:key="owner_info_settings"
-            android:title="@string/owner_info_settings_title"
-            android:summary="@string/owner_info_settings_summary"/>
+            android:title="@string/owner_info_settings_title" />
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="owner_info_font_size"
+            android:title="@string/lockscreen_owner_info_size"
+            android:max="30"
+            settings:minimum="5"
+            settings:unitsLeft=""
+            settings:unitsRight="dp"
+            android:persistent="false" />
 
         <PreferenceScreen
             android:key="lockscreen_wallpaper"

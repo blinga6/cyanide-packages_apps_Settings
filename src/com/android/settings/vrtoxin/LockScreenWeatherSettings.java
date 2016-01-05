@@ -106,23 +106,23 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
         mNumberOfNotifications =
                 (ListPreference) findPreference(PREF_NUMBER_OF_NOTIFICATIONS);
 
+        mLCFontSize = (SeekBarPreference) findPreference(LOCK_CLOCK_FONT_SIZE);
+        mLCFontSize.setValue(Settings.System.getInt(mResolver,
+                Settings.System.LOCK_CLOCK_FONT_SIZE, 88));
+        mLCFontSize.setOnPreferenceChangeListener(this);
+
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                mResolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
+
         if (showWeather) {
             mShowLocation =
                     (SwitchPreference) findPreference(PREF_SHOW_LOCATION);
             mShowLocation.setChecked(Settings.System.getInt(mResolver,
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1) == 1);
             mShowLocation.setOnPreferenceChangeListener(this);
-
-            mLCFontSize = (SeekBarPreference) findPreference(LOCK_CLOCK_FONT_SIZE);
-            mLCFontSize.setValue(Settings.System.getInt(mResolver,
-                    Settings.System.LOCK_CLOCK_FONT_SIZE, 88));
-            mLCFontSize.setOnPreferenceChangeListener(this);
-
-            mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
-            mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
-                    mResolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
-            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
-            mLockClockFonts.setOnPreferenceChangeListener(this);
 
             mConditionIcon =
                     (ListPreference) findPreference(PREF_CONDITION_ICON);
