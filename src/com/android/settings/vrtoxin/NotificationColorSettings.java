@@ -366,11 +366,11 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NOTIFICATION_MEDIA_BG_MODE, 1);
+                                    Settings.System.NOTIFICATION_MEDIA_BG_MODE, 2);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NOTIFICATION_APP_ICON_BG_MODE, 1);
+                                    Settings.System.NOTIFICATION_APP_ICON_BG_MODE, 2);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NOTIFICATION_APP_ICON_COLOR_MODE, 1);
+                                    Settings.System.NOTIFICATION_APP_ICON_COLOR_MODE, 2);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_BG_COLOR,
                                     BLACK);
@@ -379,7 +379,7 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_APP_ICON_BG_COLOR,
-                                    TRANSLUCENT_CYANIDE_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_TEXT_COLOR,
                                     WHITE);

@@ -90,7 +90,7 @@ public class StatusLogo extends SettingsPreferenceFragment implements OnPreferen
 
         mShowVRToxinLogo = (ListPreference) findPreference(STATUS_BAR_VRTOXIN_LOGO_SHOW);
         int showVRToxinLogo = Settings.System.getIntForUser(mResolver,
-                Settings.System.STATUS_BAR_VRTOXIN_LOGO_SHOW, 3,
+                Settings.System.STATUS_BAR_VRTOXIN_LOGO_SHOW, 0,
                 UserHandle.USER_CURRENT);
         mShowVRToxinLogo.setValue(String.valueOf(showVRToxinLogo));
         mShowVRToxinLogo.setSummary(mShowVRToxinLogo.getEntry());
