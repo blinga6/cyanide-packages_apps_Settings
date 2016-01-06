@@ -145,6 +145,7 @@
     <string name="carrier_label_hide_label_title">Hide</string>
     <string name="carrier_label_hide_label_summary">Enable to choose a number of visible notification icons to hide the (custom) carrier label on the status bar</string>
     <string name="carrier_label_number_of_notification_icons_title">Number of notification icons</string>
+    <string name="status_bar_carrier_position">Location</string>
 
     <!-- Shortcut picker -->
     <string name="shortcut_picker_choose_longpress_action">Choose longpress action:</string>

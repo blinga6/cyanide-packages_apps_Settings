@@ -23,6 +23,7 @@ import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -63,6 +64,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
             "status_bar_carrier_font_size";
     private static final String PREF_STATUS_BAR_CARRIER_FONT_STYLE =
             "status_bar_carrier_font_style";
+    private static final String STATUS_BAR_CARRIER_SPOT =
+            "status_bar_carrier_spot";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -79,6 +82,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
     private ColorPickerPreference mColor;
     private SeekBarPreference mStatusBarCarrierSize;
     private ListPreference mStatusBarCarrierFontStyle;
+    private ListPreference mStatusBarCarrierSpot;
 
     private ContentResolver mResolver;
 
@@ -131,6 +135,14 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
         mStatusBarCarrierFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0)));
         mStatusBarCarrierFontStyle.setSummary(mStatusBarCarrierFontStyle.getEntry());
+
+        mStatusBarCarrierSpot = (ListPreference) findPreference(STATUS_BAR_CARRIER_SPOT);
+        int StatusBarCarrierSpot = Settings.System.getIntForUser(mResolver,
+                Settings.System.STATUS_BAR_CARRIER_SPOT, 0,
+                UserHandle.USER_CURRENT);
+        mStatusBarCarrierSpot.setValue(String.valueOf(StatusBarCarrierSpot));
+        mStatusBarCarrierSpot.setSummary(mStatusBarCarrierSpot.getEntry());
+        mStatusBarCarrierSpot.setOnPreferenceChangeListener(this);
 
         if (!isHidden) {
             /*mUseCustom = (SwitchPreference) findPreference(PREF_CARRIER_LABEL_USE_CUSTOM);
@@ -188,6 +200,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
             removePreference("carrier_label_cat_color");
             removePreference("status_bar_carrier_font_size");
             removePreference("status_bar_carrier_font_style");
+            removePreference("status_bar_carrier_spot");
         }
         setHasOptionsMenu(true);
     }
@@ -238,6 +251,15 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, val);
             mStatusBarCarrierFontStyle.setSummary(mStatusBarCarrierFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarCarrierSpot) {
+            int StatusBarCarrierSpot = Integer.valueOf((String) newValue);
+            int index = mStatusBarCarrierSpot.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(
+                    mResolver, Settings.System.STATUS_BAR_CARRIER_SPOT, StatusBarCarrierSpot,
+                    UserHandle.USER_CURRENT);
+            mStatusBarCarrierSpot.setSummary(
+                    mStatusBarCarrierSpot.getEntries()[index]);
             return true;
         /*} else if (preference == mUseCustom) {
             value = (Boolean) newValue;
@@ -335,6 +357,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_CARRIER_SPOT, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -348,6 +372,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 3);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_CARRIER_SPOT, 0);
                             getOwner().refreshSettings();
                         }
                     })
