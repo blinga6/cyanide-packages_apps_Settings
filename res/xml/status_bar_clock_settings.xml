@@ -67,13 +67,13 @@
         android:entryValues="@array/status_bar_date_format_entries_values" />
 
     <ListPreference
-        android:key="font_style"
-        android:entries="@array/clock_font_style_entries"
-        android:entryValues="@array/clock_font_style_values"
+        android:key="statusbar_clock_font_style"
+        android:entries="@array/status_bar_font_style_entries"
+        android:entryValues="@array/status_bar_font_style_values"
         android:title="@string/clock_font_style_title" />
 
     <ListPreference
-        android:key="status_bar_clock_font_size"
+        android:key="statusbar_clock_font_size"
         android:entries="@array/clock_font_size_entries"
         android:entryValues="@array/clock_font_size_values"
         android:title="@string/clock_font_size_title" />

@@ -61,6 +61,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
             "carrier_label_color";
     private static final String STATUS_BAR_CARRIER_FONT_SIZE  =
             "status_bar_carrier_font_size";
+    private static final String PREF_STATUS_BAR_CARRIER_FONT_STYLE =
+            "status_bar_carrier_font_style";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -76,6 +78,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
     private ListPreference mNumberOfNotificationIcons;
     private ColorPickerPreference mColor;
     private SeekBarPreference mStatusBarCarrierSize;
+    private ListPreference mStatusBarCarrierFontStyle;
 
     private ContentResolver mResolver;
 
@@ -122,6 +125,12 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
         mStatusBarCarrierSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14));
         mStatusBarCarrierSize.setOnPreferenceChangeListener(this);
+
+        mStatusBarCarrierFontStyle = (ListPreference) findPreference(PREF_STATUS_BAR_CARRIER_FONT_STYLE);
+        mStatusBarCarrierFontStyle.setOnPreferenceChangeListener(this);
+        mStatusBarCarrierFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0)));
+        mStatusBarCarrierFontStyle.setSummary(mStatusBarCarrierFontStyle.getEntry());
 
         if (!isHidden) {
             /*mUseCustom = (SwitchPreference) findPreference(PREF_CARRIER_LABEL_USE_CUSTOM);
@@ -178,6 +187,7 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
             removePreference("carrier_label_cat_notification_icons");
             removePreference("carrier_label_cat_color");
             removePreference("status_bar_carrier_font_size");
+            removePreference("status_bar_carrier_font_style");
         }
         setHasOptionsMenu(true);
     }
@@ -217,10 +227,17 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                     value ? 1 : 0);
             refreshSettings();
             return true;
-         } else if (preference == mStatusBarCarrierSize) {
+        } else if (preference == mStatusBarCarrierSize) {
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, width);
+            return true;
+        } else if (preference == mStatusBarCarrierFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mStatusBarCarrierFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, val);
+            mStatusBarCarrierFontStyle.setSummary(mStatusBarCarrierFontStyle.getEntries()[index]);
             return true;
         /*} else if (preference == mUseCustom) {
             value = (Boolean) newValue;
@@ -316,6 +333,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -327,6 +346,8 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 3);
                             getOwner().refreshSettings();
                         }
                     })

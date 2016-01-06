@@ -68,8 +68,8 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
     private static final String PREF_CLOCK_DATE_POSITION = "clock_date_position";
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
     private static final String PREF_COLOR_PICKER = "clock_color";
-    private static final String PREF_FONT_STYLE = "font_style";
-    private static final String PREF_STATUS_BAR_CLOCK_FONT_SIZE  = "status_bar_clock_font_size";
+    private static final String PREF_FONT_STYLE = "statusbar_clock_font_style";
+    private static final String PREF_STATUS_BAR_CLOCK_FONT_SIZE  = "statusbar_clock_font_size";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
