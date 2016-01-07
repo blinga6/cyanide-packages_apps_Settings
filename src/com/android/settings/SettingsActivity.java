@@ -139,6 +139,7 @@ import com.android.settings.vrtoxin.AppSideBar;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.ThemeSettings;
 import com.android.settings.vrtoxin.FloatingWindows;
+import com.android.settings.vrtoxin.dslv.ActionListViewSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -378,6 +379,7 @@ public class SettingsActivity extends Activity
             HwKeySettings.class.getName(),
             ThemeSettings.class.getName(),
             FloatingWindows.class.getName(),
+            ActionListViewSettings.class.getName()
     };
 
 
