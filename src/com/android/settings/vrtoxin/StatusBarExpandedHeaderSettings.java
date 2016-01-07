@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -42,6 +43,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
 
     private static final String PREF_SHOW_WEATHER = "expanded_header_show_weather";
     private static final String PREF_SHOW_LOCATION = "expanded_header_show_weather_location";
+    private static final String STATUS_BAR_HEADER_FONT_STYLE = "status_bar_header_font_style";
     private static final String PREF_BG_COLOR = "expanded_header_background_color";
     private static final String PREF_RIPPLE_COLOR = "expanded_header_ripple_color";
     private static final String PREF_TEXT_COLOR = "expanded_header_text_color";
@@ -57,6 +59,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
 
     private SwitchPreference mShowWeather;
     private SwitchPreference mShowLocation;
+    private ListPreference mStatusBarHeaderFontStyle;
     private ColorPickerPreference mBackgroundColor;
     private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mTextColor;
@@ -97,6 +100,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         } else {
             removePreference(PREF_SHOW_LOCATION);
         }
+
+        mStatusBarHeaderFontStyle = (ListPreference) findPreference(STATUS_BAR_HEADER_FONT_STYLE);
+        mStatusBarHeaderFontStyle.setOnPreferenceChangeListener(this);
+        mStatusBarHeaderFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 0)));
+        mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntry());
 
         mBackgroundColor =
                 (ColorPickerPreference) findPreference(PREF_BG_COLOR);
@@ -180,6 +189,13 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             Settings.System.putInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_SHOW_WEATHER_LOCATION,
                 value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarHeaderFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mStatusBarHeaderFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_HEADER_FONT_STYLE, val);
+            mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntries()[index]);
             return true;
         } else if (preference == mBackgroundColor) {
             hex = ColorPickerPreference.convertToARGB(
