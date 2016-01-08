@@ -17,6 +17,7 @@
 package com.android.settings.fuelgauge;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.drawable.Drawable;
 import android.os.BatteryStats;
 import android.os.Build;
