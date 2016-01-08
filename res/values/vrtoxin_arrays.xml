@@ -415,6 +415,7 @@
         <item>@string/shortcut_action_lastapp</item>
         <item>@string/shortcut_action_menu_big</item>
         <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_onthego</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib</item>
@@ -436,6 +437,7 @@
         <item>**lastapp**</item>
         <item>**menu_big**</item>
         <item>**ime**</item>
+        <item>**onthego**</item>
         <item>**recents**</item>
         <item>**ring_silent**</item>
         <item>**ring_vib**</item>
@@ -502,6 +504,7 @@
         <item>@string/shortcut_action_home</item>-
         <item>@string/shortcut_action_menu</item>
         <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_onthego</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
@@ -521,6 +524,7 @@
         <item>**home**</item>
         <item>**menu_big**</item>
         <item>**ime**</item>
+        <item>**onthego**</item>
         <item>**power_menu**</item>
         <item>**recents**</item>
         <item>**power**</item>
