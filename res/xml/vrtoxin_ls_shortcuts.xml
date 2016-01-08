@@ -20,7 +20,8 @@
 
 	<PreferenceCategory
 		android:key="lockscreen_shortcuts"
-		android:title="@string/vrtoxin_ls_shortcuts_title">
+		android:title="@string/vrtoxin_ls_shortcuts_title"
+        android:summary="@string/bottom_shortcuts_summary">
 
         <PreferenceScreen
             android:title="@string/lockscreen_targets_message" >

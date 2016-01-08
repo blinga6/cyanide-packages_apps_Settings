@@ -130,7 +130,7 @@
     <string name="theme_settings_category">Theme Settings</string>
 
     <!-- Carrier label settings -->
-    <string name="status_bar_carrier_label_settings_title">Custom Carrier Label</string>
+    <string name="status_bar_carrier_label_settings_title">Carrier Label</string>
     <string name="status_bar_carrier_label_settings_summary">Customize carrier label text, color &amp; auto hide options</string>
     <string name="carrier_label_cat_notification_icons_title">Notification Icons</string>
     <string name="carrier_label_show_title">Show</string>
@@ -140,7 +140,7 @@
     <string name="carrier_label_show_on_lock_screen_summary">Enable to show the (custom) carrier label on the status bar of the lock screen</string>
     <string name="carrier_label_use_custom_title">Custom carrier label</string>
     <string name="carrier_label_use_custom_summary">Enable to use a custom carrier label</string>
-    <string name="carrier_label_custom_label_title">Custom label</string>
+    <string name="carrier_label_custom_label_title">Custom Label</string>
     <string name="carrier_label_custom_label_dlg_message">Enter a new custom label to display instead of the real carrier name. An empty field will revert the name to \'Darkkat\'</string>
     <string name="carrier_label_hide_label_title">Hide</string>
     <string name="carrier_label_hide_label_summary">Enable to choose a number of visible notification icons to hide the (custom) carrier label on the status bar</string>
@@ -843,14 +843,14 @@
     <string name="clock_color_title">Color</string>
     <string name="status_bar_clock_style_reset">Reset color</string>
     <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
-    <string name="clock_font_style_title">Font</string>
+    <string name="clock_font_style_title">Font Style</string>
     <string name="clock_font_normal">Normal</string>
     <string name="clock_font_italic">Italic</string>
     <string name="clock_font_bold">Bold</string>
     <string name="clock_font_bold_italic">Bold Italic</string>
     <string name="clock_font_light">Light</string>
     <string name="clock_font_light_italic">Light Italic</string>
-    <string name="clock_font_size_title">Font size</string>
+    <string name="clock_font_size_title">Font Size</string>
     <string name="clock_font_thin">Thin</string>
     <string name="clock_font_thin_italic">Thin Italic</string>
     <string name="clock_font_condensed">Condensed</string>
@@ -864,18 +864,18 @@
     <string name="status_bar_date_none">Hidden (default)</string>
     <string name="status_bar_date_small">Small</string>
     <string name="status_bar_date_normal">Normal</string>
-    <string name="status_bar_date_format_title">Date format</string>
-    <string name="status_bar_date_style">Date style</string>
+    <string name="status_bar_date_format_title">Date Format</string>
+    <string name="status_bar_date_style">Date Style</string>
     <string name="status_bar_date_style_normal">Normal</string>
     <string name="status_bar_date_style_lowercase">Lowercase</string>
     <string name="status_bar_date_style_uppercase">Uppercase</string>
     <string name="status_bar_date_format_custom">Custom java format</string>
     <string name="status_bar_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Enter string</string>
-    <string name="clock_date_position">Date position</string>
+    <string name="clock_date_position">Date Position</string>
     <string name="clock_date_right">Right of clock</string>
     <string name="clock_date_left">Left of clock</string>
-    <string name="status_bar_clock_style_title">Clock style</string>
+    <string name="status_bar_clock_style_title">Clock Location</string>
     <string name="status_bar_clock_style_right">Right</string>
     <string name="status_bar_clock_style_left">Left</string>
     <string name="status_bar_clock_style_center">Center</string>
@@ -1114,11 +1114,11 @@
     <string name="status_bar_temperature_hidden">Hidden</string>
     <string name="status_bar_temperature_show_scale">Shown with scale</string>
     <string name="status_bar_temperature_hide_scale">Shown without scale</string>
-    <string name="status_bar_temperature_location_title">Placement</string>
+    <string name="status_bar_temperature_location_title">Location</string>
     <string name="status_bar_temperature_location_summary">Select where the weather temperature is shown on the statusbar</string>
     <string name="status_bar_temperature_location_right">Show on right</string>
     <string name="status_bar_temperature_location_left">Show on left</string>
-    <string name="status_bar_weather_color_title">Temperature color</string>
+    <string name="status_bar_weather_color_title">Color</string>
     <string name="status_bar_weather_size_title">Font Size</string>
     <string name="status_bar_weather_font_style_title">Font Style</string>
     <string name="status_bar_weather_font_normal">Normal</string>
@@ -1170,7 +1170,8 @@
     <string name="recents_clear_all_dismiss_all_summary">Choose whether to dismiss all tasks or ignore the foreground task</string>
     <string name="memory_bar_options_title">Memory Bar Settings</string>
     <string name="recents_show_membar_title">Memory Bar</string>
-    <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
+    <string name="recents_show_membar_summary_enabled">Recents RAM Bar is enabled</string>
+    <string name="recents_show_membar_summary_disabled">Recents RAM Bar is disabled</string>
     <string name="membar_text_color">Bar Text Color</string>
     <string name="membar_bar_color">Bar Free Color</string>
     <string name="membar_bar_used_color">Bar Used Color</string>
@@ -1269,7 +1270,7 @@
     <!-- Ability to disable hardware keys -->
     <string name="hw_keys_title">Hardware Keys</string>
     <string name="hw_keys_summary">On/off switch for hardware keys</string>
-    <string name="lock_clock_color_title">Global Lock Screen Colors</string>
+    <string name="lock_clock_color_title">Lock Screen Colors</string>
     <string name="lock_clock_weather_general_summary">General cLock weather settings</string>
     <string name="weather_control_title">General cLock Weather</string>
     <string name="weather_control_master_title">Weather Control</string>
@@ -1582,12 +1583,12 @@
     <string name="recents_show_fullscreen">Fullscreen Recents</string>
     <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
     <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
-    <string name="recents_full_screen_clock_title">Show clock</string>
+    <string name="recents_full_screen_clock_title">Show Clock</string>
     <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
-    <string name="recents_full_screen_date_title">Show date</string>
+    <string name="recents_full_screen_date_title">Show Date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
-    <string name="recents_full_screen_clock_color">Clock color</string>
-    <string name="recents_full_screen_date_color">Date color</string>
+    <string name="recents_full_screen_clock_color">Clock Color</string>
+    <string name="recents_full_screen_date_color">Date Color</string>
 
     <!-- Disable animations -->
     <string name="disable_animations">Disable Animations</string>
@@ -1634,6 +1635,7 @@
     <string name="lockscreen_settings">Lock Screen</string>
     <string name="lock_screen_buttons_settings_title">Circle Shortcuts</string>
     <string name="vrtoxin_ls_shortcuts_summary">Custom Circle Shortcuts</string>
+    <string name="bottom_shortcuts_summary">Customize the shortcuts in the bottom corners of the lock screen</string>
     <string name="lock_screen_buttons_settings_summary">Customize the additional buttons bar and the default buttons at the bottom</string>
     <string name="button_ripple_color_mode_auto_title">Auto</string>
     <string name="button_ripple_color_mode_custom_title">Custom Color</string>
@@ -1727,7 +1729,7 @@
     <string name="greeting_show_greeting_once_summary">The greeting will be shown only the first time the device gets unlocked after the boot</string>
     <string name="greeting_show_greeting_never_summary">The greeting will never be shown</string>
     <string name="greeting_show_greeting_once_title">Once after boot</string>
-    <string name="greeting_custom_text_title">Custom text</string>
+    <string name="greeting_custom_text_title">Custom Text</string>
     <string name="greeting_custom_text_dlg_message">Enter a new text, which will be shown as greeting. An empty field will revert the text to:\n\'%s\'</string>
     <string name="greeting_timeout_title">Time out</string>
     <string name="greeting_preview_title">Preview</string>
@@ -1739,7 +1741,7 @@
     <!-- OmniSwitch -->
     <string name="omniswitch_recents_title">OmniSwitch Recents</string>
     <string name="omniswitch_category">OmniSwitch</string>
-    <string name="recents_use_omniswitch_title">Use for recents</string>
+    <string name="recents_use_omniswitch_title">Default Recents</string>
     <string name="recents_use_omniswitch_summary">Use OmniSwitch instead of default recents view</string>
     <string name="omniswitch_start_settings_summary">Open OmniSwitch settings</string>
     <string name="omniswitch_first_time_title">Information</string>
@@ -1818,7 +1820,7 @@
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
 
     <!-- Recents empty style -->
-    <string name="recents_empty_style">VRToxin logo</string>
+    <string name="recents_empty_style">VRToxin Logo</string>
     <string name="recents_empty_style_summary">When recents is empty, show VRToxin logo instead of text.</string>
 
     <!-- Chamber of Secrets -->
@@ -2020,6 +2022,6 @@
     <string name="notifications_four_items"><xliff:g id="notif_state" example="Priority">%1$s</xliff:g> / <xliff:g id="notif_state" example="Priority">%2$s</xliff:g> / <xliff:g id="notif_state" example="Priority">%3$s</xliff:g> / <xliff:g id="notif_state" example="Priority">%4$s</xliff:g></string>
 
     <!-- Option to Disable Brightness Icon In Brightness Slider -->
-    <string name="brightness_icon_title">Brightness Icon</string>
-    <string name="brightness_icon_summary">Enable icon next to brightness slider</string>
+    <string name="brightness_icon_title">Brightness Slider Icon</string>
+    <string name="brightness_icon_summary">Enable the icon next to the slider</string>
 </resources>

@@ -31,14 +31,10 @@
         android:summary="@string/carrier_label_show_on_lock_screen_summary"
         android:persistent="false" />
 
-    <com.android.settings.vrtoxin.SeekBarPreference
-        android:key="status_bar_carrier_font_size"
-        android:title="@string/status_bar_carrier_size"
-        android:defaultValue="14"
-        android:max="23"
-        settings:minimum="4"
-        settings:unitsLeft=""
-        settings:unitsRight="dp" />
+    <EditTextPreference
+        android:key="carrier_label_custom_label"
+        android:title="@string/carrier_label_custom_label_title"
+        android:dialogMessage="@string/carrier_label_custom_label_dlg_message" />
 
     <ListPreference
         android:key="status_bar_carrier_font_style"
@@ -53,16 +49,31 @@
         android:entries="@array/status_bar_logo_position_entries"
         android:entryValues="@array/status_bar_logo_position_values" />
 
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="status_bar_carrier_font_size"
+        android:title="@string/status_bar_carrier_size"
+        android:defaultValue="14"
+        android:max="23"
+        settings:minimum="4"
+        settings:unitsLeft=""
+        settings:unitsRight="dp" />
+
     <!--<SwitchPreference
         android:key="carrier_label_use_custom"
         android:title="@string/carrier_label_use_custom_title"
         android:summary="@string/carrier_label_use_custom_summary"
         android:persistent="false" />-->
 
-    <EditTextPreference
-        android:key="carrier_label_custom_label"
-        android:title="@string/carrier_label_custom_label_title"
-        android:dialogMessage="@string/carrier_label_custom_label_dlg_message" />
+    <PreferenceCategory
+        android:key="carrier_label_cat_color"
+        android:title="@string/color_title">
+
+         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="carrier_label_color"
+            android:title="@string/text_title"
+            android:defaultValue="0xffffffff" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="carrier_label_cat_notification_icons"
@@ -79,17 +90,6 @@
             android:title="@string/carrier_label_number_of_notification_icons_title"
             android:entries="@array/number_of_notifications_entries"
             android:entryValues="@array/number_of_notifications_values" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="carrier_label_cat_color"
-        android:title="@string/color_title">
-
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="carrier_label_color"
-            android:title="@string/text_title"
-            android:defaultValue="0xffffffff" />
 
     </PreferenceCategory>
 </PreferenceScreen>
