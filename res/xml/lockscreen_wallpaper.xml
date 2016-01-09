@@ -24,18 +24,17 @@
         <Preference
             android:key="lockscreen_wallpaper_set"
             android:title="@string/lockscreen_wallpaper_set_title"
-            android:dependency="lockscreen_see_through"
+            android:summary="@string/lockscreen_wallpaper_set_summary"
             android:persistent="false"/>
 
         <Preference
             android:key="lockscreen_wallpaper_clear"
             android:title="@string/lockscreen_wallpaper_clear_title"
-            android:dependency="lockscreen_see_through"
             android:persistent="false"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <!--<PreferenceCategory
         android:key="lockscreen_blur"
         android:title="@string/lockscreen_see_through_title" >
 
@@ -52,5 +51,5 @@
             android:max="25"
             settings:min="0"
             android:defaultValue="14" />
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 </PreferenceScreen>

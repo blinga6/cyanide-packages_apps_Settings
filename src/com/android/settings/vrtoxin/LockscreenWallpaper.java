@@ -46,8 +46,8 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
-    private SwitchPreference mSeeThrough;
-    private SeekBarPreference mBlurRadius;
+    //private SwitchPreference mSeeThrough;
+    //private SeekBarPreference mBlurRadius;
 
     private ContentResolver mResolver;
 
@@ -66,7 +66,7 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
         mSetWallpaper = (Preference) findPreference(KEY_WALLPAPER_SET);
         mClearWallpaper = (Preference) findPreference(KEY_WALLPAPER_CLEAR);
 
-        mSeeThrough = (SwitchPreference) findPreference(LOCKSCREEN_SEE_THROUGH);
+        /*mSeeThrough = (SwitchPreference) findPreference(LOCKSCREEN_SEE_THROUGH);
         mSeeThrough.setChecked(Settings.System.getInt(mResolver,
             Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
         mSeeThrough.setOnPreferenceChangeListener(this);
@@ -74,11 +74,11 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
         mBlurRadius = (SeekBarPreference) findPreference(LOCKSCREEN_BLUR_RADIUS);
         mBlurRadius.setValue(Settings.System.getInt(mResolver,
                 Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
-        mBlurRadius.setOnPreferenceChangeListener(this);
+        mBlurRadius.setOnPreferenceChangeListener(this);*/
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mSeeThrough) {
+        /*if (preference == mSeeThrough) {
             Settings.System.putInt(mResolver,
                     Settings.System.LOCKSCREEN_SEE_THROUGH,
             (Boolean) newValue ? 1 : 0);
@@ -88,7 +88,7 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
             Settings.System.putInt(mResolver,
                     Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
             return true;
-         }
+         }*/
          return false;
     }
 
