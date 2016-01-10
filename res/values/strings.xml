@@ -2010,6 +2010,8 @@
     <string name="night_mode_blackout">Blackout</string>
     <!-- Sound & display settings screen, theme setting value to automatically switch between a light- or dark-colored user interface [CHAR LIMIT=30] -->
     <string name="night_mode_auto">Automatic (Light-Dark)</string>
+    <!-- Sound & display settings screen, theme setting value to prefer a random-colored user interface [CHAR LIMIT=30] -->
+    <string name="night_mode_random">Random</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout -->
     <string name="screen_timeout">Screen Timeout</string>
     <!-- Sound & display settings screen, setting option name to change screen timeout [CHAR LIMIT=30] -->
