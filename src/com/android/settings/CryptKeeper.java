@@ -118,6 +118,8 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     private boolean mEncryptionGoneBad;
     /** If gone bad, should we show encryption failed (false) or corrupt (true)*/
     private boolean mCorrupt;
+    /** If gone bad and mdtp is activated we should not allow recovery screen, only wipe the data */
+    private boolean mMdtpActivated;
     /** A flag to indicate when the back event should be ignored */
     /** When set, blocks unlocking. Set every COOL_DOWN_ATTEMPTS attempts, only cleared
         by power cycling phone. */
@@ -223,14 +225,27 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                 hide(R.id.pattern_sizes);
             } else if (failedAttempts == MAX_FAILED_ATTEMPTS) {
                 // Factory reset the device.
-                Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
-                intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-                intent.putExtra(Intent.EXTRA_REASON, "CryptKeeper.MAX_FAILED_ATTEMPTS");
-                sendBroadcast(intent);
+                if(mMdtpActivated){
+                    Log.d(TAG,
+                        "  CryptKeeper.MAX_FAILED_ATTEMPTS, calling encryptStorage with wipe");
+                    try {
+                        final IMountService service = getMountService();
+                        service.encryptWipeStorage(StorageManager.CRYPT_TYPE_DEFAULT, "");
+
+                    } catch (RemoteException e) {
+                        Log.w(TAG, "Unable to call MountService properly");
+                        return;
+                    }
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
+                    intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+                    intent.putExtra(Intent.EXTRA_REASON, "CryptKeeper.MAX_FAILED_ATTEMPTS");
+                    sendBroadcast(intent);
+                }
             } else if (failedAttempts == -1) {
                 // Right password, but decryption failed. Tell user bad news ...
                 setContentView(R.layout.crypt_keeper_progress);
-                showFactoryReset(true);
+                showFactoryReset(true, false);
                 return;
             } else {
                 handleBadAttempt(failedAttempts);
@@ -309,10 +324,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
                     Log.w(TAG, "Unexpectedly in CryptKeeper even though there is no encryption.");
                     return true; // Unexpected, but fine, I guess...
                 }
-                return state == IMountService.ENCRYPTION_STATE_OK;
+                mMdtpActivated = (state == IMountService.ENCRYPTION_STATE_ERROR_MDTP_ACTIVATED) ||
+                    (state == IMountService.ENCRYPTION_STATE_OK_MDTP_ACTIVATED);
+                return (state == IMountService.ENCRYPTION_STATE_OK) ||
+                    (state == IMountService.ENCRYPTION_STATE_OK_MDTP_ACTIVATED);
             } catch (RemoteException e) {
                 Log.w(TAG, "Unable to get encryption state properly");
-                return true;
+                return false;
             }
         }
 
@@ -456,10 +474,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mWakeLock = retained.wakelock;
             Log.d(TAG, "Restoring wakelock from NonConfigurationInstanceState");
         }
-
-        // Dismiss secure & non-secure keyguards while this screen is showing.
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
-                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     }
 
     /**
@@ -480,7 +494,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     private void setupUi() {
         if (mEncryptionGoneBad || isDebugView(FORCE_VIEW_ERROR)) {
             setContentView(R.layout.crypt_keeper_progress);
-            showFactoryReset(mCorrupt);
+            showFactoryReset(mCorrupt, mMdtpActivated);
             return;
         }
 
@@ -619,8 +633,10 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
      * there is nothing else we can do
      * @param corrupt true if userdata is corrupt, false if encryption failed
      *        partway through
+     * @param mdtp_activated true if MDTP is activated according to MountService
+     *        state.
      */
-    private void showFactoryReset(final boolean corrupt) {
+    private void showFactoryReset(final boolean corrupt, final boolean mdtp_activated) {
         // Hide the encryption-bot to make room for the "factory reset" button
         findViewById(R.id.encroid).setVisibility(View.GONE);
 
@@ -630,12 +646,24 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         button.setOnClickListener(new OnClickListener() {
                 @Override
             public void onClick(View v) {
-                // Factory reset the device.
-                Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
-                intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-                intent.putExtra(Intent.EXTRA_REASON,
-                        "CryptKeeper.showFactoryReset() corrupt=" + corrupt);
-                sendBroadcast(intent);
+                if(mdtp_activated){
+                    Log.d(TAG, "  Calling encryptStorage with wipe");
+                    try {
+                        final IMountService service = getMountService();
+                        service.encryptWipeStorage(StorageManager.CRYPT_TYPE_DEFAULT, "");
+
+                    } catch (RemoteException e) {
+                        Log.w(TAG, "Unable to call MountService properly");
+                        return;
+                    }
+                } else {
+                    // Factory reset the device.
+                    Intent intent = new Intent(Intent.ACTION_MASTER_CLEAR);
+                    intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+                    intent.putExtra(Intent.EXTRA_REASON,
+                            "CryptKeeper.showFactoryReset() corrupt=" + corrupt);
+                    sendBroadcast(intent);
+                }
             }
         });
 
@@ -659,7 +687,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         final String state = SystemProperties.get("vold.encrypt_progress");
 
         if ("error_partially_encrypted".equals(state)) {
-            showFactoryReset(false);
+            showFactoryReset(false, false);
             return;
         }
 
@@ -840,6 +868,10 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         // Notify the user in 120 seconds that we are waiting for him to enter the password.
         mHandler.removeMessages(MESSAGE_NOTIFY);
         mHandler.sendEmptyMessageDelayed(MESSAGE_NOTIFY, 120 * 1000);
+
+        // Dismiss secure & non-secure keyguards while this screen is showing.
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     }
 
     /**
