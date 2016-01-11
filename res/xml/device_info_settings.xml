@@ -112,6 +112,12 @@
                 android:title="@string/vrtoxin_version"
                 android:summary="@string/vrtoxin_version_default" />
 
+        <!-- Android version -->
+        <Preference android:key="android_version"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/android_version_title"
+                android:summary="@string/android_version_default"/>
+
         <Preference android:key="sm_android"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/sm_android"

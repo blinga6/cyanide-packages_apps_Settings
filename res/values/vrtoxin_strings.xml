@@ -2370,4 +2370,8 @@
     <!-- Memory -->
     <string name="memory_startup_apps_title">Apps started on boot</string>
 
+    <!-- Android Version -->
+    <string name="android_version_title">Marshmallow</string>
+    <string name="android_version_default">Release 16</string>
+
 </resources>
