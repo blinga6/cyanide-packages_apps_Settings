@@ -34,6 +34,12 @@
         android:persistent="false" />
 
     <PreferenceScreen
+        android:key="advanced_boot_dialog_settings"
+        android:title="@string/advanced_boot_dialog_settings_title"
+        android:summary="@string/advanced_boot_dialog_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.BootDialogSettings" />
+
+    <PreferenceScreen
         android:key="power_menu_actions"
         android:title="@string/buttons_actions_title"
         android:summary="@string/power_menu_actions_summary"

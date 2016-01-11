@@ -2025,4 +2025,15 @@
     <!-- Option to Disable Brightness Icon In Brightness Slider -->
     <string name="brightness_icon_title">Brightness Slider Icon</string>
     <string name="brightness_icon_summary">Enable the icon next to the slider</string>
+
+    <!-- Boot Dialog Options -->
+    <string name="advanced_boot_dialog_settings_title">Boot Dialog</string>
+    <string name="advanced_boot_dialog_settings_summary">Customize the boot dialog</string>
+    <string name="boot_dialog_show_progress_dialog_title">Show Progress Icon</string>
+    <string name="boot_dialog_show_progress_dialog_summary">Enable to show the progress icon</string>
+    <string name="boot_dialog_app_text_color_mode_title">App Text Color Mode</string>
+    <string name="boot_dialog_app_text_color_mode_custom_title">Use a custom color</string>
+    <string name="boot_dialog_app_text_color_mode_random_title">Use a random color</string>
+    <string name="boot_dialog_app_text_color_mode_text_title">Use the global text color</string>
+    <string name="boot_dialog_app_text_color_title">App Text</string>
 </resources>
