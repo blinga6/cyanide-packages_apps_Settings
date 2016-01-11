@@ -73,6 +73,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String RECENTS_FULL_SCREEN = "recents_full_screen";
     private static final String RECENTS_FULL_SCREEN_CLOCK_COLOR = "recents_full_screen_clock_color";
     private static final String RECENTS_FULL_SCREEN_DATE_COLOR = "recents_full_screen_date_color";
+    private static final String RECENTS_FONT_STYLE = "recents_font_style";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -100,6 +101,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private SwitchPreference mRecentsFullScreen;
     private ColorPickerPreference mClockColor;
     private ColorPickerPreference mDateColor;
+    private ListPreference mRecentsFontStyle;
 
     private ContentResolver mResolver;
 
@@ -267,6 +269,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         } else {
             removePreference(RECENTS_FULL_SCREEN_CAT_OPTIONS);
         }
+
+        mRecentsFontStyle = (ListPreference) findPreference(RECENTS_FONT_STYLE);
+        mRecentsFontStyle.setOnPreferenceChangeListener(this);
+        mRecentsFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.RECENTS_FONT_STYLE, 0)));
+        mRecentsFontStyle.setSummary(mRecentsFontStyle.getEntry());
         
         setHasOptionsMenu(true);
     }
@@ -409,6 +417,13 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mRecentsFontStyle) {
+            int val = Integer.parseInt((String) objValue);
+            int index = mRecentsFontStyle.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_FONT_STYLE, val);
+            mRecentsFontStyle.setSummary(mRecentsFontStyle.getEntries()[index]);
+            return true;
         }
         return false;
     }
@@ -520,6 +535,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FONT_STYLE,
+                                    0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -560,6 +578,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
                                     VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FONT_STYLE,
+                                    3);
                             getOwner().refreshSettings();
                         }
                     })

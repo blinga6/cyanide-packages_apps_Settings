@@ -1589,6 +1589,7 @@
     <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
     <string name="recents_full_screen_clock_color">Clock Color</string>
     <string name="recents_full_screen_date_color">Date Color</string>
+    <string name="recents_font_style">Controls clock, date and memory text</string>
 
     <!-- Disable animations -->
     <string name="disable_animations">Disable Animations</string>
