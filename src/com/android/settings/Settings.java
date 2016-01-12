@@ -132,4 +132,6 @@ public class Settings extends SettingsActivity {
     public static class ThemeSettingsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class FloatingWindowsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ActionListViewSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NotificationLightSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class BatteryLightSettingsActivity extends SettingsActivity { /* empty */ }
 }

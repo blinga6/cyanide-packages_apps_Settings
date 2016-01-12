@@ -2480,9 +2480,6 @@
                 android:value="true" />
         </activity>
 
-        <activity android:name=".notificationlight.NotificationLightSettings" />
-        <activity android:name=".notificationlight.BatteryLightSettings" />
-
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
@@ -2505,6 +2502,43 @@
                 <action android:name="android.bluetooth.intent.DISCOVERABLE_TIMEOUT" />
             </intent-filter>
         </receiver>
+
+        <activity android:name="Settings$NotificationLightSettingsActivity"
+                android:label="@string/notification_light_title"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.notificationlight.NotificationLightSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
+
+        <activity-alias android:name=".notificationlight.NotificationLightSettings"
+                  android:label="@string/notification_light_title"
+                  android:clearTaskOnLaunch="true"
+                  android:exported="true"
+                  android:targetActivity="Settings$NotificationLightSettingsActivity">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.notificationlight.NotificationLightSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity-alias>
+
+        <activity android:name="Settings$BatteryLightSettingsActivity"
+                android:label="@string/battery_light_title"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.notificationlight.BatteryLightSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
 
         <!-- Expanded desktop settings activity. -->
         <activity android:name="Settings$ExpandedDesktopSettingsActivity"
