@@ -103,6 +103,7 @@ import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.notification.AppNotificationSettings;
 import com.android.settings.notification.NotificationAccessSettings;
+import com.android.settings.notification.NotificationManagerSettings;
 import com.android.settings.notification.NotificationSettings;
 import com.android.settings.notification.NotificationStation;
 import com.android.settings.notification.OtherSoundSettings;
@@ -383,7 +384,8 @@ public class SettingsActivity extends Activity
             FloatingWindows.class.getName(),
             ActionListViewSettings.class.getName(),
             BatteryLightSettings.class.getName(),
-            NotificationLightSettings.class.getName()
+            NotificationLightSettings.class.getName(),
+            NotificationManagerSettings.class.getName()
     };
 
 

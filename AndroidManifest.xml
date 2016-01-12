@@ -2503,6 +2503,30 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name="Settings$NotificationManagerSettingsActivity"
+                android:label="@string/notification_manager"
+                android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.notification.NotificationManagerSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
+
+        <activity-alias android:name=".notification.NotificationManagerSettings"
+                  android:label="@string/notification_manager"
+                  android:clearTaskOnLaunch="true"
+                  android:exported="true"
+                  android:targetActivity="Settings$NotificationManagerSettingsActivity">
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.notification.NotificationManagerSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity-alias>
+
         <activity android:name="Settings$NotificationLightSettingsActivity"
                 android:label="@string/notification_light_title"
                 android:taskAffinity="">
