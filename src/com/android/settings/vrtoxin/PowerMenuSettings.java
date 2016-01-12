@@ -319,7 +319,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
                                     Settings.System.POWER_MENU_TEXT_COLOR,
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.POWER_MENU_ANIMATIONS, 1);
+                                    Settings.System.POWER_MENU_ANIMATIONS, 7);
                             getOwner().refreshSettings();
                         }
                     })
