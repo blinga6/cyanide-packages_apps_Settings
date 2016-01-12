@@ -2037,4 +2037,8 @@
     <string name="boot_dialog_app_text_color_mode_random_title">Use a random color</string>
     <string name="boot_dialog_app_text_color_mode_text_title">Use the global text color</string>
     <string name="boot_dialog_app_text_color_title">App Text</string>
+
+    <!-- Settings Two Columns -->
+    <string name="two_columns_title">Two Column Settings</string>
+    <string name="two_columns_summary">Enable this to change settings dashboard to side by side columns</string>
 </resources>

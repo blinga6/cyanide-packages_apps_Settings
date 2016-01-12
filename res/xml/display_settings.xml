@@ -95,6 +95,12 @@
                 android:summary="@string/tap_to_wake_summary"
                 android:persistent="false" />
 
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="dashboard_column_count"
+                android:title="@string/two_columns_title"
+                android:summary="@string/two_columns_summary"
+                android:defaultValue="false" />
+
         <SwitchPreference
                 android:key="wake_when_plugged_or_unplugged"
                 android:title="@string/wake_when_plugged_or_unplugged_title"

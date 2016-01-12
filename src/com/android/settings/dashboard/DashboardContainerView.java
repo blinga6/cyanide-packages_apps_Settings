@@ -18,6 +18,8 @@ package com.android.settings.dashboard;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,7 @@ public class DashboardContainerView extends ViewGroup {
 
     private int mNumRows;
     private int mNumColumns;
+    private int mSettingsStyle;
 
     public DashboardContainerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,7 +40,15 @@ public class DashboardContainerView extends ViewGroup {
         final Resources res = context.getResources();
         mCellGapX = res.getDimension(R.dimen.dashboard_cell_gap_x);
         mCellGapY = res.getDimension(R.dimen.dashboard_cell_gap_y);
-        mNumColumns = res.getInteger(R.integer.dashboard_num_columns);
+
+        mSettingsStyle = Settings.System.getIntForUser(
+                mContext.getContentResolver(), Settings.System.DASHBOARD_COLUMN_COUNT, 0,
+                UserHandle.USER_CURRENT);
+        if (mSettingsStyle == 0) {
+            mNumColumns = res.getInteger(R.integer.dashboard_num_columns);
+        } else {
+            mNumColumns = res.getInteger(R.integer.dashboard_two_columns);
+        }
     }
 
     @Override
