@@ -1736,6 +1736,7 @@
     <string name="greeting_timeout_title">Time out</string>
     <string name="greeting_preview_title">Preview</string>
     <string name="greeting_preview_summary">Click to show a preview</string>
+    <string name="greeting_font_size_title">Font Size</string>
 
     <!-- NFC PreferenceCategory title -->
     <string name="nfc_title_category">NFC</string>
