@@ -2068,4 +2068,10 @@
     <!-- Media art -->
     <string name="media_art_title">Media Cover Art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>
+
+    <!-- Status Bar Ticker -->
+    <string name="ticker_screen_title">Ticker</string>
+    <string name="ticker_title">Status Bar Ticker</string>
+    <string name="ticker_screen_summary">Customize the ticker style</string>
+    <string name="ticker_summary">Enable the old status bar ticker</string>
 </resources>
