@@ -1721,6 +1721,7 @@
         <item>@string/qab_button_screen_off</item>
         <item>@string/qs_tile_slim_floats</item>
         <item>@string/qab_button_slimpie</item>
+        <item>@string/qab_button_stweaks</item>
         <item>@string/qab_button_themes</item>
         <item>@string/qab_button_vrtoxin</item>
         <item>@string/qab_button_wifi</item>
@@ -1748,6 +1749,7 @@
         <item>screenoff</item>
         <item>slim_floats</item>
         <item>slimpie</item>
+        <item>stweaks</item>
         <item>themes</item>
         <item>vrtoxin</item>
         <item>wifi</item>

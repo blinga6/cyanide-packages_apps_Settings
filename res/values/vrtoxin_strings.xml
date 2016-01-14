@@ -601,6 +601,7 @@
     <string name="qab_button_themes">Themes</string>
     <string name="qab_button_vrtoxin">VRToxinMods</string>
     <string name="qab_button_kernel_adiutor">Kernel Adiutor</string>
+    <string name="qab_button_stweaks">STweaks</string>
 
     <!-- Tiles -->
     <string name="qs_tile_rotation">Rotation</string>
