@@ -2071,6 +2071,8 @@
 
     <!-- Status Bar Ticker -->
     <string name="ticker_screen_title">Ticker</string>
+    <string name="ticker_colors_title">Ticker Colors</string>
+    <string name="notif_colors_title">Notif Count Colors</string>
     <string name="ticker_title">Status Bar Ticker</string>
     <string name="ticker_screen_summary">Customize the ticker style</string>
     <string name="ticker_summary">Enable the old status bar ticker</string>

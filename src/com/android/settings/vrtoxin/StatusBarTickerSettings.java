@@ -43,22 +43,34 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
 
     private static final String SHOW_TICKER =
             "status_bar_show_ticker";
+    private static final String SHOW_COUNT =
+            "status_bar_notif_count";
     private static final String CAT_COLORS =
             "ticker_colors";
+    private static final String CAT_NOTIF_COLORS =
+            "notif_colors";
     private static final String TEXT_COLOR =
             "status_bar_ticker_text_color";
     private static final String ICON_COLOR =
             "status_bar_ticker_icon_color";
+    private static final String COUNT_ICON_COLOR =
+            "status_bar_notif_count_icon_color";
+    private static final String COUNT_TEXT_COLOR =
+            "status_bar_notif_count_text_color";
 
+    private static final int BLACK                  = 0xff000000;
     private static final int WHITE                  = 0xffffffff;
     private static final int VRTOXIN_BLUE           = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
 
+    private SwitchPreference mShowCount;
     private SwitchPreference mShowTicker;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
+    private ColorPickerPreference mCountIconColor;
+    private ColorPickerPreference mCountTextColor;
 
     private ContentResolver mResolver;
 
@@ -82,11 +94,18 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
 
         boolean showTicker = Settings.System.getInt(mResolver,
                 Settings.System.STATUS_BAR_SHOW_TICKER, 0) == 1;
+        boolean showCount = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1;
 
         mShowTicker =
                 (SwitchPreference) findPreference(SHOW_TICKER);
         mShowTicker.setChecked(showTicker);
         mShowTicker.setOnPreferenceChangeListener(this);
+
+        mShowCount =
+                (SwitchPreference) findPreference(SHOW_COUNT);
+        mShowCount.setChecked(showCount);
+        mShowCount.setOnPreferenceChangeListener(this);
 
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(CAT_COLORS);
@@ -117,6 +136,35 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             removePreference(CAT_COLORS);
         }
 
+        PreferenceCategory catNotifColors =
+                (PreferenceCategory) findPreference(CAT_NOTIF_COLORS);
+
+        if (showCount) {
+            mCountIconColor =
+                    (ColorPickerPreference) findPreference(COUNT_ICON_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_NOTIF_COUNT_ICON_COLOR,
+                    WHITE); 
+            mCountIconColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mCountIconColor.setSummary(hexColor);
+            mCountIconColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+            mCountIconColor.setOnPreferenceChangeListener(this);
+
+            mCountTextColor =
+                    (ColorPickerPreference) findPreference(COUNT_TEXT_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_NOTIF_COUNT_TEXT_COLOR,
+                    WHITE); 
+            mCountTextColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mCountTextColor.setSummary(hexColor);
+            mCountTextColor.setDefaultColors(WHITE, WHITE);
+            mCountTextColor.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(CAT_NOTIF_COLORS);
+        }
+
         setHasOptionsMenu(true);
     }
 
@@ -142,7 +190,14 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
         String hex;
         int intHex;
 
-        if (preference == mShowTicker) {
+        if (preference == mShowCount) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_NOTIF_COUNT,
+                    value ? 1 : 0);
+            refreshSettings();
+            return true;
+        } else if (preference == mShowTicker) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.STATUS_BAR_SHOW_TICKER,
@@ -164,6 +219,22 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             Settings.System.putInt(mResolver,
                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
                     intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mCountIconColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_NOTIF_COUNT_ICON_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mCountTextColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_NOTIF_COUNT_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
         }
@@ -203,6 +274,8 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
@@ -210,12 +283,20 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT_ICON_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT_TEXT_COLOR,
+                                    BLACK);
                             getOwner().refreshSettings();
                         }
                     })
                     .setPositiveButton(R.string.reset_vrtoxin,
                             new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 1);
                             Settings.System.putInt(getOwner().mResolver,
@@ -224,6 +305,12 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
                                     VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT_ICON_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_NOTIF_COUNT_TEXT_COLOR,
+                                    0xff00ff00);
                             getOwner().refreshSettings();
                         }
                     })
