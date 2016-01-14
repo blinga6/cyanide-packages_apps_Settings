@@ -385,7 +385,8 @@ public class SettingsActivity extends Activity
             ActionListViewSettings.class.getName(),
             BatteryLightSettings.class.getName(),
             NotificationLightSettings.class.getName(),
-            NotificationManagerSettings.class.getName()
+            NotificationManagerSettings.class.getName(),
+            ScreenPinningSettings.class.getName()
     };
 
 
