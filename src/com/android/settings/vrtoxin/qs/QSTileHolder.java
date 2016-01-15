@@ -139,7 +139,7 @@ public class QSTileHolder {
                 stringId = R.string.qs_tile_volume_panel;
                 break;
             case QSConstants.TILE_VRTOXIN:
-                resourceName = "ic_qs_cyanide_on";
+                resourceName = "ic_qs_vrtoxin";
                 stringId = R.string.qs_tile_vrtoxin;
                 break;
             case QSConstants.TILE_WIFI:
@@ -148,7 +148,7 @@ public class QSTileHolder {
                 break;
             case QSConstants.TILE_BATTERY_SAVER:
                 resourceName = "ic_qs_battery_saver_on";
-                stringId = R.string.qs_tile_batterysaver;
+                stringId = R.st ring.qs_tile_batterysaver;
                 break;
             case QSConstants.TILE_COMPASS:
                 resourceName = "ic_qs_compass_on";
