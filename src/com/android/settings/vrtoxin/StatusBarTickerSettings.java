@@ -33,6 +33,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.android.internal.logging.MetricsLogger;
+import com.android.settings.vrtoxin.SeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -57,6 +58,8 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             "status_bar_notif_count_icon_color";
     private static final String COUNT_TEXT_COLOR =
             "status_bar_notif_count_text_color";
+    private static final String STATUS_BAR_TICKER_FONT_SIZE  =
+            "status_bar_ticker_font_size";
 
     private static final int BLACK                  = 0xff000000;
     private static final int WHITE                  = 0xffffffff;
@@ -71,6 +74,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
     private ColorPickerPreference mIconColor;
     private ColorPickerPreference mCountIconColor;
     private ColorPickerPreference mCountTextColor;
+    private SeekBarPreference mTickerFontSize;
 
     private ContentResolver mResolver;
 
@@ -111,6 +115,12 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                 (PreferenceCategory) findPreference(CAT_COLORS);
 
         if (showTicker) {
+            mTickerFontSize =
+                    (SeekBarPreference) findPreference(STATUS_BAR_TICKER_FONT_SIZE);
+            mTickerFontSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_TICKER_FONT_SIZE, 14));
+            mTickerFontSize.setOnPreferenceChangeListener(this);
+
             mTextColor =
                     (ColorPickerPreference) findPreference(TEXT_COLOR);
             intColor = Settings.System.getInt(mResolver,
@@ -162,6 +172,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mCountTextColor.setDefaultColors(WHITE, WHITE);
             mCountTextColor.setOnPreferenceChangeListener(this);
         } else {
+            removePreference("status_bar_ticker_font_size");
             removePreference(CAT_NOTIF_COLORS);
         }
 
@@ -237,6 +248,11 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                     Settings.System.STATUS_BAR_NOTIF_COUNT_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mTickerFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_TICKER_FONT_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -278,6 +294,8 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 0);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_TICKER_FONT_SIZE, 14);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
@@ -299,6 +317,8 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                                     Settings.System.STATUS_BAR_NOTIF_COUNT, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_SHOW_TICKER, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_TICKER_FONT_SIZE, 16);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
                                     VRTOXIN_BLUE);
