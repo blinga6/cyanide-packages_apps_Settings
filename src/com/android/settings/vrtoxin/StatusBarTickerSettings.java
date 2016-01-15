@@ -143,6 +143,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mIconColor.setDefaultColors(WHITE, WHITE);
             mIconColor.setOnPreferenceChangeListener(this);
         } else {
+            removePreference("status_bar_ticker_font_size");
             removePreference(CAT_COLORS);
         }
 
@@ -172,7 +173,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mCountTextColor.setDefaultColors(WHITE, WHITE);
             mCountTextColor.setOnPreferenceChangeListener(this);
         } else {
-            removePreference("status_bar_ticker_font_size");
             removePreference(CAT_NOTIF_COLORS);
         }
 

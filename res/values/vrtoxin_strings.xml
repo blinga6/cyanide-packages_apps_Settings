@@ -1952,11 +1952,10 @@
     <string name="power_menu_animation_aosp">AOSP (default)</string>
     <string name="power_menu_animation_bottom">Bottom</string>
     <string name="power_menu_animation_grow">Grow/Shrink</string>
-    <string name="power_menu_animation_top">Top</string>
     <string name="power_menu_animation_left">Left</string>
     <string name="power_menu_animation_right">Right</string>
     <string name="power_menu_animation_rotate">Rotate</string>
-    <string name="power_menu_animation_grow">Grow</string>
+    <string name="power_menu_animation_top">Top</string>
     <string name="power_menu_animation_turn">Turn</string>
 
     <!-- Safe headset volume restore checkbox -->
