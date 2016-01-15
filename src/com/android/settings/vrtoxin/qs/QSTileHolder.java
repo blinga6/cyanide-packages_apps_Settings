@@ -148,7 +148,7 @@ public class QSTileHolder {
                 break;
             case QSConstants.TILE_BATTERY_SAVER:
                 resourceName = "ic_qs_battery_saver_on";
-                stringId = R.st ring.qs_tile_batterysaver;
+                stringId = R.string.qs_tile_batterysaver;
                 break;
             case QSConstants.TILE_COMPASS:
                 resourceName = "ic_qs_compass_on";
