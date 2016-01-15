@@ -1996,29 +1996,6 @@
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
 
-    <!-- Lock Clock Fonts -->
-    <string name="lock_clock_font_title">Font Style</string>
-    <string name="lock_clock_font_summary">Change the default font of the lock screen</string>
-    <string name="lock_clock_font_dialog_title">Select lock screen font</string>
-    <string name="lock_clock_font_normal">Default</string>
-    <string name="lock_clock_font_bold">Bold</string>
-    <string name="lock_clock_font_italic">Italic</string>
-    <string name="lock_clock_font_bold_italic">Bold Italic</string>
-    <string name="lock_clock_font_light_normal">Light</string>
-    <string name="lock_clock_font_light_italic">Light Italic</string>
-    <string name="lock_clock_font_thin_normal">Thin</string>
-    <string name="lock_clock_font_thin_italic">Thin Italic</string>
-    <string name="lock_clock_font_condensed_normal">Condensed</string>
-    <string name="lock_clock_font_condensed_bold">Condensed Bold</string>
-    <string name="lock_clock_font_condensed_italic">Condensed Italic</string>
-    <string name="lock_clock_font_condensed_bold_italic">Condensed Bold Italic</string>
-    <string name="lock_clock_font_medium_normal">Medium</string>
-    <string name="lock_clock_font_medium_italic">Medium Italic</string>
-    <string name="lock_clock_font_black_normal">Black</string>
-    <string name="lock_clock_font_black_italic">Black Italic</string>
-    <string name="lock_clock_font_condensed_light_normal">Condensed Light</string>
-    <string name="lock_clock_font_condensed_light_italic">Condensed Light Italic</string>
-
     <!-- The volume key answer -->
     <string name="volume_answer_call_title">Volume Key Answer</string>
     <string name="volume_answer_call_summary">Answer phone calls with the volume up key</string>
