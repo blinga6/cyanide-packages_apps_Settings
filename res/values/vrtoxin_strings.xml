@@ -1884,6 +1884,7 @@
 
     <!-- DayNight Theming -->
     <string name="theme_settings_title">Themes</string>
+    <string name="dashboard_font_style_title">Dashboard Font Style</string>
     <string name="theme_override_custom_colors_title">Custom Colors</string>
     <string name="theme_override_custom_colors_summary">This will allow custom color selection in the rom to override any changes made by theme</string>
 
