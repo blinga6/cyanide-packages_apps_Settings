@@ -2086,4 +2086,9 @@
     <!-- Fingerprint authentication vibration -->
     <string name="fprint_sucess_vib_title">Fingerprint authentication vibration</string>
     <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
+
+    <!-- Camera sound -->
+    <string name="camera_sounds_title">Camera Shutter Sound</string>
+    <string name="camera_sounds_summary">Enable camera shutter sound</string>
+    <string name="camera_sound_warning_dialog_text">Disabling the camera shutter sound is illegal in some areas! Please check the applicable law in your country</string>
 </resources>
