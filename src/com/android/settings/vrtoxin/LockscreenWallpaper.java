@@ -41,13 +41,11 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
 
     private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
     private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
-    private static final String LOCKSCREEN_SEE_THROUGH  = "lockscreen_see_through";
     private static final String LOCKSCREEN_BLUR_RADIUS  = "lockscreen_blur_radius";
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
-    //private SwitchPreference mSeeThrough;
-    //private SeekBarPreference mBlurRadius;
+    private SeekBarPreference mBlurRadius;
 
     private ContentResolver mResolver;
 
@@ -66,29 +64,19 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment implements O
         mSetWallpaper = (Preference) findPreference(KEY_WALLPAPER_SET);
         mClearWallpaper = (Preference) findPreference(KEY_WALLPAPER_CLEAR);
 
-        /*mSeeThrough = (SwitchPreference) findPreference(LOCKSCREEN_SEE_THROUGH);
-        mSeeThrough.setChecked(Settings.System.getInt(mResolver,
-            Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
-        mSeeThrough.setOnPreferenceChangeListener(this);
-
         mBlurRadius = (SeekBarPreference) findPreference(LOCKSCREEN_BLUR_RADIUS);
         mBlurRadius.setValue(Settings.System.getInt(mResolver,
                 Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
-        mBlurRadius.setOnPreferenceChangeListener(this);*/
+        mBlurRadius.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        /*if (preference == mSeeThrough) {
-            Settings.System.putInt(mResolver,
-                    Settings.System.LOCKSCREEN_SEE_THROUGH,
-            (Boolean) newValue ? 1 : 0);
-            return true;
-        } else if (preference == mBlurRadius) {
+        if (preference == mBlurRadius) {
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(mResolver,
                     Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
             return true;
-         }*/
+         }
          return false;
     }
 
