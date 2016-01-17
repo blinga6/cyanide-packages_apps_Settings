@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.ContentObserver;
+import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +30,7 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.TwoStatePreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -42,11 +44,16 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import com.android.settings.vrtoxin.SystemSettingSwitchPreference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexable {
     private static final String TAG = "VRToxinNotificationSettings";
+
+    private FingerprintManager mFingerprintManager;
+    private SystemSettingSwitchPreference mFingerprintVib;
     
     private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
@@ -86,6 +93,8 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
 
         addPreferencesFromResource(R.xml.vrtoxin_notifs);
 
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+
         final PreferenceCategory notification = (PreferenceCategory)
                 findPreference(KEY_NOTIFICATION);
         initPulse(notification);
@@ -95,6 +104,12 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
         refreshNotificationListeners();
         mZenAccess = findPreference(KEY_ZEN_ACCESS);
         refreshZenAccess();
+
+        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mFingerprintVib = (SystemSettingSwitchPreference) prefScreen.findPreference("fingerprint_success_vib");
+        if (!mFingerprintManager.isHardwareDetected()){
+            prefScreen.removePreference(mFingerprintVib);
+        }
     }
 
     @Override
