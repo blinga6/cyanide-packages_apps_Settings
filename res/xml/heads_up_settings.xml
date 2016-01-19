@@ -15,7 +15,7 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.android.settings.vrtoxin.GlobalSettingSwitchPreference
+    <SwitchPreference
             android:key="heads_up_notifications_enabled"
             android:title="@string/heads_up_notifications"
             android:summaryOn="@string/summary_heads_up_enabled"
@@ -27,7 +27,7 @@
             android:title="@string/heads_up_notify_silent"
             android:dependency="heads_up_notifications_enabled" />
 
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+    <SwitchPreference
             android:key="heads_up_non_fs"
             android:title="@string/heads_up_non_fs"
             android:dependency="heads_up_notifications_enabled" />
