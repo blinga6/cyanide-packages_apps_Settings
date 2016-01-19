@@ -1586,11 +1586,15 @@
     <string name="media_scanner_on_boot_ask">Ask to scan (notification)</string>
     <string name="media_scanner_on_boot_disabled">Do not scan media</string>
 
-    <!-- Recents Fullscreen -->
-    <string name="recents_full_screen_cat_options">Fullscreen Recents Options</string>
-    <string name="recents_show_fullscreen">Fullscreen Recents</string>
-    <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
-    <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
+    <!-- Immersive Recents -->
+    <string name="immersive_recents_cat_options">Immersive Recents Options</string>
+    <string name="immersive_recents_title">Immersive Recents</string>
+    <string name="immersive_recents_summary">Change the view of the recents screen</string>
+    <string name="immersive_recents_dialog_title">Select recents view</string>
+    <string name="immersive_recents_default">Default</string>
+    <string name="immersive_recents_fullscreen">Fullscreen</string>
+    <string name="immersive_recents_statusbar">Statusbar only</string>
+    <string name="immersive_recents_navbar">Navbar only</string>
     <string name="recents_full_screen_clock_title">Show Clock</string>
     <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
     <string name="recents_full_screen_date_title">Show Date</string>
@@ -2078,4 +2082,8 @@
     <string name="app_name_label_vrt">App:</string>
     <string name="last_time_used_label_vrt">Last time used:</string>
     <string name="usage_time_label_vrt">Usage time:</string>
+
+    <!-- Fingerprint authentication vibration -->
+    <string name="fprint_sucess_vib_title">Fingerprint authentication vibration</string>
+    <string name="fprint_sucess_vib_summary">Vibrate on successful fingerprint authentication</string>
 </resources>
