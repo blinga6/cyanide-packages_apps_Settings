@@ -144,6 +144,7 @@ import com.android.settings.vrtoxin.ThemeSettings;
 import com.android.settings.vrtoxin.FloatingWindows;
 import com.android.settings.vrtoxin.dslv.ActionListViewSettings;
 import com.android.settings.headsup.HeadsUpSettings;
+import com.android.settings.vrtoxin.PowerMenuSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -388,7 +389,8 @@ public class SettingsActivity extends Activity
             NotificationLightSettings.class.getName(),
             NotificationManagerSettings.class.getName(),
             ScreenPinningSettings.class.getName(),
-            HeadsUpSettings.class.getName()
+            HeadsUpSettings.class.getName(),
+            PowerMenuSettings.class.getName()
     };
 
 

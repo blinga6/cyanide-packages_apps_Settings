@@ -137,4 +137,5 @@ public class Settings extends SettingsActivity {
     public static class NotificationManagerSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ScreenPinningSettingsActivity extends SettingsActivity { /* empty */ }
     public static class HeadsUpSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PowerMenuSettingsActivity extends SettingsActivity { /* empty */ }
 }
