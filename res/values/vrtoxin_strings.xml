@@ -2106,4 +2106,9 @@
     <string name="hidden_anim2_title">Bug reports?</string>
     <string name="hidden_anim_title">Can\'t get enough VRToxin?!</string>
     <string name="fake_bug_title">Bug Reports?!</string>
+
+    <!-- Lockscreen Torch -->
+    <string name="keyguard_torch_title">Power Button Torch</string>
+    <string name="keyguard_torch_summary">Long press power button while screen is off to activate flashlight</string>
+
 </resources>
