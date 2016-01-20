@@ -2091,4 +2091,8 @@
     <string name="camera_sounds_title">Camera Shutter Sound</string>
     <string name="camera_sounds_summary">Enable camera shutter sound</string>
     <string name="camera_sound_warning_dialog_text">Disabling the camera shutter sound is illegal in some areas! Please check the applicable law in your country</string>
+
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot Sound</string>
+    <string name="screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
 </resources>
