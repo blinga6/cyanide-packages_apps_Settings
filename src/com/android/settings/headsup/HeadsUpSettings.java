@@ -18,17 +18,13 @@ package com.android.settings.headsup;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,13 +42,10 @@ import java.util.List;
 import java.util.Map;
 
 public class HeadsUpSettings extends SettingsPreferenceFragment
-        implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceClickListener, OnPreferenceChangeListener {
+        implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceClickListener {
 
     private static final int DIALOG_DND_APPS = 0;
     private static final int DIALOG_BLACKLIST_APPS = 1;
-
-    private static final String KEY_HEADS_UP_ENABLED = "heads_up_notifications_enabled";
-    private static final String KEY_HEADS_UP_NON_FULLSCREEN = "heads_up_non_fs";
 
     private PackageListAdapter mPackageAdapter;
     private PackageManager mPackageManager;
@@ -66,28 +59,13 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private Map<String, Package> mDndPackages;
     private Map<String, Package> mBlacklistPackages;
 
-    private SwitchPreference mHeadsUpEnabled;
-    private SwitchPreference mHeadsUpNonFull;
-
-    private ContentResolver mResolver;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        refreshSettings();
-    }
-
-    public void refreshSettings() {
-        PreferenceScreen prefs = getPreferenceScreen();
-        if (prefs != null) {
-            prefs.removeAll();
-        }
-
         // Get launch-able applications
         addPreferencesFromResource(R.xml.heads_up_settings);
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageListAdapter(getActivity());
-        mResolver = getActivity().getContentResolver();
 
         mDndPrefList = (PreferenceGroup) findPreference("dnd_applications_list");
         mDndPrefList.setOrderingAsAdded(false);
@@ -103,22 +81,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
         mAddDndPref.setOnPreferenceClickListener(this);
         mAddBlacklistPref.setOnPreferenceClickListener(this);
-
-        mHeadsUpEnabled = (SwitchPreference) findPreference(KEY_HEADS_UP_ENABLED);
-        final boolean headsUpEnabled = Settings.Global.getInt(mResolver,
-            Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED, 1) == 1;
-        mHeadsUpEnabled.setChecked(headsUpEnabled);
-        mHeadsUpEnabled.setOnPreferenceChangeListener(this);
-
-        mHeadsUpNonFull = (SwitchPreference) findPreference(KEY_HEADS_UP_NON_FULLSCREEN);
-        mHeadsUpNonFull.setChecked(Settings.System.getInt(mResolver,
-            Settings.System.HEADS_UP_NON_FS, 0) == 1);
-        mHeadsUpNonFull.setOnPreferenceChangeListener(this);
-
-        if (headsUpEnabled) {
-            Settings.System.putInt(mResolver,
-            Settings.System.HEADS_UP_NON_FS, 0);
-        }
     }
 
     @Override
@@ -126,24 +88,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         super.onResume();
         refreshCustomApplicationPrefs();
         getListView().setOnItemLongClickListener(this);
-    }
-
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHeadsUpEnabled) {
-            Settings.Global.putInt(mResolver,
-                    Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED,
-            (Boolean) newValue ? 1 : 0);
-            refreshSettings();
-            return true;
-       } else if (preference == mHeadsUpNonFull) {
-            Settings.System.putInt(mResolver,
-                    Settings.System.HEADS_UP_NON_FS,
-            (Boolean) newValue ? 1 : 0);
-            refreshSettings();
-            return true;
-        }
-        return false;
     }
 
     /**
