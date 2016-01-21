@@ -2929,10 +2929,10 @@
         <activity android:name=".vrtoxin.SlimSizer" />
 
         <!-- Anti-piracy support -->
-        <service android:name="org.antipiracy.support.AntiPiracyNotifyServices"
+        <service android:name="org.antipiracy.support.TheAntiPiracyNotifyService"
             android:enabled="true"
             android:permission="android.permission.DELETE_PACKAGES" />
-        <receiver android:name="org.antipiracy.support.AntiPiracyInstallReceivers"
+        <receiver android:name="org.antipiracy.support.TheAntiPiracyInstallReceiver"
             android:enabled="true"
             android:priority="1000"
             android:exported="true">
