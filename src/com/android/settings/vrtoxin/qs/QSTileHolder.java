@@ -87,7 +87,7 @@ public class QSTileHolder {
                 stringId = R.string.power_flashlight;
                 break;
             case QSConstants.TILE_HEADSUP:
-                resourceName = "ic_qs_heads_up_on";
+                resourceName = "ic_headsup_toggle_on";
                 stringId = R.string.qs_tile_heads_up;
                 break;
             case QSConstants.TILE_HOTSPOT:
