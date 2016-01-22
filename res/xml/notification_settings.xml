@@ -107,6 +107,12 @@
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
 
+        <!-- Volume Dialog -->
+        <PreferenceScreen
+                android:key="volume_dialog"
+                android:title="@string/volume_dialog_settings_title"
+                android:fragment="com.android.settings.vrtoxin.VolumeDialogSettings" />
+
         <!-- Volume Steps -->
         <PreferenceScreen
                 android:key="volume_steps"

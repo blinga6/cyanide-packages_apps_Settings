@@ -2117,4 +2117,9 @@
     <string name="center_clock_hide_summary">Enable to choose a number of visible notification icons to hide the center clock on the status bar</string>
     <string name="center_clock_number_of_notification_icons_title">Number of notification icons</string>
 
+    <!-- Volume Dialog Colors -->
+    <string name="volume_dialog_settings_title">Volume Dialog Colors</string>
+    <string name="volume_dialog_slider">Slider</string>
+    <string name="volume_dialog_slider_inactive">Inactive Slider</string>
+
 </resources>
