@@ -22,17 +22,17 @@
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_bg_color"
         android:title="@string/background_title"
-        android:defaultValue="0xffffffff" />
+        android:defaultValue="0xff37474f" />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_icon_color"
         android:title="@string/icon_title"
-        android:defaultValue="0xffffffff" />
+        android:defaultValue="0xff009688" />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_slider_inactive_color"
         android:title="@string/volume_dialog_slider_inactive"
-        android:defaultValue="0xffffffff" />
+        android:defaultValue="0xff009688" />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_slider_color"

@@ -47,6 +47,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
+    private static final int MATERIAL_GREEN = 0xff009688;
+    private static final int MATERIAL_BLUE_GREY = 0xff37474f;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -80,7 +82,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                 (ColorPickerPreference) findPreference(VOLUME_DIALOG_BG_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.VOLUME_DIALOG_BG_COLOR,
-                WHITE); 
+                MATERIAL_BLUE_GREY);
         mBgColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mBgColor.setSummary(hexColor);
@@ -90,7 +92,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                 (ColorPickerPreference) findPreference(VOLUME_DIALOG_ICON_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.VOLUME_DIALOG_ICON_COLOR,
-                WHITE); 
+                MATERIAL_GREEN);
         mIconColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mIconColor.setSummary(hexColor);
@@ -100,7 +102,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                 (ColorPickerPreference) findPreference(VOLUME_DIALOG_SLIDER_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.VOLUME_DIALOG_SLIDER_COLOR,
-                VRTOXIN_BLUE); 
+                MATERIAL_GREEN);
         mSliderColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mSliderColor.setSummary(hexColor);
@@ -216,13 +218,13 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_BG_COLOR,
-                                    BLACK);
+                                    MATERIAL_BLUE_GREY);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_ICON_COLOR,
-                                    WHITE);
+                                    MATERIAL_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_SLIDER_COLOR,
-                                    VRTOXIN_BLUE);
+                                    MATERIAL_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_SLIDER_INACTIVE_COLOR,
                                     WHITE);
@@ -234,10 +236,10 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_BG_COLOR,
-                                    BLACK);
+                                    0xff1b1f23);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_ICON_COLOR,
-                                    0xff00ff00);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_SLIDER_COLOR,
                                     VRTOXIN_BLUE);
