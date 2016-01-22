@@ -59,6 +59,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
 
     private static final String TAG = "OtherSoundSettings";
 
+    private static final int DEFAULT_OFF = 0;
     private static final int DEFAULT_ON = 1;
 
     private static final int EMERGENCY_TONE_SILENT = 0;
@@ -108,7 +109,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements
             TYPE_SYSTEM, KEY_SCREEN_LOCKING_SOUNDS, System.LOCKSCREEN_SOUNDS_ENABLED, DEFAULT_ON);
 
     private static final SettingPref PREF_CHARGING_SOUNDS = new SettingPref(
-            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_ON);
+            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_OFF);
 
     private static final SettingPref PREF_DOCKING_SOUNDS = new SettingPref(
             TYPE_GLOBAL, KEY_DOCKING_SOUNDS, Global.DOCK_SOUNDS_ENABLED, DEFAULT_ON) {
