@@ -27,6 +27,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -49,7 +50,8 @@ import com.android.settings.vrtoxin.SystemSettingSwitchPreference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexable {
+public class VrtoxinNotifs extends SettingsPreferenceFragment implements OnPreferenceChangeListener,
+            Indexable {
     private static final String TAG = "VRToxinNotificationSettings";
 
     private FingerprintManager mFingerprintManager;
@@ -63,6 +65,7 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String KEY_ZEN_ACCESS = "manage_zen_access";
     private static final String KEY_ZEN_MODE = "zen_mode";
+    private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_ZEN_ACCESS,
@@ -80,6 +83,7 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
     private DropDownPreference mLockscreen;
     private Preference mNotificationAccess;
     private Preference mZenAccess;
+    private ListPreference mAnnoyingNotifications;
 
     private UserManager mUserManager;
 
@@ -100,6 +104,13 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
         initPulse(notification);
         initLockscreenNotifications(notification);
 
+        mAnnoyingNotifications = (ListPreference) findPreference(PREF_LESS_NOTIFICATION_SOUNDS);
+        int notificationThreshold = Settings.System.getInt(getContentResolver(),
+                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
+                0);
+        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
+        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
+
         mNotificationAccess = findPreference(KEY_NOTIFICATION_ACCESS);
         refreshNotificationListeners();
         mZenAccess = findPreference(KEY_ZEN_ACCESS);
@@ -110,6 +121,17 @@ public class VrtoxinNotifs extends SettingsPreferenceFragment implements Indexab
         if (!mFingerprintManager.isHardwareDetected()){
             prefScreen.removePreference(mFingerprintVib);
         }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object o) {
+        final String key = preference.getKey();
+        if (PREF_LESS_NOTIFICATION_SOUNDS.equals(key)) {
+            final int val = Integer.valueOf((String) o);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
+        }
+        return true;
     }
 
     @Override

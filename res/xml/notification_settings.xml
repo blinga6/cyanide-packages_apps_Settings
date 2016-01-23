@@ -66,20 +66,6 @@
                 android:icon="@drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title" />
 
-        <!-- Advanced options -->
-        <PreferenceScreen
-                android:key="advanced_sound_settings"
-                android:title="@string/advanced_sound_title"
-                android:persistent="false"
-                android:fragment="com.android.settings.vrtoxin.SoundSettings" />
-
-        <!-- Other sounds -->
-        <Preference
-                android:key="other_sounds"
-                android:title="@string/other_sound_settings"
-                android:persistent="false"
-                android:fragment="com.android.settings.notification.OtherSoundSettings" />
-
         <!-- Default notification ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="notification_ringtone"
@@ -106,18 +92,6 @@
                 android:key="vibrate_when_ringing"
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
-
-        <!-- Volume Dialog -->
-        <PreferenceScreen
-                android:key="volume_dialog"
-                android:title="@string/volume_dialog_settings_title"
-                android:fragment="com.android.settings.vrtoxin.VolumeDialogSettings" />
-
-        <!-- Volume Steps -->
-        <PreferenceScreen
-                android:key="volume_steps"
-                android:title="@string/volume_steps_title"
-                android:fragment="com.android.settings.vrtoxin.VolumeSteps" />
 
     </PreferenceCategory>
 

@@ -19,60 +19,89 @@
         android:key="other_sound_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <!-- Dial pad tones -->
+    <!-- Camera shutter sound -->
     <SwitchPreference
-            android:key="dial_pad_tones"
-            android:title="@string/dial_pad_tones_title"
-            android:persistent="false" />
-
-    <!-- Screen locking sounds -->
-    <SwitchPreference
-            android:key="screen_locking_sounds"
-            android:title="@string/screen_locking_sounds_title"
-            android:persistent="false" />
+        android:key="camera_sounds"
+        android:title="@string/camera_sounds_title"
+        android:summary="@string/camera_sounds_summary"
+        android:defaultValue="true" />
 
     <!-- Charging sounds -->
     <SwitchPreference
-            android:key="charging_sounds"
-            android:title="@string/charging_sounds_title"
-            android:persistent="false" />
+        android:key="charging_sounds"
+        android:title="@string/charging_sounds_title"
+        android:persistent="false" />
 
-    <!-- Docking sounds -->
+    <!-- Dial pad tones -->
     <SwitchPreference
-            android:key="docking_sounds"
-            android:title="@string/docking_sounds_title"
-            android:persistent="false" />
-
-    <!-- Camera shutter sound -->
-    <SwitchPreference
-            android:key="camera_sounds"
-            android:title="@string/camera_sounds_title"
-            android:summary="@string/camera_sounds_summary"
-            android:defaultValue="true" />
-
-    <!-- Touch sounds -->
-    <SwitchPreference
-            android:key="touch_sounds"
-            android:title="@string/touch_sounds_title"
-            android:persistent="false" />
-
-    <!-- Vibrate on touch -->
-    <SwitchPreference
-            android:key="vibrate_on_touch"
-            android:title="@string/vibrate_on_touch_title"
-            android:persistent="false" />
+        android:key="dial_pad_tones"
+        android:title="@string/dial_pad_tones_title"
+        android:persistent="false" />
 
     <!-- Dock speaker plays -->
     <com.android.settings.DropDownPreference
-            android:key="dock_audio_media"
-            android:title="@string/dock_audio_media_title"
-            android:persistent="false" />
+        android:key="dock_audio_media"
+        android:title="@string/dock_audio_media_title"
+        android:persistent="false" />
+
+    <!-- Docking sounds -->
+    <SwitchPreference
+        android:key="docking_sounds"
+        android:title="@string/docking_sounds_title"
+        android:persistent="false" />
 
     <!-- Emergency tone -->
     <com.android.settings.DropDownPreference
-            android:key="emergency_tone"
-            android:title="@string/emergency_tone_title"
-            android:persistent="false" />
+        android:key="emergency_tone"
+        android:title="@string/emergency_tone_title"
+        android:persistent="false" />
+
+    <!-- Safe Headset Volume -->
+    <SwitchPreference
+        android:key="safe_headset_volume"
+        android:title="@string/safe_headset_volume_title"
+        android:summary="@string/safe_headset_volume_summary"
+        android:persistent="false"
+        android:defaultValue="true" />
+
+    <!-- Screenshot Sound -->
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="screenshot_sound"
+        android:title="@string/screenshot_sound_title"
+        android:summary="@string/screenshot_sound_summary"
+        android:defaultValue="true" />
+
+    <!-- Screen locking sounds -->
+    <SwitchPreference
+        android:key="screen_locking_sounds"
+        android:title="@string/screen_locking_sounds_title"
+        android:persistent="false" />
+
+    <!-- Touch sounds -->
+    <SwitchPreference
+        android:key="touch_sounds"
+        android:title="@string/touch_sounds_title"
+        android:persistent="false" />
+
+    <!-- Vibrate on touch -->
+    <SwitchPreference
+        android:key="vibrate_on_touch"
+        android:title="@string/vibrate_on_touch_title"
+        android:persistent="false" />
+
+    <!-- Volume Dialog -->
+    <PreferenceScreen
+        android:key="volume_dialog"
+        android:title="@string/volume_dialog_settings_title"
+        android:summary="@string/volume_dialog_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.VolumeDialogSettings" />
+
+    <!-- Volume Steps -->
+    <PreferenceScreen
+        android:key="volume_steps"
+        android:title="@string/volume_steps_title"
+        android:summary="@string/volume_steps_summary"
+        android:fragment="com.android.settings.vrtoxin.VolumeSteps" />
 
     <PreferenceCategory
             android:title="@string/power_notifications_category_title"/>
@@ -84,16 +113,16 @@
             android:defaultValue="false"
             android:persistent="false" />
 
+    <Preference
+            android:key="power_notifications_ringtone"
+            android:title="@string/power_notifications_ringtone_title"
+            android:dependency="power_notifications"
+            android:persistent="false" />
+
     <SwitchPreference
             android:key="power_notifications_vibrate"
             android:title="@string/power_notifications_vibrate_title"
             android:defaultValue="false"
-            android:dependency="power_notifications"
-            android:persistent="false" />
-
-    <Preference
-            android:key="power_notifications_ringtone"
-            android:title="@string/power_notifications_ringtone_title"
             android:dependency="power_notifications"
             android:persistent="false" />
 
