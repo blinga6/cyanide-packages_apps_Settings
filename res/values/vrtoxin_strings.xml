@@ -2127,4 +2127,8 @@
     <string name="device_policy_override_title">Device Policy Override</string>
     <string name="device_policy_override_summary">Allow apps to force secure lock screen and override profile settings</string>
 
+    <!-- 4G Switch -->
+    <string name="fourg_over_lte">4G Switch</string>
+    <string name="fourg_over_lte_summary">Force showing 4G instead of LTE in the status bar</string>
+
 </resources>
