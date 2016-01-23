@@ -2122,4 +2122,7 @@
     <string name="volume_dialog_slider">Slider</string>
     <string name="volume_dialog_slider_inactive">Inactive Slider</string>
 
+    <!-- Power/reboot dialogs dim amount -->
+    <string name="power_menu_dialog_dim">Power/reboot dialog dim background amount</string>
+
 </resources>
