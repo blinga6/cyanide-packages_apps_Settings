@@ -2133,4 +2133,7 @@
     <string name="fourg_over_lte">4G Switch</string>
     <string name="fourg_over_lte_summary">Force showing 4G instead of LTE in the status bar</string>
 
+    <!-- Power/reboot dialogs dim amount -->
+    <string name="power_menu_dialog_dim">Background Dimming Value</string>
+
 </resources>

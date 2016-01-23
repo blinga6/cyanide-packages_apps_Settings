@@ -33,6 +33,15 @@
         android:summary="@string/power_menu_animation_summary"
         android:persistent="false" />
 
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="transparent_power_dialog_dim"
+        android:title="@string/power_menu_dialog_dim"
+        android:max="100"
+        settings:min="0"
+        settings:unitsLeft=""
+        settings:unitsRight="%"
+        android:persistent="false" />
+
     <PreferenceScreen
         android:key="advanced_boot_dialog_settings"
         android:title="@string/advanced_boot_dialog_settings_title"
