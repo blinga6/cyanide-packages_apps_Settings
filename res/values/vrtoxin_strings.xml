@@ -2123,4 +2123,8 @@
     <string name="volume_dialog_slider">Slider</string>
     <string name="volume_dialog_slider_inactive">Inactive Slider</string>
 
+    <!-- Device policy override -->
+    <string name="device_policy_override_title">Device Policy Override</string>
+    <string name="device_policy_override_summary">Allow apps to force secure lock screen and override profile settings</string>
+
 </resources>

@@ -32,6 +32,12 @@
          android:summary="@string/lockscreen_shortcuts_summary"
          android:fragment="com.android.settings.vrtoxin.fragments.LockscreenShortcutFragment" />
 
+    <com.android.settings.vrtoxin.SecureSettingSwitchPreference
+        android:key="enable_device_policy_override"
+        android:title="@string/device_policy_override_title"
+        android:summary="@string/device_policy_override_summary"
+        android:defaultValue="true" />
+
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="double_tap_sleep_lock_screen"
         android:title="@string/double_tap_to_sleep_lockscreen_title"
