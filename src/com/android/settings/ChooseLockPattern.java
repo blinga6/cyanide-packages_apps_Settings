@@ -202,13 +202,7 @@ public class ChooseLockPattern extends SettingsActivity {
                     if (mUiStage == Stage.NeedToConfirm || mUiStage == Stage.ConfirmWrong) {
                         if (mChosenPattern == null) throw new IllegalStateException(
                                 "null chosen pattern in stage 'need to confirm");
-
-                        final String chosenPatternStr = LockPatternUtils.patternToString(
-                                mChosenPattern, mPatternSize);
-                        final String potentialPatternStr = LockPatternUtils.patternToString(
-                                pattern, mPatternSize);
-
-                        if (chosenPatternStr.equals(potentialPatternStr)) {
+                        if (mChosenPattern.equals(pattern)) {
                             updateStage(Stage.ChoiceConfirmed);
                         } else {
                             updateStage(Stage.ConfirmWrong);
@@ -375,6 +369,7 @@ public class ChooseLockPattern extends SettingsActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
+
             mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
                     LockPatternUtils.PATTERN_SIZE_DEFAULT);
             LockPatternView.Cell.updateSize(mPatternSize);
@@ -441,9 +436,9 @@ public class ChooseLockPattern extends SettingsActivity {
                 // restore from previous state
                 final String patternString = savedInstanceState.getString(KEY_PATTERN_CHOICE);
                 if (patternString != null) {
+                    LockPatternUtils utils = mChooseLockSettingsHelper.utils();
                     mChosenPattern = LockPatternUtils.stringToPattern(patternString,
-                            mPatternSize);
-                    mLockPatternView.setPattern(DisplayMode.Correct, mChosenPattern);
+                            utils.getLockPatternSize());
                 }
 
                 if (mCurrentPattern == null) {
@@ -545,8 +540,9 @@ public class ChooseLockPattern extends SettingsActivity {
 
             outState.putInt(KEY_UI_STAGE, mUiStage.ordinal());
             if (mChosenPattern != null) {
+                LockPatternUtils utils = mChooseLockSettingsHelper.utils();
                 outState.putString(KEY_PATTERN_CHOICE,
-                        LockPatternUtils.patternToString(mChosenPattern, mPatternSize));
+                        utils.patternToString(mChosenPattern));
             }
 
             if (mCurrentPattern != null) {
