@@ -88,7 +88,7 @@ public class ChooseLockPatternSize extends PreferenceActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsConstants.CHOOSE_LOCK_PATTERN;
+            return MetricsConstants.DONT_TRACK_ME_BRO;
         }
     }
 }
