@@ -2125,4 +2125,8 @@
     <string name="unlock_quick_unlock_control_title">Quick Unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
+    <!-- Landscape Orientation -->
+    <string name="default_landscape_orientation_title">Landscape Mode</string>
+    <string name="default_landscape_orientation_summary">Use landscape as default orientation</string>
+
 </resources>
