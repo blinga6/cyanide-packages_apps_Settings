@@ -639,6 +639,7 @@
     <string name="qs_tile_slim_floats">Slim Floats</string>
     <string name="qs_tile_kernel_adiutor">Kernel Adiutor</string>
     <string name="qs_tile_led">LED</string>
+    <string name="qs_tile_slimaction">VRToxin Action</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>
@@ -2128,5 +2129,9 @@
     <!-- Landscape Orientation -->
     <string name="default_landscape_orientation_title">Landscape Mode</string>
     <string name="default_landscape_orientation_summary">Use landscape as default orientation</string>
+
+    <!-- Action Tile -->
+    <string name="qs_action_tile">VRToxin Action Tile</string>
+    <string name="qs_action_tile_summary">Add and set the order of Actions for the VRToxin Action tile</string>
 
 </resources>

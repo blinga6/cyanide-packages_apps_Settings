@@ -30,6 +30,20 @@
             android:summary="@string/qs_panel_tiles_summary"
             android:fragment="com.android.settings.vrtoxin.qs.QSTiles" />
 
+        <PreferenceScreen
+            android:key="navbar_targets_settings"
+            android:fragment="com.android.settings.vrtoxin.dslv.ActionListViewSettings"
+            android:title="@string/qs_action_tile"
+            android:summary="@string/qs_action_tile_summary">
+                <extra android:name="actionMode" android:value="5" />
+                <extra android:name="maxAllowedActions" android:value="10" />
+                <extra android:name="disableLongpress" android:value="true" />
+                <extra android:name="disableDeleteLastEntry" android:value="true" />
+                <extra android:name="actionValues" android:value="shortcut_action_tile_values" />
+                <extra android:name="actionEntries" android:value="shortcut_action_tile_entries" />
+                <extra android:name="fragment" android:value="com.android.settings.vrtoxin.fragments.QuickTileFragment" />
+        </PreferenceScreen>
+
     <PreferenceScreen
         android:key="qs_bar_buttons"
         android:title="@string/customize_title"
