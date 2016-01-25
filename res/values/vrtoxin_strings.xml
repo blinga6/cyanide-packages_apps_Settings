@@ -640,6 +640,7 @@
     <string name="qs_tile_kernel_adiutor">Kernel Adiutor</string>
     <string name="qs_tile_led">LED</string>
     <string name="qs_tile_slimaction">VRToxin Action</string>
+    <string name="qs_tile_powermenu">Power Menu</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>
