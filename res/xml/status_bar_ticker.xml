@@ -66,9 +66,19 @@
             android:defaultValue="#ffffffff" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_ticker_icon_color_dark_mode"
+            android:title="@string/icon_dark_title"
+            android:defaultValue="#ff000000" />
+
+         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="status_bar_ticker_text_color"
             android:title="@string/text_title"
             android:defaultValue="#ffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="status_bar_ticker_text_color_dark_mode"
+            android:title="@string/notification_ticker_text_color_dark_mode_title"
+            android:defaultValue="#ff000000" />
 
 	</PreferenceCategory>
 </PreferenceScreen>
