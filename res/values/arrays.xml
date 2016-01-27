@@ -692,6 +692,7 @@
         <item>monitor high power location</item>
         <item>get usage stats</item>
         <item>mute/unmute microphone</item>
+        <item>toast window</item>
         <item>project media</item>
         <item>activate VPN</item>
         <item>write wallpaper</item>
@@ -746,6 +747,7 @@
         <item>@string/app_ops_access_location</item>
         <item>@string/app_ops_get_usage_stats</item>
         <item>@string/app_ops_mute_unmute_microphone</item>
+        <item>@string/app_ops_toast_window</item>
         <item>@string/app_ops_project_media</item>
         <item>@string/app_ops_activate_vpn</item>
         <item>@string/app_ops_change_wallpaper</item>
