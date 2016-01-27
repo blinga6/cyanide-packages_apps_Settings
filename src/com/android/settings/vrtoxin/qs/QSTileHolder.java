@@ -222,6 +222,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_powermenu";
                 stringId = R.string.qs_tile_powermenu;
                 break;
+            case QSConstants.TILE_VRTUPDATER:
+                resourceName = "ic_qs_vrtoxin";
+                stringId = R.string.qs_tile_vrtupdater;
+                break;
             default:
                 return null;
         }
