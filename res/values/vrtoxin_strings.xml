@@ -2151,4 +2151,8 @@
     <string name="custom_header_image_1">Modern</string>
     <string name="custom_header_image_2">Poly HD</string>
 
+    <!-- OTACenter -->
+    <string name="vrtupdater_title">VRTUpdater</string>
+    <string name="vrtupdater_summary">Check for updates and more</string>
+
 </resources>

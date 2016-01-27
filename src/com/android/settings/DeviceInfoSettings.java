@@ -94,6 +94,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_SM_FLAGS = "ro.sm.flags";
     private static final String KEY_HIDDEN_YOGA = "hidden_anim2";
 
+    private static final String KEY_OTA = "vrtupdater";
+    private static final String KEY_OTA_PACKAGE_NAME = "com.vrtoxin.ota";
+
+    private PreferenceScreen mOTA;
+
      // Package name of the yoga
     public static final String YOGA_PACKAGE_NAME = "com.android.settings";
     // Intent for launching the yoga actvity
@@ -218,6 +223,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (pref != null) {
                 getPreferenceScreen().removePreference(pref);
             }
+        }
+
+        // Remove OTA app if missing
+        mOTA = (PreferenceScreen) findPreference(KEY_OTA);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_OTA_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(mOTA);
         }
     }
 
