@@ -83,4 +83,7 @@
 
     <!-- This is used to define screen color's contrast progress bar maximum value-->
     <integer name="maximum_contrast_value" translatable="false">360</integer>
+
+    <!-- Config to set default APN type when adding a new APN -->
+    <string name="config_default_new_apn_type" translateable="false"></string>
 </resources>
