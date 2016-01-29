@@ -2168,4 +2168,7 @@
 \n\nDon\u2019t remove the <xliff:g id="name" example="SD card">^2</xliff:g> during the move.<xliff:g id="forcetext">^3</xliff:g>
     </string>
 
+    <!-- APNs screen message indicating new APN user is adding is a duplicate -->
+    <string name="duplicate_apn_error_title">Duplicate APN</string>
+    <string name="duplicate_apn_error_message">This APN already exists. Discard or change parameters.</string>
 </resources>
