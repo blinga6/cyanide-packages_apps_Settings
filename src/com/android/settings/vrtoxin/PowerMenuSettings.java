@@ -184,7 +184,6 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        int alpha = (Integer) newValue;
         String hex;
         int intHex;
 
@@ -245,6 +244,7 @@ public class PowerMenuSettings extends SettingsPreferenceFragment implements
             mPowerMenuAnimations.setSummary(mPowerMenuAnimations.getEntry());
             return true;
         } else if (preference == mPowerDialogDim) {
+            int alpha = (Integer) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.TRANSPARENT_POWER_DIALOG_DIM, alpha * 1);
             return true;
