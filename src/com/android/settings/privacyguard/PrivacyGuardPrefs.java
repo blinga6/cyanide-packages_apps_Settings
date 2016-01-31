@@ -83,6 +83,6 @@ public class PrivacyGuardPrefs extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.VRTOXIN_AOSP;
+        return MetricsLogger.VRTOXIN_SHIT;
     }
 }
