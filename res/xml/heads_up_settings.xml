@@ -22,16 +22,6 @@
             android:summaryOff="@string/summary_heads_up_disabled"
             android:defaultValue="true" />
 
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="heads_up_notify_silent"
-            android:title="@string/heads_up_notify_silent"
-            android:dependency="heads_up_notifications_enabled" />
-
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="heads_up_non_fs"
-            android:title="@string/heads_up_non_fs"
-            android:dependency="heads_up_notifications_enabled" />
-
     <PreferenceCategory
             android:title="@string/heads_up_dnd_title"
             android:key="dnd_applications_list"
@@ -52,6 +42,17 @@
             android:icon="@drawable/ic_menu_add_dark"
             android:title="@string/add_heads_up_package"
             android:summary="@string/add_heads_up_blacklist_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="@string/heads_up_whitelist_title"
+            android:key="whitelist_applications"
+            android:dependency="heads_up_notifications_enabled" >
+        <Preference
+            android:key="add_whitelist_packages"
+            android:icon="@drawable/ic_menu_add_dark"
+            android:title="@string/add_heads_up_package"
+            android:summary="@string/add_heads_up_whitelist_summary" />
     </PreferenceCategory>
 
 </PreferenceScreen>
