@@ -649,6 +649,7 @@
     <string name="qs_tile_slimaction">VRToxin Action</string>
     <string name="qs_tile_powermenu">Power Menu</string>
     <string name="qs_tile_vrtupdater">VRTUpdater</string>
+    <string name="qs_tile_sounds">Sound Mode</string>
 
     <!-- Pie control -->
     <string name="pie_control_title">SlimPie</string>

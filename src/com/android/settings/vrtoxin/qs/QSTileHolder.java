@@ -226,6 +226,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_vrtoxin";
                 stringId = R.string.qs_tile_vrtupdater;
                 break;
+            case QSConstants.TILE_SOUNDS:
+                resourceName = "ic_qs_ringer_audible";
+                stringId = R.string.qs_tile_sounds;
+                break;
             default:
                 return null;
         }
