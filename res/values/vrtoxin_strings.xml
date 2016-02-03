@@ -2159,6 +2159,7 @@
     <string name="custom_header_image_0">Default</string>
     <string name="custom_header_image_1">Modern</string>
     <string name="custom_header_image_2">Poly HD</string>
+    <string name="custom_header_image_3">VRToxin</string>
 
     <!-- OTACenter -->
     <string name="vrtupdater_title">VRTUpdater</string>
