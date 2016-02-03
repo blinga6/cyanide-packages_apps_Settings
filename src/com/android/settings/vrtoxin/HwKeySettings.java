@@ -407,7 +407,7 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
         }
 
         boolean enableHardwareRebind = Settings.System.getInt(getContentResolver(),
-                Settings.System.HARDWARE_KEY_REBINDING, 1) == 1;
+                Settings.System.HARDWARE_KEY_REBINDING, 0) == 1;
         mEnableCustomBindings = (SwitchPreference) findPreference(KEYS_ENABLE_CUSTOM);
         mEnableCustomBindings.setChecked(enableHardwareRebind);
         mEnableCustomBindings.setOnPreferenceChangeListener(this);
