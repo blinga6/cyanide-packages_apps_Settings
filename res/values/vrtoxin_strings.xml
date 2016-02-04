@@ -2415,4 +2415,7 @@
     <string name="vrtoxin_button_title">VRToxin Button</string>
     <string name="vrtoxin_button_summary">Show a VRToxin button in the expanded header</string>
 
+    <string name="battery_fully_charge_notif_title">Battery fully charged</string>
+    <string name="battery_fully_charge_notif_summary">Shows a notification when the battery is fully charged.</string>
+
 </resources>

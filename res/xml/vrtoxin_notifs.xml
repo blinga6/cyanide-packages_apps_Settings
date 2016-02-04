@@ -35,6 +35,13 @@
         android:title="@string/force_expanded_notifications_title"
         android:summary="@string/force_expanded_notifications_summary" />
 
+    <!-- Battery fully charged notification -->
+    <com.android.settings.vrtoxin.GlobalSettingSwitchPreference
+        android:key="battery_fully_charge_notif"
+        android:title="@string/battery_fully_charge_notif_title"
+        android:summary="@string/battery_fully_charge_notif_summary"
+        android:defaultValue="false" />
+
     <!-- Heads up -->
     <Preference
         android:key="heads_up_notifications"
