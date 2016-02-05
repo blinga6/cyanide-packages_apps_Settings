@@ -38,6 +38,11 @@
                 <intent android:action=".vrtoxin.HiddenAnimActivity2" />
         </Preference>-->
 
+        <!-- VRToxin Changelog -->
+        <PreferenceScreen android:key="changelog"
+                android:title="@string/changelog_vrtoxin_title"
+                android:fragment="com.android.settings.vrtoxin.Changelog" />
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status"
