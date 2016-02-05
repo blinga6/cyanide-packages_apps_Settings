@@ -63,7 +63,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private Preference mAddBlacklistPref;
     private Preference mAddWhitelistPref;
     private SeekBarPreference mHeadsUpTimeout;
-    private SeekBarPreference mHeadsUpSnooze;
+//    private SeekBarPreference mHeadsUpSnooze;
 
     private String mDndPackageList;
     private String mBlacklistPackageList;
@@ -106,10 +106,10 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                 Settings.System.HEADS_UP_TIMEOUT, 10000));
         mHeadsUpTimeout.setOnPreferenceChangeListener(this);
 
-        mHeadsUpSnooze = (SeekBarPreference) findPreference(HEADS_UP_SNOOZE_LENGTH_MS);
+        /*mHeadsUpSnooze = (SeekBarPreference) findPreference(HEADS_UP_SNOOZE_LENGTH_MS);
         mHeadsUpSnooze.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, 60 / 1000));
-        mHeadsUpSnooze.setOnPreferenceChangeListener(this);
+        mHeadsUpSnooze.setOnPreferenceChangeListener(this);*/
     }
 
     @Override
@@ -278,10 +278,10 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
             int length = ((Integer) objValue).intValue();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HEADS_UP_TIMEOUT, length);
-        } else if (preference == mHeadsUpSnooze) {
+        /*} else if (preference == mHeadsUpSnooze) {
             int snooze = ((Integer) objValue).intValue();
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, snooze);
+                    Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, snooze);*/
         }
         return true;
     }

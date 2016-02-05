@@ -23,7 +23,7 @@
             android:summaryOff="@string/summary_heads_up_disabled"
             android:defaultValue="true" />
 
-    <com.android.settings.vrtoxin.SeekBarPreference
+    <!--<com.android.settings.vrtoxin.SeekBarPreference
             android:key="heads_up_snooze_length_ms"
             android:title="@string/heads_up_snooze"
             android:max="120"
@@ -31,7 +31,7 @@
             settings:unitsLeft=""
             settings:unitsRight="min"
             android:dependency="heads_up_notifications_enabled"
-            android:persistent="false" />
+            android:persistent="false" />-->
 
     <com.android.settings.vrtoxin.SeekBarPreference
             android:key="heads_up_timeout"
