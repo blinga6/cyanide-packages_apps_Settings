@@ -509,7 +509,6 @@
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_search</item>
-        <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_lastapp</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_screenshot</item>
@@ -529,7 +528,6 @@
         <item>**recents**</item>
         <item>**power**</item>
         <item>**search**</item>
-        <item>**torch**</item>
         <item>**lastapp**</item>
         <item>**kill**</item>
         <item>**screenshot**</item>
@@ -1634,7 +1632,6 @@
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib_silent</item>
         <item>@string/shortcut_action_power_menu</item>
-        <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_theme_switch</item>
         <item>@string/shortcut_action_pie</item>
@@ -1667,7 +1664,6 @@
         <item>**ring_silent**</item>
         <item>**ring_vib_silent**</item>
         <item>**power_menu**</item>
-        <item>**torch**</item>
         <item>**expanded_desktop**</item>
         <item>**theme_switch**</item>
         <item>**pie**</item>
