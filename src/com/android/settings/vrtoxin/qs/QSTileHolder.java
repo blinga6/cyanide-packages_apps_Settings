@@ -222,10 +222,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_powermenu";
                 stringId = R.string.qs_tile_powermenu;
                 break;
-            /*case QSConstants.TILE_VRTUPDATER:
+            case QSConstants.TILE_VRTUPDATER:
                 resourceName = "ic_qs_vrtoxin";
                 stringId = R.string.qs_tile_vrtupdater;
-                break;*/
+                break;
             case QSConstants.TILE_SOUNDS:
                 resourceName = "ic_qs_ringer_audible";
                 stringId = R.string.qs_tile_sounds;
