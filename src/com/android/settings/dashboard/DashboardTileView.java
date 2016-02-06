@@ -257,6 +257,34 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
 //                categoryLabel.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
                 break;
+            case FontHelper.FONT_DANCINGSCRIPT:
+                mTitleTextView.setTypeface(Typeface.create("cursive", Typeface.NORMAL));
+                mStatusTextView.setTypeface(Typeface.create("cursive", Typeface.NORMAL));
+                break;
+            case FontHelper.FONT_DANCINGSCRIPT_BOLD:
+                mTitleTextView.setTypeface(Typeface.create("cursive", Typeface.BOLD));
+                mStatusTextView.setTypeface(Typeface.create("cursive", Typeface.BOLD));
+                break;
+            case FontHelper.FONT_COMINGSOON:
+                mTitleTextView.setTypeface(Typeface.create("casual", Typeface.NORMAL));
+                mStatusTextView.setTypeface(Typeface.create("casual", Typeface.NORMAL));
+                break;
+            case FontHelper.FONT_NOTOSERIF:
+                mTitleTextView.setTypeface(Typeface.create("serif", Typeface.NORMAL));
+                mStatusTextView.setTypeface(Typeface.create("serif", Typeface.NORMAL));
+                break;
+            case FontHelper.FONT_NOTOSERIF_ITALIC:
+                mTitleTextView.setTypeface(Typeface.create("serif", Typeface.ITALIC));
+                mStatusTextView.setTypeface(Typeface.create("serif", Typeface.ITALIC));
+                break;
+            case FontHelper.FONT_NOTOSERIF_BOLD:
+                mTitleTextView.setTypeface(Typeface.create("serif", Typeface.BOLD));
+                mStatusTextView.setTypeface(Typeface.create("serif", Typeface.BOLD));
+                break;
+            case FontHelper.FONT_NOTOSERIF_BOLD_ITALIC:
+                mTitleTextView.setTypeface(Typeface.create("serif", Typeface.BOLD_ITALIC));
+                mStatusTextView.setTypeface(Typeface.create("serif", Typeface.BOLD_ITALIC));
+                break;
         }
     }
 }
