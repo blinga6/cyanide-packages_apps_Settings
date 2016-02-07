@@ -27,6 +27,16 @@
         android:title="@string/weather_show_location_title"
         android:summary="@string/weather_show_location_summary" />
 
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_clock"
+        android:title="@string/hide_lockscreen_clock_title"
+        android:defaultValue="true" />
+
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_date"
+        android:title="@string/hide_lockscreen_date_title"
+        android:defaultValue="true" />
+
     <ListPreference
         android:key="lock_clock_fonts"
         android:entries="@array/status_bar_font_style_entries"

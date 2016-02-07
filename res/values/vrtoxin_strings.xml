@@ -2429,4 +2429,9 @@
     <string name="power_menu_button_action_screen_off">Screen Off - Power Menu</string>
     <string name="power_menu_button_action_dialog">Power Menu - ScreenOff</string>
 
+    <!-- Hide Lockscreen clock & date -->
+    <string name="hide_lockscreen_items_title">Lockscreen items</string>
+    <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
+    <string name="hide_lockscreen_date_title">Show lockscreen date</string>
+
 </resources>
