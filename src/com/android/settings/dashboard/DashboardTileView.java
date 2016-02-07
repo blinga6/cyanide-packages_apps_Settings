@@ -42,9 +42,9 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
     private static final int DEFAULT_COL_SPAN = 1;
 
     private ImageView mImageView;
+    private View mDivider;
     private TextView mTitleTextView;
     private TextView mStatusTextView;
-    private View mDivider;
     private Switch mSwitch;
     private GenericSwitchToggle mSwitchToggle;
 
@@ -64,11 +64,20 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         mImageView = (ImageView) view.findViewById(R.id.icon);
         mTitleTextView = (TextView) view.findViewById(R.id.title);
         mStatusTextView = (TextView) view.findViewById(R.id.status);
-        mDivider = view.findViewById(R.id.tile_divider);
+        mDivider = (View) view.findViewById(R.id.tile_divider);
         mSwitch = (Switch) view.findViewById(R.id.dashboard_switch);
 
         setOnClickListener(this);
         setBackgroundResource(R.drawable.dashboard_tile_background);
+        setBackgroundColor(Settings.System.getInt(context.getContentResolver(),
+            Settings.System.SETTINGS_BG_COLOR, 0xff000000));
+        mDivider.setBackgroundResource(R.drawable.dashboard_tile_background);
+        mDivider.setBackgroundColor(Settings.System.getInt(context.getContentResolver(),
+            Settings.System.SETTINGS_BG_COLOR, 0xff000000));
+        mTitleTextView.setTextColor(Settings.System.getInt(context.getContentResolver(),
+            Settings.System.SETTINGS_TITLE_TEXT_COLOR, 0xff1976D2));
+        mStatusTextView.setTextColor(Settings.System.getInt(context.getContentResolver(),
+            Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, 0xff1976D2));
         setFocusable(true);
         updateDashFont();
     }
@@ -125,7 +134,7 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
     }
 
     public void setDividerVisibility(boolean visible) {
-        mDivider.setVisibility(visible ? View.VISIBLE : View.GONE);
+        mDivider.setVisibility(visible ? View.GONE : View.GONE);
     }
 
     void setColumnSpan(int span) {
@@ -170,92 +179,74 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
             default:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_BOLD:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_BOLD_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif", Typeface.BOLD_ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_LIGHT:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_LIGHT_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-light", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-light", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-light", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_THIN:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_THIN_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-thin", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-thin", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-thin", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_CONDENSED:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_CONDENSED_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_CONDENSED_LIGHT:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_CONDENSED_LIGHT_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed-light", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_CONDENSED_BOLD:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
                 break;
             case FontHelper.FONT_CONDENSED_BOLD_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD_ITALIC));
                 break;
             case FontHelper.FONT_MEDIUM:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_MEDIUM_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-medium", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_BLACK:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-black", Typeface.NORMAL));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-black", Typeface.NORMAL));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-black", Typeface.NORMAL));
                 break;
             case FontHelper.FONT_BLACK_ITALIC:
                 mTitleTextView.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
                 mStatusTextView.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
-//                categoryLabel.setTypeface(Typeface.create("sans-serif-black", Typeface.ITALIC));
                 break;
             case FontHelper.FONT_DANCINGSCRIPT:
                 mTitleTextView.setTypeface(Typeface.create("cursive", Typeface.NORMAL));

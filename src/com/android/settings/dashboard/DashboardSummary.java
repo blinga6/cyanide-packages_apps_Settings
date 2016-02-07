@@ -21,11 +21,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -148,8 +150,13 @@ public class DashboardSummary extends InstrumentedFragment {
             View categoryView = mLayoutInflater.inflate(R.layout.dashboard_category, mDashboard,
                     false);
 
+            categoryView.setBackgroundResource(R.drawable.dashboard_tile_background);
+            categoryView.setBackgroundColor(Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.SETTINGS_BG_COLOR, 0xff000000));
             TextView categoryLabel = (TextView) categoryView.findViewById(R.id.category_title);
             categoryLabel.setText(category.getTitle(res));
+            categoryLabel.setTextColor(Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, 0xff1976D2));
 
             ViewGroup categoryContent =
                     (ViewGroup) categoryView.findViewById(R.id.category_content);
@@ -178,6 +185,8 @@ public class DashboardSummary extends InstrumentedFragment {
     private void updateTileView(Context context, Resources res, DashboardTile tile,
             ImageView tileIcon, TextView tileTextView, TextView statusTextView, Switch switchBar) {
 
+        final int iconColor = Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.SETTINGS_TITLE_TEXT_COLOR, 0xff1976D2);
         if (!TextUtils.isEmpty(tile.iconPkg)) {
             try {
                 Drawable outsideDrawable = context.getPackageManager()
@@ -192,10 +201,10 @@ public class DashboardSummary extends InstrumentedFragment {
                 } else if (!tile.iconPkg.equals(context.getPackageName()) && outsideDrawable != null) {
                     // If this drawable is coming from outside Settings, and we don't have a same one in Settings,
                     // tint it to match the color.
-                    TypedValue tintColor = new TypedValue();
+                    /*TypedValue tintColor = new TypedValue();
                     context.getTheme().resolveAttribute(com.android.internal.R.attr.colorAccent,
-                            tintColor, true);
-                    outsideDrawable.setTint(tintColor.data);
+                            tintColor, true);*/
+                    outsideDrawable.setTint(iconColor);
                     tileIcon.setImageDrawable(outsideDrawable);
                 }
             } catch (NameNotFoundException | Resources.NotFoundException e) {

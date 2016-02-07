@@ -2434,4 +2434,9 @@
     <string name="hide_lockscreen_clock_title">Clock</string>
     <string name="hide_lockscreen_date_title">Date</string>
 
+    <!-- Dashboard Colors -->
+    <string name="settings_colors_title">Dashboard Custom Colors</string>
+    <string name="text_cat_title">Category Text</string>
+    <string name="settings_colors_summary">Set custom colors for dashboard background, text, categories etc</string>
+
 </resources>

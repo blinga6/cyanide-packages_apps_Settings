@@ -80,8 +80,7 @@
 
         <View android:id="@+id/tile_divider"
               android:layout_width="match_parent"
-              android:layout_height="1dp"
-              android:color="#ff1976D2" />
+              android:layout_height="1dp" />
 
     </LinearLayout>
 
