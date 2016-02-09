@@ -59,6 +59,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             "weather_number_of_notifications";
     private static final String PREF_COLORIZE_ALL_ICONS =
             "weather_colorize_all_icons";
+    private static final String LS_WEATHER_FONT_SIZE  =
+            "ls_weather_font_size";
 
     private static final int MONOCHROME_ICON = 0;
 
@@ -73,6 +75,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
     private ListPreference mHideWeather;
     private ListPreference mNumberOfNotifications;
     private SwitchPreference mColorizeAllIcons;
+    private SeekBarPreference mLSWeatherFontSize;
 
     private ContentResolver mResolver;
 
@@ -168,6 +171,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             removePreference(PREF_CAT_NOTIFICATIONS);
         }
 
+        mLSWeatherFontSize = (SeekBarPreference) findPreference(LS_WEATHER_FONT_SIZE);
+        mLSWeatherFontSize.setValue(Settings.System.getInt(mResolver,
+                Settings.System.LS_WEATHER_FONT_SIZE, 16));
+        mLSWeatherFontSize.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -243,6 +251,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                     Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, intValue);
             refreshSettings();
             return true;
+        } else if (preference == mLSWeatherFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(mResolver,
+                    Settings.System.LS_WEATHER_FONT_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -296,6 +309,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                                     Settings.System.LOCK_SCREEN_WEATHER_HIDE_PANEL, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, 6);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_WEATHER_FONT_SIZE, 16);
                             getOwner().refreshSettings();
                         }
                     })
@@ -318,6 +333,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                                     Settings.System.LOCK_SCREEN_WEATHER_HIDE_PANEL, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, 6);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_WEATHER_FONT_SIZE, 16);
                             getOwner().refreshSettings();
                         }
                     })
