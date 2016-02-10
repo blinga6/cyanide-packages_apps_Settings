@@ -2450,6 +2450,8 @@
     <string name="power_menu_button_action_dialog">Power Menu - ScreenOff</string>
 
     <!-- Hide Lockscreen clock & date -->
+    <string name="hide_lockscreen_alarm_title">Alarm</string>
+    <string name="hide_lockscreen_alarm_summary">Enable/Disable alarm text on lockscreen</string>
     <string name="hide_lockscreen_clock_title">Clock</string>
     <string name="hide_lockscreen_date_title">Date</string>
 

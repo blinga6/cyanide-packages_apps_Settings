@@ -18,6 +18,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/vrtoxin_ls_shortcuts_title" >
 
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_alarm"
+        android:title="@string/hide_lockscreen_alarm_title"
+        android:summary="@string/hide_lockscreen_alarm_summary"
+        android:defaultValue="true" />
+
     <PreferenceScreen
         android:title="@string/lockscreen_targets_message"
         android:summary="@string/bottom_shortcuts_summary" >
