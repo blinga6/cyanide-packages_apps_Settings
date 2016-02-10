@@ -2503,4 +2503,13 @@
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>
 
+    <!-- Disable torch when screen goes off -->
+    <string name="torch_category">Torch</string>
+    <string name="disable_torch_screen_off_title">Disable torch on screen off</string>
+    <string name="disable_torch_screen_off_delay_title">Delay</string>
+    <string name="torch_screen_off_one_second">Immediately</string>
+    <string name="torch_screen_off_ten_second">10 seconds (default)</string>
+    <string name="torch_screen_off_thirty_second">30 seconds</string>
+    <string name="torch_screen_off_one_minute">1 minute</string>
+
 </resources>

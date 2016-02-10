@@ -78,6 +78,7 @@ import com.android.settings.vrtoxin.NumberPickerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.android.internal.util.vrtoxin.QSUtils;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
@@ -85,6 +86,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
+
+    private static final String KEY_CATEGORY_TORCH = "torch";
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_LCD_DENSITY = "lcd_density";
@@ -105,6 +108,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
     private static final String DT2L_TARGET_VIBRATE_CONFIG = "dt2l_target_vibrate_config";
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -125,6 +130,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
     private NumberPickerPreference mDt2lTargetVibrateConfig;
+    private SwitchPreference mTorchOff;
+    private ListPreference mTorchOffDelay;
 
     private ContentResolver mCr;
     private PreferenceScreen mPrefSet;
@@ -162,6 +169,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mCr = getActivity().getContentResolver();
 
+        PreferenceCategory torchPrefs = (PreferenceCategory) findPreference(KEY_CATEGORY_TORCH);
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
                 && getResources().getBoolean(
@@ -264,6 +272,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mScreenColorSettings = (PreferenceScreen) findPreference(KEY_SCREEN_COLOR_SETTINGS);
         if (!isPostProcessingSupported()) {
             getPreferenceScreen().removePreference(mScreenColorSettings);
+        }
+
+        mTorchOff = (SwitchPreference) findPreference(DISABLE_TORCH_ON_SCREEN_OFF);
+        mTorchOffDelay = (ListPreference) findPreference(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
+
+        if (torchPrefs != null && !QSUtils.deviceSupportsFlashLight(activity)) {
+            getPreferenceScreen().removePreference(torchPrefs);
+        }
+        if (mTorchOffDelay != null) {
+            int torchOffDelay = Settings.System.getInt(resolver,
+                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, 10);
+            mTorchOffDelay.setValue(String.valueOf(torchOffDelay));
+            mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
+            mTorchOffDelay.setOnPreferenceChangeListener(this);
         }
     }
 
@@ -694,6 +716,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                     value ? 0 : 1 /* Backwards because setting is for disabling */);
+        }
+        if (preference == mTorchOffDelay) {
+            int torchOffDelay = Integer.valueOf((String) objValue);
+            int index = mTorchOffDelay.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, torchOffDelay);
+            mTorchOffDelay.setSummary(mTorchOffDelay.getEntries()[index]);
         }
         return true;
     }
