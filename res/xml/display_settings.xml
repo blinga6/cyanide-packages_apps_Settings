@@ -59,10 +59,11 @@
                 android:entryValues="@array/entryvalues_font_size"
                 android:dialogTitle="@string/dialog_title_font_size" />
 
-        <ListPreference
+        <!-- LCD Density -->
+        <EditTextPreference
                 android:key="lcd_density"
                 android:title="@string/lcd_density"
-                android:summary="@string/lcd_density_summary"
+                android:inputType="number"
                 android:persistent="false" />
 
         <SwitchPreference
