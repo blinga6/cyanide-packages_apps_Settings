@@ -61,6 +61,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             "weather_colorize_all_icons";
     private static final String LS_WEATHER_FONT_SIZE  =
             "ls_weather_font_size";
+    private static final String LS_ALARM_DATE_FONT_SIZE  =
+            "ls_alarm_date_font_size";
 
     private static final int MONOCHROME_ICON = 0;
 
@@ -76,6 +78,7 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
     private ListPreference mNumberOfNotifications;
     private SwitchPreference mColorizeAllIcons;
     private SeekBarPreference mLSWeatherFontSize;
+    private SeekBarPreference mLSAlarmDateFontSize;
 
     private ContentResolver mResolver;
 
@@ -127,6 +130,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                     Settings.System.LOCK_SCREEN_SHOW_WEATHER_LOCATION, 1) == 1);
             mShowLocation.setOnPreferenceChangeListener(this);
 
+            mLSWeatherFontSize = (SeekBarPreference) findPreference(LS_WEATHER_FONT_SIZE);
+            mLSWeatherFontSize.setValue(Settings.System.getInt(mResolver,
+                    Settings.System.LS_WEATHER_FONT_SIZE, 16));
+            mLSWeatherFontSize.setOnPreferenceChangeListener(this);
+
             mConditionIcon =
                     (ListPreference) findPreference(PREF_CONDITION_ICON);
             int conditionIcon = Settings.System.getInt(mResolver,
@@ -169,12 +177,13 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             catNotifications.removePreference(mHideWeather);
             catNotifications.removePreference(mNumberOfNotifications);
             removePreference(PREF_CAT_NOTIFICATIONS);
+            removePreference(LS_WEATHER_FONT_SIZE);
         }
 
-        mLSWeatherFontSize = (SeekBarPreference) findPreference(LS_WEATHER_FONT_SIZE);
-        mLSWeatherFontSize.setValue(Settings.System.getInt(mResolver,
-                Settings.System.LS_WEATHER_FONT_SIZE, 16));
-        mLSWeatherFontSize.setOnPreferenceChangeListener(this);
+        mLSAlarmDateFontSize = (SeekBarPreference) findPreference(LS_ALARM_DATE_FONT_SIZE);
+        mLSAlarmDateFontSize.setValue(Settings.System.getInt(mResolver,
+                Settings.System.LS_ALARM_DATE_FONT_SIZE, 14));
+        mLSAlarmDateFontSize.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -256,6 +265,11 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
             Settings.System.putInt(mResolver,
                     Settings.System.LS_WEATHER_FONT_SIZE, width);
             return true;
+        } else if (preference == mLSAlarmDateFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(mResolver,
+                    Settings.System.LS_ALARM_DATE_FONT_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -311,6 +325,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                                     Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, 6);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LS_WEATHER_FONT_SIZE, 16);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_ALARM_DATE_FONT_SIZE, 12);
                             getOwner().refreshSettings();
                         }
                     })
@@ -335,6 +351,8 @@ public class LockScreenWeatherSettings extends SettingsPreferenceFragment implem
                                     Settings.System.LOCK_SCREEN_WEATHER_NUMBER_OF_NOTIFICATIONS, 6);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LS_WEATHER_FONT_SIZE, 16);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_ALARM_DATE_FONT_SIZE, 14);
                             getOwner().refreshSettings();
                         }
                     })
