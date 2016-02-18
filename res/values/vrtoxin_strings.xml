@@ -1332,8 +1332,8 @@
     <string name="lock_screen_number_of_notifications_six_title">6</string>
     <string name="weather_cat_notifications_title">Notifications</string>
     <string name="lock_screen_weather_settings_title">Lockscreen Weather</string>
-    <string name="lock_screen_clock_font_size_title">LockClock Size</string>
-    <string name="lock_screen_alarm_date_font_size_title">Alarm and Date Size</string>
+    <string name="lock_screen_clock_font_size_title">Clock Size</string>
+    <string name="lock_screen_alarm_date_font_size_title">Date Size</string>
     <string name="lock_screen_weather_font_size_title">Weather Text Size</string>
     <string name="lock_screen_weather_settings_summary">Customize Lockscreen Weather Display</string>
     <string name="lock_screen_color_settings_summary">Customize Colors</string>
@@ -2380,7 +2380,7 @@
 
     <!-- Android Version -->
     <string name="android_version_title">Marshmallow</string>
-    <string name="android_version_default">Release 16</string>
+    <string name="android_version_default">Release 13</string>
 
     <!-- Tethering & portable hotspot other category -->
     <string name="tethering_other_category_text">Other</string>
@@ -2431,8 +2431,7 @@
     <string name="power_menu_button_action_dialog">Power Menu - ScreenOff</string>
 
     <!-- Hide Lockscreen clock & date -->
-    <string name="hide_lockscreen_items_title">Lockscreen items</string>
-    <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
-    <string name="hide_lockscreen_date_title">Show lockscreen date</string>
+    <string name="hide_lockscreen_clock_title">Clock</string>
+    <string name="hide_lockscreen_date_title">Date</string>
 
 </resources>

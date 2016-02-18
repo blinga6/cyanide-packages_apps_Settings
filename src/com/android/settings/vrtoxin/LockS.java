@@ -48,11 +48,17 @@ public class LockS extends SettingsPreferenceFragment implements
 
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
     private static final String OWNER_INFO_FONT_SIZE  = "owner_info_font_size";
+    private static final String LS_ALARM_DATE_FONT_SIZE  = "ls_alarm_date_font_size";
+    private static final String LOCK_CLOCK_FONT_SIZE  = "lock_clock_font_size";
+    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
 
     private static final int MY_USER_ID = UserHandle.myUserId();
     private LockPatternUtils mLockPatternUtils;
     private Preference mOwnerInfoPref;
     private SeekBarPreference mOwnerSize;
+    private SeekBarPreference mLCFontSize;
+    private SeekBarPreference mLSAlarmDateFontSize;
+    private ListPreference mLockClockFonts;
 
     private boolean mIsPrimary;
     private ContentResolver mResolver;
@@ -90,6 +96,22 @@ public class LockS extends SettingsPreferenceFragment implements
         mOwnerSize.setValue(Settings.System.getInt(mResolver,
                 Settings.System.OWNER_INFO_FONT_SIZE, 14));
         mOwnerSize.setOnPreferenceChangeListener(this);
+
+        mLCFontSize = (SeekBarPreference) findPreference(LOCK_CLOCK_FONT_SIZE);
+        mLCFontSize.setValue(Settings.System.getInt(mResolver,
+                Settings.System.LOCK_CLOCK_FONT_SIZE, 88));
+        mLCFontSize.setOnPreferenceChangeListener(this);
+
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                mResolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
+
+        mLSAlarmDateFontSize = (SeekBarPreference) findPreference(LS_ALARM_DATE_FONT_SIZE);
+        mLSAlarmDateFontSize.setValue(Settings.System.getInt(mResolver,
+                Settings.System.LS_ALARM_DATE_FONT_SIZE, 14));
+        mLSAlarmDateFontSize.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -97,6 +119,22 @@ public class LockS extends SettingsPreferenceFragment implements
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(mResolver,
                     Settings.System.OWNER_INFO_FONT_SIZE, width);
+            return true;
+        } else if (preference == mLCFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(mResolver,
+                    Settings.System.LOCK_CLOCK_FONT_SIZE, width);
+            return true;
+        } else if (preference == mLockClockFonts) {
+            Settings.System.putInt(mResolver, Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+            return true;
+        } else if (preference == mLSAlarmDateFontSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(mResolver,
+                    Settings.System.LS_ALARM_DATE_FONT_SIZE, width);
             return true;
         }
         return false;

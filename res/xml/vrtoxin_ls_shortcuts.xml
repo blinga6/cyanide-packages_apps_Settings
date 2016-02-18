@@ -32,6 +32,36 @@
          android:summary="@string/lockscreen_shortcuts_summary"
          android:fragment="com.android.settings.vrtoxin.fragments.LockscreenShortcutFragment" />
 
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_clock"
+        android:title="@string/hide_lockscreen_clock_title"
+        android:defaultValue="true" />
+
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="lock_clock_font_size"
+        android:title="@string/lock_screen_clock_font_size_title"
+        android:max="130"
+        settings:minimum="30"
+        settings:unitsLeft=""
+        settings:unitsRight="dp"
+        android:dependency="hide_lockscreen_clock"
+        android:persistent="false" />
+
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="hide_lockscreen_date"
+        android:title="@string/hide_lockscreen_date_title"
+        android:defaultValue="true" />
+
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="ls_alarm_date_font_size"
+        android:title="@string/lock_screen_alarm_date_font_size_title"
+        android:max="30"
+        settings:minimum="4"
+        settings:unitsLeft=""
+        settings:unitsRight="dp"
+        android:dependency="hide_lockscreen_date"
+        android:persistent="false" />
+
     <com.android.settings.vrtoxin.SecureSettingSwitchPreference
         android:key="enable_device_policy_override"
         android:title="@string/device_policy_override_title"
@@ -43,6 +73,12 @@
         android:title="@string/double_tap_to_sleep_lockscreen_title"
         android:summary="@string/double_tap_to_sleep_lockscreen_summary"
         android:defaultValue="false" />
+
+    <ListPreference
+        android:key="lock_clock_fonts"
+        android:entries="@array/status_bar_font_style_entries"
+        android:entryValues="@array/status_bar_font_style_values"
+        android:title="@string/status_bar_weather_font_style_title" />
 
     <PreferenceScreen
         android:key="lock_screen_color_settings"
