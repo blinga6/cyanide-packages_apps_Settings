@@ -20,12 +20,6 @@
     android:title="@string/theme_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="settings_colors"
-        android:title="@string/settings_colors_title"
-        android:fragment="com.android.settings.vrtoxin.DashboardColors"
-        android:summary="@string/settings_colors_summary" />
-
     <ListPreference
         android:key="night_auto_mode"
         android:entries="@array/night_auto_mode_entries"
@@ -39,11 +33,11 @@
         android:summary="@string/theme_override_custom_colors_summary"
         android:defaultValue="false" />
 
-    <ListPreference
-        android:key="dashboard_font_style"
-        android:entries="@array/status_bar_font_style_entries"
-        android:entryValues="@array/status_bar_font_style_values"
-        android:title="@string/dashboard_font_style_title" />
+    <PreferenceScreen
+        android:key="settings_colors"
+        android:title="@string/settings_colors_title"
+        android:fragment="com.android.settings.vrtoxin.DashboardOptions"
+        android:summary="@string/settings_colors_summary" />
 
     <ListPreference
         android:key="night_mode"

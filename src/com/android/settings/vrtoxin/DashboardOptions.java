@@ -1,5 +1,6 @@
 /*
- * Copyright (C) Copyright (C) 2015 CyanideL
+ * Copyright (C) 2015 CyanideL
+ * Copyright (C) 2016 The VRToxin Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@ import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -39,23 +41,22 @@ import com.android.internal.logging.MetricsLogger;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class DashboardColors extends SettingsPreferenceFragment implements
+public class DashboardOptions extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    private static final String PREF_BG_COLOR =
-            "settings_bg_color";
-    private static final String PREF_TEXT_COLOR =
-            "settings_title_text_color";
-    private static final String PREF_CAT_TEXT_COLOR =
-            "settings_category_text_color";
+    private static final String PREF_BG_COLOR = "settings_bg_color";
+    private static final String PREF_TEXT_COLOR = "settings_title_text_color";
+    private static final String PREF_CAT_TEXT_COLOR = "settings_category_text_color";
+    private static final String DASHBOARD_FONT_STYLE = "dashboard_font_style";
 
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mCatTextColor;
+    private ListPreference mDashFontStyle;
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
-    private static final int CYANIDE_BLUE = 0xff1976D2;
-    private static final int HOLO_BLUE_LIGHT = 0xff33b5e5;
+    private static final int VRTOXIN_BLUE = 0xff1976D2;
+    private static final int VRTOXIN_GREEN = 0xff00ff00;
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
 
@@ -76,7 +77,7 @@ public class DashboardColors extends SettingsPreferenceFragment implements
             prefs.removeAll();
         }
 
-        addPreferencesFromResource(R.xml.dashboard_colors);
+        addPreferencesFromResource(R.xml.dashboard_options);
         mResolver = getActivity().getContentResolver();
 
         int intColor = 0xffffffff;
@@ -108,6 +109,12 @@ public class DashboardColors extends SettingsPreferenceFragment implements
         mCatTextColor.setNewPreviewColor(intColor);
         mCatTextColor.setSummary(hexColor);
         mCatTextColor.setOnPreferenceChangeListener(this);
+
+        mDashFontStyle = (ListPreference) findPreference(DASHBOARD_FONT_STYLE);
+        mDashFontStyle.setOnPreferenceChangeListener(this);
+        mDashFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.DASHBOARD_FONT_STYLE, 0)));
+        mDashFontStyle.setSummary(mDashFontStyle.getEntry());
 
         setHasOptionsMenu(true);
     }
@@ -158,6 +165,13 @@ public class DashboardColors extends SettingsPreferenceFragment implements
                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mDashFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mDashFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DASHBOARD_FONT_STYLE, val);
+            mDashFontStyle.setSummary(mDashFontStyle.getEntries()[index]);
+            return true;
         }
         return false;
     }
@@ -178,8 +192,8 @@ public class DashboardColors extends SettingsPreferenceFragment implements
             return frag;
         }
 
-        DashboardColors getOwner() {
-            return (DashboardColors) getTargetFragment();
+        DashboardOptions getOwner() {
+            return (DashboardOptions) getTargetFragment();
         }
 
         @Override
@@ -203,6 +217,9 @@ public class DashboardColors extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.DASHBOARD_FONT_STYLE,
+                                    0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -214,10 +231,13 @@ public class DashboardColors extends SettingsPreferenceFragment implements
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
-                                    WHITE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_GREEN);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.DASHBOARD_FONT_STYLE,
+                                    20);
                             getOwner().refreshSettings();
                         }
                     })
