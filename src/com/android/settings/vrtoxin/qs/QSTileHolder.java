@@ -230,6 +230,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_ringer_audible";
                 stringId = R.string.qs_tile_sounds;
                 break;
+            case QSConstants.TILE_CAFFEINE:
+                resourceName = "ic_qs_caffeine_on";
+                stringId = R.string.qs_tile_caffeine;
+                break;
             default:
                 return null;
         }
