@@ -2437,6 +2437,7 @@
     <!-- Dashboard Colors -->
     <string name="settings_colors_title">Dashboard Options</string>
     <string name="dashboard_colors_title">Colors</string>
+    <string name="dashboard_icons_title">Icons</string>
     <string name="dashboard_text_title">Title Text</string>
     <string name="text_cat_title">Category Text</string>
     <string name="settings_colors_summary">Set custom colors for dashboard background, text, categories etc</string>

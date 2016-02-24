@@ -45,11 +45,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String PREF_BG_COLOR = "settings_bg_color";
+    private static final String PREF_ICON_COLOR = "settings_icon_color";
     private static final String PREF_TEXT_COLOR = "settings_title_text_color";
     private static final String PREF_CAT_TEXT_COLOR = "settings_category_text_color";
     private static final String DASHBOARD_FONT_STYLE = "dashboard_font_style";
 
     private ColorPickerPreference mBgColor;
+    private ColorPickerPreference mIconColor;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mCatTextColor;
     private ListPreference mDashFontStyle;
@@ -91,6 +93,15 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mBgColor.setNewPreviewColor(intColor);
         mBgColor.setSummary(hexColor);
         mBgColor.setOnPreferenceChangeListener(this);
+
+        mIconColor =
+                (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.SETTINGS_ICON_COLOR, WHITE);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mIconColor.setNewPreviewColor(intColor);
+        mIconColor.setSummary(hexColor);
+        mIconColor.setOnPreferenceChangeListener(this);
 
         mTextColor =
                 (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
@@ -147,6 +158,14 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
             intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(mResolver,
                     Settings.System.SETTINGS_BG_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mIconColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.SETTINGS_ICON_COLOR, intHex);
             preference.setSummary(hex);
             return true;
         } else if (preference == mTextColor) {
@@ -212,6 +231,9 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     Settings.System.SETTINGS_BG_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_ICON_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
@@ -230,11 +252,14 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     Settings.System.SETTINGS_BG_COLOR,
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_ICON_COLOR,
+                                    VRTOXIN_GREEN);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    VRTOXIN_GREEN);
+                                    0xff34234);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     20);
