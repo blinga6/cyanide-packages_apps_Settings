@@ -35,9 +35,9 @@
 
     <!-- Dashboard number of columns -->
     <integer name="dashboard_num_columns">1</integer>
-
-    <!-- Dashboard two columns -->
     <integer name="dashboard_two_columns">2</integer>
+    <integer name="dashboard_three_columns">3</integer>
+    <integer name="dashboard_four_columns">4</integer>
 
     <!-- Carrier_enabled editable -->
     <bool name="config_allow_edit_carrier_enabled" translatable="false">false</bool>

@@ -49,12 +49,14 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private static final String PREF_TEXT_COLOR = "settings_title_text_color";
     private static final String PREF_CAT_TEXT_COLOR = "settings_category_text_color";
     private static final String DASHBOARD_FONT_STYLE = "dashboard_font_style";
+    private static final String DASHBOARD_COLUMNS_COUNT = "dashboard_columns_count";
 
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mIconColor;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mCatTextColor;
     private ListPreference mDashFontStyle;
+    private ListPreference mDashColumns;
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
@@ -127,6 +129,12 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                 .getContentResolver(), Settings.System.DASHBOARD_FONT_STYLE, 0)));
         mDashFontStyle.setSummary(mDashFontStyle.getEntry());
 
+        mDashColumns = (ListPreference) findPreference(DASHBOARD_COLUMNS_COUNT);
+        mDashColumns.setOnPreferenceChangeListener(this);
+        mDashColumns.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.DASHBOARD_COLUMNS_COUNT, 0)));
+        mDashColumns.setSummary(mDashColumns.getEntry());
+
         setHasOptionsMenu(true);
     }
 
@@ -191,6 +199,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                     Settings.System.DASHBOARD_FONT_STYLE, val);
             mDashFontStyle.setSummary(mDashFontStyle.getEntries()[index]);
             return true;
+        } else if (preference == mDashColumns) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mDashColumns.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DASHBOARD_COLUMNS_COUNT, val);
+            mDashColumns.setSummary(mDashColumns.getEntries()[index]);
+            return true;
         }
         return false;
     }
@@ -242,6 +257,9 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.DASHBOARD_COLUMNS_COUNT,
+                                    0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -263,6 +281,9 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.DASHBOARD_COLUMNS_COUNT,
+                                    1);
                             getOwner().refreshSettings();
                         }
                     })

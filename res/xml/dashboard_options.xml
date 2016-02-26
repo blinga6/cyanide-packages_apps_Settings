@@ -26,11 +26,12 @@
             android:entryValues="@array/status_bar_font_style_values"
             android:title="@string/status_bar_weather_font_style_title" />
 
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="dashboard_column_count"
-            android:title="@string/two_columns_title"
-            android:summary="@string/two_columns_summary"
-            android:defaultValue="false" />
+        <ListPreference
+            android:key="dashboard_columns_count"
+            android:entries="@array/columns_entries"
+            android:entryValues="@array/columns_values"
+            android:title="@string/columns_title"
+            android:dialogTitle="@string/columns_title" />
 
     <PreferenceCategory
         android:key="dash_colors"

@@ -2038,10 +2038,6 @@
     <string name="boot_dialog_app_text_color_mode_text_title">Use the global text color</string>
     <string name="boot_dialog_app_text_color_title">App Text</string>
 
-    <!-- Settings Two Columns -->
-    <string name="two_columns_title">Two Columns</string>
-    <string name="two_columns_summary">Enable this to change settings dashboard to side by side columns</string>
-
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Advanced Options</string>
     <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
@@ -2441,6 +2437,8 @@
     <string name="dashboard_text_title">Title Text</string>
     <string name="text_cat_title">Category Text</string>
     <string name="settings_colors_summary">Set custom colors for dashboard background, text, categories etc</string>
+    <string name="columns_title">Columns Count</string>
+    <string name="columns_summary">Allow using more than one column in the dashboard settings</string>
 
     <!-- Identicons -->
     <string name="identicons_title">Identicons</string>

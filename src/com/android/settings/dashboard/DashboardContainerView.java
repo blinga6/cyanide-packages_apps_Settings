@@ -42,12 +42,17 @@ public class DashboardContainerView extends ViewGroup {
         mCellGapY = res.getDimension(R.dimen.dashboard_cell_gap_y);
 
         mSettingsStyle = Settings.System.getIntForUser(
-                mContext.getContentResolver(), Settings.System.DASHBOARD_COLUMN_COUNT, 0,
+                mContext.getContentResolver(), Settings.System.DASHBOARD_COLUMNS_COUNT, 0,
                 UserHandle.USER_CURRENT);
+
         if (mSettingsStyle == 0) {
             mNumColumns = res.getInteger(R.integer.dashboard_num_columns);
-        } else {
+        } else if (mSettingsStyle == 1) {
             mNumColumns = res.getInteger(R.integer.dashboard_two_columns);
+        } else if (mSettingsStyle == 2) {
+            mNumColumns = res.getInteger(R.integer.dashboard_three_columns);
+        } else if (mSettingsStyle == 3) {
+            mNumColumns = res.getInteger(R.integer.dashboard_four_columns);
         }
     }
 
