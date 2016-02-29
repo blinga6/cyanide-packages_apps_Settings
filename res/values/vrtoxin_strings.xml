@@ -1746,20 +1746,6 @@
     <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
     <string name="summary_heads_up_disabled">Pop-up notifications are disabled</string>
 
-    <!-- Status bar greeting settings -->
-    <string name="status_bar_greeting_settings_title">Greeting</string>
-    <string name="status_bar_greeting_settings_summary">Customize greeting</string>
-    <string name="greeting_show_greeting_always_summary">The greeting will be shown after the device gets unlocked</string>
-    <string name="greeting_show_greeting_once_summary">The greeting will be shown only the first time the device gets unlocked after the boot</string>
-    <string name="greeting_show_greeting_never_summary">The greeting will never be shown</string>
-    <string name="greeting_show_greeting_once_title">Once after boot</string>
-    <string name="greeting_custom_text_title">Custom Text</string>
-    <string name="greeting_custom_text_dlg_message">Enter a new text, which will be shown as greeting. An empty field will revert the text to:\n\'%s\'</string>
-    <string name="greeting_timeout_title">Time out</string>
-    <string name="greeting_preview_title">Preview</string>
-    <string name="greeting_preview_summary">Click to show a preview</string>
-    <string name="greeting_font_size_title">Font Size</string>
-
     <!-- NFC PreferenceCategory title -->
     <string name="nfc_title_category">NFC</string>
 
