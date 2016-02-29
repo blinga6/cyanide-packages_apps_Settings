@@ -2003,9 +2003,11 @@
     <string name="floating_windows">Floating Windows</string>
     <string name="floating_windows_switch">Whether to allow global use of float mode.</string>
     <string name="slim_action_floats">VRToxin Actions &amp; Pie</string>
-    <string name="slim_action_floats_summary">Launch VRToxin &amp; Pie Actions in Floating Window Mode</string>
+    <string name="slim_action_floats_summary">Launch VRToxin &amp; Pie Actions in float mode</string>
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
+    <string name="qs_float_mode">Quick Settings</string>
+    <string name="qs_float_mode_summary">Launch Quick Settings and Expanded Header actions in float mode</string>
 
     <!-- The volume key answer -->
     <string name="volume_answer_call_title">Volume Key Answer</string>
