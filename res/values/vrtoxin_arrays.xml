@@ -37,43 +37,43 @@
 
     <!-- Power Menu -->
     <string-array name="power_menu_action_entries">
-        <item>@string/shortcut_action_power_off</item>
-        <item>@string/shortcut_action_reboot</item>
-        <item>@string/shortcut_action_onthego</item>
-        <item>@string/shortcut_action_restartui</item>
-        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_airplane_mode</item>
-        <item>@string/shortcut_action_users</item>
-        <item>@string/shortcut_action_system_settings</item>
-        <item>@string/shortcut_action_lock_down</item>
-        <item>@string/shortcut_action_expanded_desktop</item>
-        <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_appcirclebar</item>
         <item>@string/shortcut_action_appsidebar</item>
-        <item>@string/shortcut_action_gesture_anywhere</item>
+        <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_floating_windows</item>
+        <item>@string/shortcut_action_gesture_anywhere</item>
+        <item>@string/shortcut_action_lock_down</item>
+        <item>@string/shortcut_action_onthego</item>
+        <item>@string/shortcut_action_power_off</item>
+        <item>@string/shortcut_action_reboot</item>
+        <item>@string/shortcut_action_restartui</item>
+        <item>@string/shortcut_action_screenrecord</item>
         <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_system_settings</item>
+        <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_sound</item>
+        <item>@string/shortcut_action_users</item>
     </string-array>
 
     <string-array name="power_menu_action_values" translatable="false">
-        <item>**poweroff**</item>
-        <item>**reboot**</item>
-        <item>**onthego**</item>
-        <item>**restartui**</item>
-        <item>**screenrecord**</item>
         <item>**airplane**</item>
-        <item>**users**</item>
-        <item>**system_settings**</item>
-        <item>**lock_down**</item>
-        <item>**expanded_desktop**</item>
-        <item>**pie**</item>
         <item>**appcirclebar**</item>
         <item>**appsidebar**</item>
-        <item>**gesture_anywhere**</item>
+        <item>**expanded_desktop**</item>
         <item>**floating_windows**</item>
+        <item>**gesture_anywhere**</item>
+        <item>**lock_down**</item>
+        <item>**onthego**</item>
+        <item>**poweroff**</item>
+        <item>**reboot**</item>
+        <item>**restartui**</item>
+        <item>**screenrecord**</item>
         <item>**screenshot**</item>
+        <item>**settings_panel**</item>
+        <item>**pie**</item>
         <item>**sound**</item>
+        <item>**users**</item>
     </string-array>
 
     <!-- Hide notifications arrays -->
@@ -502,18 +502,18 @@
         <item>@string/shortcut_action_app</item>-
         <item>@string/shortcut_action_floating_windows</item>
         <item>@string/shortcut_action_home</item>-
-        <item>@string/shortcut_action_menu</item>
         <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_kill</item>
+        <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_menu</item>
+        <item>@string/shortcut_action_now_on_tap</item>
+        <item>@string/shortcut_action_none</item>
         <item>@string/shortcut_action_onthego</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
-        <item>@string/shortcut_action_search</item>
-        <item>@string/shortcut_action_lastapp</item>
-        <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_screenshot</item>
-        <item>@string/shortcut_action_now_on_tap</item>
-        <item>@string/shortcut_action_none</item>
+        <item>@string/shortcut_action_search</item>
     </string-array>
 
     <string-array name="shortcut_action_values" translatable="false">
@@ -521,18 +521,18 @@
         <item>**app**</item>
         <item>**floating_windows**</item>
         <item>**home**</item>
-        <item>**menu_big**</item>
         <item>**ime**</item>
+        <item>**kill**</item>
+        <item>**lastapp**</item>
+        <item>**menu_big**</item>
+        <item>**now_on_tap**</item>
+        <item>**null**</item>
         <item>**onthego**</item>
         <item>**power_menu**</item>
         <item>**recents**</item>
         <item>**power**</item>
         <item>**search**</item>
-        <item>**lastapp**</item>
-        <item>**kill**</item>
         <item>**screenshot**</item>
-        <item>**now_on_tap**</item>
-        <item>**null**</item>
     </string-array>
 
     <!-- Pie control -->
@@ -1614,66 +1614,74 @@
 
     <!-- Slim Actions For Shortcuts -->
     <string-array name="shortcut_action_launcher_entries">
-        <item>@string/shortcut_action_home</item>
-        <item>@string/shortcut_action_back</item>
+        <item>@string/shortcut_action_assist</item>
+        <item>@string/shortcut_action_back</item>-
+        <item>@string/shortcut_action_camera</item>
+        <item>@string/shortcut_action_app</item>-
+        <item>@string/shortcut_action_expanded_desktop</item>
         <item>@string/shortcut_action_floating_windows</item>
-        <item>@string/shortcut_action_search</item>
-        <item>@string/shortcut_action_voice_search</item>
+        <item>@string/shortcut_action_home</item>-
+        <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_kill</item>
+        <item>@string/shortcut_action_lastapp</item>
         <item>@string/shortcut_action_menu</item>
         <item>@string/shortcut_action_menu_big</item>
-        <item>@string/shortcut_action_power</item>
-        <item>@string/shortcut_action_notifications</item>
-        <item>@string/shortcut_action_settings_panel</item>
-        <item>@string/shortcut_action_recent</item>
-        <item>@string/shortcut_action_screenshot</item>
-        <item>@string/shortcut_action_ime</item>
-        <item>@string/shortcut_action_lastapp</item>
-        <item>@string/shortcut_action_kill</item>
-        <item>@string/shortcut_action_assist</item>
-        <item>@string/shortcut_action_ring_vib</item>
-        <item>@string/shortcut_action_ring_silent</item>
-        <item>@string/shortcut_action_ring_vib_silent</item>
-        <item>@string/shortcut_action_power_menu</item>
-        <item>@string/shortcut_action_expanded_desktop</item>
-        <item>@string/shortcut_action_theme_switch</item>
-        <item>@string/shortcut_action_pie</item>
-        <item>@string/shortcut_action_nav_bar</item>
-        <item>@string/shortcut_action_camera</item>
-        <item>@string/shortcut_action_media_previous</item>
         <item>@string/shortcut_action_media_next</item>
         <item>@string/shortcut_action_media_play_pause</item>
+        <item>@string/shortcut_action_media_previous</item>
+        <item>@string/shortcut_action_nav_bar</item>
+        <item>@string/shortcut_action_notifications</item>
+        <item>@string/shortcut_action_now_on_tap</item>
+        <item>@string/shortcut_action_none</item>
+        <item>@string/shortcut_action_onthego</item>
+        <item>@string/shortcut_action_power_menu</item>
+        <item>@string/shortcut_action_recent</item>
+        <item>@string/shortcut_action_ring_silent</item>
+        <item>@string/shortcut_action_ring_vib</item>
+        <item>@string/shortcut_action_ring_vib_silent</item>
+        <item>@string/shortcut_action_power</item>
+        <item>@string/shortcut_action_screenshot</item>
+        <item>@string/shortcut_action_search</item>
+        <item>@string/shortcut_action_settings_panel</item>
+        <item>@string/shortcut_action_pie</item>
+        <item>@string/shortcut_action_theme_switch</item>
+        <item>@string/shortcut_action_voice_search</item>
         <item>@string/shortcut_action_wake_device</item>
     </string-array>
 
     <string-array name="shortcut_action_launcher_values" translatable="false">
-        <item>**home**</item>
+        <item>**assist**</item>
         <item>**back**</item>
+        <item>**camera**</item>
+        <item>**app**</item>
+        <item>**expanded_desktop**</item>
         <item>**floating_windows**</item>
-        <item>**search**</item>
-        <item>**voice_search**</item>
+        <item>**home**</item>
+        <item>**ime**</item>
+        <item>**kill**</item>
+        <item>**lastapp**</item>
         <item>**menu**</item>
         <item>**menu_big**</item>
-        <item>**power**</item>
-        <item>**notifications**</item>
-        <item>**settings_panel**</item>
-        <item>**recents**</item>
-        <item>**screenshot**</item>
-        <item>**ime**</item>
-        <item>**lastapp**</item>
-        <item>**kill**</item>
-        <item>**assist**</item>
-        <item>**ring_vib**</item>
-        <item>**ring_silent**</item>
-        <item>**ring_vib_silent**</item>
-        <item>**power_menu**</item>
-        <item>**expanded_desktop**</item>
-        <item>**theme_switch**</item>
-        <item>**pie**</item>
-        <item>**nav_bar**</item>
-        <item>**camera**</item>
-        <item>**media_previous**</item>
         <item>**media_next**</item>
         <item>**media_play_pause**</item>
+        <item>**media_previous**</item>
+        <item>**nav_bar**</item>
+        <item>**notifications**</item>
+        <item>**now_on_tap**</item>
+        <item>**null**</item>
+        <item>**onthego**</item>
+        <item>**power_menu**</item>
+        <item>**recents**</item>
+        <item>**ring_silent**</item>
+        <item>**ring_vib**</item>
+        <item>**ring_vib_silent**</item>
+        <item>**power**</item>
+        <item>**screenshot**</item>
+        <item>**search**</item>
+        <item>**settings_panel**</item>
+        <item>**pie**</item>
+        <item>**theme_switch**</item>
+        <item>**voice_search**</item>
         <item>**wake_device**</item>
     </string-array>
 
