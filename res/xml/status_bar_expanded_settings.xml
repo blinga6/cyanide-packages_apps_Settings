@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 The VRToxin Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/empty_shade_title">
+
+    <EditTextPreference
+        android:key="status_bar_empty_shade_text_custom"
+        android:title="@string/empty_shade_custom_text_title"
+        android:dialogMessage="@string/empty_shade_custom_text_dlg_message" />
+
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="status_bar_empty_shade_text_size"
+        android:title="@string/status_bar_weather_size_title"
+        android:defaultValue="14"
+        android:max="25"
+        settings:minimum="4"
+        settings:unitsLeft=""
+        settings:unitsRight="dp" />
+
+    <ListPreference
+        android:key="status_bar_empty_shade_font_style"
+        android:title="@string/status_bar_weather_font_style_title"
+        android:dialogTitle="@string/status_bar_weather_font_style_title"
+        android:entries="@array/status_bar_font_style_entries"
+        android:entryValues="@array/status_bar_font_style_values" />
+
+    <PreferenceScreen
+        android:key="panel_shortcuts"
+        android:title="@string/panel_shortcuts_title"
+        android:summary="@string/panel_shortcuts_summary"
+        android:fragment="com.android.settings.vrtoxin.fragments.PanelShortcutFragment" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="status_bar_empty_shade_text_color"
+        android:title="@string/text_title"
+        android:defaultValue="0xffffffff" />
+
+    <!-- ROM Logo -->
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="status_bar_empty_shade_image"
+        android:title="@string/status_bar_empty_shade_image_title"
+        android:summary="@string/status_bar_empty_shade_image_summary"
+        android:defaultValue="false" />
+
+</PreferenceScreen>
+

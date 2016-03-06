@@ -1401,6 +1401,13 @@
     <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
     <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
     <string name="header_network_icons_airplane_mode_color_title">Airplane Mode Color</string>
+    <string name="empty_shade_title">EmptyShadeView</string>
+    <string name="empty_shade_custom_text_title">Custom Text</string>
+    <string name="empty_shade_custom_text_dlg_message">Enter custom text for the empty shade view</string>
+    <string name="empty_shade_title">EmptyShadeView</string>
+    <string name="empty_shade_summary">Customize the "no notifications" view</string>
+    <string name="status_bar_empty_shade_image_title">VRToxin Logo</string>
+    <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the empty shade view</string>
 
     <!-- Battery saver -->
     <string name="battery_saver_title">Warning Color</string>
@@ -2441,5 +2448,20 @@
     <string name="identicons_style_contemporary">Contemporary</string>
     <string name="identicons_style_spirograph">Spirograph</string>
     <string name="identicons_style_dotmatrix">Dot matrix</string>
+
+    <!-- Empty Shade Shortcut Bar -->
+    <string name="panel_shortcuts_title">Shortcut Bar</string>
+    <string name="panel_shortcuts_summary">View/Change shortcuts in the EmptyShade Shortcut Bar. This is visible when no notifications are visible</string>
+    <string name="panel_shorcuts_longpress_title">Shortcuts longpress</string>
+    <string name="panel_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
+    <string name="panel_shorcuts_launch_type_title">Shortcut click type</string>
+    <string name="panel_shortcuts_single_tap">Click</string>
+    <string name="panel_shortcuts_double_tap">Double Tap</string>
+    <string name="panel_shortcuts_longpress">Longpress</string>
+    <string name="header_bar_icon_color_mode_title">Colorize Icon</string>
+    <string name="header_bar_icon_color_mode_dialog_title">Choose when to colorize the icon</string>
+    <string name="header_bar_ripple_color_mode_title">Colorize Ripple Effect</string>
+    <string name="header_bar_ripple_color_mode_dialog_title">Choose how to colorize the ripple effect</string>
+    <string name="colors_buttons_bar_ripple_color_title">Ripple Effect</string>
 
 </resources>

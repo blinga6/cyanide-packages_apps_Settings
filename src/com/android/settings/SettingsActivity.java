@@ -147,6 +147,7 @@ import com.android.settings.vrtoxin.dslv.ActionListViewSettings;
 import com.android.settings.headsup.HeadsUpSettings;
 import com.android.settings.vrtoxin.PowerMenuSettings;
 import com.android.settings.vrtoxin.Changelog;
+import com.android.settings.vrtoxin.StatusBarExpandedSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -395,7 +396,8 @@ public class SettingsActivity extends Activity
             HeadsUpSettings.class.getName(),
             PowerMenuSettings.class.getName(),
             Changelog.class.getName(),
-            com.android.settings.vrtoxin.PrivacySettings.class.getName()
+            com.android.settings.vrtoxin.PrivacySettings.class.getName(),
+            StatusBarExpandedSettings.class.getName()
     };
 
 

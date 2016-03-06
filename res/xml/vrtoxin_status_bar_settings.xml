@@ -40,6 +40,13 @@
         android:summary="@string/status_bar_clock_settings_summary"
         android:fragment="com.android.settings.vrtoxin.StatusBarClockSettings" />
 
+    <!-- EmptyShadeView -->
+    <PreferenceScreen
+        android:key="status_bar_empty_shade"
+        android:title="@string/empty_shade_title"
+        android:summary="@string/empty_shade_summary"
+        android:fragment="com.android.settings.vrtoxin.StatusBarExpandedSettings" />
+
     <!-- Expanded Header -->
     <PreferenceScreen
         android:key="status_bar_expanded_header"

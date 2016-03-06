@@ -549,8 +549,8 @@ public class ActionListViewSettings extends ListFragment implements
             case NAV_BAR:
                 return ActionHelper.getNavBarConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
-            /*case PANEL_SHORTCUTS:
-                return ActionHelper.getPanelShortcutsConfig(mActivity);*/
+            case PANEL_SHORTCUTS:
+                return ActionHelper.getPanelShortcutsConfig(mActivity);
             case PIE:
                 return ActionHelper.getPieConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
@@ -585,10 +585,10 @@ public class ActionListViewSettings extends ListFragment implements
                 ActionHelper.setNavBarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
                 break;
-            /*case PANEL_SHORTCUTS:
+            case PANEL_SHORTCUTS:
                 ActionHelper.setPanelShortcutsConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
-                break;*/
+                break;
             case PIE:
                 ActionHelper.setPieConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
@@ -819,7 +819,7 @@ public class ActionListViewSettings extends ListFragment implements
                     switch (getOwner().mActionMode) {
                         case LOCKSCREEN_BUTTONS_BAR:
                         case NAV_BAR:
-                        //case PANEL_SHORTCUTS:
+                        case PANEL_SHORTCUTS:
                         case PIE:
                         case PIE_SECOND:
                         case POWER_MENU:
