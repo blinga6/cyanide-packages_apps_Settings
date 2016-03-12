@@ -40,6 +40,12 @@
         android:entries="@array/status_bar_font_style_entries"
         android:entryValues="@array/status_bar_font_style_values" />
 
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="status_bar_empty_shade_force_show"
+        android:title="@string/empty_shade_force_title"
+        android:summary="@string/empty_shade_force_summary"
+        android:defaultValue="false" />
+
     <PreferenceScreen
         android:key="panel_shortcuts"
         android:title="@string/panel_shortcuts_title"

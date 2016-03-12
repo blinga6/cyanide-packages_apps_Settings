@@ -1408,6 +1408,8 @@
     <string name="empty_shade_summary">Customize the "no notifications" view</string>
     <string name="status_bar_empty_shade_image_title">VRToxin Logo</string>
     <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the empty shade view</string>
+    <string name="empty_shade_force_title">Force View</string>
+    <string name="empty_shade_force_summary">Keep the shade view visible when notifications are visible</string>
 
     <!-- Battery saver -->
     <string name="battery_saver_title">Warning Color</string>
