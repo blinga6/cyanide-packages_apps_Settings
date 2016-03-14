@@ -21,17 +21,22 @@
     android:title="@string/colors_title">
 
         <ListPreference
-            android:key="dashboard_font_style"
-            android:entries="@array/status_bar_font_style_entries"
-            android:entryValues="@array/status_bar_font_style_values"
-            android:title="@string/status_bar_weather_font_style_title" />
-
-        <ListPreference
             android:key="dashboard_columns_count"
             android:entries="@array/columns_entries"
             android:entryValues="@array/columns_values"
             android:title="@string/columns_title"
             android:dialogTitle="@string/columns_title" />
+
+        <ListPreference
+            android:key="dashboard_font_style"
+            android:entries="@array/status_bar_font_style_entries"
+            android:entryValues="@array/status_bar_font_style_values"
+            android:title="@string/status_bar_weather_font_style_title" />
+
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="settings_switches"
+            android:title="@string/dash_switches_title"
+            android:summary="@string/dash_switches_summary" />
 
     <PreferenceCategory
         android:key="dash_colors"
@@ -43,13 +48,13 @@
             android:defaultValue="0x80000000" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="settings_icon_color"
-            android:title="@string/dashboard_icons_title"
+            android:key="settings_category_text_color"
+            android:title="@string/text_cat_title"
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="settings_category_text_color"
-            android:title="@string/text_cat_title"
+            android:key="settings_icon_color"
+            android:title="@string/dashboard_icons_title"
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference

@@ -187,6 +187,8 @@ public class DashboardSummary extends InstrumentedFragment {
 
         final int iconColor = Settings.System.getInt(context.getContentResolver(),
                     Settings.System.SETTINGS_ICON_COLOR, 0xff1976D2);
+        final boolean switches = Settings.System.getInt(context.getContentResolver(),
+                    Settings.System.SETTINGS_SWITCHES, 0)==1;
         if (!TextUtils.isEmpty(tile.iconPkg)) {
             try {
                 Drawable outsideDrawable = context.getPackageManager()
@@ -230,9 +232,11 @@ public class DashboardSummary extends InstrumentedFragment {
 
 	if (switchBar != null) {
         if (tile.switchControl  != null) {
-            switchBar.setVisibility(View.VISIBLE);
-        } else {
-            switchBar.setVisibility(View.GONE);
+            if (switches) {
+                switchBar.setVisibility(View.VISIBLE);
+            } else {
+                switchBar.setVisibility(View.GONE);
+            }
         }
 	}
     }

@@ -140,6 +140,7 @@ import com.android.settings.vrtoxin.gestureanywhere.GestureAnywhereSettings;
 import com.android.settings.vrtoxin.NavigationBarSettings;
 import com.android.settings.vrtoxin.AppCircleBar;
 import com.android.settings.vrtoxin.AppSideBar;
+import com.android.settings.vrtoxin.DashboardOptions;
 import com.android.settings.vrtoxin.HwKeySettings;
 import com.android.settings.vrtoxin.ThemeSettings;
 import com.android.settings.vrtoxin.FloatingWindows;
@@ -397,7 +398,8 @@ public class SettingsActivity extends Activity
             PowerMenuSettings.class.getName(),
             Changelog.class.getName(),
             com.android.settings.vrtoxin.PrivacySettings.class.getName(),
-            StatusBarExpandedSettings.class.getName()
+            StatusBarExpandedSettings.class.getName(),
+            DashboardOptions.class.getName()
     };
 
 

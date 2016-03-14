@@ -33,12 +33,6 @@
         android:summary="@string/theme_override_custom_colors_summary"
         android:defaultValue="false" />
 
-    <PreferenceScreen
-        android:key="settings_colors"
-        android:title="@string/settings_colors_title"
-        android:fragment="com.android.settings.vrtoxin.DashboardOptions"
-        android:summary="@string/settings_colors_summary" />
-
     <ListPreference
         android:key="night_mode"
         android:title="@string/night_mode_title"

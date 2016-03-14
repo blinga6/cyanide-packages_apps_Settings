@@ -2417,8 +2417,8 @@
     <string name="hide_lockscreen_clock_title">Clock</string>
     <string name="hide_lockscreen_date_title">Date</string>
 
-    <!-- Dashboard Colors -->
-    <string name="settings_colors_title">Dashboard Options</string>
+    <!-- Dashboard Options -->
+    <string name="settings_colors_title">Dashboard</string>
     <string name="dashboard_colors_title">Colors</string>
     <string name="dashboard_icons_title">Icons</string>
     <string name="dashboard_text_title">Title Text</string>
@@ -2426,6 +2426,8 @@
     <string name="settings_colors_summary">Set custom colors for dashboard background, text, categories etc</string>
     <string name="columns_title">Columns Count</string>
     <string name="columns_summary">Allow using more than one column in the dashboard settings</string>
+    <string name="dash_switches_title">Switches</string>
+    <string name="dash_switches_summary">Whether to show switches on the dashboard</string>
 
     <!-- Identicons -->
     <string name="identicons_title">Identicons</string>
