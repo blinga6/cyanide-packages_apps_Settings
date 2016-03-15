@@ -2436,6 +2436,8 @@
     <string name="columns_summary">Allow using more than one column in the dashboard settings</string>
     <string name="dash_switches_title">Switches</string>
     <string name="dash_switches_summary">Whether to show switches on the dashboard</string>
+    <string name="dash_title_text_size">Title Text Size</string>
+    <string name="dash_category_text_size">Category Text Size</string>
 
     <!-- Identicons -->
     <string name="identicons_title">Identicons</string>

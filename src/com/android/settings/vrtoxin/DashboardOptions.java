@@ -37,6 +37,7 @@ import android.view.MenuInflater;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.vrtoxin.SeekBarPreference;
 import com.android.internal.logging.MetricsLogger;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -50,6 +51,8 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private static final String PREF_CAT_TEXT_COLOR = "settings_category_text_color";
     private static final String DASHBOARD_FONT_STYLE = "dashboard_font_style";
     private static final String DASHBOARD_COLUMNS_COUNT = "dashboard_columns_count";
+    private static final String SETTINGS_TITLE_TEXT_SIZE  = "settings_title_text_size";
+    private static final String SETTINGS_CATEGORY_TEXT_SIZE  = "settings_category_text_size";
 
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mIconColor;
@@ -57,6 +60,8 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private ColorPickerPreference mCatTextColor;
     private ListPreference mDashFontStyle;
     private ListPreference mDashColumns;
+    private SeekBarPreference mDashTitleTextSize;
+    private SeekBarPreference mDashCategoryTextSize;
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
@@ -135,6 +140,18 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                 .getContentResolver(), Settings.System.DASHBOARD_COLUMNS_COUNT, 0)));
         mDashColumns.setSummary(mDashColumns.getEntry());
 
+        mDashTitleTextSize =
+                (SeekBarPreference) findPreference(SETTINGS_TITLE_TEXT_SIZE);
+        mDashTitleTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 14));
+        mDashTitleTextSize.setOnPreferenceChangeListener(this);
+
+        mDashCategoryTextSize =
+                (SeekBarPreference) findPreference(SETTINGS_CATEGORY_TEXT_SIZE);
+        mDashCategoryTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, 10));
+        mDashCategoryTextSize.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -206,6 +223,16 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                     Settings.System.DASHBOARD_COLUMNS_COUNT, val);
             mDashColumns.setSummary(mDashColumns.getEntries()[index]);
             return true;
+        } else if (preference == mDashTitleTextSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SETTINGS_TITLE_TEXT_SIZE, width);
+            return true;
+        } else if (preference == mDashCategoryTextSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -260,6 +287,12 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_COLUMNS_COUNT,
                                     0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_TITLE_TEXT_SIZE,
+                                    14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
+                                    10);
                             getOwner().refreshSettings();
                         }
                     })
@@ -284,6 +317,12 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_COLUMNS_COUNT,
                                     1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_TITLE_TEXT_SIZE,
+                                    14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
+                                    10);
                             getOwner().refreshSettings();
                         }
                     })

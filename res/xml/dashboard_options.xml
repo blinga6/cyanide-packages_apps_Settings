@@ -27,6 +27,15 @@
             android:title="@string/columns_title"
             android:dialogTitle="@string/columns_title" />
 
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="settings_category_text_size"
+            android:title="@string/dash_category_text_size"
+            android:defaultValue="14"
+            android:max="25"
+            settings:minimum="4"
+            settings:unitsLeft=""
+            settings:unitsRight="dp" />
+
         <ListPreference
             android:key="dashboard_font_style"
             android:entries="@array/status_bar_font_style_entries"
@@ -37,6 +46,15 @@
             android:key="settings_switches"
             android:title="@string/dash_switches_title"
             android:summary="@string/dash_switches_summary" />
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="settings_title_text_size"
+            android:title="@string/dash_title_text_size"
+            android:defaultValue="14"
+            android:max="25"
+            settings:minimum="4"
+            settings:unitsLeft=""
+            settings:unitsRight="dp" />
 
     <PreferenceCategory
         android:key="dash_colors"
