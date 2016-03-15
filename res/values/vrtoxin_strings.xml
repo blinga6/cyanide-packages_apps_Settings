@@ -1410,6 +1410,14 @@
     <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the empty shade view</string>
     <string name="empty_shade_force_title">Force View</string>
     <string name="empty_shade_force_summary">Keep the shade view visible when notifications are visible</string>
+    <string name="expanded_header_alarm_color">Alarm</string>
+    <string name="expanded_header_clock_color">Clock</string>
+    <string name="expanded_header_date_color">Date</string>
+    <string name="expanded_header_settings_color">Settings Button</string>
+    <string name="expanded_header_power_menu_color">Power Menu</string>
+    <string name="expanded_header_vrtoxin_color">VRToxin Button</string>
+    <string name="expanded_header_weather_color">Weather</string>
+    <string name="expanded_header_emergency_calls_color">Emergency Calls Only</string>
 
     <!-- Battery saver -->
     <string name="battery_saver_title">Warning Color</string>

@@ -48,9 +48,15 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String PREF_BG_COLOR = "expanded_header_background_color";
     private static final String PREF_RIPPLE_COLOR = "expanded_header_ripple_color";
     private static final String PREF_TEXT_COLOR = "expanded_header_text_color";
-    private static final String PREF_ICON_COLOR = "expanded_header_icon_color";
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
     private static final String POWER_MENU_BUTTON = "power_menu_button";
+    private static final String ALARM_COLOR = "expanded_header_alarm_color";
+    private static final String CLOCK_COLOR = "expanded_header_clock_color";
+    private static final String DATE_COLOR = "expanded_header_date_color";
+    private static final String POWER_MENU_COLOR = "expanded_header_power_menu_color";
+    private static final String SETTINGS_COLOR = "expanded_header_settings_color";
+    private static final String VRTOXIN_COLOR = "expanded_header_vrtoxin_color";
+    private static final String WEATHER_COLOR = "expanded_header_weather_color";
 
     private static final int SYSTEMUI_SECONDARY = 0xff384248;
     private static final int BLACK = 0xff000000;
@@ -66,9 +72,15 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mBackgroundColor;
     private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mTextColor;
-    private ColorPickerPreference mIconColor;
     private ListPreference mCustomHeaderDefault;
     private ListPreference mPowerMenuButton;
+    private ColorPickerPreference mAlarmColor;
+    private ColorPickerPreference mClockColor;
+    private ColorPickerPreference mDateColor;
+    private ColorPickerPreference mPowerMenuColor;
+    private ColorPickerPreference mSettingsColor;
+    private ColorPickerPreference mVRToxinColor;
+    private ColorPickerPreference mWeatherColor;
 
     private ContentResolver mResolver;
 
@@ -151,23 +163,89 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
         mTextColor.setOnPreferenceChangeListener(this);
 
-        mIconColor =
-                (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.STATUS_BAR_EXPANDED_HEADER_ICON_COLOR,
-                WHITE); 
-        mIconColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mIconColor.setSummary(hexColor);
-        mIconColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
-        mIconColor.setOnPreferenceChangeListener(this);
-
         // Power Menu Button
         mPowerMenuButton = (ListPreference) findPreference(POWER_MENU_BUTTON);
         mPowerMenuButton.setOnPreferenceChangeListener(this);
         mPowerMenuButton.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.POWER_MENU_BUTTON, 2)));
         mPowerMenuButton.setSummary(mPowerMenuButton.getEntry());
+
+        mAlarmColor =
+                (ColorPickerPreference) findPreference(ALARM_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_ALARM_COLOR,
+                WHITE); 
+        mAlarmColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mAlarmColor.setSummary(hexColor);
+        mAlarmColor.setDefaultColors(WHITE, WHITE);
+        mAlarmColor.setOnPreferenceChangeListener(this);
+
+        mClockColor =
+                (ColorPickerPreference) findPreference(CLOCK_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_CLOCK_COLOR,
+                WHITE); 
+        mClockColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mClockColor.setSummary(hexColor);
+        mClockColor.setDefaultColors(WHITE, WHITE);
+        mClockColor.setOnPreferenceChangeListener(this);
+
+        mDateColor =
+                (ColorPickerPreference) findPreference(DATE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_DATE_COLOR,
+                WHITE); 
+        mDateColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mDateColor.setSummary(hexColor);
+        mDateColor.setDefaultColors(WHITE, WHITE);
+        mDateColor.setOnPreferenceChangeListener(this);
+
+        mPowerMenuColor =
+                (ColorPickerPreference) findPreference(POWER_MENU_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR,
+                WHITE); 
+        mPowerMenuColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mPowerMenuColor.setSummary(hexColor);
+        mPowerMenuColor.setDefaultColors(WHITE, WHITE);
+        mPowerMenuColor.setOnPreferenceChangeListener(this);
+
+        mSettingsColor =
+                (ColorPickerPreference) findPreference(SETTINGS_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_SETTINGS_COLOR,
+                WHITE); 
+        mSettingsColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mSettingsColor.setSummary(hexColor);
+        mSettingsColor.setDefaultColors(WHITE, WHITE);
+        mSettingsColor.setOnPreferenceChangeListener(this);
+
+        mVRToxinColor =
+                (ColorPickerPreference) findPreference(VRTOXIN_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
+                WHITE); 
+        mVRToxinColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mVRToxinColor.setSummary(hexColor);
+        mVRToxinColor.setDefaultColors(WHITE, WHITE);
+        mVRToxinColor.setOnPreferenceChangeListener(this);
+
+        mWeatherColor =
+                (ColorPickerPreference) findPreference(WEATHER_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
+                WHITE); 
+        mWeatherColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mWeatherColor.setSummary(hexColor);
+        mWeatherColor.setDefaultColors(WHITE, WHITE);
+        mWeatherColor.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -246,20 +324,68 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
-        } else if (preference == mIconColor) {
-            hex = ColorPickerPreference.convertToARGB(
-                Integer.valueOf(String.valueOf(newValue)));
-            intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                Settings.System.STATUS_BAR_EXPANDED_HEADER_ICON_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
         } else if (preference == mPowerMenuButton) {
             int val = Integer.parseInt((String) newValue);
             int index = mPowerMenuButton.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.POWER_MENU_BUTTON, val);
             mPowerMenuButton.setSummary(mPowerMenuButton.getEntries()[index]);
+            return true;
+        } else if (preference == mAlarmColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_ALARM_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mClockColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_CLOCK_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mDateColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_DATE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mSettingsColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_SETTINGS_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mPowerMenuColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mVRToxinColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mWeatherColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR, intHex);
+            preference.setSummary(hex);
             return true;
         }
         return false;
@@ -317,6 +443,27 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     Settings.System.POWER_MENU_BUTTON, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_ALARM_COLOR,
+                                    SYSTEMUI_SECONDARY);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_CLOCK_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_DATE_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_SETTINGS_COLOR,
+                                    SYSTEMUI_SECONDARY);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -343,6 +490,27 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     Settings.System.POWER_MENU_BUTTON, 2);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_ALARM_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_CLOCK_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_DATE_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_SETTINGS_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })
