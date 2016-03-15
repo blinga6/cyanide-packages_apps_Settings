@@ -2468,4 +2468,7 @@
     <string name="header_bar_ripple_color_mode_dialog_title">Choose how to colorize the ripple effect</string>
     <string name="colors_buttons_bar_ripple_color_title">Ripple Effect</string>
 
+    <!-- EXPERIMENTAL -->
+    <string name="master_font_style_title">EXPERIMENTAL Master Font</string>
+
 </resources>

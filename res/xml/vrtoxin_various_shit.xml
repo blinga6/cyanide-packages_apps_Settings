@@ -24,6 +24,13 @@
         <intent android:action=".vrtoxin.HiddenAnimActivity" />
     </Preference>
 
+    <ListPreference
+        android:key="master_font_style"
+        android:entries="@array/status_bar_font_style_entries"
+        android:entryValues="@array/status_bar_font_style_values"
+        android:summary="@string/recents_font_style"
+        android:title="@string/master_font_style_title" />
+
     <!-- Joke -->
     <Preference
         android:key="hidden_shit"

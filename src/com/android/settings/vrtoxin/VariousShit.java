@@ -59,6 +59,7 @@ public class VariousShit extends SettingsPreferenceFragment
     private static final String KEY_HIDDEN_SHIT_UNLOCKED = "hidden_shit_unlocked";
     private static final String KEY_HIDDEN_IMG = "hidden_img";
     private static final String KEY_HIDDEN_YOGA = "hidden_anim";
+    private static final String MASTER_FONT_STYLE = "master_font_style";
 
     // Package name of the yoga
     public static final String YOGA_PACKAGE_NAME = "com.android.settings";
@@ -71,6 +72,7 @@ public class VariousShit extends SettingsPreferenceFragment
     private Preference mHiddenShit;
     private PreferenceScreen mHiddenImg;
     private CheckBoxPreference mHiddenShitUnlocked;
+    private ListPreference mMasterFontStyle;
     long[] mHits = new long[3];
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -113,6 +115,12 @@ public class VariousShit extends SettingsPreferenceFragment
             mVariousShitScreen.removePreference(mHiddenShitUnlocked);
             mVariousShitScreen.removePreference(mHiddenImg);
         }
+
+        mMasterFontStyle = (ListPreference) findPreference(MASTER_FONT_STYLE);
+        mMasterFontStyle.setOnPreferenceChangeListener(this);
+        mMasterFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.MASTER_FONT_STYLE, 0)));
+        mMasterFontStyle.setSummary(mMasterFontStyle.getEntry());
     }
 
     @Override
@@ -166,6 +174,13 @@ public class VariousShit extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HIDDEN_SHIT,
                     (Boolean) objValue ? 1 : 0);
+            return true;
+        } else if (preference == mMasterFontStyle) {
+            int val = Integer.parseInt((String) objValue);
+            int index = mMasterFontStyle.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.MASTER_FONT_STYLE, val);
+            mMasterFontStyle.setSummary(mMasterFontStyle.getEntries()[index]);
             return true;
         }
         return false;
