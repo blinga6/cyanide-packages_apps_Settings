@@ -43,6 +43,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final String VOLUME_DIALOG_ICON_COLOR = "volume_dialog_icon_color";
     private static final String VOLUME_DIALOG_SLIDER_COLOR = "volume_dialog_slider_color";
     private static final String VOLUME_DIALOG_SLIDER_INACTIVE_COLOR = "volume_dialog_slider_inactive_color";
+    private static final String VOLUME_DIALOG_SLIDER_ICON_COLOR = "volume_dialog_slider_icon_color";
+    private static final String VOLUME_DIALOG_EXPAND_BUTTON_COLOR = "volume_dialog_expand_button_color";
 
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
@@ -57,6 +59,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mIconColor;
     private ColorPickerPreference mSliderColor;
     private ColorPickerPreference mSliderInactiveColor;
+    private ColorPickerPreference mSliderIconColor;
+    private ColorPickerPreference mExpandButtonColor;
 
     private ContentResolver mResolver;
 
@@ -117,6 +121,24 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
         mSliderInactiveColor.setSummary(hexColor);
         mSliderInactiveColor.setOnPreferenceChangeListener(this);
 
+        mSliderIconColor =
+                (ColorPickerPreference) findPreference(VOLUME_DIALOG_SLIDER_ICON_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.VOLUME_DIALOG_SLIDER_ICON_COLOR, WHITE); 
+        mSliderIconColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mSliderIconColor.setSummary(hexColor);
+        mSliderIconColor.setOnPreferenceChangeListener(this);
+
+        mExpandButtonColor =
+                (ColorPickerPreference) findPreference(VOLUME_DIALOG_EXPAND_BUTTON_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.VOLUME_DIALOG_EXPAND_BUTTON_COLOR, WHITE); 
+        mExpandButtonColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mExpandButtonColor.setSummary(hexColor);
+        mExpandButtonColor.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -174,6 +196,22 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                     Settings.System.VOLUME_DIALOG_SLIDER_INACTIVE_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mSliderIconColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_SLIDER_ICON_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mExpandButtonColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_EXPAND_BUTTON_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         }
 
         return false;
@@ -228,6 +266,12 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_SLIDER_INACTIVE_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.VOLUME_DIALOG_SLIDER_ICON_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.VOLUME_DIALOG_EXPAND_BUTTON_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -246,6 +290,12 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.VOLUME_DIALOG_SLIDER_INACTIVE_COLOR,
                                     0xffff0000);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.VOLUME_DIALOG_SLIDER_ICON_COLOR,
+                                    VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.VOLUME_DIALOG_EXPAND_BUTTON_COLOR,
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })

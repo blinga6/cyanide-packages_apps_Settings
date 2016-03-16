@@ -25,6 +25,11 @@
         android:defaultValue="0xff37474f" />
 
     <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="volume_dialog_expand_button_color"
+        android:title="@string/volume_dialog_expand_button"
+        android:defaultValue="0xffffffff" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_icon_color"
         android:title="@string/icon_title"
         android:defaultValue="0xff009688" />
@@ -37,6 +42,11 @@
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_slider_color"
         android:title="@string/volume_dialog_slider"
+        android:defaultValue="0xffffffff" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="volume_dialog_slider_icon_color"
+        android:title="@string/volume_dialog_slider_icon"
         android:defaultValue="0xffffffff" />
 
 </PreferenceScreen>

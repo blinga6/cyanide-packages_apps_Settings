@@ -2122,7 +2122,9 @@
     <!-- Volume Dialog Colors -->
     <string name="volume_dialog_settings_title">Volume Dialog Colors</string>
     <string name="volume_dialog_settings_summary">Customize various aspects of the volume dialog colors</string>
+    <string name="volume_dialog_expand_button">Expand Button</string>
     <string name="volume_dialog_slider">Slider</string>
+    <string name="volume_dialog_slider_icon">Slider Icon</string>
     <string name="volume_dialog_slider_inactive">Inactive Slider</string>
 
     <!-- Device policy override -->

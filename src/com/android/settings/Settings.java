@@ -142,4 +142,5 @@ public class Settings extends SettingsActivity {
     public static class ChangelogSettingsActivity extends SettingsActivity { /* empty */ }
     public static class EmptyShadeSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DashboardSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class VolumeDialogSettingsActivity extends SettingsActivity { /* empty */ }
 }
