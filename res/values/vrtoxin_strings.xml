@@ -47,7 +47,7 @@
     <string name="colors_title">Colors</string>
     <string name="colorize_icons_title">Colorize icons</string>
     <string name="colorize_icons_dialog_title">Choose when to colorize the icon</string>
-    <string name="ripple_title">Ripple effect</string>
+    <string name="ripple_title">Ripple Effect</string>
     <string name="colorize_ripple_title">Colorize ripple effect</string>
     <string name="colorize_ripple_dialog_title">Choose how to colorize the ripple effect</string>
     <string name="icon_is_greyscale_title">If the icon is an greyscale icon</string>
@@ -1402,15 +1402,16 @@
     <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
     <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
     <string name="header_network_icons_airplane_mode_color_title">Airplane Mode Color</string>
-    <string name="empty_shade_title">EmptyShadeView</string>
+    <string name="empty_shade_title">Expansion View</string>
     <string name="empty_shade_custom_text_title">Custom Text</string>
-    <string name="empty_shade_custom_text_dlg_message">Enter custom text for the empty shade view</string>
-    <string name="empty_shade_title">EmptyShadeView</string>
+    <string name="empty_shade_custom_text_dlg_message">Enter custom text for the expansion view</string>
     <string name="empty_shade_summary">Customize the "no notifications" view</string>
     <string name="status_bar_empty_shade_image_title">VRToxin Logo</string>
-    <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the empty shade view</string>
+    <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the expansion view</string>
     <string name="empty_shade_force_title">Force View</string>
-    <string name="empty_shade_force_summary">Keep the shade view visible when notifications are visible</string>
+    <string name="empty_shade_force_summary">Keep the expansion view visible when notifications are present</string>
+    <string name="expansion_view_layout_changer">Layout Changer</string>
+    <string name="expansion_view_layout_changer_summary">Enable to show the layout changer button in the expansion View</string>
     <string name="expanded_header_alarm_color">Alarm</string>
     <string name="expanded_header_clock_color">Clock</string>
     <string name="expanded_header_date_color">Date</string>
@@ -2466,9 +2467,18 @@
     <string name="identicons_style_spirograph">Spirograph</string>
     <string name="identicons_style_dotmatrix">Dot matrix</string>
 
-    <!-- Empty Shade Shortcut Bar -->
+    <!-- Expansion View -->
     <string name="panel_shortcuts_title">Shortcut Bar</string>
-    <string name="panel_shortcuts_summary">View/Change shortcuts in the EmptyShade Shortcut Bar. This is visible when no notifications are visible</string>
+    <string name="expansion_view_weather_panel">Weather Panel</string>
+    <string name="weather_show_current_title">Show Current Weather</string>
+    <string name="weather_show_current_summary">Enable to show the current weather information next to daily forecasts</string>
+    <string name="weather_icon_type_title">Weather Condition Icon</string>
+    <string name="weather_icon_monochrome_title">Monochrome</string>
+    <string name="weather_icon_colored_title">Colored</string>
+    <string name="weather_icon_vclouds_title">VClouds</string>
+    <string name="expansion_view_background">Background</string>
+    <string name="expansion_view_background_summary">This will give the expansion view it\'s own background, you can color it below</string>
+    <string name="panel_shortcuts_summary">View/Change shortcuts in the Expansion View Shortcut Bar. This is visible when no notifications are visible</string>
     <string name="panel_shorcuts_longpress_title">Shortcuts longpress</string>
     <string name="panel_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
     <string name="panel_shorcuts_launch_type_title">Shortcut click type</string>
@@ -2480,6 +2490,15 @@
     <string name="header_bar_ripple_color_mode_title">Colorize Ripple Effect</string>
     <string name="header_bar_ripple_color_mode_dialog_title">Choose how to colorize the ripple effect</string>
     <string name="colors_buttons_bar_ripple_color_title">Ripple Effect</string>
+    <string name="expansion_view_animation_title">Animation</string>
+    <string name="expansion_view_animation_summary">Change the enter/exit animation of the panel change</string>
+    <string name="expansion_view_animation_dialog_title">Select your animation</string>
+    <string name="expansion_view_animation_down">Down (Default)</string>
+    <string name="expansion_view_animation_left">Left</string>
+    <string name="expansion_view_animation_right">Right</string>
+    <string name="expansion_view_animation_rotate">Rotate</string>
+    <string name="expansion_view_animation_turn">Turn</string>
+    <string name="expansion_view_animation_up">Up</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>
