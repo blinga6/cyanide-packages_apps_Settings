@@ -66,10 +66,13 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
             "header_battery_show_charge_animation";
     private static final String PREF_TEXT_COLOR =
             "header_battery_text_color";
+    private static final String STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR =
+            "status_bar_expanded_header_battery_color";
 
     private static final int WHITE           = 0xffffffff;
     private static final int BLACK           = 0xff000000;
     private static final int VRTOXIN_BLUE    = 0xff1976D2;
+    private static final int VRTOXIN_GREEN   = 0xff00ff00;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
@@ -81,6 +84,7 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
     private SwitchPreference mCutOutText;
     private SwitchPreference mShowChargeAnimation;
     private ColorPickerPreference mTextColor;
+    private ColorPickerPreference mBatteryColor;
 
     private ContentResolver mResolver;
 
@@ -167,6 +171,16 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
             mShowChargeAnimation.setChecked(Settings.System.getInt(mResolver,
                    Settings.System.STATUS_BAR_EXPANDED_BATTERY_SHOW_CHARGE_ANIMATION, 0) == 1);
             mShowChargeAnimation.setOnPreferenceChangeListener(this);
+
+            mBatteryColor =
+                    (ColorPickerPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR);
+            intColor = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR, WHITE);
+            mBatteryColor.setNewPreviewColor(intColor);
+            hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mBatteryColor.setSummary(hexColor);
+            mBatteryColor.setDefaultColors(WHITE, WHITE);
+            mBatteryColor.setOnPreferenceChangeListener(this);
 
             mTextColor =
                     (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
@@ -270,6 +284,14 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mBatteryColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         }
         return false;
     }
@@ -320,6 +342,9 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_SHOW_CHARGE_ANIMATION, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_TEXT_COLOR,
+                                    BLACK);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR,
                                     WHITE);
                             getOwner().refreshSettings();
                         }
@@ -341,7 +366,10 @@ public class ExpandedHeaderBatterySettings extends SettingsPreferenceFragment im
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_SHOW_CHARGE_ANIMATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_BATTERY_TEXT_COLOR,
-                                    0xff00ff00);
+                                    VRTOXIN_GREEN);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_BATTERY_COLOR,
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })
