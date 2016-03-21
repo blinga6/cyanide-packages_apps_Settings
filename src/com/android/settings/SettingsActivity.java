@@ -128,6 +128,7 @@ import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.wifi.AdvancedWifiSettings;
+import com.android.settings.deviceinfo.AdvancedStorageSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
@@ -310,6 +311,7 @@ public class SettingsActivity extends Activity
             WirelessSettings.class.getName(),
             WifiSettings.class.getName(),
             AdvancedWifiSettings.class.getName(),
+            AdvancedStorageSettings.class.getName(),
             SavedAccessPointsWifiSettings.class.getName(),
             BluetoothSettings.class.getName(),
             SimSettings.class.getName(),
@@ -453,6 +455,7 @@ public class SettingsActivity extends Activity
     private boolean mSearchMenuItemExpanded = false;
     private SearchResultsSummary mSearchResultsFragment;
     private String mSearchQuery;
+    private UserManager mUm;
 
     // Categories
     private ArrayList<DashboardCategory> mCategories = new ArrayList<DashboardCategory>();
@@ -598,6 +601,7 @@ public class SettingsActivity extends Activity
         if (intent.hasExtra(EXTRA_UI_OPTIONS)) {
             getWindow().setUiOptions(intent.getIntExtra(EXTRA_UI_OPTIONS, 0));
         }
+        mUm = (UserManager) getSystemService(Context.USER_SERVICE);
 
         mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
                 Context.MODE_PRIVATE);
@@ -1278,7 +1282,8 @@ public class SettingsActivity extends Activity
     private void updateTilesList(List<DashboardCategory> target) {
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                 DevelopmentSettings.PREF_SHOW,
-                android.os.Build.TYPE.equals("eng") || android.os.Build.TYPE.equals("userdebug"));
+                true);
+        final boolean isSecondaryUser =  UserHandle.myUserId() != UserHandle.USER_OWNER;
 
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
 
