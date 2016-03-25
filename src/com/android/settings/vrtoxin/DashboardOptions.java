@@ -65,7 +65,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
-    private static final int VRTOXIN_GREEN = 0xff00ff00;
+    private static final int VRTOXIN_GREEN = 0xff009688;
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
 
@@ -104,7 +104,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mIconColor =
                 (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.SETTINGS_ICON_COLOR, WHITE);
+                Settings.System.SETTINGS_ICON_COLOR, VRTOXIN_GREEN);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mIconColor.setNewPreviewColor(intColor);
         mIconColor.setSummary(hexColor);
@@ -122,7 +122,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mCatTextColor =
                 (ColorPickerPreference) findPreference(PREF_CAT_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, BLACK);
+                Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, VRTOXIN_GREEN);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCatTextColor.setNewPreviewColor(intColor);
         mCatTextColor.setSummary(hexColor);
@@ -274,13 +274,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_ICON_COLOR,
-                                    VRTOXIN_BLUE);
+                                    VRTOXIN_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    WHITE);
+                                    VRTOXIN_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     0);
@@ -289,10 +289,10 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_SIZE,
-                                    14);
+                                    16);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
-                                    10);
+                                    14);
                             getOwner().refreshSettings();
                         }
                     })
@@ -304,13 +304,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_ICON_COLOR,
-                                    VRTOXIN_GREEN);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SETTINGS_TITLE_TEXT_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    0xff34234);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     20);
@@ -322,7 +322,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     14);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
-                                    10);
+                                    12);
                             getOwner().refreshSettings();
                         }
                     })

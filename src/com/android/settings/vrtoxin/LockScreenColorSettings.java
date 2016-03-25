@@ -68,7 +68,7 @@ public class LockScreenColorSettings extends SettingsPreferenceFragment implemen
             "colors_buttons_bar_ripple_color";
 
     private static final int DEFAULT_COLOR = 0xffffffff;
-    private static final int CYANIDE_BLUE = 0xff1976D2;
+    private static final int VRTOXIN_BLUE = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -385,28 +385,28 @@ public class LockScreenColorSettings extends SettingsPreferenceFragment implemen
                                     Settings.System.LOCK_SCREEN_BUTTONS_BAR_RIPPLE_COLOR_MODE, 2);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_TEXT_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_ICON_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCKSCREEN_INDICATION_TEXT_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCKSCREEN_OWNER_INFO_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCKSCREEN_ALARM_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCKSCREEN_CLOCK_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCKSCREEN_CLOCK_DATE_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.LOCK_SCREEN_BUTTONS_BAR_RIPPLE_COLOR,
-                                    CYANIDE_BLUE);
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })

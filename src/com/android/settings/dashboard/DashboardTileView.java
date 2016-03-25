@@ -74,19 +74,19 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         setOnClickListener(this);
         setBackgroundResource(R.drawable.dashboard_tile_background);
         setBackgroundColor(Settings.System.getInt(context.getContentResolver(),
-            Settings.System.SETTINGS_BG_COLOR, 0xff000000));
+            Settings.System.SETTINGS_BG_COLOR, 0xffffffff));
         mDivider.setBackgroundResource(R.drawable.dashboard_tile_background);
         mDivider.setBackgroundColor(Settings.System.getInt(context.getContentResolver(),
-            Settings.System.SETTINGS_BG_COLOR, 0xff000000));
+            Settings.System.SETTINGS_BG_COLOR, 0xffffffff));
         mTitleTextView.setTextColor(Settings.System.getInt(context.getContentResolver(),
-            Settings.System.SETTINGS_TITLE_TEXT_COLOR, 0xff1976D2));
+            Settings.System.SETTINGS_TITLE_TEXT_COLOR, 0xff000000));
         mStatusTextView.setTextColor(Settings.System.getInt(context.getContentResolver(),
-            Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, 0xff1976D2));
+            Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, 0xff009688));
         mStatusTextView.setTextSize(Settings.System.getIntForUser(context.getContentResolver(),
                 Settings.System.SETTINGS_TITLE_TEXT_SIZE, 14,
                 UserHandle.USER_CURRENT));
         mTitleTextView.setTextSize(Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 18,
+                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 16,
                 UserHandle.USER_CURRENT));
         setFocusable(true);
         updateDashFont();
