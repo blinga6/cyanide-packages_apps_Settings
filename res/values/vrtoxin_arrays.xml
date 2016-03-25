@@ -516,6 +516,7 @@
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_screenshot</item>
         <item>@string/shortcut_action_search</item>
+        <item>@string/shortcut_action_torch</item>
     </string-array>
 
     <string-array name="shortcut_action_values" translatable="false">
@@ -535,6 +536,7 @@
         <item>**power**</item>
         <item>**search**</item>
         <item>**screenshot**</item>
+        <item>**torch**</item>
     </string-array>
 
     <!-- Pie control -->
