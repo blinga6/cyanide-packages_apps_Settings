@@ -33,4 +33,7 @@
 
     <dimen name="oval_notification_size">26dp</dimen>
 
+    <!-- Width and height of the color picker preference preview -->
+    <dimen name="color_picker_preference_preview_width_height">33dp</dimen>
+
 </resources>

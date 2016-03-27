@@ -25,4 +25,5 @@
         <item quantity="one">once</item>
         <item quantity="other">%d times</item>
     </plurals>
+
 </resources>
