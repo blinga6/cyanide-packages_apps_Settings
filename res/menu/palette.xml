@@ -18,6 +18,9 @@
     <item android:id="@+id/palette_vrtoxin"
         android:title="@string/palette_vrtoxin_title"
         />
+    <item android:id="@+id/palette_blackout"
+        android:title="@string/palette_blackout_title"
+        />
     <item android:id="@+id/palette_material"
         android:title="@string/palette_material_title"
         />

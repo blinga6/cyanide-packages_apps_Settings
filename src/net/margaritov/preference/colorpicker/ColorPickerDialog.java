@@ -88,9 +88,10 @@ public class ColorPickerDialog extends Dialog implements
     private final int mVRToxinColor;
     private int mNewColorValue;
 
-    private static final int PALETTE_VRTOXIN  = 0;
-    private static final int PALETTE_MATERIAL = 1;
-    private static final int PALETTE_RGB      = 2;
+    private static final int PALETTE_VRTOXIN     = 0;
+    private static final int PALETTE_BLACKOUT    = 1;
+    private static final int PALETTE_MATERIAL    = 2;
+    private static final int PALETTE_RGB         = 3;
 
     private ContentResolver mResolver;
     private Resources mResources;
@@ -364,6 +365,10 @@ public class ColorPickerDialog extends Dialog implements
             setPalette(PALETTE_VRTOXIN);
             mColorTransitionAnimator.start();
             return true;
+        } else if (item.getItemId() == R.id.palette_blackout) {
+            setPalette(PALETTE_BLACKOUT);
+            mColorTransitionAnimator.start();
+            return true;
         } else if (item.getItemId() == R.id.palette_material) {
             setPalette(PALETTE_MATERIAL);
             mColorTransitionAnimator.start();
@@ -456,7 +461,9 @@ public class ColorPickerDialog extends Dialog implements
 
     private void updatePanelButtonsTitle() {
         int resId = R.string.palette_vrtoxin_title;
-        if (getPalette() == PALETTE_MATERIAL) {
+        if (getPalette() == PALETTE_BLACKOUT) {
+            resId = R.string.palette_blackout_title;
+        } else if (getPalette() == PALETTE_MATERIAL) {
             resId = R.string.palette_material_title;
         } else if (getPalette() == PALETTE_RGB) {
             resId = R.string.palette_rgb_title;
@@ -478,6 +485,8 @@ public class ColorPickerDialog extends Dialog implements
         TypedArray ta;
         if (pallete == PALETTE_VRTOXIN) {
             ta = mResources.obtainTypedArray(R.array.color_picker_vrtoxin_palette);
+        } else if (pallete == PALETTE_BLACKOUT) {
+            ta = mResources.obtainTypedArray(R.array.color_picker_blackout_palette);
         } else if (pallete == PALETTE_MATERIAL) {
             ta = mResources.obtainTypedArray(R.array.color_picker_material_palette);
         } else {

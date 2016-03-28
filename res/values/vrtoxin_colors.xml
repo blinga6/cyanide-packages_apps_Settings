@@ -64,6 +64,11 @@
     <color name="purple">#ff800080</color>
     <color name="yellow">#ffffff00</color>
     <color name="orange">#ffffa500</color>
+    <color name="blackout_blue">#ff1976D2</color>
+    <color name="blackout_green">#ff00ff00</color>
+    <color name="blackout_red">#ffff0000</color>
+    <color name="see_through">#00000000</color>
+    <color name="blackout_yellow">#fffff600</color>
 
     <color name="floating_action_button_touch_tint">#80ffffff</color>
     <color name="theme_accent">#ff009688</color>
