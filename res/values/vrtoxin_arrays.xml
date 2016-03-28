@@ -2232,7 +2232,6 @@
         <item>5</item>
     </string-array>
 
-<<<<<<< HEAD
     <!-- Disable torch on screen off delay -->
     <string-array name="torch_screen_off_delay_entries">
         <item>@string/torch_screen_off_one_second</item>
