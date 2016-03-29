@@ -238,6 +238,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_screenrecord";
                 stringId = R.string.qs_tile_screenrecord;
                 break;
+            case QSConstants.TILE_LAYERS:
+                resourceName = "ic_qs_layers_manager";
+                stringId = R.string.qs_tile_layers;
+                break;
             default:
                 return null;
         }
