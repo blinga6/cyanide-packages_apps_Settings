@@ -25,7 +25,6 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceFrameLayout;
@@ -62,13 +61,6 @@ public class AppOpsSummary extends InstrumentedFragment {
     private SharedPreferences mPreferences;
 
     CharSequence[] mPageNames;
-    static AppOpsState.OpsTemplate[] sPageTemplates = new AppOpsState.OpsTemplate[] {
-        AppOpsState.LOCATION_TEMPLATE,
-        AppOpsState.PERSONAL_TEMPLATE,
-        AppOpsState.MESSAGING_TEMPLATE,
-        AppOpsState.MEDIA_TEMPLATE,
-        AppOpsState.DEVICE_TEMPLATE
-    };
 
     int mCurPos;
 
@@ -78,19 +70,21 @@ public class AppOpsSummary extends InstrumentedFragment {
     }
 
     class MyPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
+        private AppOpsState.OpsTemplate[] mPageTemplates;
 
-        public MyPagerAdapter(FragmentManager fm) {
+        public MyPagerAdapter(FragmentManager fm, AppOpsState.OpsTemplate[] templates) {
             super(fm);
+            mPageTemplates = templates;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return new AppOpsCategory(sPageTemplates[position]);
+            return new AppOpsCategory(mPageTemplates[position]);
         }
 
         @Override
         public int getCount() {
-            return sPageTemplates.length;
+            return mPageTemplates.length;
         }
 
         @Override
@@ -146,7 +140,8 @@ public class AppOpsSummary extends InstrumentedFragment {
         }
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
-        mAdapter = new MyPagerAdapter(getChildFragmentManager());
+        mAdapter = new MyPagerAdapter(getChildFragmentManager(),
+                filterTemplates(AppOpsState.ALL_TEMPLATES));
         mViewPager.setAdapter(mAdapter);
         if (defaultTab >= 0) {
             mViewPager.setCurrentItem(defaultTab);
@@ -157,7 +152,9 @@ public class AppOpsSummary extends InstrumentedFragment {
         Resources.Theme theme = tabs.getContext().getTheme();
         TypedValue typedValue = new TypedValue();
         theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-        final int colorAccent = getContext().getColor(typedValue.resourceId);
+        final int colorAccent = typedValue.resourceId != 0
+                ? getContext().getColor(typedValue.resourceId)
+                : getContext().getColor(R.color.switch_accent_color);
         tabs.setTabIndicatorColor(colorAccent);
 
         // We have to do this now because PreferenceFrameLayout looks at it
@@ -169,6 +166,17 @@ public class AppOpsSummary extends InstrumentedFragment {
         mActivity = getActivity();
 
         return rootView;
+    }
+
+    private AppOpsState.OpsTemplate[] filterTemplates(AppOpsState.OpsTemplate[] templates) {
+        List<AppOpsState.OpsTemplate> validTemplates = new ArrayList(templates.length);
+        for (AppOpsState.OpsTemplate template : templates) {
+            if (template == AppOpsState.SU_TEMPLATE) {
+                continue;
+            }
+            validTemplates.add(template);
+        }
+        return validTemplates.toArray(new AppOpsState.OpsTemplate[0]);
     }
 
     private boolean shouldShowUserApps() {

@@ -534,7 +534,7 @@
 
     <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
     <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
-    <string name="volbtn_cursor_control_title">Keyboard cursor control</string>
+    <string name="volbtn_cursor_control_title">Keyboard Cursor Control</string>
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
@@ -560,6 +560,7 @@
     <string name="qs_bar_buttons_summary">Arrange &amp; choose the buttons to display on the bar</string>
     <string name="quick_settings_title">Quick Settings</string>
     <string name="qs_colors_title">Custom Colors</string>
+    <string name="qs_colors_summary">Customize every aspect of the Quick Settings panel colors</string>
     <string name="qs_num_columns_title">Number of Tiles Per Row</string>
     <string name="qs_num_columns_showing">%1$s tiles per row showing</string>
     <string name="qs_brightness_slider_title">Brightness Slider</string>
@@ -1292,7 +1293,7 @@
     <!-- Ability to disable hardware keys -->
     <string name="hw_keys_title">Hardware Keys</string>
     <string name="hw_keys_summary">On/off switch for hardware keys</string>
-    <string name="lock_clock_color_title">Lock Screen Colors</string>
+    <string name="lock_clock_color_title">Custom Colors</string>
     <string name="lock_clock_weather_general_summary">General cLock weather settings</string>
     <string name="weather_control_title">General cLock Weather</string>
     <string name="weather_control_master_title">Weather Control</string>
@@ -1629,9 +1630,9 @@
     <string name="immersive_recents_fullscreen">Fullscreen</string>
     <string name="immersive_recents_statusbar">Statusbar only</string>
     <string name="immersive_recents_navbar">Navbar only</string>
-    <string name="recents_full_screen_clock_title">Show Clock</string>
+    <string name="recents_full_screen_clock_title">Clock</string>
     <string name="recents_full_screen_clock_summary">Shows clock at the top while in fullscreen</string>
-    <string name="recents_full_screen_date_title">Show Date</string>
+    <string name="recents_full_screen_date_title">Date</string>
     <string name="recents_full_screen_date_summary">Shows date at the top while in fullscreen</string>
     <string name="recents_full_screen_clock_color">Clock Color</string>
     <string name="recents_full_screen_date_color">Date Color</string>
@@ -1650,11 +1651,11 @@
     <string name="three_finger_gesture_summary">Swipe down with three fingers to screenshot</string>
 
     <!-- Shake to clear recents switch -->
-    <string name="shake_to_clear_recents_title">Shake to clear recents</string>
+    <string name="shake_to_clear_recents_title">Shake To Clear Recents</string>
     <string name="shake_to_clear_recents_summary">Use this switch, or longpress clear all recents button to enable shake to clear all recents feature.</string>
 
     <!-- Shake to clean notifications switch -->
-    <string name="shake_to_clean_notifications_title">Shake to clean notifications</string>
+    <string name="shake_to_clean_notifications_title">Shake To Clear Notifications</string>
     <string name="shake_to_clean_notifications_summary">Use this switch, or longpress clear all notifications button to enable shake to clean the notifications feature</string>
 
     <!-- Wifi Detailed View in QS -->
@@ -1845,8 +1846,8 @@
 
     <string name="volbtn_wake_device_title">Wake up device</string>
     <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
-    <string name="volume_keys_control_ring_stream_title">Volume keys control ringtone volume</string>
-    <string name="volume_keys_control_ring_stream_summary">If on, volume keys control ringtone volume. If off, volume keys control media volume.</string>
+    <string name="volume_keys_control_ring_stream_title">Ringtone Volume</string>
+    <string name="volume_keys_control_ring_stream_summary">If on, volume keys control the ringtone volume. If off, volume keys control media volume.</string>
 
     <!-- Expanded Header Weather -->
     <string name="header_weather_title">Weather</string>
@@ -2368,6 +2369,7 @@
     <string name="app_ops_allowed_count">Allowed <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_ignored_count">Denied <xliff:g id="count" example="2 times">%s</xliff:g></string>
     <string name="app_ops_both_count">Allowed <xliff:g id="count">%1$s</xliff:g>, denied <xliff:g id="count">%2$s</xliff:g></string>
+    <string name="app_ops_disabled_by_optimization">Disabled by battery optimization</string>
 
     <!-- App ops menu options -->
     <string name="app_ops_show_user_apps">Show user apps</string>
@@ -2421,7 +2423,7 @@
     <string name="vrtoxin_button_title">VRToxin Button</string>
     <string name="vrtoxin_button_summary">Show a VRToxin button in the expanded header</string>
 
-    <string name="battery_fully_charge_notif_title">Battery fully charged</string>
+    <string name="battery_fully_charge_notif_title">Battery Fully Charged</string>
     <string name="battery_fully_charge_notif_summary">Shows a notification when the battery is fully charged.</string>
 
     <!-- Status bar power menu -->
@@ -2519,7 +2521,7 @@
     <string name="torch_screen_off_one_minute">1 minute</string>
 
     <!-- PA Pie control -->
-    <string name="pa_piecontrol_settings_summary">Customize PA Pie 3.1 targets, sytle, size and color</string>
+    <string name="pa_piecontrol_settings_summary">Customize your PA Pie targets, style, size, location and color</string>
     <string name="pa_pie_control_title">PA Pie Control</string>
     <string name="pa_pie_control_enable_title">Enable Pie Control</string>
     <string name="pa_pie_targets_title">Pie Targets</string>

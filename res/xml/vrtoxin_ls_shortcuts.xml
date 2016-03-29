@@ -47,6 +47,12 @@
         android:dependency="hide_lockscreen_clock"
         android:persistent="false" />
 
+    <PreferenceScreen
+        android:key="lock_screen_color_settings"
+        android:title="@string/lock_clock_color_title"
+        android:summary="@string/lock_screen_color_settings_summary"
+        android:fragment="com.android.settings.vrtoxin.LockScreenColorSettings" />
+
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="hide_lockscreen_date"
         android:title="@string/hide_lockscreen_date_title"
@@ -79,12 +85,6 @@
         android:entries="@array/status_bar_font_style_entries"
         android:entryValues="@array/status_bar_font_style_values"
         android:title="@string/status_bar_weather_font_style_title" />
-
-    <PreferenceScreen
-        android:key="lock_screen_color_settings"
-        android:title="@string/lock_clock_color_title"
-        android:summary="@string/lock_screen_color_settings_summary"
-        android:fragment="com.android.settings.vrtoxin.LockScreenColorSettings" />
 
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="lockscreen_media_metadata"

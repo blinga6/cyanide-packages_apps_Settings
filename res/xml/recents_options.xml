@@ -29,19 +29,19 @@
             android:summary="@string/android_recents_show_clear_all_summary"
             android:defaultValue="true" />
         
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="recents_clear_all_dismiss_all"
-            android:title="@string/recents_clear_all_dismiss_all_title"
-            android:summary="@string/recents_clear_all_dismiss_all_summary"
-            android:defaultValue="true"
-            android:dependency="show_clear_all_recents" />
-
         <ListPreference
             android:key="recents_clear_all_location"
             android:title="@string/recents_clear_all_location_title"
             android:entries="@array/recents_clear_all_location_entries"
             android:entryValues="@array/recents_clear_all_location_values"
             android:defaultValue="3"
+            android:dependency="show_clear_all_recents" />
+
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="recents_clear_all_dismiss_all"
+            android:title="@string/recents_clear_all_dismiss_all_title"
+            android:summary="@string/recents_clear_all_dismiss_all_summary"
+            android:defaultValue="true"
             android:dependency="show_clear_all_recents" />
 
         <SwitchPreference
@@ -99,13 +99,6 @@
             android:summaryOn="@string/recents_show_membar_summary_enabled"
             android:summaryOff="@string/recents_show_membar_summary_disabled" />
 
-        <!-- Shake to clear recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-            android:key="shake_to_clean_recents"
-            android:title="@string/shake_to_clear_recents_title"
-            android:summary="@string/shake_to_clear_recents_summary"
-            android:defaultValue="false" />
-
         <PreferenceScreen
             android:key="screen_pinning_settings"
             android:title="@string/screen_pinning_title"
@@ -118,6 +111,13 @@
             android:title="@string/android_recents_show_search_bar_title"
             android:summary="@string/android_recents_show_search_bar_summary"
             android:defaultValue="true" />
+
+        <!-- Shake to clear recents -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="shake_to_clean_recents"
+            android:title="@string/shake_to_clear_recents_title"
+            android:summary="@string/shake_to_clear_recents_summary"
+            android:defaultValue="false" />
 
         <!-- Recents empty VRToxin logo -->
         <SwitchPreference
@@ -133,11 +133,6 @@
         android:title="@string/memory_bar_options_title">
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="memory_bar_color"
-            android:title="@string/membar_bar_used_color"
-            android:defaultValue="0xffffffff" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="memory_bar_used_color"
             android:title="@string/membar_bar_color"
             android:defaultValue="0xffffffff" />
@@ -145,6 +140,11 @@
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="mem_text_color"
             android:title="@string/membar_text_color"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="memory_bar_color"
+            android:title="@string/membar_bar_used_color"
             android:defaultValue="0xffffffff" />
 
     </PreferenceCategory>
@@ -159,16 +159,16 @@
             android:summary="@string/recents_full_screen_clock_summary"
             android:defaultValue="false" />
 
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="recents_full_screen_clock_color"
+            android:title="@string/recents_full_screen_clock_color"
+            android:defaultValue="0xffffffff" />
+
         <com.android.settings.vrtoxin.SystemSettingSwitchPreference
             android:key="recents_full_screen_date"
             android:title="@string/recents_full_screen_date_title"
             android:summary="@string/recents_full_screen_date_summary"
             android:defaultValue="false" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="recents_full_screen_clock_color"
-            android:title="@string/recents_full_screen_clock_color"
-            android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="recents_full_screen_date_color"

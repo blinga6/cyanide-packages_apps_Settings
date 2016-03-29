@@ -20,13 +20,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/colors_title">
 
-        <ListPreference
-            android:key="dashboard_columns_count"
-            android:entries="@array/columns_entries"
-            android:entryValues="@array/columns_values"
-            android:title="@string/columns_title"
-            android:dialogTitle="@string/columns_title" />
-
         <com.android.settings.vrtoxin.SeekBarPreference
             android:key="settings_category_text_size"
             android:title="@string/dash_category_text_size"
@@ -35,6 +28,13 @@
             settings:minimum="4"
             settings:unitsLeft=""
             settings:unitsRight="dp" />
+
+        <ListPreference
+            android:key="dashboard_columns_count"
+            android:entries="@array/columns_entries"
+            android:entryValues="@array/columns_values"
+            android:title="@string/columns_title"
+            android:dialogTitle="@string/columns_title" />
 
         <ListPreference
             android:key="dashboard_font_style"
