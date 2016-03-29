@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2015 DarkKat
+<!-- Copyright (C) 2016 Brett Rogers (rogersb11)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,34 +18,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/advanced_boot_dialog_settings_title">
 
-    <SwitchPreference
-        android:key="boot_dialog_show_progress_dialog"
-        android:title="@string/boot_dialog_show_progress_dialog_title"
-        android:summary="@string/boot_dialog_show_progress_dialog_summary" />
-
-    <ListPreference
-        android:key="boot_dialog_app_text_color_mode"
-        android:title="@string/boot_dialog_app_text_color_mode_title"
-        android:entries="@array/boot_dialog_app_text_color_mode_entries"
-        android:entryValues="@array/boot_dialog_app_text_color_mode_values" />
-
     <PreferenceCategory
         android:key="boot_dialog_cat_colors"
         android:title="@string/colors_title">
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="boot_dialog_background_color"
-            android:title="@string/background_title"
-            android:defaultValue="0xff1b1f23" />
+            android:key="boot_dialog_package_text_color"
+            android:title="@string/app_text_title"
+            android:defaultValue="0xffffffff" />
+
+         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="boot_dialog_progress_bar_color"
+            android:title="@string/progress_bar_title"
+            android:defaultValue="0xffffffff" />
+
+         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="boot_dialog_progress_bar_inactive_color"
+            android:title="@string/progress_bar_inactive_title"
+            android:defaultValue="0xffffffff" />
 
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="boot_dialog_text_color"
             android:title="@string/text_title"
             android:defaultValue="0xffffffff" />
 
-         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="boot_dialog_app_text_color"
-            android:title="@string/boot_dialog_app_text_color_title"
-            android:defaultValue="0xff009688" />
     </PreferenceCategory>
 </PreferenceScreen>

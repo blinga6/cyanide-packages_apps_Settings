@@ -46,7 +46,7 @@
         android:key="advanced_boot_dialog_settings"
         android:title="@string/advanced_boot_dialog_settings_title"
         android:summary="@string/advanced_boot_dialog_settings_summary"
-        android:fragment="com.android.settings.vrtoxin.BootDialogSettings" />
+        android:fragment="com.android.settings.vrtoxin.CustomBootDialogColors" />
 
     <PreferenceScreen
         android:key="power_menu_actions"

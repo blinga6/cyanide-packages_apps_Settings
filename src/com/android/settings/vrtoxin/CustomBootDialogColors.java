@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 DarkKat
+ * Copyright (C) 2016 Brett Rogers (rogersb11)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -39,21 +38,19 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class BootDialogSettings extends SettingsPreferenceFragment implements
+public class CustomBootDialogColors extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String PREF_CAT_COLORS =
             "boot_dialog_cat_colors";
-    private static final String PREF_SHOW_PROGRESS_DIALOG =
-            "boot_dialog_show_progress_dialog";
-    private static final String PREF_APP_TEXT_COLOR_MODE =
-            "boot_dialog_app_text_color_mode";
-    private static final String PREF_BACKGROUND_COLOR =
-            "boot_dialog_background_color";
-    private static final String PREF_TEXT_COLOR =
+    private static final String BOOT_DIALOG_PACKAGE_TEXT_COLOR =
+            "boot_dialog_package_text_color";
+    private static final String BOOT_DIALOG_PROGRESS_BAR_COLOR =
+            "boot_dialog_progress_bar_color";
+    private static final String BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR =
+            "boot_dialog_progress_bar_inactive_color";
+    private static final String BOOT_DIALOG_TEXT_COLOR =
             "boot_dialog_text_color";
-    private static final String PREF_APP_TEXT_COLOR =
-            "boot_dialog_app_text_color";
 
     private static final int WHITE =
             0xffffffff;
@@ -67,11 +64,10 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
-    private SwitchPreference mShowProgressDialog;
-    private ListPreference mAppTextColorMode;
-    private ColorPickerPreference mBackgroundColor;
+    private ColorPickerPreference mPackageNameTextColor;
+    private ColorPickerPreference mProgressBarColor;
+    private ColorPickerPreference mProgressBarInactiveColor;
     private ColorPickerPreference mTextColor;
-    private ColorPickerPreference mAppTextColor;
 
 
     private ContentResolver mResolver;
@@ -88,42 +84,46 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
             prefs.removeAll();
         }
 
-        addPreferencesFromResource(R.xml.boot_dialog_settings);
+        addPreferencesFromResource(R.xml.custom_boot_dialog_colors);
 
         mResolver = getContentResolver();
-
-        final int appTextColorMode = Settings.System.getInt(mResolver,
-                Settings.System.BOOT_DIALOG_APP_TEXT_COLOR_MODE, 0);
-        final boolean useCuatomAppTextColor = appTextColorMode == 0;
 
         int intColor;
         String hexColor;
 
-        mShowProgressDialog =
-                (SwitchPreference) findPreference(PREF_SHOW_PROGRESS_DIALOG);
-        mShowProgressDialog.setChecked((Settings.System.getInt(mResolver,
-                Settings.System.BOOT_DIALOG_SHOW_PROGRESS_DIALOG, 1) == 1));
-        mShowProgressDialog.setOnPreferenceChangeListener(this);
-
-        mAppTextColorMode =
-                (ListPreference) findPreference(PREF_APP_TEXT_COLOR_MODE);
-        mAppTextColorMode.setValue(String.valueOf(appTextColorMode));
-        mAppTextColorMode.setSummary(mAppTextColorMode.getEntry());
-        mAppTextColorMode.setOnPreferenceChangeListener(this);
-
-        mBackgroundColor =
-                (ColorPickerPreference) findPreference(PREF_BACKGROUND_COLOR);
+        mProgressBarColor =
+                (ColorPickerPreference) findPreference(BOOT_DIALOG_PROGRESS_BAR_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.BOOT_DIALOG_BACKGROUND_COLOR,
-                BLACK); 
-        mBackgroundColor.setNewPreviewColor(intColor);
+                Settings.System.BOOT_DIALOG_PROGRESS_BAR_COLOR, WHITE); 
+        mProgressBarColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mBackgroundColor.setSummary(hexColor);
-        mBackgroundColor.setDefaultColors(BLACK, BLACK);
-        mBackgroundColor.setOnPreferenceChangeListener(this);
+        mProgressBarColor.setSummary(hexColor);
+        mProgressBarColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mProgressBarColor.setOnPreferenceChangeListener(this);
+
+        mProgressBarInactiveColor =
+                (ColorPickerPreference) findPreference(BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR, WHITE); 
+        mProgressBarInactiveColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mProgressBarInactiveColor.setSummary(hexColor);
+        mProgressBarInactiveColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mProgressBarInactiveColor.setOnPreferenceChangeListener(this);
+
+        mPackageNameTextColor =
+                (ColorPickerPreference) findPreference(BOOT_DIALOG_PACKAGE_TEXT_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.BOOT_DIALOG_PACKAGE_TEXT_COLOR,
+        VRTOXIN_BLUE); 
+        mPackageNameTextColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mPackageNameTextColor.setSummary(hexColor);
+        mPackageNameTextColor.setDefaultColors(VRTOXIN_BLUE, VRTOXIN_BLUE);
+        mPackageNameTextColor.setOnPreferenceChangeListener(this);
 
         mTextColor =
-                (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
+                (ColorPickerPreference) findPreference(BOOT_DIALOG_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.BOOT_DIALOG_TEXT_COLOR, WHITE); 
         mTextColor.setNewPreviewColor(intColor);
@@ -131,23 +131,6 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
         mTextColor.setSummary(hexColor);
         mTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
         mTextColor.setOnPreferenceChangeListener(this);
-
-        PreferenceCategory catColors =
-                (PreferenceCategory) findPreference(PREF_CAT_COLORS);
-        if (useCuatomAppTextColor) {
-            mAppTextColor =
-                    (ColorPickerPreference) findPreference(PREF_APP_TEXT_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR,
-            VRTOXIN_BLUE); 
-            mAppTextColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mAppTextColor.setSummary(hexColor);
-            mAppTextColor.setDefaultColors(VRTOXIN_BLUE, VRTOXIN_BLUE);
-            mAppTextColor.setOnPreferenceChangeListener(this);
-        } else {
-            catColors.removePreference(findPreference(PREF_APP_TEXT_COLOR));
-        }
 
         setHasOptionsMenu(true);
     }
@@ -175,25 +158,20 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
         String hex;
         int intHex;
 
-        if (preference == mShowProgressDialog) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(mResolver,
-                    Settings.System.BOOT_DIALOG_SHOW_PROGRESS_DIALOG, value ? 1 : 0);
-            return true;
-        } else if (preference == mAppTextColorMode) {
-            int appTextColorMode = Integer.valueOf((String) newValue);
-            int index = mAppTextColorMode.findIndexOfValue((String) newValue);
-            Settings.System.putInt(mResolver,
-                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR_MODE, appTextColorMode);
-            preference.setSummary(mAppTextColorMode.getEntries()[index]);
-            refreshSettings();
-            return true;
-        } else if (preference == mBackgroundColor) {
+        if (preference == mProgressBarColor) {
             hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(mResolver,
-                    Settings.System.BOOT_DIALOG_BACKGROUND_COLOR, intHex);
+                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mProgressBarInactiveColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR, intHex);
             preference.setSummary(hex);
             return true;
         } else if (preference == mTextColor) {
@@ -204,12 +182,12 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
                     Settings.System.BOOT_DIALOG_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
-        } else if (preference == mAppTextColor) {
+        } else if (preference == mPackageNameTextColor) {
             hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(mResolver,
-                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR, intHex);
+                    Settings.System.BOOT_DIALOG_PACKAGE_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
         }
@@ -232,8 +210,8 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
             return frag;
         }
 
-        BootDialogSettings getOwner() {
-            return (BootDialogSettings) getTargetFragment();
+        CustomBootDialogColors getOwner() {
+            return (CustomBootDialogColors) getTargetFragment();
         }
 
         @Override
@@ -249,17 +227,17 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_SHOW_PROGRESS_DIALOG, 1);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR_MODE, 2);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_BACKGROUND_COLOR,
+                                    Settings.System.BOOT_DIALOG_PACKAGE_TEXT_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_TEXT_COLOR, WHITE);
+                                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_COLOR,
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR,
-                                    BLACK);
+                                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR,
+                                    0x00000000);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.BOOT_DIALOG_TEXT_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -267,16 +245,16 @@ public class BootDialogSettings extends SettingsPreferenceFragment implements
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_SHOW_PROGRESS_DIALOG, 1);
+                                    Settings.System.BOOT_DIALOG_PACKAGE_TEXT_COLOR,
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR_MODE, 0);
+                                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_COLOR,
+                                    VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_BACKGROUND_COLOR,
-                                    BLACK);
+                                    Settings.System.BOOT_DIALOG_PROGRESS_BAR_INACTIVE_COLOR,
+                                    0xffff0000);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_TEXT_COLOR, VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.BOOT_DIALOG_APP_TEXT_COLOR,
+                                    Settings.System.BOOT_DIALOG_TEXT_COLOR,
                                     VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
