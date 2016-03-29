@@ -21,8 +21,11 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.Settings;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.text.TextUtils;
@@ -36,7 +39,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.vrtoxin.PackageListAdapter;
 import com.android.settings.vrtoxin.PackageListAdapter.PackageItem;
-import com.android.settings.vrtoxin.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,8 +64,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private Preference mAddDndPref;
     private Preference mAddBlacklistPref;
     private Preference mAddWhitelistPref;
-    private SeekBarPreference mHeadsUpTimeout;
-//    private SeekBarPreference mHeadsUpSnooze;
+    private ListPreference mHeadsUpTimeout;
+    private ListPreference mHeadsUpSnooze;
 
     private String mDndPackageList;
     private String mBlacklistPackageList;
@@ -79,6 +81,13 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.heads_up_settings);
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageListAdapter(getActivity());
+
+        Resources systemUiResources;
+        try {
+            systemUiResources = mPackageManager.getResourcesForApplication("com.android.systemui");
+        } catch (Exception e) {
+            return;
+        }
 
         mDndPrefList = (PreferenceGroup) findPreference("dnd_applications_list");
         mDndPrefList.setOrderingAsAdded(false);
@@ -101,15 +110,24 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         mAddBlacklistPref.setOnPreferenceClickListener(this);
         mAddWhitelistPref.setOnPreferenceClickListener(this);
 
-        mHeadsUpTimeout = (SeekBarPreference) findPreference(HEADS_UP_TIMEOUT);
-        mHeadsUpTimeout.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_TIMEOUT, 10000));
+        int defaultTimeout = systemUiResources.getInteger(systemUiResources.getIdentifier(
+                    "com.android.systemui:integer/heads_up_notification_decay", null, null));
+        mHeadsUpTimeout = (ListPreference) findPreference(HEADS_UP_TIMEOUT);
         mHeadsUpTimeout.setOnPreferenceChangeListener(this);
+        int headsUpTimeout = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_TIMEOUT, defaultTimeout);
+        mHeadsUpTimeout.setValue(String.valueOf(headsUpTimeout));
+        updateHeadsUpTimeOutSummary(headsUpTimeout);
 
-        /*mHeadsUpSnooze = (SeekBarPreference) findPreference(HEADS_UP_SNOOZE_LENGTH_MS);
-        mHeadsUpSnooze.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, 60 / 1000));
-        mHeadsUpSnooze.setOnPreferenceChangeListener(this);*/
+        int defaultSnooze = systemUiResources.getInteger(systemUiResources.getIdentifier(
+                    "com.android.systemui:integer/heads_up_default_snooze_length_ms", null, null));
+        mHeadsUpSnooze = (ListPreference) findPreference(HEADS_UP_SNOOZE_LENGTH_MS);
+        mHeadsUpSnooze.setOnPreferenceChangeListener(this);
+        int headsUpSnooze = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, defaultSnooze);
+        mHeadsUpSnooze.setValue(String.valueOf(headsUpSnooze));
+        updateHeadsUpSnoozeSummary(headsUpSnooze);
+
     }
 
     @Override
@@ -275,15 +293,33 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mHeadsUpTimeout) {
-            int length = ((Integer) objValue).intValue();
+            int headsUpTimeout = Integer.valueOf((String) objValue);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_TIMEOUT, length);
-        /*} else if (preference == mHeadsUpSnooze) {
-            int snooze = ((Integer) objValue).intValue();
+                    Settings.System.HEADS_UP_TIMEOUT,
+                    headsUpTimeout);
+            updateHeadsUpTimeOutSummary(headsUpTimeout);
+            return true;
+        } else if (preference == mHeadsUpSnooze) {
+            int headsUpSnooze = Integer.valueOf((String) objValue);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_SNOOZE_LENGTH_MS, snooze);*/
+                    Settings.System.HEADS_UP_SNOOZE_LENGTH_MS,
+                    headsUpSnooze);
+            updateHeadsUpSnoozeSummary(headsUpSnooze);
+            return true;
         }
         return true;
+    }
+
+    private void updateHeadsUpTimeOutSummary(int value) {
+        String summary = getResources().getString(R.string.heads_up_time_out_summary,
+                value / 1000);
+        mHeadsUpTimeout.setSummary(summary);
+    }
+
+    private void updateHeadsUpSnoozeSummary(int value) {
+        String summary = getResources().getString(R.string.heads_up_snooze_summary,
+                value / 60000);
+        mHeadsUpSnooze.setSummary(summary);
     }
 
     @Override
