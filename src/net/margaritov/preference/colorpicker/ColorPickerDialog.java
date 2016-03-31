@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -53,7 +54,17 @@ import com.android.settings.R;
 
 public class ColorPickerDialog extends Dialog implements
         ColorPickerView.OnColorChangedListener, PopupMenu.OnMenuItemClickListener,
-        TextWatcher, View.OnClickListener, View.OnFocusChangeListener {
+        TextWatcher, View.OnClickListener, View.OnLongClickListener, View.OnFocusChangeListener {
+
+    private static final String PREFERENCE_NAME  =
+            "color_picker_dialog";
+    private static final String FAVORITE_COLOR_BUTTON  =
+            "favorite_color_button_";
+
+    private static final int PALETTE_VRTOXIN     = 0;
+    private static final int PALETTE_BLACKOUT    = 1;
+    private static final int PALETTE_MATERIAL    = 2;
+    private static final int PALETTE_RGB         = 3;
 
     private View mColorPickerView;
     private LinearLayout mActionBarMain;
@@ -61,7 +72,7 @@ public class ColorPickerDialog extends Dialog implements
 
     private ImageButton mBackButton;
     private ImageButton mEditHexButton;
-    private ImageButton mPaletteButton;
+    private ImageButton mPaletteSwitchButton;
     private ImageButton mResetButton;
 
     private ImageButton mHexBackButton;
@@ -70,8 +81,9 @@ public class ColorPickerDialog extends Dialog implements
     private View mDivider;
 
     private ColorPickerView mColorPicker;
-    private TextView mPanelButtonsTitle;
-    private ColorPickerPanelButton[] mPanelButtons;
+    private TextView mPaletteColorButtonsTitle;
+    private ColorPickerColorButton[] mFavoriteColorButtons;
+    private ColorPickerColorButton[] mPaletteColorButtons;
     private ColorPickerPanelView mOldColor;
     private ColorPickerPanelView mNewColor;
 
@@ -81,20 +93,15 @@ public class ColorPickerDialog extends Dialog implements
 
     private Animator mColorTransitionAnimator;
     private boolean mAnimateColorTransition = true;
-    private boolean mIsPanelButtons = true;
+    private boolean mIsPaletteColorButtons = true;
 
     private final int mInitialColor;
     private final int mAndroidColor;
     private final int mVRToxinColor;
     private int mNewColorValue;
 
-    private static final int PALETTE_VRTOXIN     = 0;
-    private static final int PALETTE_BLACKOUT    = 1;
-    private static final int PALETTE_MATERIAL    = 2;
-    private static final int PALETTE_RGB         = 3;
-
-    private ContentResolver mResolver;
-    private Resources mResources;
+    private final ContentResolver mResolver;
+    private final Resources mResources;
 
     private OnColorChangedListener mListener;
 
@@ -140,8 +147,8 @@ public class ColorPickerDialog extends Dialog implements
         mEditHexButton = (ImageButton) mColorPickerView.findViewById(R.id.edit_hex);
         mEditHexButton.setOnClickListener(this);
 
-        mPaletteButton = (ImageButton) mColorPickerView.findViewById(R.id.palette);
-        mPaletteButton.setOnClickListener(this);
+        mPaletteSwitchButton = (ImageButton) mColorPickerView.findViewById(R.id.palette);
+        mPaletteSwitchButton.setOnClickListener(this);
 
         mResetButton = (ImageButton) mColorPickerView.findViewById(R.id.reset);
         if (mAndroidColor != 0x00000000 && mVRToxinColor != 0x00000000) {
@@ -163,8 +170,9 @@ public class ColorPickerDialog extends Dialog implements
         mColorPicker = (ColorPickerView) mColorPickerView.findViewById(R.id.color_picker_view);
         mColorPicker.setOnColorChangedListener(this);
 
-        mPanelButtonsTitle = (TextView) mColorPickerView.findViewById(R.id.panel_view_buttons_title);
-        setUpPanelButtons();
+        mPaletteColorButtonsTitle = (TextView) mColorPickerView.findViewById(R.id.palette_color_buttons_title);
+        setUpFavoriteColorButtons();
+        setUpPaletteColorButtons();
 
         mOldColor = (ColorPickerPanelView) mColorPickerView.findViewById(R.id.old_color_panel);
         mOldColor.setOnClickListener(this);
@@ -180,18 +188,36 @@ public class ColorPickerDialog extends Dialog implements
         mColorPicker.setColor(mInitialColor, true);
     }
 
-    private void setUpPanelButtons() {
-        TypedArray ta = mResources.obtainTypedArray(R.array.color_picker_panel_view_buttons);
-        mPanelButtons = new ColorPickerPanelButton[8];
+    private void setUpFavoriteColorButtons() {
+        TypedArray ta = mResources.obtainTypedArray(R.array.color_picker_favorite_color_buttons);
+        mFavoriteColorButtons = new ColorPickerColorButton[4];
 
-        for (int i=0; i<mPanelButtons.length; i++) {
+        for (int i=0; i<mFavoriteColorButtons.length; i++) {
             int resId = ta.getResourceId(i, 0);
-            mPanelButtons[i] = (ColorPickerPanelButton) mColorPickerView.findViewById(resId);
-            mPanelButtons[i].setOnClickListener(this);
+            mFavoriteColorButtons[i] = (ColorPickerColorButton) mColorPickerView.findViewById(resId);
+            mFavoriteColorButtons[i].setOnLongClickListener(this);
+            if (getFavoriteButtonValue(i) != 0) {
+                mFavoriteColorButtons[i].setImageResource(R.drawable.color_picker_color_button_color);
+                mFavoriteColorButtons[i].setColor(getFavoriteButtonValue(i));
+                mFavoriteColorButtons[i].setOnClickListener(this);
+            }
         }
 
         ta.recycle();
-        updatePanelButtonsColor();
+    }
+
+    private void setUpPaletteColorButtons() {
+        TypedArray ta = mResources.obtainTypedArray(R.array.color_picker_palette_color_buttons);
+        mPaletteColorButtons = new ColorPickerColorButton[8];
+
+        for (int i=0; i<mPaletteColorButtons.length; i++) {
+            int resId = ta.getResourceId(i, 0);
+            mPaletteColorButtons[i] = (ColorPickerColorButton) mColorPickerView.findViewById(resId);
+            mPaletteColorButtons[i].setOnClickListener(this);
+        }
+
+        ta.recycle();
+        updatePaletteColorButtonsColor();
     }
 
     private void setupAnimators() {
@@ -265,14 +291,14 @@ public class ColorPickerDialog extends Dialog implements
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(){
             @Override public void onAnimationUpdate(ValueAnimator animation) {
                 float position = animation.getAnimatedFraction();
-                if (mIsPanelButtons) {
+                if (mIsPaletteColorButtons) {
                     int[] blended = new int[8];
-                    for (int i=0; i<mPanelButtons.length; i++) {
+                    for (int i=0; i<mPaletteColorButtons.length; i++) {
                         blended[i] = blendColors(
-                                mPanelButtons[i].getColor(),
-                                getPanelButtonColor(getPalette(), i),
+                                mPaletteColorButtons[i].getColor(),
+                                getPaletteColorButtonColor(getPalette(), i),
                                 position);
-                        mPanelButtons[i].setColor(blended[i]);
+                        mPaletteColorButtons[i].setColor(blended[i]);
                     }
                 } else {
                     int blended = blendColors(mNewColor.getColor(), mNewColorValue, position);
@@ -283,10 +309,10 @@ public class ColorPickerDialog extends Dialog implements
         animator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    if (mIsPanelButtons) {
-                        updatePanelButtonsTitle();
+                    if (mIsPaletteColorButtons) {
+                        updatePaletteColorButtonsTitle();
                     } else {
-                        mIsPanelButtons = true;
+                        mIsPaletteColorButtons = true;
                     }
                 }
             });
@@ -309,7 +335,7 @@ public class ColorPickerDialog extends Dialog implements
             mAnimateColorTransition = true;
             mNewColor.setColor(mNewColorValue);
         } else {
-            mIsPanelButtons = false;
+            mIsPaletteColorButtons = false;
             mColorTransitionAnimator.start();
         }
         try {
@@ -347,17 +373,47 @@ public class ColorPickerDialog extends Dialog implements
             }
             hideActionBarEditHex();
         } else {
-            for (int i=0; i<mPanelButtons.length; i++) {
-                int panelButtonId = mPanelButtons[i].getId();
-                if (v.getId() == panelButtonId) {
+            boolean isFavoriteColorButton = false;
+            for (int j=0; j<mFavoriteColorButtons.length; j++) {
+                int favoriteButtonId = mFavoriteColorButtons[j].getId();
+                if (v.getId() == favoriteButtonId) {
+                    isFavoriteColorButton = true;
                     try {
-                        mColorPicker.setColor(getPanelButtonColor(getPalette(), i), true);
+                        mColorPicker.setColor(mFavoriteColorButtons[j].getColor(), true);
                     } catch (Exception e) {
+                    }
+                }
+            }
+            if (!isFavoriteColorButton) {
+                for (int i=0; i<mPaletteColorButtons.length; i++) {
+                    int paletteColorButtonId = mPaletteColorButtons[i].getId();
+                    if (v.getId() == paletteColorButtonId) {
+                        try {
+                            mColorPicker.setColor(getPaletteColorButtonColor(getPalette(), i), true);
+                        } catch (Exception e) {
+                        }
                     }
                 }
             }
         }
     }
+
+    @Override
+    public boolean onLongClick(View v) {
+        for (int i=0; i<mFavoriteColorButtons.length; i++) {
+            int favoriteButtonId = mFavoriteColorButtons[i].getId();
+            if (v.getId() == favoriteButtonId) {
+                if (!v.hasOnClickListeners()) {
+                    mFavoriteColorButtons[i].setImageResource(R.drawable.color_picker_color_button_color);
+                    mFavoriteColorButtons[i].setOnClickListener(this);
+                }
+                mFavoriteColorButtons[i].setColor(mNewColor.getColor());
+                writeFavoriteButtonValue(i);
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
@@ -452,14 +508,14 @@ public class ColorPickerDialog extends Dialog implements
         mColorPicker.setAlphaSliderVisible(visible);
     }
 
-    private void updatePanelButtonsColor() {
-        for (int i=0; i<mPanelButtons.length; i++) {
-            mPanelButtons[i].setColor(getPanelButtonColor(getPalette(), i));
+    private void updatePaletteColorButtonsColor() {
+        for (int i=0; i<mPaletteColorButtons.length; i++) {
+            mPaletteColorButtons[i].setColor(getPaletteColorButtonColor(getPalette(), i));
         }
-        updatePanelButtonsTitle();
+        updatePaletteColorButtonsTitle();
     }
 
-    private void updatePanelButtonsTitle() {
+    private void updatePaletteColorButtonsTitle() {
         int resId = R.string.palette_vrtoxin_title;
         if (getPalette() == PALETTE_BLACKOUT) {
             resId = R.string.palette_blackout_title;
@@ -468,7 +524,7 @@ public class ColorPickerDialog extends Dialog implements
         } else if (getPalette() == PALETTE_RGB) {
             resId = R.string.palette_rgb_title;
         }
-        mPanelButtonsTitle.setText(resId);
+        mPaletteColorButtonsTitle.setText(resId);
     }
 
     private int getPalette() {
@@ -481,7 +537,7 @@ public class ColorPickerDialog extends Dialog implements
                 Settings.System.COLOR_PICKER_PALETTE, palette);
     }
 
-    private int getPanelButtonColor(int pallete, int index) {
+    private int getPaletteColorButtonColor(int pallete, int index) {
         TypedArray ta;
         if (pallete == PALETTE_VRTOXIN) {
             ta = mResources.obtainTypedArray(R.array.color_picker_vrtoxin_palette);
@@ -498,6 +554,21 @@ public class ColorPickerDialog extends Dialog implements
         return palettecolor;
     }
 
+    private void writeFavoriteButtonValue(int index) {
+        int buttonIndex = index + 1;
+        SharedPreferences preferences =
+                getContext().getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
+        preferences.edit().putInt(FAVORITE_COLOR_BUTTON + buttonIndex,
+                mFavoriteColorButtons[index].getColor()).commit();
+    }
+
+    private int getFavoriteButtonValue(int index) {
+        int buttonIndex = index + 1;
+        SharedPreferences preferences =
+                getContext().getSharedPreferences(PREFERENCE_NAME, Activity.MODE_PRIVATE);
+        return preferences.getInt(FAVORITE_COLOR_BUTTON + buttonIndex, 0);
+    }
+
     @Override
     public Bundle onSaveInstanceState() {
         Bundle state = super.onSaveInstanceState();
@@ -511,6 +582,6 @@ public class ColorPickerDialog extends Dialog implements
         super.onRestoreInstanceState(savedInstanceState);
         mOldColor.setColor(savedInstanceState.getInt("old_color"));
         mColorPicker.setColor(savedInstanceState.getInt("new_color"), true);
-        updatePanelButtonsColor();
+        updatePaletteColorButtonsColor();
     }
 }

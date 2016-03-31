@@ -121,6 +121,8 @@
     <string name="palette_rgb_title">RGB</string>
     <string name="reset_android_title">Android default</string>
     <string name="reset_vrtoxin_title">VRToxin default</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="empty_title">Empty</string>
     <string name="theme_settings_category">Theme Settings</string>
 
     <!-- Carrier label settings -->
