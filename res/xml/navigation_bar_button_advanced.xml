@@ -27,10 +27,10 @@
         android:summary="@string/double_tap_sleep_nav_bar_summary"
         android:defaultValue="false" />
 
-    <SwitchPreference
+    <!-- <SwitchPreference
         android:key="navigation_bar_show_ime_arrows"
         android:title="@string/navigation_bar_show_ime_arrows_title"
-        android:summary="@string/navigation_bar_show_ime_arrows_summary" />
+        android:summary="@string/navigation_bar_show_ime_arrows_summary" />-->
 
     <PreferenceCategory
         android:key="navigation_bar_cat_menu_button"

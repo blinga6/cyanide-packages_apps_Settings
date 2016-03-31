@@ -77,12 +77,12 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
             "navigation_bar_button_ripple_color";
 
     private static final int WHITE = 0xffffffff;
-    private static final int VRTOXIN_BLUE = 0xff33b5e5;
+    private static final int VRTOXIN_BLUE = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
-    private SwitchPreference mShowImeArrows;
+//    private SwitchPreference mShowImeArrows;
     private ListPreference mMenuVisibility;
     private ListPreference mMenuLocation;
     private ListPreference mIconColorMode;
@@ -134,10 +134,10 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
         PreferenceCategory catSlimDim =
                 (PreferenceCategory) findPreference(PREF_SLIM_DIM);
 
-        mShowImeArrows = (SwitchPreference) findPreference(PREF_SHOW_IME_ARROWS);
+        /*mShowImeArrows = (SwitchPreference) findPreference(PREF_SHOW_IME_ARROWS);
         mShowImeArrows.setChecked(Settings.System.getInt(mResolver,
                 Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, 0) == 1);
-        mShowImeArrows.setOnPreferenceChangeListener(this);
+        mShowImeArrows.setOnPreferenceChangeListener(this);*/
 
         mMenuVisibility =
                 (ListPreference) findPreference(PREF_MENU_VISIBILITY);
@@ -287,13 +287,13 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
         String hex;
         int intHex;
 
-        if (preference == mShowImeArrows) {
+        /*if (preference == mShowImeArrows) {
             value = (Boolean) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, value ? 1 : 0);
             refreshSettings();
-            return true;
-        } else if (preference == mMenuVisibility) {
+            return true;*/
+        if (preference == mMenuVisibility) {
             intValue = Integer.valueOf((String) newValue);
             index = mMenuVisibility.findIndexOfValue((String) newValue);
             Settings.System.putInt(mResolver,
@@ -410,8 +410,8 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
                     .setNeutralButton(R.string.reset_android,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, 0);
+                            /*Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, 0);*/
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NAVIGATION_BAR_MENU_VISIBILITY, 0);
                             Settings.System.putInt(getOwner().mResolver,
@@ -444,8 +444,8 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
                     .setPositiveButton(R.string.reset_vrtoxin,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, 1);
+                            /*Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.NAVIGATION_BAR_SHOW_IME_ARROWS, 1);*/
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NAVIGATION_BAR_MENU_VISIBILITY, 0);
                             Settings.System.putInt(getOwner().mResolver,
