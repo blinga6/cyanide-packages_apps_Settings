@@ -2967,7 +2967,7 @@
 
         <!-- Empty Shade Activity -->
         <activity android:name="Settings$ExpansionViewSettingsActivity"
-                android:label="@string/empty_shade_title"
+                android:label="@string/expansion_view_title"
                 android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

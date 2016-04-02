@@ -1411,16 +1411,6 @@
     <string name="expanded_header_network_icons_settings_summary">Customize the network icons</string>
     <string name="header_network_icons_no_sim_color_title">No Sim Card Color</string>
     <string name="header_network_icons_airplane_mode_color_title">Airplane Mode Color</string>
-    <string name="empty_shade_title">Expansion View</string>
-    <string name="empty_shade_custom_text_title">Custom Text</string>
-    <string name="empty_shade_custom_text_dlg_message">Enter custom text for the expansion view</string>
-    <string name="empty_shade_summary">Customize the "no notifications" view</string>
-    <string name="status_bar_empty_shade_image_title">VRToxin Logo</string>
-    <string name="status_bar_empty_shade_image_summary">Whether to show ROM logo in the expansion view</string>
-    <string name="empty_shade_force_title">Force View</string>
-    <string name="empty_shade_force_summary">Keep the expansion view visible when notifications are present</string>
-    <string name="expansion_view_layout_changer">Layout Changer</string>
-    <string name="expansion_view_layout_changer_summary">Enable to show the layout changer button in the expansion View</string>
     <string name="expanded_header_alarm_color">Alarm</string>
     <string name="expanded_header_clock_color">Clock</string>
     <string name="expanded_header_date_color">Date</string>
@@ -2402,7 +2392,7 @@
 
     <!-- Android Version -->
     <string name="android_version_title">Marshmallow</string>
-    <string name="android_version_default">Release 17</string>
+    <string name="android_version_default">Release 24</string>
 
     <!-- Tethering & portable hotspot other category -->
     <string name="tethering_other_category_text">Other</string>
@@ -2495,7 +2485,16 @@
     <string name="identicons_style_dotmatrix">Dot matrix</string>
 
     <!-- Expansion View -->
+    <string name="expansion_view_title">Expansion View</string>
+    <string name="expansion_view_custom_text_title">Custom Text</string>
+    <string name="expansion_view_custom_text_dlg_message">Enter custom text for the expansion view</string>
+    <string name="expansion_view_summary">Customize the "no notifications" view</string>
+    <string name="expansion_view_force_title">Force View</string>
+    <string name="expansion_view_force_summary">Keep the expansion view visible when notifications are present</string>
+    <string name="expansion_view_layout_changer">Layout Changer</string>
+    <string name="expansion_view_layout_changer_summary">Enable to show the layout changer button in the expansion View</string>
     <string name="panel_shortcuts_title">Shortcut Bar</string>
+    <string name="expansion_view_info_panel">Info Panel</string>
     <string name="expansion_view_weather_panel">Weather Panel</string>
     <string name="weather_show_current_title">Show Current Weather</string>
     <string name="weather_show_current_summary">Enable to show the current weather information next to daily forecasts</string>
@@ -2521,11 +2520,18 @@
     <string name="expansion_view_animation_summary">Change the enter/exit animation of the panel change</string>
     <string name="expansion_view_animation_dialog_title">Select your animation</string>
     <string name="expansion_view_animation_down">Down (Default)</string>
+    <string name="expansion_view_animation_enter">Enter</string>
     <string name="expansion_view_animation_left">Left</string>
     <string name="expansion_view_animation_right">Right</string>
     <string name="expansion_view_animation_rotate">Rotate</string>
     <string name="expansion_view_animation_turn">Turn</string>
     <string name="expansion_view_animation_up">Up</string>
+    <string name="expansion_view_text_title">Show Text</string>
+    <string name="expansion_view_text_summary">Whether or not to show the text</string>
+    <string name="expansion_view_shortcuts_show_title">Show Shortcut Bar</string>
+    <string name="expansion_view_shortcuts_show_summary">Enabling this will allow showing the expansion view shortcut bar</string>
+    <string name="expansion_view_vibration_title">Vibration</string>
+    <string name="expansion_view_vibration_summary">Whether or not to vibrate on click actions</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>

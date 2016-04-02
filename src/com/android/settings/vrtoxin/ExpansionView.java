@@ -60,6 +60,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_BACKGROUND = "expansion_view_background";
     private static final String EXPANSION_VIEW_BACKGROUND_COLOR = "expansion_view_background_color";
     private static final String EXPANSION_VIEW_ANIMATION = "expansion_view_animation";
+    private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE = "expansion_view_activity_panel_text_size";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
@@ -82,6 +83,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private ColorPickerPreference mExpansionViewBgColor;
     private SwitchPreference mShowBg;
     private ListPreference mExpansionViewAnimation;
+    private SeekBarPreference mExpansionViewActivityPanelTextSize;
 
     private ContentResolver mResolver;
 
@@ -221,6 +223,12 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewAnimation.setSummary(mExpansionViewAnimation.getEntry());
         mExpansionViewAnimation.setOnPreferenceChangeListener(this);
 
+        mExpansionViewActivityPanelTextSize =
+                (SeekBarPreference) findPreference(EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE);
+        mExpansionViewActivityPanelTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE, 14));
+        mExpansionViewActivityPanelTextSize.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -347,6 +355,11 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             mExpansionViewAnimation.setValue(String.valueOf(newValue));
             mExpansionViewAnimation.setSummary(mExpansionViewAnimation.getEntry());
             return true;
+        } else if (preference == mExpansionViewActivityPanelTextSize) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE, width);
+            return true;
         }
         return false;
     }
@@ -420,6 +433,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ANIMATION,
                                     0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE,
+                                    16);
                             getOwner().refreshSettings();
                         }
                     })
@@ -453,6 +469,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ANIMATION,
                                     2);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE,
+                                    20);
                             getOwner().refreshSettings();
                         }
                     })

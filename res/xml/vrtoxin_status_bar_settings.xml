@@ -49,9 +49,9 @@
 
     <!-- Expansion View -->
     <PreferenceScreen
-        android:key="status_bar_empty_shade"
-        android:title="@string/empty_shade_title"
-        android:summary="@string/empty_shade_summary"
+        android:key="status_bar_expansion_view"
+        android:title="@string/expansion_view_title"
+        android:summary="@string/expansion_view_summary"
         android:fragment="com.android.settings.vrtoxin.ExpansionView" />
 
     <PreferenceScreen

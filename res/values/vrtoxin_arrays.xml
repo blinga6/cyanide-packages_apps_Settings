@@ -2223,6 +2223,7 @@
     <!-- Expansion View Animation  -->
     <string-array name="expansion_view_animation_entries">
         <item>@string/expansion_view_animation_down</item>
+        <item>@string/expansion_view_animation_enter</item>
         <item>@string/expansion_view_animation_left</item>
         <item>@string/expansion_view_animation_right</item>
         <item>@string/expansion_view_animation_rotate</item>
@@ -2237,6 +2238,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 
     <!-- Disable torch on screen off delay -->

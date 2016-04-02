@@ -17,8 +17,9 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/empty_shade_title">
+    android:title="@string/expansion_view_title">
 
+    <!-- Animation -->
     <ListPreference
         android:key="expansion_view_animation"
         android:title="@string/expansion_view_animation_title"
@@ -26,7 +27,6 @@
         android:entries="@array/expansion_view_animation_entries"
         android:entryValues="@array/expansion_view_animation_values"
         android:summary="@string/expansion_view_animation_summary"
-        android:dependency="expansion_view_layout_changer"
         android:persistent="false" />
 
     <!-- Background -->
@@ -36,20 +36,23 @@
         android:summary="@string/expansion_view_background_summary"
         android:defaultValue="false" />
 
+    <!-- Custom Text -->
     <EditTextPreference
         android:key="expansion_view_text_custom"
-        android:title="@string/empty_shade_custom_text_title"
-        android:dialogMessage="@string/empty_shade_custom_text_dlg_message" />
+        android:title="@string/expansion_view_custom_text_title"
+        android:dialogMessage="@string/expansion_view_custom_text_dlg_message" />
 
+    <!-- Text Size -->
     <com.android.settings.vrtoxin.SeekBarPreference
         android:key="expansion_view_text_size"
         android:title="@string/status_bar_weather_size_title"
         android:defaultValue="14"
-        android:max="25"
+        android:max="30"
         settings:minimum="4"
         settings:unitsLeft=""
         settings:unitsRight="dp" />
 
+    <!-- Font Styles -->
     <ListPreference
         android:key="expansion_view_font_style"
         android:title="@string/status_bar_weather_font_style_title"
@@ -57,10 +60,11 @@
         android:entries="@array/status_bar_font_style_entries"
         android:entryValues="@array/status_bar_font_style_values" />
 
+    <!-- Force View -->
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="expansion_view_force_show"
-        android:title="@string/empty_shade_force_title"
-        android:summary="@string/empty_shade_force_summary"
+        android:title="@string/expansion_view_force_title"
+        android:summary="@string/expansion_view_force_summary"
         android:defaultValue="false" />
 
     <!-- Layout Changer -->
@@ -68,20 +72,35 @@
         android:key="expansion_view_layout_changer"
         android:title="@string/expansion_view_layout_changer"
         android:summary="@string/expansion_view_layout_changer_summary"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
+    <!-- Shortcut Bar -->
     <PreferenceScreen
         android:key="panel_shortcuts"
         android:title="@string/panel_shortcuts_title"
         android:summary="@string/panel_shortcuts_summary"
         android:fragment="com.android.settings.vrtoxin.fragments.PanelShortcutFragment" />
 
-    <!-- ROM Logo -->
+    <!-- Show Shortcut Bar -->
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="expansion_view_image"
-        android:title="@string/status_bar_empty_shade_image_title"
-        android:summary="@string/status_bar_empty_shade_image_summary"
+        android:key="expansion_view_panel_shortcuts"
+        android:title="@string/expansion_view_shortcuts_show_title"
+        android:summary="@string/expansion_view_shortcuts_show_summary"
         android:defaultValue="false" />
+
+    <!-- Show Text -->
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="expansion_view_text"
+        android:title="@string/expansion_view_text_title"
+        android:summary="@string/expansion_view_text_summary"
+        android:defaultValue="true" />
+
+    <!-- Vibration -->
+    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        android:key="expansion_view_vibration"
+        android:title="@string/expansion_view_vibration_title"
+        android:summary="@string/expansion_view_vibration_summary"
+        android:defaultValue="true" />
 
     <PreferenceCategory
         android:key="colors"
@@ -106,6 +125,21 @@
             android:key="expansion_view_text_color"
             android:title="@string/text_title"
             android:defaultValue="0xffffffff" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="info_panel"
+        android:title="@string/expansion_view_info_panel">
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="expansion_view_activity_panel_text_size"
+            android:title="@string/status_bar_weather_size_title"
+            android:defaultValue="14"
+            android:max="30"
+            settings:minimum="4"
+            settings:unitsLeft=""
+            settings:unitsRight="dp" />
 
     </PreferenceCategory>
 
