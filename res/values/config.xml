@@ -88,6 +88,6 @@
     <string name="config_default_new_apn_type" translateable="false"></string>
 
     <!-- When true enable color temperature setting. -->
-    <bool name="config_enableColorTemperature">false</bool>
+    <bool name="config_enableColorTemperature">true</bool>
 
 </resources>
