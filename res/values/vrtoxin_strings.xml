@@ -1609,6 +1609,8 @@
     <string name="doze_wakeup_doubletap_title">Double-tap To Wake </string>
     <string name="doze_wakeup_doubletap_summary_on">Require a double-tap to wake the device on a doze pulse screen</string>
     <string name="doze_wakeup_doubletap_summary_off">Require a simple-tap to wake the device on a doze pulse screen (default)</string>
+    <string name="ambient_display_show_battery_title">Battery Status</string>
+    <string name="ambient_display_show_battery_summary">Show battery indicator during pulse</string>
 
     <!-- MediaScanner behavior on boot -->
     <string name="media_scanner_on_boot_title">MediaScanner Boot Behavior</string>

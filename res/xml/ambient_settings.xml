@@ -26,6 +26,14 @@
                     android:summary="@string/doze_summary"
                     android:persistent="false" />
 
+            <!-- Doze battery status -->
+            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="ambient_display_show_battery"
+                android:title="@string/ambient_display_show_battery_title"
+                android:summary="@string/ambient_display_show_battery_summary"
+                android:dependency="doze"
+                android:defaultValue="true" />
+
             <!-- Doze notification color invert -->
             <com.android.settings.vrtoxin.SecureSettingSwitchPreference
                 android:key="doze_notification_invert_enabled"
