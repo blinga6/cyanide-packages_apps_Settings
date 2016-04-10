@@ -34,6 +34,15 @@
                 android:dependency="doze"
                 android:defaultValue="true" />
 
+            <!-- DT2W -->
+            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="doze_wakeup_doubletap"
+                android:title="@string/doze_wakeup_doubletap_title"
+                android:summaryOn="@string/doze_wakeup_doubletap_summary_on"
+                android:summaryOff="@string/doze_wakeup_doubletap_summary_off"
+                android:dependency="doze"
+                android:defaultValue="false" />
+
             <ListPreference
                     android:entries="@array/doze_list_mode_entries"
                     android:entryValues="@array/doze_list_mode_values"

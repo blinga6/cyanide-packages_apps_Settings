@@ -1606,6 +1606,9 @@
     <string name="pulse_only_mode">Pulse (default)</string>
     <string name="doze_notification_color_invert_title">Color Inversion</string>
     <string name="doze_notification_color_invert_summary">Ambient display notification colors are inverted</string>
+    <string name="doze_wakeup_doubletap_title">Double-tap To Wake </string>
+    <string name="doze_wakeup_doubletap_summary_on">Require a double-tap to wake the device on a doze pulse screen</string>
+    <string name="doze_wakeup_doubletap_summary_off">Require a simple-tap to wake the device on a doze pulse screen (default)</string>
 
     <!-- MediaScanner behavior on boot -->
     <string name="media_scanner_on_boot_title">MediaScanner Boot Behavior</string>
