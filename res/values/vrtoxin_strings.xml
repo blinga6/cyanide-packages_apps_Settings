@@ -110,14 +110,17 @@
 
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="edit_hex_title">HEX Value</string>
     <string name="palette_blackout_title">Blackout</string>
     <string name="palette_vrtoxin_title">Cyanide</string>
     <string name="palette_material_title">Material</string>
     <string name="palette_rgb_title">RGB</string>
+    <string name="reset_color_title">Reset</string>
     <string name="reset_android_title">Android default</string>
     <string name="reset_vrtoxin_title">Cyanide default</string>
     <string name="favorites_title">Favorites</string>
+    <string name="hide_favorites_title">Hide Favorites</string>
+    <string name="show_favorites_title">Show Favorites</string>
     <string name="empty_title">Empty</string>
     <string name="theme_settings_category">Theme Settings</string>
 
