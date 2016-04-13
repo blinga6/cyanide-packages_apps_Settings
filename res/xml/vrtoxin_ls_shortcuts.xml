@@ -124,6 +124,12 @@
         android:defaultValue="false" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.vrtoxin.KeyguardStatusBarClockStyle"
+        android:key="keyguard_clock_style_pref"
+        android:title="@string/keyguard_status_bar_clock"
+        android:summary="@string/keyguard_status_bar_clock_summary" />
+
+    <PreferenceScreen
         android:key="lockscreen_wallpaper"
         android:title="@string/lockscreen_wallpaper_title"
         android:summary="@string/lockscreen_wallpaper_summary"
