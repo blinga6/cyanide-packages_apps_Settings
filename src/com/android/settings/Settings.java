@@ -143,4 +143,6 @@ public class Settings extends SettingsActivity {
     public static class ExpansionViewSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DashboardSettingsActivity extends SettingsActivity { /* empty */ }
     public static class VolumeDialogSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ExpansionViewTrafficSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class ExpansionViewBatterySettingsSettingsActivity extends SettingsActivity { /* empty */ }
 }

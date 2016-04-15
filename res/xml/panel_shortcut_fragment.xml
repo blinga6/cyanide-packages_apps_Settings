@@ -25,7 +25,6 @@
             <extra android:name="maxAllowedActions" android:value="20" />
             <extra android:name="defaultNumberOfActions" android:value="0" />
             <extra android:name="disableLongpress" android:value="true" />
-            <extra android:name="useAppPickerOnly" android:value="true" />
     </PreferenceScreen>
 
     <ListPreference

@@ -132,6 +132,8 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 // VRToxin Additions
+import com.android.settings.vrtoxin.ExpansionViewBatterySettings;
+import com.android.settings.vrtoxin.ExpansionViewTraffic;
 import com.android.settings.vrtoxin.MainSettings;
 import com.android.settings.vrtoxin.StatusBarSettings;
 import com.android.settings.vrtoxin.ambientdisplay.AmbientSettings;
@@ -401,7 +403,9 @@ public class SettingsActivity extends Activity
             com.android.settings.vrtoxin.PrivacySettings.class.getName(),
             ExpansionView.class.getName(),
             DashboardOptions.class.getName(),
-            VolumeDialogSettings.class.getName()
+            VolumeDialogSettings.class.getName(),
+            ExpansionViewBatterySettings.class.getName(),
+            ExpansionViewTraffic.class.getName()
     };
 
 

@@ -2501,9 +2501,10 @@
     <string name="panel_shortcuts_title">Shortcut Bar</string>
     <string name="expansion_view_info_panel">Info Panel</string>
     <string name="expansion_view_weather_panel">Weather Panel</string>
-    <string name="weather_show_current_title">Show Current Weather</string>
+    <string name="expansion_view_weather_panel_colors">Weather Panel Colors</string>
+    <string name="weather_show_current_title">Current Weather</string>
     <string name="weather_show_current_summary">Enable to show the current weather information next to daily forecasts</string>
-    <string name="weather_icon_type_title">Weather Condition Icon</string>
+    <string name="weather_icon_type_title">Condition Icon</string>
     <string name="weather_icon_monochrome_title">Monochrome</string>
     <string name="weather_icon_colored_title">Colored</string>
     <string name="weather_icon_vclouds_title">VClouds</string>
@@ -2537,6 +2538,12 @@
     <string name="expansion_view_shortcuts_show_summary">Enabling this will allow showing the expansion view shortcut bar</string>
     <string name="expansion_view_vibration_title">Vibration</string>
     <string name="expansion_view_vibration_summary">Whether or not to vibrate on click actions</string>
+    <string name="expansion_view_traffic_fragment_title">Expansion View Traffic</string>
+    <string name="expansion_view_traffic_summary">Enable/disable and customize traffic in the expansion view info panel</string>
+    <string name="expansion_view_battery_fragment_title">Expansion View Battery</string>
+    <string name="expansion_view_battery_summary">Customize the battery icon in the expansion view info panel</string>
+    <string name="expansion_view_show_logo_panel_title">Logo Panel</string>
+    <string name="expansion_view_show_logo_panel_summary">Enable/disable the ROM Logo Panel</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>

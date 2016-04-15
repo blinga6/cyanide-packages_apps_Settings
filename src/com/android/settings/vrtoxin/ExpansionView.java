@@ -61,10 +61,12 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_BACKGROUND_COLOR = "expansion_view_background_color";
     private static final String EXPANSION_VIEW_ANIMATION = "expansion_view_animation";
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE = "expansion_view_activity_panel_text_size";
+    private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR = "expansion_view_activity_panel_text_color";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
+    private static final int VRTOXIN_GREEN = 0xff00ff00;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
@@ -84,6 +86,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private SwitchPreference mShowBg;
     private ListPreference mExpansionViewAnimation;
     private SeekBarPreference mExpansionViewActivityPanelTextSize;
+    private ColorPickerPreference mExpansionViewActivityPanelTextColor;
 
     private ContentResolver mResolver;
 
@@ -229,6 +232,17 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                 Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE, 14));
         mExpansionViewActivityPanelTextSize.setOnPreferenceChangeListener(this);
 
+        mExpansionViewActivityPanelTextColor =
+                (ColorPickerPreference) findPreference(EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
+                WHITE); 
+        mExpansionViewActivityPanelTextColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mExpansionViewActivityPanelTextColor.setSummary(hexColor);
+        mExpansionViewActivityPanelTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewActivityPanelTextColor.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -360,6 +374,13 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE, width);
             return true;
+        } else if (preference == mExpansionViewActivityPanelTextColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR, intHex);
+            preference.setSummary(hex);
         }
         return false;
     }
@@ -436,6 +457,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE,
                                     16);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -460,18 +484,21 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_ICON_COLOR,
-                                    VRTOXIN_BLUE);
+                                    VRTOXIN_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_TEXT_COLOR,
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 14);
+                                    Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 18);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ANIMATION,
                                     2);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE,
                                     20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
+                                    VRTOXIN_BLUE);
                             getOwner().refreshSettings();
                         }
                     })

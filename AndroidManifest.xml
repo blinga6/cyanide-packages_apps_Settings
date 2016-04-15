@@ -3028,6 +3028,34 @@
                 android:resource="@id/display_settings" />
         </activity>
 
+        <!-- Expansion View Traffic settings activity. -->
+        <activity android:name="Settings$ExpansionViewTrafficSettingsActivity"
+                android:label="@string/expansion_view_traffic_fragment_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.vrtoxin.ExpansionViewTraffic" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
+
+        <!-- Expansion View Battery settings activity. -->
+        <activity android:name="Settings$ExpansionViewBatterySettingsSettingsActivity"
+                android:label="@string/expansion_view_battery_fragment_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.vrtoxin.ExpansionViewBatterySettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
+
         <activity android:name=".vrtoxin.MainSettings" />
         <activity android:name=".vrtoxin.Misc" />
         <activity android:name=".vrtoxin.StatusBarSettings" />
