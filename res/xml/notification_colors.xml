@@ -67,6 +67,11 @@
             android:title="@string/notification_app_icon_bg_color_title"
             android:defaultValue="0xffe5e5e5" />
 
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="notification_ripple_color"
+            android:title="@string/ripple_title"
+            android:defaultValue="0xff1976D2" />
+
          <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="notification_text_color"
             android:title="@string/text_title"

@@ -32,6 +32,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.android.internal.util.vrtoxin.NotificationColorHelper;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -55,10 +57,12 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
             "notification_bg_guts_color";
     private static final String PREF_APP_ICON_BG_COLOR =
             "notification_app_icon_bg_color";
-    private static final String PREF_TEXT_COLOR =
-            "notification_text_color";
+    private static final String PREF_RIPPLE_COLOR =
+            "notification_ripple_color";
     private static final String PREF_ICON_COLOR =
             "notification_icon_color";
+    private static final String PREF_TEXT_COLOR =
+            "notification_text_color";
     private static final String PREF_CLEAR_ALL_ICON_COLOR =
             "notification_clear_all_icon_color";
 
@@ -83,8 +87,9 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mBgGutsColor;
     private ColorPickerPreference mAppIconBgColor;
-    private ColorPickerPreference mTextColor;
+    private ColorPickerPreference mRippleColor;
     private ColorPickerPreference mIconColor;
+    private ColorPickerPreference mTextColor;
     private ColorPickerPreference mClearAllIconColor;
 
     private ContentResolver mResolver;
@@ -166,6 +171,15 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
         } else {     
             colorCat.removePreference(mAppIconBgColor);
         }
+
+        mRippleColor =
+                (ColorPickerPreference) findPreference(PREF_RIPPLE_COLOR);
+        intColor = NotificationColorHelper.getRippleColor(getActivity());
+        mRippleColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mRippleColor.setSummary(hexColor);
+        mRippleColor.setDefaultColors(CYANIDE_BLUE, CYANIDE_BLUE);
+        mRippleColor.setOnPreferenceChangeListener(this);
 
         mTextColor =
                 (ColorPickerPreference) findPreference(PREF_TEXT_COLOR);
@@ -270,6 +284,14 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                 Settings.System.NOTIFICATION_APP_ICON_BG_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mRippleColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.NOTIFICATION_RIPPLE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         } else if (preference == mTextColor) {
             hex = ColorPickerPreference.convertToARGB(
                 Integer.valueOf(String.valueOf(newValue)));
@@ -359,6 +381,9 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_CLEAR_ALL_ICON_COLOR,
                                     MATERIAL_GREEN_LIGHT);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.NOTIFICATION_RIPPLE_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -388,6 +413,9 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                                     CYANIDE_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_CLEAR_ALL_ICON_COLOR,
+                                    CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.NOTIFICATION_RIPPLE_COLOR,
                                     CYANIDE_BLUE);
                             getOwner().refreshSettings();
                         }
