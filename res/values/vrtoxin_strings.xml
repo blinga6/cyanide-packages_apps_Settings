@@ -2648,4 +2648,8 @@
     <string name="nfc_sound_mode_vibration">Vibration</string>
     <string name="nfc_sound_mode_mute">Mute</string>
 
+    <!-- LS Charging Current Switch -->
+    <string name="lock_screen_show_current">Charging Current</string>
+    <string name="lock_screen_show_current_summary">Show charging current rate on lock screen</string>
+
 </resources>
