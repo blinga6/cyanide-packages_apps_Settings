@@ -33,6 +33,14 @@
 	<PreferenceCategory
         android:title="@string/floating_additional_options">
 
+        <!-- Cyanide  and Pie Actions Floating Switch -->
+        <SwitchPreference
+            android:key="slim_action_floats"
+            android:title="@string/slim_action_floats"
+            android:summary="@string/slim_action_floats_summary"
+            android:dependency="floating_window_mode"
+            android:defaultValue="false" />
+
         <!-- Gesture Anywhere Switch -->
         <SwitchPreference
             android:key="gesture_anywhere_floating"
@@ -47,14 +55,6 @@
             android:title="@string/qs_float_mode"
             android:summary="@string/qs_float_mode_summary"
 			android:defaultValue="false" />
-
-        <!-- Slim  and Pie Actions Floating Switch -->
-        <SwitchPreference
-            android:key="slim_action_floats"
-            android:title="@string/slim_action_floats"
-            android:summary="@string/slim_action_floats_summary"
-            android:dependency="floating_window_mode"
-            android:defaultValue="false" />
 
     </PreferenceCategory>
 </PreferenceScreen>

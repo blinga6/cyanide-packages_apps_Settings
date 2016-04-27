@@ -24,7 +24,7 @@
     <string name="category_misc">Miscellaneous</string>
     <string name="title_general">General</string>
     <string name="reset_android">Android</string>
-    <string name="reset_vrtoxin">VRToxin</string>
+    <string name="reset_vrtoxin">Cyanide</string>
     <string name="reset_fusion">Fusion</string>
     <string name="reset_cyanide">Cyanide</string>
     <string name="style_title">Style</string>
@@ -67,8 +67,8 @@
     <string name="category_colors_title">Customize Colors</string>
     <string name="reset_message">Reset all entries to default?</string>
     <string name="reset_default_message">Reset default?</string>
-    <string name="dlg_reset_values_message">Reset values to\nAndroid- or VRToxin default?</string>
-    <string name="dlg_reset_colors_message">Reset colors to\nAndroid- or VRToxin default?</string>
+    <string name="dlg_reset_values_message">Reset values to\nAndroid- or Cyanide default?</string>
+    <string name="dlg_reset_colors_message">Reset colors to\nAndroid- or Cyanide default?</string>
     <string name="additional_options_title">Additional options</string>
     <string name="always_title">Always</string>
     <string name="number_of_notifications_title">Number of notifications</string>
@@ -88,7 +88,7 @@
     <string name="status_bar_random_title">Random Settings</string>
     <string name="randomtweaks_title">Random Tweaks</string>
     <string name="status_bar_random_summary">Configure random status bar settings</string>
-    <string name="vrtoxin_settings_title">VRToxinMods</string>
+    <string name="vrtoxin_settings_title">CyanideMods</string>
     <string name="buttons_settings_title">Buttons</string>
     <string name="interface_settings_title">Interface</string>
     <string name="vrtoxin_misc_title">Miscellaneous</string>
@@ -98,7 +98,7 @@
     <string name="header_settings_summary">Customize text &amp; icon color in the pulldown header</string>
 
     <!-- About phone screen, VRToxin version -->
-    <string name="vrtoxin_version">VRToxin Version</string>
+    <string name="vrtoxin_version">Cyanide Version</string>
     <string name="vrtoxin_version_default">Unknown</string>
 
     <!-- VRToxin Changelog -->
@@ -116,11 +116,11 @@
     <string name="dialog_color_picker_title">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>
     <string name="palette_blackout_title">Blackout</string>
-    <string name="palette_vrtoxin_title">VRToxin</string>
+    <string name="palette_vrtoxin_title">Cyanide</string>
     <string name="palette_material_title">Material</string>
     <string name="palette_rgb_title">RGB</string>
     <string name="reset_android_title">Android default</string>
-    <string name="reset_vrtoxin_title">VRToxin default</string>
+    <string name="reset_vrtoxin_title">Cyanide default</string>
     <string name="favorites_title">Favorites</string>
     <string name="empty_title">Empty</string>
     <string name="theme_settings_category">Theme Settings</string>
@@ -163,7 +163,7 @@
     <string name="select_custom_activity_title">Select custom activity</string>
 
     <!-- Slim Shortcuts -->
-    <string name="slim_shortcut_picker">VRToxin Actions</string>
+    <string name="slim_shortcut_picker">Cyanide Actions</string>
     <!-- Slim Action Shortcuts -->
     <string name="shortcut_action_none">None</string>
     <string name="shortcut_action_airplane_mode">Airplane mode</string>
@@ -602,13 +602,13 @@
     <string name="qab_button_screen_off">Screen Off</string>
     <string name="qab_button_slimpie">SlimPie</string>
     <string name="qab_button_themes">Themes</string>
-    <string name="qab_button_vrtoxin">VRToxinMods</string>
+    <string name="qab_button_vrtoxin">CyanideMods</string>
     <string name="qab_button_kernel_adiutor">Kernel Adiutor</string>
     <string name="qab_button_stweaks">STweaks</string>
 
     <!-- Tiles -->
     <string name="qs_tile_rotation">Rotation</string>
-    <string name="qs_tile_vrtoxin">VRToxinMods</string>
+    <string name="qs_tile_vrtoxin">CyanideMods</string>
     <string name="qs_tile_brightness">Brightness</string>
     <string name="qs_tile_screenshot">Screenshot</string>
     <string name="qs_tile_screen_off">Screen Off</string>
@@ -639,7 +639,7 @@
     <string name="qs_tile_slim_floats">Slim Floats</string>
     <string name="qs_tile_kernel_adiutor">Kernel Adiutor</string>
     <string name="qs_tile_led">LED</string>
-    <string name="qs_tile_slimaction">VRToxin Action</string>
+    <string name="qs_tile_slimaction">Cyanide Action</string>
     <string name="qs_tile_powermenu">Power Menu</string>
     <string name="qs_tile_vrtupdater">VRTUpdater</string>
     <string name="qs_tile_sounds">Sound Mode</string>
@@ -1251,9 +1251,9 @@
     <string name="toast_icon_summary">Whether to show the app icon which created the toast</string>
 
     <!-- Statusbar VRToxin logo -->
-    <string name="status_bar_vrtoxin_logo_title">VRToxin Logo</string>
+    <string name="status_bar_vrtoxin_logo_title">Cyanide Logo</string>
     <string name="status_bar_vrtoxin_logo_summary">Logo Switch &amp; Color</string>
-    <string name="status_bar_vrtoxin_logo_color">VRToxin Logo Color</string>
+    <string name="status_bar_vrtoxin_logo_color">Cyanide Logo Color</string>
     <string name="status_bar_vrtoxin_logo_position">Location</string>
     <string name="status_bar_vrtoxin_logo_position_summary">Choose which side to display the logo on, left or right</string>
     <string name="status_bar_logo_position_right">Right</string>
@@ -1264,7 +1264,7 @@
     <string name="show_logo_enabled">Lockscreen &amp; Statusbar</string>
     <string name="logo_cat_notification_icons_title">Notification Icons</string>
     <string name="logo_hide_logo_title">Hide</string>
-    <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the VRToxin logo on the status bar</string>
+    <string name="logo_hide_logo_summary">Enable to choose a number of visible notification icons to hide the Cyanide logo on the status bar</string>
     <string name="logo_number_of_notification_icons_title">Number of notification icons</string>
 
     <!-- Zen mode icon switch -->
@@ -1416,7 +1416,7 @@
     <string name="expanded_header_date_color">Date</string>
     <string name="expanded_header_settings_color">Settings Button</string>
     <string name="expanded_header_power_menu_color">Power Menu</string>
-    <string name="expanded_header_vrtoxin_color">VRToxin Button</string>
+    <string name="expanded_header_vrtoxin_color">Cyanide Button</string>
     <string name="expanded_header_weather_color">Weather</string>
     <string name="expanded_header_emergency_calls_color">Emergency Calls Only</string>
 
@@ -1488,10 +1488,10 @@
     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
     <!-- Share VRToxin -->
-    <string name="share_vrtoxin_title">Share VRToxin</string>
-    <string name="share_vrtoxin_summary">Let others know about VRToxin</string>
-    <string name="share_message">Check out what #VRToxin is all about @ https://plus.google.com/communities/108303487813436381401</string>
-    <string name="share_chooser_title">Share VRToxin</string>
+    <string name="share_vrtoxin_title">Share Cyanide</string>
+    <string name="share_vrtoxin_summary">Let others know about Cyanide</string>
+    <string name="share_message">Check out what #Cyanide is all about @ https://plus.google.com/communities/115373154758419619929?hl=en</string>
+    <string name="share_chooser_title">Share Cyanide</string>
 
     <!-- Disabling immersive mode messages -->
     <string name="disable_immersive_message_title">Immersive Mode Messages</string>
@@ -1814,7 +1814,7 @@
     <!-- Privacy Settings Header item -->
     <string name="privacy_settings_vrtoxin_title">Privacy</string>
     <string name="app_ops_summary">Control apps permissions with more power</string>
-    <string name="privacy_settings_vrtoxin_category" translatable="false">VRToxin</string>
+    <string name="privacy_settings_vrtoxin_category" translatable="false">Cyanide</string>
 
     <!--- Advanced Settings -->
     <string name="advanced_settings">Advanced Settings</string>
@@ -1854,11 +1854,11 @@
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
 
     <!-- Recents empty style -->
-    <string name="recents_empty_style">VRToxin Logo</string>
-    <string name="recents_empty_style_summary">When recents is empty, show VRToxin logo instead of text.</string>
+    <string name="recents_empty_style">Cyanide Logo</string>
+    <string name="recents_empty_style_summary">When recents is empty, show Cyanide logo instead of text.</string>
 
     <!-- Chamber of Secrets -->
-    <string name="chamber_title">VRToxin Dungeon</string>
+    <string name="chamber_title">Cyanide Dungeon</string>
     <string name="chamber_toast">The poison has been unleashed</string>
 
     <!-- Lockscreen visualizer -->
@@ -2001,8 +2001,8 @@
     <string name="floating_additional_options">Additional Float Options</string>
     <string name="floating_windows">Floating Windows</string>
     <string name="floating_windows_switch">Whether to allow global use of float mode.</string>
-    <string name="slim_action_floats">VRToxin Actions &amp; Pie</string>
-    <string name="slim_action_floats_summary">Launch VRToxin &amp; Pie Actions in float mode</string>
+    <string name="slim_action_floats">Cyanide Actions &amp; Pie</string>
+    <string name="slim_action_floats_summary">Launch Cyanide &amp; Pie Actions in float mode</string>
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
     <string name="gesture_anywhere_floating_summary">Launch Gesture Anywhere shortcuts in float mode</string>
     <string name="qs_float_mode">Quick Settings</string>
@@ -2128,18 +2128,12 @@
     <string name="hidden_shit_title">Hidden shit</string>
     <string name="hidden_shit_summary">You are now in unleashed mode!</string>
     <string name="hidden_anim2_title">Bug reports?</string>
-    <string name="hidden_anim_title">Can\'t get enough VRToxin?!</string>
+    <string name="hidden_anim_title">Can\'t get enough Cyanide?!</string>
     <string name="fake_bug_title">Bug Reports?!</string>
 
     <!-- Lockscreen Torch -->
     <string name="keyguard_torch_title">Power Button Torch</string>
     <string name="keyguard_torch_summary">Long press power button while screen is off to activate flashlight</string>
-
-    <!-- Center Clock: Hide when reached a custom number of notification icons -->
-    <string name="center_clock_cat_notification_icons_title">Notification Icons</string>
-    <string name="center_clock_hide_title">Hide</string>
-    <string name="center_clock_hide_summary">Enable to choose a number of visible notification icons to hide the center clock on the status bar</string>
-    <string name="center_clock_number_of_notification_icons_title">Number of notification icons</string>
 
     <!-- Volume Dialog Colors -->
     <string name="volume_dialog_settings_title">Volume Dialog Colors</string>
@@ -2169,8 +2163,8 @@
     <string name="default_landscape_orientation_summary">Use landscape as default orientation</string>
 
     <!-- Action Tile -->
-    <string name="qs_action_tile">VRToxin Action Tile</string>
-    <string name="qs_action_tile_summary">Add and set the order of Actions for the VRToxin Action tile</string>
+    <string name="qs_action_tile">Cyanide Action Tile</string>
+    <string name="qs_action_tile_summary">Add and set the order of Actions for the Cyanide Action tile</string>
 
     <!-- Time-context headers in notification header -->
     <string name="contextual_title">Contextual Headers</string>
@@ -2180,7 +2174,7 @@
     <string name="custom_header_image_0">Default</string>
     <string name="custom_header_image_1">Modern</string>
     <string name="custom_header_image_2">Poly HD</string>
-    <string name="custom_header_image_3">VRToxin</string>
+    <string name="custom_header_image_3">Cyanide</string>
 
     <!-- OTACenter -->
     <string name="vrtupdater_title">VRTUpdater</string>
@@ -2425,8 +2419,8 @@
     <string name="custom_header_shortcuts_summary">Select and define custom apps to open with status bar header buttons</string>
     <string name="custom_header_shortcuts">Click Shortcuts</string>
     <string name="custom_header_long_shortcuts">Longpress Shortcuts</string>
-    <string name="vrtoxin_shortcut_title">VRToxin Shortcut</string>
-    <string name="vrtoxin_long_shortcut_title">VRToxin Longpress Shortcut</string>
+    <string name="vrtoxin_shortcut_title">Cyanide Shortcut</string>
+    <string name="vrtoxin_long_shortcut_title">Cyanide Longpress Shortcut</string>
     <string name="clock_shortcut_title">Time Shortcut</string>
     <string name="clock_long_shortcut_title">Time Longpress Shortcut</string>
     <string name="calendar_shortcut_title">Date Shortcut</string>
@@ -2434,8 +2428,8 @@
     <string name="weather_shortcut_title">Weather Shortcut</string>
     <string name="weather_long_shortcut_title">Weather Longpress Shortcut</string>
     <string name="default_shortcut">Default</string>
-    <string name="vrtoxin_button_title">VRToxin Button</string>
-    <string name="vrtoxin_button_summary">Show a VRToxin button in the expanded header</string>
+    <string name="vrtoxin_button_title">Cyanide Button</string>
+    <string name="vrtoxin_button_summary">Show a Cyanide button in the expanded header</string>
 
     <string name="battery_fully_charge_notif_title">Battery Fully Charged</string>
     <string name="battery_fully_charge_notif_summary">Shows a notification when the battery is fully charged.</string>

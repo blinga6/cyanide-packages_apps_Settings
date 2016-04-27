@@ -67,6 +67,13 @@
         android:key="recents_panel"
         android:title="@string/recents_random_title">
 
+        <!-- Recents empty Cyanide logo -->
+        <SwitchPreference
+            android:key="recents_empty_vrtoxin_logo"
+            android:title="@string/recents_empty_style"
+            android:summary="@string/recents_empty_style_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="recents_font_style"
             android:entries="@array/status_bar_font_style_entries"
@@ -117,13 +124,6 @@
             android:key="shake_to_clean_recents"
             android:title="@string/shake_to_clear_recents_title"
             android:summary="@string/shake_to_clear_recents_summary"
-            android:defaultValue="false" />
-
-        <!-- Recents empty VRToxin logo -->
-        <SwitchPreference
-            android:key="recents_empty_vrtoxin_logo"
-            android:title="@string/recents_empty_style"
-            android:summary="@string/recents_empty_style_summary"
             android:defaultValue="false" />
 
     </PreferenceCategory>

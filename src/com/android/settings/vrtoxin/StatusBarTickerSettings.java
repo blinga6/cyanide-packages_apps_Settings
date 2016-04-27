@@ -59,10 +59,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             "status_bar_notif_count_icon_color";
     private static final String COUNT_TEXT_COLOR =
             "status_bar_notif_count_text_color";
-    private static final String PREF_TICKER_ICON_COLOR_DARK =
-            "status_bar_ticker_icon_color_dark_mode";
-    private static final String PREF_TICKER_TEXT_COLOR_DARK =
-            "status_bar_ticker_text_color_dark_mode";
     private static final String STATUS_BAR_TICKER_FONT_SIZE  =
             "status_bar_ticker_font_size";
     private static final String STATUS_BAR_TICKER_FONT_STYLE =
@@ -79,10 +75,8 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
     private SwitchPreference mShowTicker;
     private ColorPickerPreference mTextColor;
     private ColorPickerPreference mIconColor;
-    private ColorPickerPreference mIconColorDark;
     private ColorPickerPreference mCountIconColor;
     private ColorPickerPreference mCountTextColor;
-    private ColorPickerPreference mTextColorDark;
     private SeekBarPreference mTickerFontSize;
     private ListPreference mTickerFontStyle;
 
@@ -148,17 +142,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
             mTextColor.setOnPreferenceChangeListener(this);
 
-            mTextColorDark =
-                    (ColorPickerPreference) findPreference(PREF_TICKER_TEXT_COLOR_DARK);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_TEXT_COLOR_DARK_MODE,
-                    BLACK);
-            mTextColorDark.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mTextColorDark.setSummary(hexColor);
-            mTextColorDark.setDefaultColors(BLACK, BLACK);
-            mTextColorDark.setOnPreferenceChangeListener(this);
-
             mIconColor =
                     (ColorPickerPreference) findPreference(ICON_COLOR);
             intColor = Settings.System.getInt(mResolver,
@@ -169,17 +152,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             mIconColor.setSummary(hexColor);
             mIconColor.setDefaultColors(WHITE, WHITE);
             mIconColor.setOnPreferenceChangeListener(this);
-
-            mIconColorDark =
-                    (ColorPickerPreference) findPreference(PREF_TICKER_ICON_COLOR_DARK);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_ICON_COLOR_DARK_MODE,
-                    BLACK);
-            mIconColorDark.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mIconColorDark.setSummary(hexColor);
-            mIconColorDark.setDefaultColors(BLACK, BLACK);
-            mIconColorDark.setOnPreferenceChangeListener(this);
         } else {
             removePreference("status_bar_ticker_font_size");
             removePreference(CAT_COLORS);
@@ -268,24 +240,6 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
             intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(mResolver,
                     Settings.System.STATUS_BAR_TICKER_ICON_COLOR,
-                    intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mIconColorDark) {
-            hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_ICON_COLOR_DARK_MODE,
-                    intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mTextColorDark) {
-            hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.STATUS_BAR_TICKER_TEXT_COLOR_DARK_MODE,
                     intHex);
             preference.setSummary(hex);
             return true;
