@@ -1611,6 +1611,10 @@
     <string name="doze_wakeup_doubletap_summary_off">Require a simple-tap to wake the device on a doze pulse screen (default)</string>
     <string name="ambient_display_show_battery_title">Battery Status</string>
     <string name="ambient_display_show_battery_summary">Show battery indicator during pulse</string>
+    <string name="ambient_display_show_weather_title">Weather Display</string>
+    <string name="ambient_display_show_weather_summary">Enable to show the weather during pulse</string>
+    <string name="ambient_display_show_weather_location_title">Weather Location</string>
+    <string name="ambient_display_show_weather_location_summary">Enable to show the weather location</string>
 
     <!-- MediaScanner behavior on boot -->
     <string name="media_scanner_on_boot_title">MediaScanner Boot Behavior</string>

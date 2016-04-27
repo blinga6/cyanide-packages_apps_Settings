@@ -51,6 +51,18 @@
                 android:dependency="doze"
                 android:defaultValue="false" />
 
+            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="ambient_display_show_weather"
+                android:dependency="doze"
+                android:title="@string/ambient_display_show_weather_title"
+                android:summary="@string/ambient_display_show_weather_summary" />
+
+            <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+                android:key="ambient_display_show_weather_location"
+                android:dependency="doze"
+                android:title="@string/ambient_display_show_weather_location_title"
+                android:summary="@string/ambient_display_show_weather_location_summary" />
+
             <ListPreference
                     android:entries="@array/doze_list_mode_entries"
                     android:entryValues="@array/doze_list_mode_values"
