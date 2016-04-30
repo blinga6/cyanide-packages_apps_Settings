@@ -354,7 +354,7 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                     .setTitle(R.string.reset)
                     .setMessage(R.string.dlg_reset_values_message)
                     .setNegativeButton(R.string.cancel, null)
-                    .setNeutralButton(R.string.reset_fusion,
+                    .setNeutralButton(R.string.reset_android,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -365,22 +365,22 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                                     Settings.System.NOTIFICATION_APP_ICON_COLOR_MODE, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_BG_COLOR,
-                                    MATERIAL_BLUE_GREY);
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_GUTS_BG_COLOR,
-                                    SYSTEMUI_SECONDARY);
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_APP_ICON_BG_COLOR,
-                                    TRANSLUCENT_VRTOXIN_BLUE);
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_ICON_COLOR,
-                                    MATERIAL_GREEN_LIGHT);
+                                    BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_CLEAR_ALL_ICON_COLOR,
-                                    MATERIAL_GREEN_LIGHT);
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_RIPPLE_COLOR,
                                     WHITE);
