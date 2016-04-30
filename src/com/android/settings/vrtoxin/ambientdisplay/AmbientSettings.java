@@ -25,9 +25,11 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -39,9 +41,11 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.util.MathUtils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.vrtoxin.SeekBarPreference;
 import com.android.settings.vrtoxin.SystemSettingSwitchPreference;
 import com.android.settings.vrtoxin.ambientdisplay.ShakeSensorManager;
 import com.android.internal.logging.MetricsLogger;
@@ -64,6 +68,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE_SHAKE_CATEGORY = "doze_shake_category";
     private static final String KEY_DOZE_SHAKE_THRESHOLD = "doze_shake_threshold";
     private static final String KEY_DOZE_TIME_MODE = "doze_time_mode";
+    private static final String KEY_DOZE_BRIGHTNESS = "doze_brightness";
 
     private int mAccValue;
     private int mOldAccValue;
@@ -77,11 +82,14 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private ShakeSensorManager mShakeSensorManager;
     private AlertDialog mDialog;
     private Button mShakeFoundButton;
+    private SeekBarPreference mDozeBrightness;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = getActivity();
+        ContentResolver resolver = getActivity().getContentResolver();
+        final Resources resources = mContext.getResources();
 
         addPreferencesFromResource(R.xml.ambient_settings);
 
@@ -116,6 +124,17 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
         updateDozeListMode();
         updateDozeOptions();
         mShakeSensorManager = new ShakeSensorManager(activity, this);
+
+        mDozeBrightness = (SeekBarPreference) findPreference(KEY_DOZE_BRIGHTNESS);
+        int dozeBrightness = Settings.System.getInt(resolver,
+                    Settings.System.DOZE_BRIGHTNESS, clampAbsoluteBrightness(resources.getInteger(
+                com.android.internal.R.integer.config_screenBrightnessSettingMinimum)));
+        mDozeBrightness.setValue(dozeBrightness);
+        mDozeBrightness.setOnPreferenceChangeListener(this);
+    }
+
+    private static int clampAbsoluteBrightness(int value) {
+        return MathUtils.constrain(value, PowerManager.BRIGHTNESS_OFF, PowerManager.BRIGHTNESS_ON);
     }
 
     private static boolean isAccelerometerAvailable(Context context) {
@@ -435,6 +454,11 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             updateDozeListModeValue(dozeListMode);
             int index = mDozeListMode.findIndexOfValue((String) objValue);
             mDozeListMode.setSummary(mDozeListMode.getEntries()[index]);
+        }
+        if (preference == mDozeBrightness) {
+            int dozeBrightness = (Integer) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DOZE_BRIGHTNESS, dozeBrightness);
         }
         return true;
     }
