@@ -24,18 +24,17 @@
             android:defaultValue="false" />
 
         <ListPreference
-            android:key="keyguard_clock_style"
-            android:entries="@array/keyguard_clock_style_entries"
-            android:entryValues="@array/keyguard_clock_style_values"
-            android:title="@string/status_bar_clock_style_title"
-            android:dependency="keyguard_status_bar_show_clock" />
-
-        <ListPreference
             android:key="keyguard_status_bar_am_pm"
             android:dialogTitle="@string/status_bar_am_pm_title"
             android:title="@string/status_bar_am_pm_title"
             android:entries="@array/keyguard_entries_status_bar_am_pm"
             android:entryValues="@array/keyguard_values_status_bar_am_pm"
+            android:dependency="keyguard_status_bar_show_clock" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="keyguard_statusbar_clock_color"
+            android:title="@string/clock_color_title"
+            android:defaultValue="0xffffff"
             android:dependency="keyguard_status_bar_show_clock" />
 
         <ListPreference
@@ -48,7 +47,7 @@
 
         <ListPreference
             android:key="keyguard_clock_date_style"
-            android:title="@string/status_bar_date_title"
+            android:title="@string/status_bar_date_style"
             android:entries="@array/keyguard_clock_date_style_entries"
             android:entryValues="@array/keyguard_clock_date_style_values"
             android:dependency="keyguard_status_bar_show_clock" />
@@ -58,6 +57,27 @@
             android:title="@string/status_bar_date_format_title"
             android:entries="@array/keyguard_clock_date_format_entries_values"
             android:entryValues="@array/keyguard_clock_date_format_entries_values"
+            android:dependency="keyguard_status_bar_show_clock" />
+
+        <ListPreference
+            android:key="keyguard_statusbar_clock_font_size"
+            android:entries="@array/clock_font_size_entries"
+            android:entryValues="@array/clock_font_size_values"
+            android:title="@string/clock_font_size_title"
+            android:dependency="keyguard_status_bar_show_clock" />
+
+        <ListPreference
+            android:key="keyguard_statusbar_clock_font_style"
+            android:entries="@array/status_bar_font_style_entries"
+            android:entryValues="@array/status_bar_font_style_values"
+            android:title="@string/clock_font_style_title"
+            android:dependency="keyguard_status_bar_show_clock" />
+
+        <ListPreference
+            android:key="keyguard_clock_style"
+            android:entries="@array/keyguard_clock_style_entries"
+            android:entryValues="@array/keyguard_clock_style_values"
+            android:title="@string/status_bar_clock_style_title"
             android:dependency="keyguard_status_bar_show_clock" />
 
 </PreferenceScreen>

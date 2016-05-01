@@ -893,7 +893,7 @@
     <string name="clock_date_position">Date Position</string>
     <string name="clock_date_right">Right of clock</string>
     <string name="clock_date_left">Left of clock</string>
-    <string name="status_bar_clock_style_title">Clock Location</string>
+    <string name="status_bar_clock_style_title">Location</string>
     <string name="status_bar_clock_style_right">Right</string>
     <string name="status_bar_clock_style_left">Left</string>
     <string name="status_bar_clock_style_center">Center</string>

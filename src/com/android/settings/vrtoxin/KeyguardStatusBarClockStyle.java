@@ -48,6 +48,8 @@ import com.android.settings.Utils;
 
 import java.util.Date;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 public class KeyguardStatusBarClockStyle extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
@@ -59,6 +61,9 @@ public class KeyguardStatusBarClockStyle extends SettingsPreferenceFragment
     private static final String PREF_CLOCK_DATE_STYLE = "keyguard_clock_date_style";
     private static final String PREF_CLOCK_DATE_FORMAT = "keyguard_clock_date_format";
     private static final String KEYGUARD_STATUS_BAR_CLOCK = "keyguard_status_bar_show_clock";
+    private static final String PREF_COLOR_PICKER = "keyguard_statusbar_clock_color";
+    private static final String PREF_FONT_STYLE = "keyguard_statusbar_clock_font_style";
+    private static final String PREF_STATUS_BAR_CLOCK_FONT_SIZE  = "keyguard_statusbar_clock_font_size";
 
     public static final int KEYGUARD_CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int KEYGUARD_CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -74,6 +79,9 @@ public class KeyguardStatusBarClockStyle extends SettingsPreferenceFragment
     private ListPreference mKeyguardClockDateStyle;
     private ListPreference mKeyguardClockDateFormat;
     private SwitchPreference mKeyguardStatusBarClock;
+    private ListPreference mKeyguardClockFontStyle;
+    private ListPreference mKeyguardClockFontSize;
+    private ColorPickerPreference mKeyguardClockColor;
 
     private boolean mCheckPreferences;
 
@@ -161,6 +169,35 @@ public class KeyguardStatusBarClockStyle extends SettingsPreferenceFragment
             mKeyguardClockDateStyle.setEnabled(false);
             mKeyguardClockDateFormat.setEnabled(false);
         }
+
+        mKeyguardClockColor = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
+        mKeyguardClockColor.setOnPreferenceChangeListener(this);
+        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.KEYGUARD_STATUSBAR_CLOCK_COLOR, -2);
+        if (intColor == -2) {
+            intColor = systemUiResources.getColor(systemUiResources.getIdentifier(
+                    "com.android.systemui:color/status_bar_clock_color", null, null));
+            mKeyguardClockColor.setSummary(getResources().getString(R.string.default_string));
+        } else {
+            String hexColor = String.format("#%08x", (0xffffffff & intColor));
+            mKeyguardClockColor.setSummary(hexColor);
+            mKeyguardClockColor.setAlphaSliderEnabled(true);
+        }
+        mKeyguardClockColor.setNewPreviewColor(intColor);
+
+        mKeyguardClockFontStyle = (ListPreference) findPreference(PREF_FONT_STYLE);
+        mKeyguardClockFontStyle.setOnPreferenceChangeListener(this);
+        mKeyguardClockFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.KEYGUARD_STATUSBAR_CLOCK_FONT_STYLE,
+                0)));
+        mKeyguardClockFontStyle.setSummary(mKeyguardClockFontStyle.getEntry());
+
+        mKeyguardClockFontSize = (ListPreference) findPreference(PREF_STATUS_BAR_CLOCK_FONT_SIZE);
+        mKeyguardClockFontSize.setOnPreferenceChangeListener(this);
+        mKeyguardClockFontSize.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.KEYGUARD_STATUSBAR_CLOCK_FONT_SIZE, 
+                14)));
+        mKeyguardClockFontSize.setSummary(mKeyguardClockFontSize.getEntry());
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
@@ -258,6 +295,28 @@ public class KeyguardStatusBarClockStyle extends SettingsPreferenceFragment
                         Settings.System.KEYGUARD_STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
             }
+            return true;
+        } else if (preference == mKeyguardClockColor) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
+                    .valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.KEYGUARD_STATUSBAR_CLOCK_COLOR, intHex);
+            return true;
+        } else if (preference == mKeyguardClockFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mKeyguardClockFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.KEYGUARD_STATUSBAR_CLOCK_FONT_STYLE, val);
+            mKeyguardClockFontStyle.setSummary(mKeyguardClockFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mKeyguardClockFontSize) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mKeyguardClockFontSize.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.KEYGUARD_STATUSBAR_CLOCK_FONT_SIZE, val);
+            mKeyguardClockFontSize.setSummary(mKeyguardClockFontSize.getEntries()[index]);
             return true;
         }
         return false;
