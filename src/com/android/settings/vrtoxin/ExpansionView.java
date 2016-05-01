@@ -473,7 +473,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     Settings.System.EXPANSION_VIEW_FONT_STYLE, 20);
                             Settings.System.putString(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_TEXT_CUSTOM,
-                                    "VRToxin Is Fuckin Awesome!!!!");
+                                    "Cyanide Is Fuckin Awesome!!!!");
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_TEXT_SIZE, 25);
                             Settings.System.putInt(getOwner().mResolver,

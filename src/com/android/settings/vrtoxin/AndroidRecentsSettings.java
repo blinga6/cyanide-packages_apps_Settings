@@ -41,6 +41,7 @@ import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.vrtoxin.SeekBarPreference;
 
 import com.android.settings.vrtoxin.util.Helpers;
 
@@ -74,6 +75,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String RECENTS_FULL_SCREEN_CLOCK_COLOR = "recents_full_screen_clock_color";
     private static final String RECENTS_FULL_SCREEN_DATE_COLOR = "recents_full_screen_date_color";
     private static final String RECENTS_FONT_STYLE = "recents_font_style";
+    private static final String RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE = "recents_full_screen_clock_date_size";
     
     private static final int DEFAULT_COLOR = 0xff009688;
     private static final int WHITE = 0xffffffff;
@@ -102,6 +104,7 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private ColorPickerPreference mClockColor;
     private ColorPickerPreference mDateColor;
     private ListPreference mRecentsFontStyle;
+    private SeekBarPreference mRecentsFontSize;
 
     private ContentResolver mResolver;
 
@@ -279,6 +282,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mRecentsFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.RECENTS_FONT_STYLE, 0)));
         mRecentsFontStyle.setSummary(mRecentsFontStyle.getEntry());
+
+        mRecentsFontSize =
+                (SeekBarPreference) findPreference(RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE);
+        mRecentsFontSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE, 14));
+        mRecentsFontSize.setOnPreferenceChangeListener(this);
         
         setHasOptionsMenu(true);
     }
@@ -427,6 +436,11 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.RECENTS_FONT_STYLE, val);
             mRecentsFontStyle.setSummary(mRecentsFontStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mRecentsFontSize) {
+            int width = ((Integer)objValue).intValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE, width);
             return true;
         }
         return false;

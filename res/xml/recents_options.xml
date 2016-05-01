@@ -17,6 +17,7 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/recents_panel">
 
      <PreferenceCategory
@@ -73,6 +74,16 @@
             android:title="@string/recents_empty_style"
             android:summary="@string/recents_empty_style_summary"
             android:defaultValue="false" />
+
+        <!-- Text Size -->
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="recents_full_screen_clock_date_size"
+            android:title="@string/status_bar_weather_size_title"
+            android:defaultValue="14"
+            android:max="30"
+            settings:minimum="4"
+            settings:unitsLeft=""
+            settings:unitsRight="dp" />
 
         <ListPreference
             android:key="recents_font_style"
