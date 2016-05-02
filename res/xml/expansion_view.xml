@@ -79,14 +79,14 @@
         android:key="expansion_view_layout_changer"
         android:title="@string/expansion_view_layout_changer"
         android:summary="@string/expansion_view_layout_changer_summary"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
 
     <!-- Logo Panel -->
     <SwitchPreference
         android:key="expansion_view_show_logo_panel"
         android:title="@string/expansion_view_show_logo_panel_title"
         android:summary="@string/expansion_view_show_logo_panel_summary"
-        android:defaultValue="false" />
+        android:defaultValue="true" />
 
     <!-- Shortcut Bar -->
     <PreferenceScreen
@@ -114,7 +114,7 @@
         android:key="expansion_view_vibration"
         android:title="@string/expansion_view_vibration_title"
         android:summary="@string/expansion_view_vibration_summary"
-        android:defaultValue="true" />
+        android:defaultValue="false" />
 
     <PreferenceCategory
         android:key="colors"
