@@ -67,6 +67,13 @@
         android:summary="@string/expansion_view_force_summary"
         android:defaultValue="false" />
 
+    <!-- Info Panel -->
+    <SwitchPreference
+        android:key="expansion_view_show_activity_panel"
+        android:title="@string/expansion_view_show_activity_panel_title"
+        android:summary="@string/expansion_view_show_activity_panel_summary"
+        android:defaultValue="true" />
+
     <!-- Layout Changer -->
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="expansion_view_layout_changer"
@@ -75,7 +82,7 @@
         android:defaultValue="false" />
 
     <!-- Logo Panel -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+    <SwitchPreference
         android:key="expansion_view_show_logo_panel"
         android:title="@string/expansion_view_show_logo_panel_title"
         android:summary="@string/expansion_view_show_logo_panel_summary"

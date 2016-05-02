@@ -62,6 +62,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_ANIMATION = "expansion_view_animation";
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE = "expansion_view_activity_panel_text_size";
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR = "expansion_view_activity_panel_text_color";
+    private static final String EXPANSION_VIEW_SHOW_ACTIVITY_PANEL = "expansion_view_show_activity_panel";
+    private static final String EXPANSION_VIEW_SHOW_LOGO_PANEL = "expansion_view_show_logo_panel";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
@@ -87,6 +89,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private ListPreference mExpansionViewAnimation;
     private SeekBarPreference mExpansionViewActivityPanelTextSize;
     private ColorPickerPreference mExpansionViewActivityPanelTextColor;
+    private SwitchPreference mShowLogoPanel;
+    private SwitchPreference mShowActivityPanel;
 
     private ContentResolver mResolver;
 
@@ -110,6 +114,11 @@ public class ExpansionView extends SettingsPreferenceFragment implements
 
         boolean showBg = Settings.System.getInt(mResolver,
                 Settings.System.EXPANSION_VIEW_BACKGROUND, 0) == 1;
+        boolean activityPanelEnabled = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_SHOW_ACTIVITY_PANEL, 1) == 1;
+        boolean logoPanelEnabled = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_SHOW_LOGO_PANEL, 0) == 1;
+        final boolean logoPanelDisabled = !activityPanelEnabled;
 
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(PREF_CAT_COLORS);
@@ -242,6 +251,20 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewActivityPanelTextColor.setSummary(hexColor);
         mExpansionViewActivityPanelTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
         mExpansionViewActivityPanelTextColor.setOnPreferenceChangeListener(this);
+
+        mShowActivityPanel =
+                (SwitchPreference) findPreference(EXPANSION_VIEW_SHOW_ACTIVITY_PANEL);
+        mShowActivityPanel.setChecked(activityPanelEnabled);
+        mShowActivityPanel.setOnPreferenceChangeListener(this);
+
+        mShowLogoPanel =
+                (SwitchPreference) findPreference(EXPANSION_VIEW_SHOW_LOGO_PANEL);
+        mShowLogoPanel.setChecked(logoPanelEnabled);
+        mShowLogoPanel.setEnabled(!logoPanelDisabled);
+ 
+        if (!logoPanelDisabled) {
+            mShowLogoPanel.setOnPreferenceChangeListener(this);
+        }
 
         setHasOptionsMenu(true);
     }
@@ -381,6 +404,19 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                 Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR, intHex);
             preference.setSummary(hex);
+        } else if (preference == mShowActivityPanel) {
+            value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_SHOW_ACTIVITY_PANEL,
+                    value ? 1 : 0);
+            refreshSettings();
+            return true;
+        } else if (preference == mShowLogoPanel) {
+            value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_SHOW_LOGO_PANEL,
+                    value ? 1 : 0);
+            return true;
         }
         return false;
     }

@@ -2546,6 +2546,8 @@
     <string name="expansion_view_traffic_summary">Enable/disable and customize traffic in the expansion view info panel</string>
     <string name="expansion_view_battery_fragment_title">Expansion View Battery</string>
     <string name="expansion_view_battery_summary">Customize the battery icon in the expansion view info panel</string>
+    <string name="expansion_view_show_activity_panel_title">Info Panel</string>
+    <string name="expansion_view_show_activity_panel_summary">Enable/disable the Info Panel</string>
     <string name="expansion_view_show_logo_panel_title">Logo Panel</string>
     <string name="expansion_view_show_logo_panel_summary">Enable/disable the ROM Logo Panel</string>
 
