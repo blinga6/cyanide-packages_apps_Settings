@@ -1731,6 +1731,8 @@
     <string name="battery_bar_thickness_title">Thickness</string>
     <string name="battery_bar_animate_title">Charging Animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+    <string name="battery_bar_charging_color">Charging Color</string>
+    <string name="battery_bar_battery_low_color">Low Battery Color</string>
 
     <!-- Headphones icon switch -->
     <string name="show_headset_icon_title">Headset Icon</string>
