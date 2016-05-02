@@ -53,6 +53,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private static final String DASHBOARD_COLUMNS_COUNT = "dashboard_columns_count";
     private static final String SETTINGS_TITLE_TEXT_SIZE  = "settings_title_text_size";
     private static final String SETTINGS_CATEGORY_TEXT_SIZE  = "settings_category_text_size";
+    private static final String SETTINGS_TOOLBAR_TEXT_COLOR = "settings_toolbar_text_color";
 
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mIconColor;
@@ -62,6 +63,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private ListPreference mDashColumns;
     private SeekBarPreference mDashTitleTextSize;
     private SeekBarPreference mDashCategoryTextSize;
+    private ColorPickerPreference mToolbarTextColor;
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
     private static final int VRTOXIN_BLUE = 0xff1976D2;
@@ -152,6 +154,15 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                 Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, 10));
         mDashCategoryTextSize.setOnPreferenceChangeListener(this);
 
+        mToolbarTextColor =
+                (ColorPickerPreference) findPreference(SETTINGS_TOOLBAR_TEXT_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.SETTINGS_TOOLBAR_TEXT_COLOR, VRTOXIN_GREEN);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mToolbarTextColor.setNewPreviewColor(intColor);
+        mToolbarTextColor.setSummary(hexColor);
+        mToolbarTextColor.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -232,6 +243,14 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, width);
+            return true;
+        } else if (preference == mToolbarTextColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.SETTINGS_TOOLBAR_TEXT_COLOR, intHex);
+            preference.setSummary(hex);
             return true;
         }
         return false;

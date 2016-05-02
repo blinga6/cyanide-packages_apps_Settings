@@ -80,6 +80,11 @@
             android:title="@string/dashboard_text_title"
             android:defaultValue="0xff000000" />
 
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="settings_toolbar_text_color"
+            android:title="@string/dashboard_toolbar_text_title"
+            android:defaultValue="0xff000000" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
