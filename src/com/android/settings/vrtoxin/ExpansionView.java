@@ -16,12 +16,15 @@
 
 package com.android.settings.vrtoxin;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.EditTextPreference;
@@ -64,6 +67,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR = "expansion_view_activity_panel_text_color";
     private static final String EXPANSION_VIEW_SHOW_ACTIVITY_PANEL = "expansion_view_show_activity_panel";
     private static final String EXPANSION_VIEW_SHOW_LOGO_PANEL = "expansion_view_show_logo_panel";
+    private static final String EXPANSION_VIEW_CUSTOM_LOGO = "expansion_view_custom_logo";
+    private static final String EXPANSION_VIEW_CUSTOM_RESET = "expansion_view_custom_reset";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
@@ -72,6 +77,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
+
+    public final static int IMAGE_PICK = 1;
 
     private ColorPickerPreference mExpansionViewTextColor;
     private ListPreference mExpansionViewFontStyle;
@@ -91,6 +98,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private ColorPickerPreference mExpansionViewActivityPanelTextColor;
     private SwitchPreference mShowLogoPanel;
     private SwitchPreference mShowActivityPanel;
+    private Preference mCustomLogo;
+    private Preference mCustomLogoReset;
 
     private ContentResolver mResolver;
 
@@ -266,6 +275,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             mShowLogoPanel.setOnPreferenceChangeListener(this);
         }
 
+        mCustomLogo = findPreference(EXPANSION_VIEW_CUSTOM_LOGO);
+        mCustomLogoReset = findPreference(EXPANSION_VIEW_CUSTOM_RESET);
+
         setHasOptionsMenu(true);
     }
 
@@ -419,6 +431,33 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mCustomLogo) {
+            setCustomLogo();
+            return true;
+        } else if (preference == mCustomLogoReset) {
+            Settings.System.putString(mResolver,
+            mCustomLogo.getKey(), "");
+            return true;
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == IMAGE_PICK && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Settings.System.putString(mResolver, EXPANSION_VIEW_CUSTOM_LOGO, selectedImage.toString());
+        }
+    }
+
+    private void setCustomLogo() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(intent, IMAGE_PICK);
     }
 
     private void updateCustomTextPreference() {

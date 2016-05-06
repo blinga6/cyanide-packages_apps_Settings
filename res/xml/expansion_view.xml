@@ -81,13 +81,6 @@
         android:summary="@string/expansion_view_layout_changer_summary"
         android:defaultValue="true" />
 
-    <!-- Logo Panel -->
-    <SwitchPreference
-        android:key="expansion_view_show_logo_panel"
-        android:title="@string/expansion_view_show_logo_panel_title"
-        android:summary="@string/expansion_view_show_logo_panel_summary"
-        android:defaultValue="true" />
-
     <!-- Shortcut Bar -->
     <PreferenceScreen
         android:key="panel_shortcuts"
@@ -172,6 +165,32 @@
             android:key="expansion_view_activity_panel_text_color"
             android:title="@string/text_title"
             android:defaultValue="0xffffffff" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="logo_panel"
+        android:title="@string/expansion_view_show_logo_panel_category_title">
+
+        <!-- Logo Panel -->
+        <SwitchPreference
+            android:key="expansion_view_show_logo_panel"
+            android:title="@string/expansion_view_show_logo_panel_title"
+            android:summary="@string/expansion_view_show_logo_panel_summary"
+            android:defaultValue="true" />
+
+        <!-- Custom Logo -->
+        <Preference
+            android:key="expansion_view_custom_logo"
+            android:dependency="expansion_view_show_logo_panel"
+            android:title="@string/expansion_view_custom_logo_title"
+            android:summary="@string/expansion_view_custom_logo_summary" />
+
+        <!-- Custom Logo Reset -->
+        <Preference
+            android:key="expansion_view_custom_reset"
+            android:dependency="expansion_view_show_logo_panel"
+            android:title="@string/expansion_view_custom_reset_title" />
 
     </PreferenceCategory>
 

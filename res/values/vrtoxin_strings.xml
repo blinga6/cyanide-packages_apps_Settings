@@ -2549,8 +2549,12 @@
     <string name="expansion_view_battery_summary">Customize the battery icon in the expansion view info panel</string>
     <string name="expansion_view_show_activity_panel_title">Info Panel</string>
     <string name="expansion_view_show_activity_panel_summary">Enable/disable the Info Panel</string>
-    <string name="expansion_view_show_logo_panel_title">Logo Panel</string>
-    <string name="expansion_view_show_logo_panel_summary">Enable/disable the ROM Logo Panel</string>
+    <string name="expansion_view_show_logo_panel_category_title">Logo Panel</string>
+    <string name="expansion_view_show_logo_panel_title">Show Logo</string>
+    <string name="expansion_view_show_logo_panel_summary">Show/hide the Logo Panel</string>
+    <string name="expansion_view_custom_logo_title">Custom Logo</string>
+    <string name="expansion_view_custom_reset_title">Logo Reset</string>
+    <string name="expansion_view_custom_logo_summary">Select your own image to use for the logo image</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>
