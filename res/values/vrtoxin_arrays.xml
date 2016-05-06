@@ -755,9 +755,9 @@
 
     <!-- Statusbar date -->
     <string-array name="status_bar_date_entries">
-        <item>@string/status_bar_am_pm_normal</item>
-        <item>@string/status_bar_am_pm_small</item>
         <item>@string/status_bar_am_pm_hidden</item>
+        <item>@string/status_bar_am_pm_small</item>
+        <item>@string/status_bar_am_pm_normal</item>
     </string-array>
 
     <string-array name="status_bar_date_values" translatable="false">
