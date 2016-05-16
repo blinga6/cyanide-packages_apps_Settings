@@ -46,6 +46,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String PREF_NUM_OF_COLUMNS = "sysui_qs_num_columns";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
 
     private static final int QS_TYPE_PANEL  = 0;
     private static final int QS_TYPE_BAR    = 1;
@@ -56,6 +58,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private ListPreference mSmartPulldown;
     private ListPreference mNumColumns;
     private SwitchPreference mBlockOnSecureKeyguard;
+    private ListPreference mTileAnimationStyle;
+    private ListPreference mTileAnimationDuration;
 
     private ContentResolver mResolver;
 
@@ -98,8 +102,27 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             mNumColumns.setOnPreferenceChangeListener(this);
             DraggableGridView.setColumnCount(numColumns);
 
+            mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
+            int tileAnimationStyle = Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.ANIM_TILE_STYLE, 0,
+                    UserHandle.USER_CURRENT);
+            mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileDuration(tileAnimationStyle);
+            mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+            mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
+            int tileAnimationDuration = Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.ANIM_TILE_DURATION, 2000,
+                    UserHandle.USER_CURRENT);
+            mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
+            updateTileAnimationDurationSummary(tileAnimationDuration);
+            mTileAnimationDuration.setOnPreferenceChangeListener(this);
+
         } else {
             removePreference("sysui_qs_num_columns");
+            removePreference("qs_tile_animation_style");
+            removePreference("qs_tile_animation_duration");
         }
 
         if (qsType == QS_TYPE_BAR || qsType == QS_TYPE_HIDDEN) {
@@ -110,6 +133,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             removePreference("quick_settings_collapse_panel");
             removePreference("qs_wifi_detail");
             removePreference("quick_settings_vibrate");
+            removePreference("qs_tile_animation_style");
+            removePreference("qs_tile_animation_duration");
         }
 
         if (qsType == QS_TYPE_PANEL || qsType == QS_TYPE_HIDDEN) {
@@ -185,6 +210,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
             return true;
+        } else if (preference == mTileAnimationStyle) {
+            int tileAnimationStyle = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_STYLE,
+                    tileAnimationStyle, UserHandle.USER_CURRENT);
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileDuration(tileAnimationStyle);
+            return true;
+        } else if (preference == mTileAnimationDuration) {
+            int tileAnimationDuration = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_DURATION,
+                    tileAnimationDuration, UserHandle.USER_CURRENT);
+            updateTileAnimationDurationSummary(tileAnimationDuration);
+            return true;
         }
         return false;
     }
@@ -244,6 +282,28 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             return Math.max(1, val);
         } catch (Exception e) {
             return 3;
+        }
+    }
+
+    private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
+        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
+                .valueOf(tileAnimationStyle))];
+        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
+    }
+
+    private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
+        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
+                .valueOf(tileAnimationDuration))];
+        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
+    }
+
+    private void updateAnimTileDuration(int tileAnimationStyle) {
+        if (mTileAnimationDuration != null) {
+            if (tileAnimationStyle == 0) {
+                mTileAnimationDuration.setSelectable(false);
+            } else {
+                mTileAnimationDuration.setSelectable(true);
+            }
         }
     }
 
