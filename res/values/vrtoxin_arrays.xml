@@ -1962,17 +1962,19 @@
 
     <!-- Custom header images -->
     <string-array name="custom_header_entries">
+        <item>@string/custom_header_image_3</item>
         <item>@string/custom_header_image_0</item>
         <item>@string/custom_header_image_1</item>
+        <item>@string/custom_header_image_4</item>
         <item>@string/custom_header_image_2</item>
-        <item>@string/custom_header_image_3</item>
     </string-array>
 
     <string-array name="custom_header_values" translatable="false">
+        <item>3</item>
         <item>0</item>
         <item>1</item>
+        <item>4</item>
         <item>2</item>
-        <item>3</item>
     </string-array>
 
     <!-- Names of categories of app ops tabs - extension of AOSP -->
