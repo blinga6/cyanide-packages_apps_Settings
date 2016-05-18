@@ -36,11 +36,14 @@ import android.content.SyncInfo;
 import android.content.SyncStatusInfo;
 import android.content.pm.ProviderInfo;
 import android.content.pm.UserInfo;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -253,17 +256,26 @@ public class AccountSyncSettings extends AccountPreferenceBase {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        ContentResolver resolver = getActivity().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(R.drawable.ic_menu_refresh_holo_dark).mutate();
+        Drawable d1 = getResources().getDrawable(R.drawable.ic_menu_delete).mutate();
+        Drawable d2 = getResources().getDrawable(com.android.internal.R.drawable.ic_menu_close_clear_cancel).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        d1.setColorFilter(color, Mode.SRC_IN);
+        d2.setColorFilter(color, Mode.SRC_IN);
         MenuItem syncNow = menu.add(0, MENU_SYNC_NOW_ID, 0,
                 getString(R.string.sync_menu_sync_now))
-                .setIcon(R.drawable.ic_menu_refresh_holo_dark);
+                .setIcon(d);
         MenuItem syncCancel = menu.add(0, MENU_SYNC_CANCEL_ID, 0,
                 getString(R.string.sync_menu_sync_cancel))
-                .setIcon(com.android.internal.R.drawable.ic_menu_close_clear_cancel);
+                .setIcon(d2);
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
         if (!um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS, mUserHandle)) {
             MenuItem removeAccount = menu.add(0, MENU_REMOVE_ACCOUNT_ID, 0,
                     getString(R.string.remove_account_label))
-                    .setIcon(R.drawable.ic_menu_delete);
+                    .setIcon(d1);
             removeAccount.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER |
                     MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         }

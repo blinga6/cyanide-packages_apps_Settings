@@ -22,6 +22,8 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.EditTextPreference;
@@ -207,8 +209,12 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        int color = Settings.System.getInt(mResolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(com.android.internal.R.drawable.ic_settings_backup_restore).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
         menu.add(0, MENU_RESET, 0, R.string.reset)
-                .setIcon(com.android.internal.R.drawable.ic_settings_backup_restore)
+                .setIcon(d)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 

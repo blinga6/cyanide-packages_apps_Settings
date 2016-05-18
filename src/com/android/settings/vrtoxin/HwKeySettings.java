@@ -31,6 +31,7 @@ import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.preference.SwitchPreference;
 import android.preference.Preference;
@@ -677,8 +678,12 @@ public class HwKeySettings extends SettingsPreferenceFragment implements
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.shortcut_action_reset)
-                .setIcon(com.android.internal.R.drawable.ic_settings_backup_restore)
+        int color = Settings.System.getInt(getContentResolver(),
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(com.android.internal.R.drawable.ic_settings_backup_restore).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        menu.add(0, MENU_RESET, 0, R.string.reset)
+                .setIcon(d)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 

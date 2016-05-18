@@ -16,7 +16,10 @@
 
 package com.android.settings.vrtoxin;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.View;
@@ -247,13 +250,20 @@ public class WakelockBlocker extends SettingsPreferenceFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(com.android.internal.R.drawable.ic_menu_refresh).mutate();
+        Drawable d2 = getResources().getDrawable(R.drawable.ic_wakelockblocker_save).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        d2.setColorFilter(color, Mode.SRC_IN);
         menu.add(0, MENU_RELOAD, 0, R.string.wakelock_blocker_reload)
-                .setIcon(com.android.internal.R.drawable.ic_menu_refresh)
+                .setIcon(d)
                 .setAlphabeticShortcut('r')
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                         MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         menu.add(0, MENU_SAVE, 0, R.string.wakelock_blocker_save)
-                .setIcon(R.drawable.ic_wakelockblocker_save)
+                .setIcon(d2)
                 .setAlphabeticShortcut('s')
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                         MenuItem.SHOW_AS_ACTION_WITH_TEXT);

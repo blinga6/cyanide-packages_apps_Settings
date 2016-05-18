@@ -32,11 +32,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -176,10 +178,17 @@ public class ManageAccountsSettings extends AccountPreferenceBase
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        int color = Settings.System.getInt(resolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(R.drawable.ic_menu_refresh_holo_dark).mutate();
+        Drawable d2 = getResources().getDrawable(com.android.internal.R.drawable.ic_menu_close_clear_cancel).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        d2.setColorFilter(color, Mode.SRC_IN);
         menu.add(0, MENU_SYNC_NOW_ID, 0, getString(R.string.sync_menu_sync_now))
-                .setIcon(R.drawable.ic_menu_refresh_holo_dark);
+                .setIcon(d);
         menu.add(0, MENU_SYNC_CANCEL_ID, 0, getString(R.string.sync_menu_sync_cancel))
-                .setIcon(com.android.internal.R.drawable.ic_menu_close_clear_cancel);
+                .setIcon(d2);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

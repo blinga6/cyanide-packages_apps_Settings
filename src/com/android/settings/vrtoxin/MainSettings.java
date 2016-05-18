@@ -21,9 +21,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.net.Uri;
 import android.text.Html;
 import android.os.Bundle;
@@ -73,6 +76,7 @@ public class MainSettings extends SettingsPreferenceFragment {
     String titleString[];
     ViewGroup mContainer;
     PagerSlidingTabStrip mTabs;
+    ContentResolver mResolver;
 
     static Bundle mSavedState;
 
@@ -83,8 +87,13 @@ public class MainSettings extends SettingsPreferenceFragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContainer = container;
+        mResolver = getActivity().getContentResolver();
         final ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setIcon(R.drawable.ic_settings_vrtoxin);
+        int color = Settings.System.getInt(mResolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(R.drawable.ic_settings_vrtoxin).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        actionBar.setIcon(d);
 
         View view = inflater.inflate(R.layout.preference_vrtoxin_shit, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
