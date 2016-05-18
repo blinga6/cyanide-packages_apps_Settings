@@ -63,9 +63,8 @@ public class ColorPickerDialog extends Dialog implements
             "favorite_color_button_";
 
     private static final int PALETTE_VRTOXIN     = 0;
-    private static final int PALETTE_BLACKOUT    = 1;
-    private static final int PALETTE_MATERIAL    = 2;
-    private static final int PALETTE_RGB         = 3;
+    private static final int PALETTE_MATERIAL    = 1;
+    private static final int PALETTE_RGB         = 2;
 
     private static final int SHOW = 0;
     private static final int HIDE = 1;
