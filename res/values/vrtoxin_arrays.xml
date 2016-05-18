@@ -925,13 +925,13 @@
 
     <array name="color_picker_vrtoxin_palette">
         <item>@color/black</item>
-        <item>@color/material_blue_grey</item>
+        <item>@color/blackout_blue</item>
+        <item>@color/blackout_red</item>
+        <item>@color/blackout_green</item>
+        <item>@color/blackout_yellow</item>
+        <item>@color/see_through</item>>
         <item>@color/holo_blue_light</item>
-        <item>@color/material_deep_teal_500</item>
-        <item>@color/white</item>
-        <item>@color/material_indigo_500</item>
-        <item>@color/material_red_500</item>>
-        <item>@color/material_purple_500</item>
+        <item>@color/material_blue_grey</item>
     </array>
 
     <array name="color_picker_material_palette">
