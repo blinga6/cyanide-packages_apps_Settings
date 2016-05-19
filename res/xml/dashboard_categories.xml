@@ -142,6 +142,17 @@
                 android:icon="@drawable/ic_settings_themes"
                 />
 
+        <!-- Weather Service -->
+        <dashboard-tile
+                android:id="@+id/weather_settings"
+                android:title="@string/lock_screen_weather_settings_title"
+                android:icon="@drawable/ic_settings_weather">
+                <intent
+                    android:action="android.intent.action.MAIN"
+                    android:targetClass="net.cyanide.weather.SettingsActivity"
+                    android:targetPackage="net.cyanide.weather" />
+        </dashboard-tile>
+
     </dashboard-category>
 
     <!-- PERSONAL -->

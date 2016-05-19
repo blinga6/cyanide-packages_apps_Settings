@@ -1336,7 +1336,7 @@
     <string name="lock_screen_number_of_notifications_five_title">5</string>
     <string name="lock_screen_number_of_notifications_six_title">6</string>
     <string name="weather_cat_notifications_title">Notifications</string>
-    <string name="lock_screen_weather_settings_title">Lockscreen Weather</string>
+    <string name="lock_screen_weather_settings_title">Weather</string>
     <string name="lock_screen_clock_font_size_title">Clock Size</string>
     <string name="lock_screen_alarm_date_font_size_title">Date Size</string>
     <string name="lock_screen_weather_font_size_title">Weather Text Size</string>

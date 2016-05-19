@@ -58,7 +58,6 @@ import com.android.settings.vrtoxin.SlimSizer;
 import com.android.settings.vrtoxin.StatusBarSettings;
 import com.android.settings.vrtoxin.VrtoxinNotifs;
 import com.android.settings.vrtoxin.WakelockBlocker;
-import com.android.settings.vrtoxin.WeatherControl;
 import com.android.settings.notification.OtherSoundSettings;
 
 import java.util.ArrayList;
@@ -140,7 +139,6 @@ public class MainSettings extends SettingsPreferenceFragment {
             frags[12] = new StatusBarSettings();
             frags[13] = new SlimSizer();
             frags[14] = new WakelockBlocker();
-            frags[15] = new WeatherControl();
         }
 
         @Override
@@ -177,8 +175,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.recents_panel),
                     getString(R.string.status_bar_title),
                     getString(R.string.sizer_title),
-                    getString(R.string.wakelock_blocker_title),
-                    getString(R.string.weather_control_master_title)};
+                    getString(R.string.wakelock_blocker_title)};
         } else {
         titleString = new String[]{
                     getString(R.string.advanced_sound_title),
@@ -195,8 +192,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                     getString(R.string.recents_panel),
                     getString(R.string.status_bar_title),
                     getString(R.string.sizer_title),
-                    getString(R.string.wakelock_blocker_title),
-                    getString(R.string.weather_control_master_title)};
+                    getString(R.string.wakelock_blocker_title)};
         }
         return titleString;
     }
