@@ -534,8 +534,8 @@
         <item>**power_menu**</item>
         <item>**recents**</item>
         <item>**power**</item>
-        <item>**search**</item>
         <item>**screenshot**</item>
+        <item>**search**</item>
         <item>**torch**</item>
     </string-array>
 
