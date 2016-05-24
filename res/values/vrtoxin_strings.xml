@@ -2685,4 +2685,14 @@
 \n\nDon\u2019t remove the <xliff:g id="name" example="SD card">^2</xliff:g> during the move.<xliff:g id="forcetext">^3</xliff:g>
     </string>
 
+    <!-- Keyguard Logo -->
+    <string name="keyguard_logo_title">Logo</string>
+    <string name="keyguard_logo_summary">Customize showing, color &amp; custom image for the ROM logo</string>
+    <string name="keyguard_logo_show_title">Show</string>
+    <string name="keyguard_logo_show_summary">Enable to show the ROM logo on the lock screen</string>
+    <string name="keyguard_logo_custom_reset">Logo Reset</string>
+    <string name="keyguard_logo_custom_reset_summary">Reset the logo to the default image</string>
+    <string name="keyguard_logo_custom_title">Custom Logo</string>
+    <string name="keyguard_logo_custom_summary">Select a custom image for the logo view</string>
+
 </resources>
