@@ -2536,9 +2536,7 @@
     <string name="expansion_view_animation_rotate">Rotate</string>
     <string name="expansion_view_animation_turn">Turn</string>
     <string name="expansion_view_animation_up">Up</string>
-    <string name="expansion_view_text_title">Show Text</string>
-    <string name="expansion_view_text_summary">Whether or not to show the text</string>
-    <string name="expansion_view_shortcuts_show_title">Show Shortcut Bar</string>
+    <string name="expansion_view_shortcuts_show_title">Enable Shortcut Bar</string>
     <string name="expansion_view_shortcuts_show_summary">Enabling this will allow showing the expansion view shortcut bar</string>
     <string name="expansion_view_vibration_title">Vibration</string>
     <string name="expansion_view_vibration_summary">Whether or not to vibrate on click actions</string>
@@ -2546,14 +2544,22 @@
     <string name="expansion_view_traffic_summary">Enable/disable and customize traffic in the expansion view info panel</string>
     <string name="expansion_view_battery_fragment_title">Expansion View Battery</string>
     <string name="expansion_view_battery_summary">Customize the battery icon in the expansion view info panel</string>
-    <string name="expansion_view_show_activity_panel_title">Show/hide the Info Panel</string>
-    <string name="expansion_view_show_activity_panel_summary">Enable/disable the Info Panel</string>
     <string name="expansion_view_show_logo_panel_category_title">Logo Panel</string>
-    <string name="expansion_view_show_logo_panel_title">Show Logo</string>
-    <string name="expansion_view_show_logo_panel_summary">Show/hide the Logo Panel</string>
     <string name="expansion_view_custom_logo_title">Custom Logo</string>
     <string name="expansion_view_custom_reset_title">Logo Reset</string>
+    <string name="expansion_view_custom_reset_summary">Reset image to default selection</string>
     <string name="expansion_view_custom_logo_summary">Select your own image to use for the logo image</string>
+    <string name="expansion_view_custom_panel">Custom Panel</string>
+    <string name="expansion_view_weather_panel">Weather Panel</string>
+    <string name="expansion_view_info_panel">Info Panel</string>
+    <string name="expansion_view_logo_panel">Logo Panel</string>
+    <string name="expansion_view_panel_selection">Select your custom panel option</string>
+    <string name="expansion_view_panel_one">Panel 1 (Default)</string>
+    <string name="expansion_view_panel_two">Panel 2</string>
+    <string name="expansion_view_panel_three">Panel 3</string>
+    <string name="expansion_view_panel_four">Panel 4</string>
+    <string name="expansion_view_panels_title">Panel Selection</string>
+    <string name="expansion_view_panels_summary">Setup your own panel layout</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>

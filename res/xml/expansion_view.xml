@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The VRToxin Project
+<!-- Copyright (C) 2016 Cyanide Android (rogerseb11)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -36,22 +36,6 @@
         android:summary="@string/expansion_view_background_summary"
         android:defaultValue="false" />
 
-    <!-- Custom Text -->
-    <EditTextPreference
-        android:key="expansion_view_text_custom"
-        android:title="@string/expansion_view_custom_text_title"
-        android:dialogMessage="@string/expansion_view_custom_text_dlg_message" />
-
-    <!-- Text Size -->
-    <com.android.settings.vrtoxin.SeekBarPreference
-        android:key="expansion_view_text_size"
-        android:title="@string/status_bar_weather_size_title"
-        android:defaultValue="14"
-        android:max="30"
-        settings:minimum="4"
-        settings:unitsLeft=""
-        settings:unitsRight="dp" />
-
     <!-- Font Styles -->
     <ListPreference
         android:key="expansion_view_font_style"
@@ -74,26 +58,12 @@
         android:summary="@string/expansion_view_layout_changer_summary"
         android:defaultValue="true" />
 
-    <!-- Shortcut Bar -->
+    <!-- Panel Selection -->
     <PreferenceScreen
-        android:key="panel_shortcuts"
-        android:title="@string/panel_shortcuts_title"
-        android:summary="@string/panel_shortcuts_summary"
-        android:fragment="com.android.settings.vrtoxin.fragments.PanelShortcutFragment" />
-
-    <!-- Show Shortcut Bar -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="expansion_view_panel_shortcuts"
-        android:title="@string/expansion_view_shortcuts_show_title"
-        android:summary="@string/expansion_view_shortcuts_show_summary"
-        android:defaultValue="false" />
-
-    <!-- Show Text -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="expansion_view_text"
-        android:title="@string/expansion_view_text_title"
-        android:summary="@string/expansion_view_text_summary"
-        android:defaultValue="true" />
+        android:key="expansion_view_panel_selection"
+        android:fragment="com.android.settings.vrtoxin.ExpansionViewPanels"
+        android:summary="@string/expansion_view_panels_summary"
+        android:title="@string/expansion_view_panels_title" />
 
     <!-- Vibration -->
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
@@ -121,6 +91,43 @@
             android:title="@string/ripple_title"
             android:defaultValue="0xffffffff" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="custom_panel"
+        android:title="@string/expansion_view_custom_panel">
+
+        <!-- Show Shortcut Bar -->
+        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+            android:key="expansion_view_panel_shortcuts"
+            android:title="@string/expansion_view_shortcuts_show_title"
+            android:summary="@string/expansion_view_shortcuts_show_summary"
+            android:defaultValue="false" />
+
+        <!-- Shortcut Bar -->
+        <PreferenceScreen
+            android:key="panel_shortcuts"
+            android:title="@string/panel_shortcuts_title"
+            android:summary="@string/panel_shortcuts_summary"
+            android:dependency="expansion_view_panel_shortcuts"
+            android:fragment="com.android.settings.vrtoxin.fragments.PanelShortcutFragment" />
+
+        <!-- Custom Text -->
+        <EditTextPreference
+            android:key="expansion_view_text_custom"
+            android:title="@string/expansion_view_custom_text_title"
+            android:dialogMessage="@string/expansion_view_custom_text_dlg_message" />
+
+        <!-- Text Size -->
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="expansion_view_text_size"
+            android:title="@string/status_bar_weather_size_title"
+            android:defaultValue="14"
+            android:max="30"
+            settings:minimum="4"
+            settings:unitsLeft=""
+            settings:unitsRight="dp" />
+
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expansion_view_text_color"
             android:title="@string/text_title"
@@ -131,13 +138,6 @@
     <PreferenceCategory
         android:key="info_panel"
         android:title="@string/expansion_view_info_panel">
-
-        <!-- Show Panel -->
-        <SwitchPreference
-            android:key="expansion_view_show_activity_panel"
-            android:title="@string/expansion_view_show_activity_panel_title"
-            android:summary="@string/expansion_view_show_activity_panel_summary"
-            android:defaultValue="true" />
 
         <PreferenceScreen
             android:key="expansion_view_battery_settings"
@@ -172,25 +172,17 @@
         android:key="logo_panel"
         android:title="@string/expansion_view_show_logo_panel_category_title">
 
-        <!-- Logo Panel -->
-        <SwitchPreference
-            android:key="expansion_view_show_logo_panel"
-            android:title="@string/expansion_view_show_logo_panel_title"
-            android:summary="@string/expansion_view_show_logo_panel_summary"
-            android:defaultValue="true" />
-
         <!-- Custom Logo -->
         <Preference
             android:key="expansion_view_custom_logo"
-            android:dependency="expansion_view_show_logo_panel"
             android:title="@string/expansion_view_custom_logo_title"
             android:summary="@string/expansion_view_custom_logo_summary" />
 
         <!-- Custom Logo Reset -->
         <Preference
             android:key="expansion_view_custom_reset"
-            android:dependency="expansion_view_show_logo_panel"
-            android:title="@string/expansion_view_custom_reset_title" />
+            android:title="@string/expansion_view_custom_reset_title"
+            android:summary="@string/expansion_view_custom_reset_summary" />
 
     </PreferenceCategory>
 
@@ -218,12 +210,6 @@
             settings:minimum="4"
             settings:unitsLeft=""
             settings:unitsRight="dp" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="weather_panel"
-        android:title="@string/expansion_view_weather_panel_colors">
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expansion_view_weather_icon_color"
