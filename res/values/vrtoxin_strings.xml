@@ -47,18 +47,22 @@
     <string name="colorize_icons_title">Colorize icons</string>
     <string name="colorize_icons_dialog_title">Choose when to colorize the icon</string>
     <string name="ripple_title">Ripple Effect</string>
+    <string name="ripple_dark_mode_title">Ripple Effect Dark Mode</string>
     <string name="colorize_ripple_title">Colorize ripple effect</string>
     <string name="colorize_ripple_dialog_title">Choose how to colorize the ripple effect</string>
     <string name="icon_is_greyscale_title">If the icon is an greyscale icon</string>
     <string name="background_title">Background</string>
+    <string name="background_dark_mode_title">Background Dark Mode</string>
     <string name="position_title">Position</string>
     <string name="show_title">Show</string>
     <string name="hidden_title">Hidden</string>
     <string name="icon_title">Icon</string>
     <string name="icons_title">Icons</string>
+    <string name="icons_dark_mode_title">Icons Dark Mode</string>
+    <string name="custom_colors">Custom Colors</string>
     <string name="buttons_title">Buttons</string>
-    <string name="ripple_title">Ripple Effect Color</string>
     <string name="text_title">Text</string>
+    <string name="text_dark_mode_title">Text Dark Mode</string>
     <string name="weather_text_title">Weather Text</string>
     <string name="category_colors_title">Customize Colors</string>
     <string name="reset_message">Reset all entries to default?</string>
@@ -75,8 +79,8 @@
     <string name="number_of_notifications_six_title">6</string>
 
     <string name="notification_color_mode_never_title">Never</string>
-    <string name="notification_icon_color_mode_greyscale_title">If the icon is an greyscale icon</string>
-    <string name="notification_bg_color_mode_no_color_title">If the notification doesn\`t include an own color</string>
+    <string name="notification_icon_color_mode_greyscale_title">If the icon is a greyscale icon</string>
+    <string name="notification_bg_color_mode_no_color_title">If the notification doesn\`t have it\'s own color</string>
     <string name="notification_color_mode_always_title">Always</string>
     <string name="notification_ringtone_title">Notification Tone</string>
 
@@ -1178,7 +1182,7 @@
 
     <!-- Android recents settings -->
     <string name="recents_panel">Recents Panel</string>
-    <string name="recents_control_title">Clear All Button Options</string>
+    <string name="recents_clear_all_options_title">Clear All Button</string>
     <string name="recents_clear_all_location_title">Clear All Location</string>
     <string name="android_recents_clear_all_use_icon_color_title">Icon Color</string>
     <string name="android_recents_clear_all_use_icon_color_summary">Enable to use a custom color for the clear all button icon</string>
@@ -1198,13 +1202,18 @@
     <string name="android_recents_clear_all_use_icon_color_summary">Enable to use a custom color for the clear all button icon</string>
     <string name="recents_clear_all_dismiss_all_title">Clear All Tasks</string>
     <string name="recents_clear_all_dismiss_all_summary">Choose whether to dismiss all tasks or ignore the foreground task</string>
-    <string name="memory_bar_options_title">Memory Bar Settings</string>
+    <string name="memory_bar_options_title">Memory Bar</string>
     <string name="recents_show_membar_title">Memory Bar</string>
     <string name="recents_show_membar_summary_enabled">Recents RAM Bar is enabled</string>
     <string name="recents_show_membar_summary_disabled">Recents RAM Bar is disabled</string>
     <string name="membar_text_color">Bar Text Color</string>
     <string name="membar_bar_color">Bar Free Color</string>
     <string name="membar_bar_used_color">Bar Used Color</string>
+    <string name="recents_cards_colors_title">Card Colors</string>
+    <string name="app_icon_color_title">App Icon</string>
+    <string name="recents_panel_colors">Stock Recents Colors</string>
+    <string name="recents_panel_colors_summary">Customize the many different variables of the recents view</string>
+    <string name="immersive_recents_options_title">Immersive Recents</string>
 
     <!-- Keep screen on strings -->
     <string name="keep_screen_on_never">Never</string>

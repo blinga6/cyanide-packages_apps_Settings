@@ -54,16 +54,9 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
 			Preference.OnPreferenceChangeListener {
 
     private static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
-    private static final String MEMORY_BAR_CAT_COLORS = "memory_bar";
     private static final String PREF_CAT_CLEAR_ALL = "recents_panel";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
-    private static final String PREF_CLEAR_ALL_USE_ICON_COLOR = "recents_clear_all_use_icon_color";
-    private static final String PREF_CLEAR_ALL_BG_COLOR = "recent_apps_clear_all_bg_color";
-    private static final String PREF_CLEAR_ALL_ICON_COLOR = "recent_apps_clear_all_icon_color";
-    private static final String MEM_TEXT_COLOR = "mem_text_color";
-    private static final String MEMORY_BAR_COLOR = "memory_bar_color";
-    private static final String MEMORY_BAR_USED_COLOR = "memory_bar_used_color";
     private static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
     private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -74,28 +67,15 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String KEY_SCREEN_PINNING = "screen_pinning_settings";
     private static final String IMMERSIVE_RECENTS_CAT_OPTIONS = "immersive_recents_cat_options";
     private static final String IMMERSIVE_RECENTS = "immersive_recents";
-    private static final String RECENTS_FULL_SCREEN_CLOCK_COLOR = "recents_full_screen_clock_color";
-    private static final String RECENTS_FULL_SCREEN_DATE_COLOR = "recents_full_screen_date_color";
     private static final String RECENTS_FONT_STYLE = "recents_font_style";
     private static final String RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE = "recents_full_screen_clock_date_size";
-    
-    private static final int DEFAULT_COLOR = 0xff009688;
-    private static final int WHITE = 0xffffffff;
-    private static final int VRTOXIN_BLUE = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
-    
     private SwitchPreference mMemoryBar;
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
-    private SwitchPreference mClearAllUseIconColor;
-    private ColorPickerPreference mClearAllIconColor;
-    private ColorPickerPreference mClearAllBgColor;
-    private ColorPickerPreference mMemTextColor;
-    private ColorPickerPreference mMemBarColor;
-    private ColorPickerPreference mMemBarUsedColor;
     private PreferenceScreen mScreenPinning;
     private SwitchPreference mRecentsUseOmniSwitch;
     private Preference mOmniSwitchSettings;
@@ -103,8 +83,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private PreferenceCategory mOmniSwitch;
     private SwitchPreference mRecentsStyle;
     private ListPreference mImmersiveRecents;
-    private ColorPickerPreference mClockColor;
-    private ColorPickerPreference mDateColor;
     private ListPreference mRecentsFontStyle;
     private SeekBarPreference mRecentsFontSize;
 
@@ -154,66 +132,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
         updateRecentsLocation(location);
-        
-        mClearAllUseIconColor = (SwitchPreference) findPreference(PREF_CLEAR_ALL_USE_ICON_COLOR);
-        boolean clearAllUseIconColor = Settings.System.getInt(mResolver,
-               Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 0) == 1;
-        mClearAllUseIconColor.setChecked(clearAllUseIconColor);
-        mClearAllUseIconColor.setOnPreferenceChangeListener(this);
-
-        mClearAllBgColor = (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_BG_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR, DEFAULT_COLOR); 
-        mClearAllBgColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mClearAllBgColor.setSummary(hexColor);
-        mClearAllBgColor.setOnPreferenceChangeListener(this);
-
-        if (clearAllUseIconColor) {
-            mClearAllIconColor = (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_ICON_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR, WHITE); 
-            mClearAllIconColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mClearAllIconColor.setSummary(hexColor);
-            mClearAllIconColor.setOnPreferenceChangeListener(this);
-        } else {
-            catClearAll.removePreference(findPreference(PREF_CLEAR_ALL_ICON_COLOR));
-        }
-
-        PreferenceCategory memColors =
-                (PreferenceCategory) findPreference(MEMORY_BAR_CAT_COLORS);
-
-        if (enableMemoryBar) {
-            mMemTextColor =
-                    (ColorPickerPreference) findPreference(MEM_TEXT_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.MEM_TEXT_COLOR, WHITE); 
-            mMemTextColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mMemTextColor.setSummary(hexColor);
-            mMemTextColor.setOnPreferenceChangeListener(this);
-
-            mMemBarColor =
-                    (ColorPickerPreference) findPreference(MEMORY_BAR_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.MEMORY_BAR_COLOR, WHITE); 
-            mMemBarColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mMemBarColor.setSummary(hexColor);
-            mMemBarColor.setOnPreferenceChangeListener(this);
-
-            mMemBarUsedColor =
-                    (ColorPickerPreference) findPreference(MEMORY_BAR_USED_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.MEMORY_BAR_USED_COLOR, WHITE); 
-            mMemBarUsedColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mMemBarUsedColor.setSummary(hexColor);
-            mMemBarUsedColor.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(MEMORY_BAR_CAT_COLORS);
-        }
 
         final boolean screenPinning = Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCK_TO_APP_ENABLED, 0) == 1;
@@ -250,34 +168,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mImmersiveRecents.setValue(String.valueOf(Settings.System.getInt(
                 mResolver, Settings.System.IMMERSIVE_RECENTS, 0)));
         mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
-        mImmersiveRecents.setOnPreferenceChangeListener(this);
-
-        PreferenceCategory recentsOptions =
-                (PreferenceCategory) findPreference(IMMERSIVE_RECENTS_CAT_OPTIONS);
-
-        if (immersiveRecents == 0) {
-            removePreference(IMMERSIVE_RECENTS_CAT_OPTIONS);
-        } else if (immersiveRecents == 2) {
-            removePreference(IMMERSIVE_RECENTS_CAT_OPTIONS);
-        } else {
-            mClockColor =
-                    (ColorPickerPreference) findPreference(RECENTS_FULL_SCREEN_CLOCK_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR, WHITE);
-            mClockColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mClockColor.setSummary(hexColor);
-            mClockColor.setOnPreferenceChangeListener(this);
-
-            mDateColor =
-                    (ColorPickerPreference) findPreference(RECENTS_FULL_SCREEN_DATE_COLOR);
-            intColor = Settings.System.getInt(mResolver,
-                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR, WHITE);
-            mDateColor.setNewPreviewColor(intColor);
-            hexColor = String.format("#%08x", (0xffffffff & intColor));
-            mDateColor.setSummary(hexColor);
-            mDateColor.setOnPreferenceChangeListener(this);
-        }
 
         mRecentsFontStyle = (ListPreference) findPreference(RECENTS_FONT_STYLE);
         mRecentsFontStyle.setOnPreferenceChangeListener(this);
@@ -330,7 +220,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             Settings.System.putInt(mResolver,
                     Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY,
                     value ? 1 : 0);
-            refreshSettings();
             return true;
         } else if (preference == mRecentsClearAll) {
             boolean show = (Boolean) objValue;
@@ -343,52 +232,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
             refreshSettings();
-            return true;
-        } else if (preference == mClearAllUseIconColor) {
-            boolean value = (Boolean) objValue;
-            Settings.System.putInt(mResolver,
-                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR,
-                    value ? 1 : 0);
-            refreshSettings();
-        } else if (preference == mClearAllBgColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mClearAllIconColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mMemTextColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.MEM_TEXT_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mMemBarColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.MEMORY_BAR_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mMemBarUsedColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.MEMORY_BAR_USED_COLOR, intHex);
-            preference.setSummary(hex);
             return true;
         } else if (preference == mScreenPinning) {
             boolean value = (Boolean) objValue;
@@ -418,23 +261,6 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                     Integer.valueOf((String) objValue));
             mImmersiveRecents.setValue(String.valueOf(objValue));
             mImmersiveRecents.setSummary(mImmersiveRecents.getEntry());
-            refreshSettings();
-            return true;
-        } else if (preference == mClockColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
-        } else if (preference == mDateColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR, intHex);
-            preference.setSummary(hex);
             return true;
         } else if (preference == mRecentsFontStyle) {
             int val = Integer.parseInt((String) objValue);
@@ -530,35 +356,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 0);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR,
-                                    DEFAULT_COLOR);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR,
-                                    WHITE);
-                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 0);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEM_TEXT_COLOR,
-                                    WHITE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEMORY_BAR_COLOR,
-                                    WHITE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEMORY_BAR_USED_COLOR,
-                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 0);
                                     Helpers.restartSystemUI();
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.IMMERSIVE_RECENTS, 0);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR,
-                                    WHITE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
-                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FONT_STYLE,
                                     0);
@@ -573,35 +376,12 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, 3);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_CLEAR_ALL_USE_ICON_COLOR, 1);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENT_APPS_CLEAR_ALL_BG_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENT_APPS_CLEAR_ALL_ICON_COLOR,
-                                    0xff00ff00);
-                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SYSTEMUI_RECENTS_MEM_DISPLAY, 1);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEM_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEMORY_BAR_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.MEMORY_BAR_USED_COLOR,
-                                    0xff00ff00);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_EMPTY_VRTOXIN_LOGO, 1);
                                     Helpers.restartSystemUI();
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.IMMERSIVE_RECENTS, 1);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR,
-                                    VRTOXIN_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.RECENTS_FULL_SCREEN_DATE_COLOR,
-                                    VRTOXIN_BLUE);
+                                    Settings.System.IMMERSIVE_RECENTS, 3);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FONT_STYLE,
                                     3);
