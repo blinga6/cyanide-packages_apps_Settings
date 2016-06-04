@@ -2197,6 +2197,7 @@
     <string name="custom_header_image_2">Poly HD</string>
     <string name="custom_header_image_3">Cyanide</string>
     <string name="custom_header_image_4">#PaulsWalls</string>
+    <string name="custom_header_image_5">#McBallsWalls</string>
 
     <!-- OTACenter -->
     <string name="vrtupdater_title">VRTUpdater</string>
