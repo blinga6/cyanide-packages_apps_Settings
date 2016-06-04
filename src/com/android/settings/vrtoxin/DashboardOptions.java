@@ -56,6 +56,9 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private static final String SETTINGS_TITLE_TEXT_SIZE  = "settings_title_text_size";
     private static final String SETTINGS_CATEGORY_TEXT_SIZE  = "settings_category_text_size";
     private static final String SETTINGS_TOOLBAR_TEXT_COLOR = "settings_toolbar_text_color";
+    private static final String MODS_UNDERLINE_COLOR = "mods_underline_color";
+    private static final String MODS_DIVIDER_COLOR = "mods_divider_color";
+    private static final String MODS_TAB_TEXT_COLOR = "mods_tab_text_color";
 
     private ColorPickerPreference mBgColor;
     private ColorPickerPreference mIconColor;
@@ -66,10 +69,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
     private SeekBarPreference mDashTitleTextSize;
     private SeekBarPreference mDashCategoryTextSize;
     private ColorPickerPreference mToolbarTextColor;
+    private ColorPickerPreference mUnderlineColor;
+    private ColorPickerPreference mDividerColor;
+    private ColorPickerPreference mTabTextColor;
 
     private static final int TRANSLUCENT_BLACK = 0x80000000;
-    private static final int VRTOXIN_BLUE = 0xff1976D2;
-    private static final int VRTOXIN_GREEN = 0xff009688;
+    private static final int CYANIDE_BLUE = 0xff1976D2;
+    private static final int CYANIDE_GREEN = 0xff00ff00;
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
 
@@ -108,7 +114,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mIconColor =
                 (ColorPickerPreference) findPreference(PREF_ICON_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.SETTINGS_ICON_COLOR, VRTOXIN_GREEN);
+                Settings.System.SETTINGS_ICON_COLOR, CYANIDE_BLUE);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mIconColor.setNewPreviewColor(intColor);
         mIconColor.setSummary(hexColor);
@@ -126,7 +132,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mCatTextColor =
                 (ColorPickerPreference) findPreference(PREF_CAT_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, VRTOXIN_GREEN);
+                Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, CYANIDE_BLUE);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCatTextColor.setNewPreviewColor(intColor);
         mCatTextColor.setSummary(hexColor);
@@ -159,11 +165,38 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mToolbarTextColor =
                 (ColorPickerPreference) findPreference(SETTINGS_TOOLBAR_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
-                Settings.System.SETTINGS_TOOLBAR_TEXT_COLOR, VRTOXIN_GREEN);
+                Settings.System.SETTINGS_TOOLBAR_TEXT_COLOR, WHITE);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mToolbarTextColor.setNewPreviewColor(intColor);
         mToolbarTextColor.setSummary(hexColor);
         mToolbarTextColor.setOnPreferenceChangeListener(this);
+
+        mUnderlineColor =
+                (ColorPickerPreference) findPreference(MODS_UNDERLINE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.MODS_UNDERLINE_COLOR, WHITE);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mUnderlineColor.setNewPreviewColor(intColor);
+        mUnderlineColor.setSummary(hexColor);
+        mUnderlineColor.setOnPreferenceChangeListener(this);
+
+        mDividerColor =
+                (ColorPickerPreference) findPreference(MODS_DIVIDER_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.MODS_DIVIDER_COLOR, WHITE);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mDividerColor.setNewPreviewColor(intColor);
+        mDividerColor.setSummary(hexColor);
+        mDividerColor.setOnPreferenceChangeListener(this);
+
+        mTabTextColor =
+                (ColorPickerPreference) findPreference(MODS_TAB_TEXT_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.MODS_TAB_TEXT_COLOR, WHITE);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mTabTextColor.setNewPreviewColor(intColor);
+        mTabTextColor.setSummary(hexColor);
+        mTabTextColor.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -258,6 +291,30 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                     Settings.System.SETTINGS_TOOLBAR_TEXT_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mUnderlineColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.MODS_UNDERLINE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mDividerColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.MODS_DIVIDER_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mTabTextColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.MODS_TAB_TEXT_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         }
         return false;
     }
@@ -299,13 +356,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_ICON_COLOR,
-                                    VRTOXIN_GREEN);
+                                    0xff009688);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    VRTOXIN_GREEN);
+                                    0xff009688);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     0);
@@ -318,6 +375,15 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
                                     14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_UNDERLINE_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_DIVIDER_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_TAB_TEXT_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -329,13 +395,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_ICON_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DASHBOARD_FONT_STYLE,
                                     20);
@@ -348,6 +414,15 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
                                     12);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_UNDERLINE_COLOR,
+                                    CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_DIVIDER_COLOR,
+                                    CYANIDE_GREEN);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.MODS_TAB_TEXT_COLOR,
+                                    CYANIDE_GREEN);
                             getOwner().refreshSettings();
                         }
                     })

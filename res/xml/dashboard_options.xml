@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2015 CyanideL
-     Copyright (C) 2016 The VRToxin Project
+<!-- Copyright (C) 2015-16 Cyanide Android (rogersb11)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -68,12 +67,12 @@
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="settings_category_text_color"
             android:title="@string/text_cat_title"
-            android:defaultValue="0xffffffff" />
+            android:defaultValue="0xff1976D2" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="settings_icon_color"
             android:title="@string/dashboard_icons_title"
-            android:defaultValue="0xffffffff" />
+            android:defaultValue="0xff1976D2" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="settings_title_text_color"
@@ -83,6 +82,27 @@
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="settings_toolbar_text_color"
             android:title="@string/dashboard_toolbar_text_title"
+            android:defaultValue="0xff000000" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="mods_menu"
+        android:title="@string/mods_menu_title" >
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="mods_divider_color"
+            android:title="@string/divider_title"
+            android:defaultValue="0x80000000" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="mods_tab_text_color"
+            android:title="@string/tab_text_title"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="mods_underline_color"
+            android:title="@string/underline_title"
             android:defaultValue="0xff000000" />
 
     </PreferenceCategory>

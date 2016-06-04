@@ -28,6 +28,8 @@
     <string name="reset_cyanide">Cyanide</string>
     <string name="style_title">Style</string>
     <string name="options_title">Options</string>
+    <string name="mods_menu_title">Mods Menu</string>
+    <string name="mods_menu_summary">Customize colors of the CyanideMods Tab</string>
     <string name="show_title">Show</string>
     <string name="color_dark_mode_title">Color (light status bar)</string>
     <string name="icon_color_dark_mode_title">Icon (light status bar)</string>
@@ -53,6 +55,10 @@
     <string name="icon_is_greyscale_title">If the icon is an greyscale icon</string>
     <string name="background_title">Background</string>
     <string name="background_dark_mode_title">Background Dark Mode</string>
+    <string name="divider_title">Divider</string>
+    <string name="indicator_title">Indicator</string>
+    <string name="tab_text_title">Tab Text</string>
+    <string name="underline_title">Underline</string>
     <string name="position_title">Position</string>
     <string name="show_title">Show</string>
     <string name="hidden_title">Hidden</string>

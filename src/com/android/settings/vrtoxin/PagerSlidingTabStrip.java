@@ -17,6 +17,7 @@
 package com.android.settings.vrtoxin;
 
 import android.annotation.SuppressLint;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -26,6 +27,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
@@ -77,6 +79,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int underlineColor = 0xff1976D2;
 	private int dividerColor = 0xff1976D2;
 
+    private int mUnderlineColor;
+    private int mDividerColor;
+
 	private boolean shouldExpand = false;
 	private boolean textAllCaps = true;
 
@@ -88,7 +93,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int dividerWidth = 1;
 
 	private int tabTextSize = 12;
-	private int tabTextColor = 0xff1976D2;
+	private int tabTextColor;
 	private Typeface tabTypeface = null;
 	private int tabTypefaceStyle = Typeface.BOLD;
 
@@ -132,17 +137,24 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
 
 		tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
-		tabTextColor = a.getColor(1, tabTextColor);
+		//tabTextColor = a.getColor(1, tabTextColor);
 
 		a.recycle();
 
 		// get custom attrs
 
 		a = context.obtainStyledAttributes(attrs, R.styleable.PagerSlidingTabStrip);
+		ContentResolver resolver = mContext.getContentResolver();
 
 		indicatorColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsIndicatorColor, indicatorColor);
-		underlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, underlineColor);
-		dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
+		//underlineColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsUnderlineColor, underlineColor);
+		//dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
+		mUnderlineColor = Settings.System.getInt(resolver,
+                Settings.System.MODS_UNDERLINE_COLOR, 0xffff0000);
+		mDividerColor = Settings.System.getInt(resolver,
+                Settings.System.MODS_DIVIDER_COLOR, 0xffffffff);
+		tabTextColor = Settings.System.getInt(resolver,
+                Settings.System.MODS_TAB_TEXT_COLOR, 0xff00ff00);
 		indicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, indicatorHeight);
 		underlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, underlineHeight);
 		dividerPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerPadding, dividerPadding);
@@ -261,6 +273,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		for (int i = 0; i < tabCount; i++) {
 
 			View v = tabsContainer.getChildAt(i);
+			ContentResolver resolver = mContext.getContentResolver();
 
 			v.setBackgroundResource(tabBackgroundResId);
 
@@ -338,12 +351,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 		// draw underline
 
-		rectPaint.setColor(underlineColor);
+		rectPaint.setColor(mUnderlineColor);
 		canvas.drawRect(0, height - underlineHeight, tabsContainer.getWidth(), height, rectPaint);
 
 		// draw divider
 
-		dividerPaint.setColor(dividerColor);
+		dividerPaint.setColor(mDividerColor);
 		for (int i = 0; i < tabCount - 1; i++) {
 			View tab = tabsContainer.getChildAt(i);
 			canvas.drawLine(tab.getRight(), dividerPadding, tab.getRight(), height - dividerPadding, dividerPaint);
@@ -410,32 +423,32 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		return indicatorHeight;
 	}
 
-	public void setUnderlineColor(int underlineColor) {
-		this.underlineColor = underlineColor;
+	public void setUnderlineColor(int mUnderlineColor) {
+		this.mUnderlineColor = mUnderlineColor;
 		invalidate();
 	}
 
 	public void setUnderlineColorResource(int resId) {
-		this.underlineColor = getResources().getColor(resId);
+		this.mUnderlineColor = getResources().getColor(resId);
 		invalidate();
 	}
 
 	public int getUnderlineColor() {
-		return underlineColor;
+		return mUnderlineColor;
 	}
 
-	public void setDividerColor(int dividerColor) {
-		this.dividerColor = dividerColor;
+	public void setDividerColor(int mDividerColor) {
+		this.mDividerColor = mDividerColor;
 		invalidate();
 	}
 
 	public void setDividerColorResource(int resId) {
-		this.dividerColor = getResources().getColor(resId);
+		this.mDividerColor = getResources().getColor(resId);
 		invalidate();
 	}
 
 	public int getDividerColor() {
-		return dividerColor;
+		return mDividerColor;
 	}
 
 	public void setUnderlineHeight(int underlineHeightPx) {
