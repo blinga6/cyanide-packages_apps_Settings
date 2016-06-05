@@ -2737,4 +2737,10 @@
     <string name="qs_set_animation_duration">%1$s</string>
     <string name="qs_set_animation_interpolator">%1$s</string>
 
+    <!-- Battery notifications -->
+    <string name="battery_saver_notif_title">Battery saver notification</string>
+    <string name="battery_saver_notif_summary">Show battery saver notification when enabled</string>
+    <string name="battery_low_notif_title">Low battery notification</string>
+    <string name="battery_low_notif_summary">Show low battery notification when enabled</string>
+
 </resources>
