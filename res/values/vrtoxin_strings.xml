@@ -117,6 +117,8 @@
 
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
+    <string name="equalizer_settings_title">Equalizer</string>
+    <string name="kernel_settings_title">Kernel</string>
 
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
