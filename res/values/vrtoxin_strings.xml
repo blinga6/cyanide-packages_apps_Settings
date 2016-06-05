@@ -2571,6 +2571,7 @@
     <string name="expansion_view_weather_panel">Weather Panel</string>
     <string name="expansion_view_info_panel">Info Panel</string>
     <string name="expansion_view_logo_panel">Logo Panel</string>
+    <string name="expansion_view_no_panel">None</string>
     <string name="expansion_view_panel_selection">Select your custom panel option</string>
     <string name="expansion_view_panel_one">Panel 1 (Default)</string>
     <string name="expansion_view_panel_two">Panel 2</string>
@@ -2578,6 +2579,8 @@
     <string name="expansion_view_panel_four">Panel 4</string>
     <string name="expansion_view_panels_title">Panel Selection</string>
     <string name="expansion_view_panels_summary">Setup your own panel layout</string>
+    <string name="expansion_view_number_panels">Number of Panels</string>
+    <string name="expansion_view_number_of_panels">Choose the amount of panels</string>
 
     <!-- EXPERIMENTAL -->
     <string name="master_font_style_title">EXPERIMENTAL Master Font</string>

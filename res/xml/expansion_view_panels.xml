@@ -24,8 +24,8 @@
         android:key="expansion_view_panel_one"
         android:title="@string/expansion_view_panel_one"
         android:dialogTitle="@string/expansion_view_panel_selection"
-        android:entries="@array/expansion_view_panel_entries"
-        android:entryValues="@array/expansion_view_panel_values" />
+        android:entries="@array/expansion_view_panel_one_entries"
+        android:entryValues="@array/expansion_view_panel_one_values" />
 
     <!-- Panel Two -->
     <ListPreference

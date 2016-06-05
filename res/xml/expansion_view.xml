@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 Cyanide Android (rogerseb11)
+<!-- Copyright (C) 2016 Cyanide Android (rogersb11)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -50,13 +50,6 @@
         android:title="@string/expansion_view_force_title"
         android:summary="@string/expansion_view_force_summary"
         android:defaultValue="false" />
-
-    <!-- Layout Changer -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
-        android:key="expansion_view_layout_changer"
-        android:title="@string/expansion_view_layout_changer"
-        android:summary="@string/expansion_view_layout_changer_summary"
-        android:defaultValue="true" />
 
     <!-- Panel Selection -->
     <PreferenceScreen
