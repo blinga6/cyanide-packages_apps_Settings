@@ -39,6 +39,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.settings.vrtoxin.SeekBarPreferenceCham;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment implements
@@ -59,6 +60,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String SETTINGS_COLOR = "expanded_header_settings_color";
     private static final String VRTOXIN_COLOR = "expanded_header_vrtoxin_color";
     private static final String WEATHER_COLOR = "expanded_header_weather_color";
+    private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
 
     private static final int SYSTEMUI_SECONDARY = 0xff384248;
     private static final int BLACK = 0xff000000;
@@ -83,6 +85,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mSettingsColor;
     private ColorPickerPreference mVRToxinColor;
     private ColorPickerPreference mWeatherColor;
+    private SeekBarPreferenceCham mHeaderShadow;
 
     private ContentResolver mResolver;
 
@@ -125,6 +128,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mStatusBarHeaderFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 0)));
         mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntry());
+
+        mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+        final int headerShadow = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
+        mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
+        mHeaderShadow.setOnPreferenceChangeListener(this);
 
         mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
         mCustomHeaderDefault.setOnPreferenceChangeListener(this);
@@ -392,6 +401,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             Settings.System.putInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR, intHex);
             preference.setSummary(hex);
+            return true;
+        } else if (preference == mHeaderShadow) {
+         Integer headerShadow = (Integer) newValue;
+         int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
+         Settings.System.putInt(getContentResolver(),
+                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
             return true;
         }
         return false;

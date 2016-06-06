@@ -2743,4 +2743,9 @@
     <string name="battery_low_notif_title">Low battery notification</string>
     <string name="battery_low_notif_summary">Show low battery notification when enabled</string>
 
+    <!-- Header image shadow -->
+    <string name="status_bar_custom_header_shadow_title">Contextual header shadow</string>
+    <string name="status_bar_custom_header_shadow_summary">For better text/icon visibility on bright images</string>
+    <string name="unit_percent">\u0025</string>
+
 </resources>
