@@ -2421,7 +2421,7 @@
 
     <!-- Android Version -->
     <string name="android_version_title">Marshmallow</string>
-    <string name="android_version_default">Release 43</string>
+    <string name="android_version_default">Release 46</string>
 
     <!-- Tethering & portable hotspot other category -->
     <string name="tethering_other_category_text">Other</string>
