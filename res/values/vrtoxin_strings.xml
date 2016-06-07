@@ -2171,8 +2171,13 @@
     <string name="device_policy_override_summary">Allow apps to force secure lock screen and override default settings</string>
 
     <!-- 4G Switch -->
-    <string name="fourg_over_lte">4G Switch</string>
-    <string name="fourg_over_lte_summary">Force showing 4G instead of LTE in the status bar</string>
+    <string name="fourg_over_lte">Show 4G instead of LTE</string>
+    <string name="fourg_over_lte_summary">Replaces LTE statusbar indicator with 4G</string>
+
+    <!-- 3G / HSPA switch -->
+    <string name="show_threeg_title">Show 3G instead of HSPA</string>
+    <string name="show_threeg_summary">Replaces H+ statusbar indicator with 3G</string>
+    <string name="statusbar_tuner_category_title">Hide items from statusbar</string>
 
     <!-- Power/reboot dialogs dim amount -->
     <string name="power_menu_dialog_dim">Background Dimming Value</string>
