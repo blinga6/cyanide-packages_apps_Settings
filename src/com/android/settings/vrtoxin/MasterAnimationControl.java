@@ -27,6 +27,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.widget.Toast;
@@ -38,6 +39,8 @@ import com.android.settings.Utils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
+import com.android.settings.vrtoxin.util.Helpers;
+
 public class MasterAnimationControl extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
@@ -45,11 +48,13 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String TOAST_TEXT_COLOR = "toast_text_color";
+    private static final String SCREENSHOT_CROP_AND_SHARE = "screenshot_crop_and_share";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
     private ColorPickerPreference mTextColor;
+    private SwitchPreference mScreenShot;
 
     @Override
     protected int getMetricsCategory() {
@@ -68,6 +73,11 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
     
         int intColor = 0xffffffff;
         String hexColor = String.format("#%08x", (0xffffffff & 0xffffffff));
+
+        mScreenShot = (SwitchPreference) prefSet.findPreference(SCREENSHOT_CROP_AND_SHARE);
+        mScreenShot.setChecked(Settings.System.getInt(getContentResolver(),
+            Settings.System.SCREENSHOT_CROP_AND_SHARE, 0) == 1);
+        mScreenShot.setOnPreferenceChangeListener(this);
 
         mToastAnimation = (ListPreference) prefSet.findPreference(KEY_TOAST_ANIMATION);
         mToastAnimation.setSummary(mToastAnimation.getEntry());
@@ -143,6 +153,13 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
             Settings.System.putInt(getContentResolver(),
                     Settings.System.TOAST_TEXT_COLOR, intHex);
             preference.setSummary(hex);
+        }
+        if (preference == mScreenShot) {
+            boolean use = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SCREENSHOT_CROP_AND_SHARE, use ? 1 : 0);
+            Helpers.restartSystemUI();
+            return true;
         }
         return true;
     }

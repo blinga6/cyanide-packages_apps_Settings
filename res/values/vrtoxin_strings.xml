@@ -2755,5 +2755,12 @@
     <string name="status_bar_custom_header_shadow_title">Contextual header shadow</string>
     <string name="status_bar_custom_header_shadow_summary">For better text/icon visibility on bright images</string>
     <string name="unit_percent">\u0025</string>
+	
+    <!-- Screenshot crop and share -->
+    <string name="screenshot_cat_title">Screenshot Options</string>
+    <string name="screenshot_crop_and_share_title">Crop &amp; share</string>
+    <string name="screenshot_crop_and_share_summary">Show an editor window after taking a screenshot in order to do some operations like cropping, saving or sharing</string>
+    <string name="screenshot_crop_behavior_title">Crop mode</string>
+    <string name="screenshot_crop_behavior_summary">Always use the cropped image inside the cropping area, even if the apply button hasn\'t been pressed</string>
 
 </resources>
