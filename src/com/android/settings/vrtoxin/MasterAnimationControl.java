@@ -47,12 +47,14 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+    private static final String TOAST_ICON_COLOR = "toast_icon_color";
     private static final String TOAST_TEXT_COLOR = "toast_text_color";
     private static final String SCREENSHOT_CROP_AND_SHARE = "screenshot_crop_and_share";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
+    private ColorPickerPreference mIconColor;
     private ColorPickerPreference mTextColor;
     private SwitchPreference mScreenShot;
 
@@ -102,6 +104,15 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
 
+        mIconColor =
+                (ColorPickerPreference) findPreference(TOAST_ICON_COLOR);
+        intColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.TOAST_ICON_COLOR, 0xffffffff);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mIconColor.setNewPreviewColor(intColor);
+        mIconColor.setSummary(hexColor);
+        mIconColor.setOnPreferenceChangeListener(this);
+
         mTextColor =
                 (ColorPickerPreference) findPreference(TOAST_TEXT_COLOR);
         intColor = Settings.System.getInt(getContentResolver(),
@@ -145,6 +156,14 @@ public class MasterAnimationControl extends SettingsPreferenceFragment implement
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+        if (preference == mIconColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TOAST_ICON_COLOR, intHex);
+            preference.setSummary(hex);
         }
         if (preference == mTextColor) {
             String hex = ColorPickerPreference.convertToARGB(

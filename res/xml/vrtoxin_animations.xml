@@ -106,6 +106,11 @@
             android:defaultValue="true" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="toast_icon_color"
+            android:title="@string/icon_title"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="toast_text_color"
             android:title="@string/toast_text_color"
             android:defaultValue="0xffffffff" />
