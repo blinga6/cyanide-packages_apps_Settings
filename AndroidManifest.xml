@@ -3073,6 +3073,20 @@
                 android:resource="@id/display_settings" />
         </activity>
 
+        <!-- Expanded Header Activity -->
+        <activity android:name="Settings$ExpandedHeaderSettingsActivity"
+                android:label="@string/status_bar_expanded_header_settings_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.vrtoxin.StatusBarExpandedHeaderSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/display_settings" />
+        </activity>
+
         <activity android:name=".vrtoxin.MainSettings" />
         <activity android:name=".vrtoxin.Misc" />
         <activity android:name=".vrtoxin.StatusBarSettings" />
