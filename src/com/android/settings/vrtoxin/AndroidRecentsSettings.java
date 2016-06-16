@@ -69,6 +69,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private static final String IMMERSIVE_RECENTS = "immersive_recents";
     private static final String RECENTS_FONT_STYLE = "recents_font_style";
     private static final String RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE = "recents_full_screen_clock_date_size";
+    private static final String RECENTS_SEARCH_BAR = "recents_search_bar";
+    private static final String SHAKE_TO_CLEAN_RECENTS = "shake_to_clean_recents";
+    private static final String RECENTS_FULL_SCREEN_CLOCK = "recents_full_screen_clock";
+    private static final String RECENTS_FULL_SCREEN_DATE = "recents_full_screen_date";
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -85,6 +89,10 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
     private ListPreference mImmersiveRecents;
     private ListPreference mRecentsFontStyle;
     private SeekBarPreference mRecentsFontSize;
+    private SwitchPreference mSearchBar;
+    private SwitchPreference mShakeClean;
+    private SwitchPreference mShowClock;
+    private SwitchPreference mShowDate;
 
     private ContentResolver mResolver;
 
@@ -180,6 +188,26 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
         mRecentsFontSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE, 14));
         mRecentsFontSize.setOnPreferenceChangeListener(this);
+
+        mSearchBar = (SwitchPreference) prefSet.findPreference(RECENTS_SEARCH_BAR);
+        mSearchBar.setChecked(Settings.System.getInt(mResolver,
+            Settings.System.RECENTS_SEARCH_BAR, 0) == 1);
+        mSearchBar.setOnPreferenceChangeListener(this);
+
+        mShakeClean = (SwitchPreference) prefSet.findPreference(SHAKE_TO_CLEAN_RECENTS);
+        mShakeClean.setChecked(Settings.System.getInt(mResolver,
+            Settings.System.SHAKE_TO_CLEAN_RECENTS, 0) == 1);
+        mShakeClean.setOnPreferenceChangeListener(this);
+
+        mShowClock = (SwitchPreference) prefSet.findPreference(RECENTS_FULL_SCREEN_CLOCK);
+        mShowClock.setChecked(Settings.System.getInt(mResolver,
+            Settings.System.RECENTS_FULL_SCREEN_CLOCK, 0) == 1);
+        mShowClock.setOnPreferenceChangeListener(this);
+
+        mShowDate = (SwitchPreference) prefSet.findPreference(RECENTS_FULL_SCREEN_DATE);
+        mShowDate.setChecked(Settings.System.getInt(mResolver,
+            Settings.System.RECENTS_FULL_SCREEN_DATE, 0) == 1);
+        mShowDate.setOnPreferenceChangeListener(this);
         
         setHasOptionsMenu(true);
     }
@@ -274,6 +302,26 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.RECENTS_FULL_SCREEN_CLOCK_DATE_SIZE, width);
             return true;
+        } else if (preference == mSearchBar) {
+            boolean show = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_SEARCH_BAR, show ? 1 : 0);
+            return true;
+        } else if (preference == mShakeClean) {
+            boolean show = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SHAKE_TO_CLEAN_RECENTS, show ? 1 : 0);
+            return true;
+        } else if (preference == mShowClock) {
+            boolean show = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_FULL_SCREEN_CLOCK, show ? 1 : 0);
+            return true;
+        } else if (preference == mShowDate) {
+            boolean show = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_FULL_SCREEN_DATE, show ? 1 : 0);
+            return true;
         }
         return false;
     }
@@ -365,6 +413,14 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FONT_STYLE,
                                     0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_SEARCH_BAR, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SHAKE_TO_CLEAN_RECENTS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_DATE, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -384,7 +440,15 @@ public class AndroidRecentsSettings extends SettingsPreferenceFragment implement
                                     Settings.System.IMMERSIVE_RECENTS, 3);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FONT_STYLE,
-                                    3);
+                                    20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_SEARCH_BAR, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.SHAKE_TO_CLEAN_RECENTS, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_CLOCK, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.RECENTS_FULL_SCREEN_DATE, 1);
                             getOwner().refreshSettings();
                         }
                     })

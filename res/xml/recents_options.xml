@@ -113,14 +113,14 @@
             android:fragment="com.android.settings.ScreenPinningSettings"/>
 
         <!-- Search in Recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="recents_search_bar"
             android:title="@string/android_recents_show_search_bar_title"
             android:summary="@string/android_recents_show_search_bar_summary"
             android:defaultValue="true" />
 
         <!-- Shake to clear recents -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="shake_to_clean_recents"
             android:title="@string/shake_to_clear_recents_title"
             android:summary="@string/shake_to_clear_recents_summary"
@@ -132,13 +132,13 @@
         android:key="immersive_recents_cat_options"
         android:title="@string/immersive_recents_cat_options">
 
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="recents_full_screen_clock"
             android:title="@string/recents_full_screen_clock_title"
             android:summary="@string/recents_full_screen_clock_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="recents_full_screen_date"
             android:title="@string/recents_full_screen_date_title"
             android:summary="@string/recents_full_screen_date_summary"

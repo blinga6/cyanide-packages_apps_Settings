@@ -153,13 +153,13 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
         mDashTitleTextSize =
                 (SeekBarPreference) findPreference(SETTINGS_TITLE_TEXT_SIZE);
         mDashTitleTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 14));
+                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 18));
         mDashTitleTextSize.setOnPreferenceChangeListener(this);
 
         mDashCategoryTextSize =
                 (SeekBarPreference) findPreference(SETTINGS_CATEGORY_TEXT_SIZE);
         mDashCategoryTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, 10));
+                Settings.System.SETTINGS_CATEGORY_TEXT_SIZE, 14));
         mDashCategoryTextSize.setOnPreferenceChangeListener(this);
 
         mToolbarTextColor =
@@ -371,7 +371,7 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_SIZE,
-                                    16);
+                                    18);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
                                     14);
@@ -410,10 +410,10 @@ public class DashboardOptions extends SettingsPreferenceFragment implements
                                     1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_TITLE_TEXT_SIZE,
-                                    14);
+                                    18);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.SETTINGS_CATEGORY_TEXT_SIZE,
-                                    12);
+                                    14);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MODS_UNDERLINE_COLOR,
                                     CYANIDE_BLUE);

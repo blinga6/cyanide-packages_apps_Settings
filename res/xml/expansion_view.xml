@@ -45,7 +45,7 @@
         android:entryValues="@array/status_bar_font_style_values" />
 
     <!-- Force View -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+    <SwitchPreference
         android:key="expansion_view_force_show"
         android:title="@string/expansion_view_force_title"
         android:summary="@string/expansion_view_force_summary"
@@ -59,7 +59,7 @@
         android:title="@string/expansion_view_panels_title" />
 
     <!-- Vibration -->
-    <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+    <SwitchPreference
         android:key="expansion_view_vibration"
         android:title="@string/expansion_view_vibration_title"
         android:summary="@string/expansion_view_vibration_summary"
@@ -91,7 +91,7 @@
         android:title="@string/expansion_view_custom_panel">
 
         <!-- Show Shortcut Bar -->
-        <com.android.settings.vrtoxin.SystemSettingSwitchPreference
+        <SwitchPreference
             android:key="expansion_view_panel_shortcuts"
             android:title="@string/expansion_view_shortcuts_show_title"
             android:summary="@string/expansion_view_shortcuts_show_summary"

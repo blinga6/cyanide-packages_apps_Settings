@@ -544,10 +544,10 @@ public class RecentsColors extends SettingsPreferenceFragment implements
                                     CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_COLOR,
-                                    CYANIDE_RED);
+                                    CYANIDE_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.MEMORY_BAR_USED_COLOR,
-                                    CYANIDE_GREEN);
+                                    CYANIDE_RED);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.RECENTS_FULL_SCREEN_CLOCK_COLOR,
                                     CYANIDE_BLUE);

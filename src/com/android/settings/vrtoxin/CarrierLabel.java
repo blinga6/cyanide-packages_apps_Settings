@@ -375,9 +375,9 @@ public class CarrierLabel extends SettingsPreferenceFragment implements
                                     Settings.System.STATUS_BAR_CARRIER_LABEL_COLOR,
                                     VRTOXIN_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 14);
+                                    Settings.System.STATUS_BAR_CARRIER_FONT_SIZE, 16);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 3);
+                                    Settings.System.STATUS_BAR_CARRIER_FONT_STYLE, 20);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_CARRIER_SPOT, 0);
                             getOwner().refreshSettings();

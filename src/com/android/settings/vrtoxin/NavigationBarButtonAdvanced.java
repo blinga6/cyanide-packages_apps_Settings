@@ -457,7 +457,7 @@ public class NavigationBarButtonAdvanced extends SettingsPreferenceFragment impl
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NAVIGATION_BAR_MENU_LOCATION, 0);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.DIM_NAV_BUTTONS, 1);
+                                    Settings.System.DIM_NAV_BUTTONS, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE, 1);
                             Settings.System.putInt(getOwner().mResolver,

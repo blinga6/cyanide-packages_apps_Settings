@@ -466,7 +466,7 @@ public class StatusBarClockSettings extends SettingsPreferenceFragment
                                     Settings.System.STATUSBAR_CLOCK_COLOR,
                                     CYANIDE_BLUE);
                             Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, 3);
+                                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, 20);
                             Settings.System.putInt(getActivity().getContentResolver(),
                                     Settings.System.STATUSBAR_CLOCK_FONT_SIZE, 16);
                             getOwner().createCustomView();

@@ -346,7 +346,7 @@ public class StatusBarTickerSettings extends SettingsPreferenceFragment implemen
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_FONT_SIZE, 16);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.STATUS_BAR_TICKER_FONT_STYLE, 24);
+                                    Settings.System.STATUS_BAR_TICKER_FONT_STYLE, 20);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_TICKER_TEXT_COLOR,
                                     VRTOXIN_BLUE);

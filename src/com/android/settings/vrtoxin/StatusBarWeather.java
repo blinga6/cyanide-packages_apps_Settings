@@ -330,7 +330,7 @@ public class StatusBarWeather extends SettingsPreferenceFragment
                                     16);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_WEATHER_FONT_STYLE,
-                                    0);
+                                    20);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_WEATHER_HIDE_WEATHER, 1);
                             Settings.System.putInt(getOwner().mResolver,

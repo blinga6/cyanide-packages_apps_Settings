@@ -69,6 +69,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR = "expansion_view_activity_panel_text_color";
     private static final String EXPANSION_VIEW_CUSTOM_LOGO = "expansion_view_custom_logo";
     private static final String EXPANSION_VIEW_CUSTOM_RESET = "expansion_view_custom_reset";
+    private static final String EXPANSION_VIEW_FORCE_SHOW = "expansion_view_force_show";
+    private static final String EXPANSION_VIEW_VIBRATION = "expansion_view_vibration";
+    private static final String EXPANSION_VIEW_PANEL_SHORTCUTS = "expansion_view_panel_shortcuts";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
@@ -98,6 +101,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private ColorPickerPreference mExpansionViewActivityPanelTextColor;
     private Preference mCustomLogo;
     private Preference mCustomLogoReset;
+    private SwitchPreference mForceView;
+    private SwitchPreference mVibrate;
+    private SwitchPreference mShowShortcutBar;
 
     private ContentResolver mResolver;
 
@@ -257,6 +263,24 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mCustomLogo = findPreference(EXPANSION_VIEW_CUSTOM_LOGO);
         mCustomLogoReset = findPreference(EXPANSION_VIEW_CUSTOM_RESET);
 
+        mForceView =
+                (SwitchPreference) findPreference(EXPANSION_VIEW_FORCE_SHOW);
+        mForceView.setChecked(Settings.System.getInt(mResolver,
+               Settings.System.EXPANSION_VIEW_FORCE_SHOW, 0) == 1);
+        mForceView.setOnPreferenceChangeListener(this);
+
+        mVibrate =
+                (SwitchPreference) findPreference(EXPANSION_VIEW_VIBRATION);
+        mVibrate.setChecked(Settings.System.getInt(mResolver,
+               Settings.System.EXPANSION_VIEW_VIBRATION, 0) == 1);
+        mVibrate.setOnPreferenceChangeListener(this);
+
+        mShowShortcutBar =
+                (SwitchPreference) findPreference(EXPANSION_VIEW_PANEL_SHORTCUTS);
+        mShowShortcutBar.setChecked(Settings.System.getInt(mResolver,
+               Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 1) == 1);
+        mShowShortcutBar.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -399,6 +423,24 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                 Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR, intHex);
             preference.setSummary(hex);
+        } else if (preference == mForceView) {
+            value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_FORCE_SHOW,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mVibrate) {
+            value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_VIBRATION,
+                    value ? 1 : 0);
+            return true;
+        } else if (preference == mShowShortcutBar) {
+            value = (Boolean) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS,
+                    value ? 1 : 0);
+            return true;
         }
         return false;
     }
@@ -497,6 +539,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 12);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_WEATHER_SHOW_CURRENT, 1);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ANIMATION,
                                     0);
                             Settings.System.putInt(getOwner().mResolver,
@@ -505,6 +549,12 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_FORCE_SHOW, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_VIBRATION, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -536,6 +586,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 18);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_WEATHER_SHOW_CURRENT, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ANIMATION,
                                     2);
                             Settings.System.putInt(getOwner().mResolver,
@@ -544,6 +596,12 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
                                     VRTOXIN_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_FORCE_SHOW, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_VIBRATION, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 1);
                             getOwner().refreshSettings();
                         }
                     })

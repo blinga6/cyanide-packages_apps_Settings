@@ -50,7 +50,6 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
     private Switch mSwitch;
     private GenericSwitchToggle mSwitchToggle;
     private int mIconColor;
-    private int mDashTextSize = 14;
 
     private int mColSpan = DEFAULT_COL_SPAN;
 
@@ -83,10 +82,10 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         mStatusTextView.setTextColor(Settings.System.getInt(context.getContentResolver(),
             Settings.System.SETTINGS_CATEGORY_TEXT_COLOR, 0xff009688));
         mStatusTextView.setTextSize(Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 14,
+                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 18,
                 UserHandle.USER_CURRENT));
         mTitleTextView.setTextSize(Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 16,
+                Settings.System.SETTINGS_TITLE_TEXT_SIZE, 18,
                 UserHandle.USER_CURRENT));
         setFocusable(true);
         updateDashFont();

@@ -73,8 +73,8 @@ public class ExpansionViewBatterySettings extends SettingsPreferenceFragment imp
 
     private static final int WHITE           = 0xffffffff;
     private static final int BLACK           = 0xff000000;
-    private static final int VRTOXIN_BLUE    = 0xff1976D2;
-    private static final int VRTOXIN_GREEN   = 0xff00ff00;
+    private static final int CYANIDE_BLUE    = 0xff1976D2;
+    private static final int CYANIDE_GREEN   = 0xff00ff00;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
@@ -347,11 +347,11 @@ public class ExpansionViewBatterySettings extends SettingsPreferenceFragment imp
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_BATTERY_SHOW_CHARGE_ANIMATION, 0);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.EXPANSION_VIEW_BATTERY_TEXT_COLOR,
-                                    BLACK);
+                                    Settings.System.EXPANSION_VIEW_BATTERY_ICON_COLOR,
+                                    WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_BATTERY_TEXT_COLOR,
-                                    WHITE);
+                                    BLACK);
                             getOwner().refreshSettings();
                         }
                     })
@@ -371,11 +371,11 @@ public class ExpansionViewBatterySettings extends SettingsPreferenceFragment imp
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_BATTERY_SHOW_CHARGE_ANIMATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.EXPANSION_VIEW_BATTERY_TEXT_COLOR,
-                                    VRTOXIN_GREEN);
+                                    Settings.System.EXPANSION_VIEW_BATTERY_ICON_COLOR,
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_BATTERY_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_GREEN);
                             getOwner().refreshSettings();
                         }
                     })
