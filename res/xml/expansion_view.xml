@@ -75,8 +75,8 @@
             android:key="expansion_view_stroke"
             android:title="@string/stroke_title"
             android:dialogTitle="@string/stroke_title"
-            android:entries="@array/expansion_view_stroke_entries"
-            android:entryValues="@array/expansion_view_stroke_values" />
+            android:entries="@array/stroke_entries"
+            android:entryValues="@array/stroke_values" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expansion_view_stroke_color"

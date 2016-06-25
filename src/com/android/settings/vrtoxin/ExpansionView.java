@@ -71,6 +71,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_FORCE_SHOW = "expansion_view_force_show";
     private static final String EXPANSION_VIEW_VIBRATION = "expansion_view_vibration";
     private static final String EXPANSION_VIEW_PANEL_SHORTCUTS = "expansion_view_panel_shortcuts";
+    private static final String STROKE_CATEGORY = "stroke_settings";
     private static final String EXPANSION_VIEW_STROKE = "expansion_view_stroke";
     private static final String EXPANSION_VIEW_STROKE_COLOR = "expansion_view_stroke_color";
     private static final String EXPANSION_VIEW_STROKE_THICKNESS = "expansion_view_stroke_thickness";
@@ -81,6 +82,10 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final int CYANIDE_BLUE = 0xff1976D2;
     private static final int CYANIDE_GREEN = 0xff00ff00;
     private static final int DEFAULT_STROKE_COLOR = 0xffffffff;
+
+    private static final int DISABLED  = 0;
+    private static final int ACCENT    = 1;
+    private static final int CUSTOM    = 2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
@@ -132,6 +137,13 @@ public class ExpansionView extends SettingsPreferenceFragment implements
 
         int intColor;
         String hexColor;
+
+        final int strokeMode = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_STROKE, DISABLED);
+        boolean notDisabled = strokeMode == ACCENT || strokeMode == CUSTOM;
+
+        PreferenceCategory catStroke =
+                (PreferenceCategory) findPreference(STROKE_CATEGORY);
 
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(PREF_CAT_COLORS);
@@ -282,26 +294,9 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mShowShortcutBar.setOnPreferenceChangeListener(this);
 
         mStroke = (ListPreference) findPreference(EXPANSION_VIEW_STROKE);
-        mStroke.setOnPreferenceChangeListener(this);
-        mStroke.setValue(Integer.toString(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.EXPANSION_VIEW_STROKE, 1)));
+        mStroke.setValue(String.valueOf(strokeMode));
         mStroke.setSummary(mStroke.getEntry());
-
-        mStrokeColor =
-                (ColorPickerPreference) findPreference(EXPANSION_VIEW_STROKE_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.EXPANSION_VIEW_STROKE_COLOR, CYANIDE_BLUE); 
-        mStrokeColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mStrokeColor.setSummary(hexColor);
-        mStrokeColor.setOnPreferenceChangeListener(this);
-
-        mStrokeThickness =
-                (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_THICKNESS);
-        int strokeThickness = Settings.System.getInt(mResolver,
-                Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 4);
-        mStrokeThickness.setValue(strokeThickness / 1);
-        mStrokeThickness.setOnPreferenceChangeListener(this);
+        mStroke.setOnPreferenceChangeListener(this);
 
         mCornerRadius =
                 (SeekBarPreference) findPreference(EXPANSION_VIEW_CORNER_RADIUS);
@@ -309,6 +304,31 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                 Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 2);
         mCornerRadius.setValue(cornerRadius / 1);
         mCornerRadius.setOnPreferenceChangeListener(this);
+
+        if (notDisabled) {
+            mStrokeThickness =
+                    (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_THICKNESS);
+            int strokeThickness = Settings.System.getInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 4);
+            mStrokeThickness.setValue(strokeThickness / 1);
+            mStrokeThickness.setOnPreferenceChangeListener(this);
+
+            if (strokeMode == CUSTOM) {
+                mStrokeColor =
+                        (ColorPickerPreference) findPreference(EXPANSION_VIEW_STROKE_COLOR);
+                intColor = Settings.System.getInt(mResolver,
+                        Settings.System.EXPANSION_VIEW_STROKE_COLOR, CYANIDE_BLUE); 
+                mStrokeColor.setNewPreviewColor(intColor);
+                hexColor = String.format("#%08x", (0xffffffff & intColor));
+                mStrokeColor.setSummary(hexColor);
+                mStrokeColor.setOnPreferenceChangeListener(this);
+            } else {
+                catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_COLOR));
+            }
+        } else if (strokeMode == DISABLED) {
+            catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_THICKNESS));
+            catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_COLOR));
+        }
 
         setHasOptionsMenu(true);
     }
@@ -469,6 +489,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                     Integer.valueOf((String) newValue));
             mStroke.setValue(String.valueOf(newValue));
             mStroke.setSummary(mStroke.getEntry());
+            refreshSettings();
             return true;
         } else if (preference == mStrokeColor) {
             hex = ColorPickerPreference.convertToARGB(

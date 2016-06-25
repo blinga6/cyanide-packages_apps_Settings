@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The VRToxin Project
+ * Copyright (C) 2016 Cyanide Android (rogersb11)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.view.Menu;
@@ -50,6 +51,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final String VOLUME_DIALOG_SLIDER_INACTIVE_COLOR = "volume_dialog_slider_inactive_color";
     private static final String VOLUME_DIALOG_SLIDER_ICON_COLOR = "volume_dialog_slider_icon_color";
     private static final String VOLUME_DIALOG_EXPAND_BUTTON_COLOR = "volume_dialog_expand_button_color";
+    private static final String STROKE_CATEGORY = "stroke_settings";
     private static final String PREF_VOLUME_DIALOG_STROKE = "volume_dialog_stroke";
     private static final String PREF_VOLUME_DIALOG_STROKE_COLOR = "volume_dialog_stroke_color";
     private static final String PREF_VOLUME_DIALOG_STROKE_THICKNESS = "volume_dialog_stroke_thickness";
@@ -60,6 +62,10 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final int VRTOXIN_BLUE = 0xff1976D2;
     private static final int MATERIAL_GREEN = 0xff009688;
     private static final int MATERIAL_BLUE_GREY = 0xff37474f;
+
+    private static final int DISABLED  = 0;
+    private static final int ACCENT    = 1;
+    private static final int CUSTOM    = 2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -96,6 +102,13 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
 
         int intColor;
         String hexColor;
+
+        final int strokeMode = Settings.System.getInt(mResolver,
+                Settings.System.VOLUME_DIALOG_STROKE, ACCENT);
+        boolean notDisabled = strokeMode == ACCENT || strokeMode == CUSTOM;
+
+        PreferenceCategory catStroke =
+                (PreferenceCategory) findPreference(STROKE_CATEGORY);
 
         mBgColor =
                 (ColorPickerPreference) findPreference(VOLUME_DIALOG_BG_COLOR);
@@ -154,35 +167,11 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
         mExpandButtonColor.setSummary(hexColor);
         mExpandButtonColor.setOnPreferenceChangeListener(this);
 
-        // Volume dialog stroke
-        mVolumeDialogStroke =
-                (ListPreference) findPreference(PREF_VOLUME_DIALOG_STROKE);
-        int volumeDialogStroke = Settings.System.getIntForUser(mResolver,
-                        Settings.System.VOLUME_DIALOG_STROKE, 1,
-                        UserHandle.USER_CURRENT);
-        mVolumeDialogStroke.setValue(String.valueOf(volumeDialogStroke));
+        mVolumeDialogStroke = (ListPreference) findPreference(PREF_VOLUME_DIALOG_STROKE);
+        mVolumeDialogStroke.setValue(String.valueOf(strokeMode));
         mVolumeDialogStroke.setSummary(mVolumeDialogStroke.getEntry());
         mVolumeDialogStroke.setOnPreferenceChangeListener(this);
 
-        // Volume dialog stroke color
-        mVolumeDialogStrokeColor =
-                (ColorPickerPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.VOLUME_DIALOG_STROKE_COLOR, DEFAULT_VOLUME_DIALOG_STROKE_COLOR); 
-        mVolumeDialogStrokeColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mVolumeDialogStrokeColor.setSummary(hexColor);
-        mVolumeDialogStrokeColor.setOnPreferenceChangeListener(this);
-
-        // Volume dialog stroke thickness
-        mVolumeDialogStrokeThickness =
-                (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS);
-        int volumeDialogStrokeThickness = Settings.System.getInt(mResolver,
-                Settings.System.VOLUME_DIALOG_STROKE_THICKNESS, 4);
-        mVolumeDialogStrokeThickness.setValue(volumeDialogStrokeThickness / 1);
-        mVolumeDialogStrokeThickness.setOnPreferenceChangeListener(this);
-
-        // Volume dialog corner radius
         mVolumeDialogCornerRadius =
                 (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_CORNER_RADIUS);
         int volumeDialogCornerRadius = Settings.System.getInt(mResolver,
@@ -190,7 +179,30 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
         mVolumeDialogCornerRadius.setValue(volumeDialogCornerRadius / 1);
         mVolumeDialogCornerRadius.setOnPreferenceChangeListener(this);
 
-        VolumeDialogSettingsDisabler(volumeDialogStroke);
+        if (notDisabled) {
+            mVolumeDialogStrokeThickness =
+                    (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS);
+            int volumeDialogStrokeThickness = Settings.System.getInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_STROKE_THICKNESS, 4);
+            mVolumeDialogStrokeThickness.setValue(volumeDialogStrokeThickness / 1);
+            mVolumeDialogStrokeThickness.setOnPreferenceChangeListener(this);
+
+            if (strokeMode == CUSTOM) {
+                mVolumeDialogStrokeColor =
+                        (ColorPickerPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_COLOR);
+                intColor = Settings.System.getInt(mResolver,
+                        Settings.System.VOLUME_DIALOG_STROKE_COLOR, DEFAULT_VOLUME_DIALOG_STROKE_COLOR); 
+                mVolumeDialogStrokeColor.setNewPreviewColor(intColor);
+                hexColor = String.format("#%08x", (0xffffffff & intColor));
+                mVolumeDialogStrokeColor.setSummary(hexColor);
+                mVolumeDialogStrokeColor.setOnPreferenceChangeListener(this);
+            } else {
+                catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_COLOR));
+            }
+        } else if (strokeMode == DISABLED) {
+            catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS));
+            catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_COLOR));
+        }
 
         setHasOptionsMenu(true);
     }
@@ -275,7 +287,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(mResolver, Settings.System.
                     VOLUME_DIALOG_STROKE, volumeDialogStroke, UserHandle.USER_CURRENT);
             mVolumeDialogStroke.setSummary(mVolumeDialogStroke.getEntries()[index]);
-            VolumeDialogSettingsDisabler(volumeDialogStroke);
+            refreshSettings();
             return true;
         } else if (preference == mVolumeDialogStrokeColor) {
             hex = ColorPickerPreference.convertToARGB(
@@ -297,19 +309,6 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
-    }
-
-    private void VolumeDialogSettingsDisabler(int volumeDialogStroke) {
-        if (volumeDialogStroke == 0) {
-            mVolumeDialogStrokeColor.setEnabled(false);
-            mVolumeDialogStrokeThickness.setEnabled(false);
-        } else if (volumeDialogStroke == 1) {
-            mVolumeDialogStrokeColor.setEnabled(false);
-            mVolumeDialogStrokeThickness.setEnabled(true);
-        } else {
-            mVolumeDialogStrokeColor.setEnabled(true);
-            mVolumeDialogStrokeThickness.setEnabled(true);
-        }
     }
 
     @Override

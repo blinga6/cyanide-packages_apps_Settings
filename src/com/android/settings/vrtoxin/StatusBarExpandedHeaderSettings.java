@@ -1,5 +1,6 @@
 /* 
  * Copyright (C) 2014 DarkKat
+ * Copyright (C) 2016 Cyanide Android (rogersb11)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +29,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
@@ -61,14 +63,23 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String VRTOXIN_COLOR = "expanded_header_vrtoxin_color";
     private static final String WEATHER_COLOR = "expanded_header_weather_color";
     private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
+    private static final String STROKE_CATEGORY = "stroke_settings";
+    private static final String STATUS_BAR_EXPANDED_HEADER_STROKE = "status_bar_expanded_header_stroke";
+    private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR = "status_bar_expanded_header_stroke_color";
+    private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS = "status_bar_expanded_header_stroke_thickness";
+    private static final String STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS = "status_bar_expanded_header_corner_radius";
 
     private static final int SYSTEMUI_SECONDARY = 0xff384248;
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
-    private static final int VRTOXIN_BLUE = 0xff1976D2;
+    private static final int CYANIDE_BLUE = 0xff1976D2;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
+
+    private static final int DISABLED  = 0;
+    private static final int ACCENT    = 1;
+    private static final int CUSTOM    = 2;
 
     private SwitchPreference mShowWeather;
     private SwitchPreference mShowLocation;
@@ -86,6 +97,10 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mVRToxinColor;
     private ColorPickerPreference mWeatherColor;
     private SeekBarPreferenceCham mHeaderShadow;
+    private ListPreference mSBEHStroke;
+    private ColorPickerPreference mSBEHStrokeColor;
+    private SeekBarPreference mSBEHStrokeThickness;
+    private SeekBarPreference mSBEHCornerRadius;
 
     private ContentResolver mResolver;
 
@@ -109,6 +124,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
 
         boolean showWeather = Settings.System.getInt(mResolver,
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_SHOW_WEATHER, 0) == 1;
+        final int strokeMode = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE, ACCENT);
+        boolean notDisabled = strokeMode == ACCENT || strokeMode == CUSTOM;
+
+        PreferenceCategory catStroke =
+                (PreferenceCategory) findPreference(STROKE_CATEGORY);
 
         mShowWeather = (SwitchPreference) findPreference(PREF_SHOW_WEATHER);
         mShowWeather.setChecked(showWeather);
@@ -160,7 +181,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mRippleColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mRippleColor.setSummary(hexColor);
-        mRippleColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mRippleColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mRippleColor.setOnPreferenceChangeListener(this);
 
         mTextColor =
@@ -171,7 +192,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mTextColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mTextColor.setSummary(hexColor);
-        mTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mTextColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mTextColor.setOnPreferenceChangeListener(this);
 
         // Power Menu Button
@@ -257,6 +278,43 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mWeatherColor.setSummary(hexColor);
         mWeatherColor.setDefaultColors(WHITE, WHITE);
         mWeatherColor.setOnPreferenceChangeListener(this);
+
+        mSBEHStroke = (ListPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE);
+        mSBEHStroke.setValue(String.valueOf(strokeMode));
+        mSBEHStroke.setSummary(mSBEHStroke.getEntry());
+        mSBEHStroke.setOnPreferenceChangeListener(this);
+
+        mSBEHCornerRadius =
+                (SeekBarPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS);
+        int cornerRadius = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, 2);
+        mSBEHCornerRadius.setValue(cornerRadius / 1);
+        mSBEHCornerRadius.setOnPreferenceChangeListener(this);
+
+        if (notDisabled) {
+            mSBEHStrokeThickness =
+                    (SeekBarPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS);
+            int strokeThickness = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, 4);
+            mSBEHStrokeThickness.setValue(strokeThickness / 1);
+            mSBEHStrokeThickness.setOnPreferenceChangeListener(this);
+
+            if (strokeMode == CUSTOM) {
+                mSBEHStrokeColor =
+                        (ColorPickerPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR);
+                intColor = Settings.System.getInt(mResolver,
+                        Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR, CYANIDE_BLUE); 
+                mSBEHStrokeColor.setNewPreviewColor(intColor);
+                hexColor = String.format("#%08x", (0xffffffff & intColor));
+                mSBEHStrokeColor.setSummary(hexColor);
+                mSBEHStrokeColor.setOnPreferenceChangeListener(this);
+            } else {
+                catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR));
+            }
+        } else if (strokeMode == DISABLED) {
+            catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS));
+            catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR));
+        }
 
         setHasOptionsMenu(true);
     }
@@ -407,6 +465,30 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
          int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
          Settings.System.putInt(getContentResolver(),
                  Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
+        } else if (preference == mSBEHStroke) {
+            Settings.System.putInt(mResolver, Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE,
+                    Integer.valueOf((String) newValue));
+            mSBEHStroke.setValue(String.valueOf(newValue));
+            mSBEHStroke.setSummary(mSBEHStroke.getEntry());
+            refreshSettings();
+            return true;
+        } else if (preference == mSBEHStrokeColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mSBEHStrokeThickness) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, val * 1);
+            return true;
+        } else if (preference == mSBEHCornerRadius) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, val * 1);
             return true;
         }
         return false;
@@ -485,10 +567,18 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
                                     WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR, BLACK);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, 0);
                             getOwner().refreshSettings();
                         }
                     })
-                    .setPositiveButton(R.string.reset_vrtoxin,
+                    .setPositiveButton(R.string.reset_cyanide,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -500,38 +590,46 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_RIPPLE_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_ICON_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.POWER_MENU_BUTTON, 2);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 20);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_ALARM_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_CLOCK_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_DATE_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_SETTINGS_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE, 2);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR, CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, 20);
                             getOwner().refreshSettings();
                         }
                     })

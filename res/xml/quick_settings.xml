@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2015 VRToxin Project
+     Copyright (C) 2016 Cyanide Android (rogersb11)
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -166,8 +167,8 @@
             android:key="qs_stroke"
             android:title="@string/stroke_title"
             android:dialogTitle="@string/stroke_title"
-            android:entries="@array/qs_stroke_entries"
-            android:entryValues="@array/qs_stroke_values"
+            android:entries="@array/stroke_entries"
+            android:entryValues="@array/stroke_values"
             android:defaultValue="1" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
