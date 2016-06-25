@@ -19,37 +19,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/volume_dialog_settings_title">
 
-    <ListPreference
-        android:key="volume_dialog_stroke"
-        android:title="@string/stroke_title"
-        android:dialogTitle="@string/stroke_title"
-        android:entries="@array/stroke_entries"
-        android:entryValues="@array/stroke_values"
-        android:defaultValue="1" />
-
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
-        android:key="volume_dialog_stroke_color"
-        android:title="@string/stroke_color_title"
-        android:defaultValue="0xffffffff" />
-
-    <com.android.settings.vrtoxin.SeekBarPreference
-        android:key="volume_dialog_stroke_thickness"
-        android:title="@string/stroke_thickness_title"
-        android:max="25"
-        settings:min="1"
-        settings:unitsLeft=""
-        settings:unitsRight="px"
-        android:persistent="false" />
-
-    <com.android.settings.vrtoxin.SeekBarPreference
-        android:key="volume_dialog_corner_radius"
-        android:title="@string/corner_radius_title"
-        android:max="50"
-        settings:min="1"
-        settings:unitsLeft=""
-        settings:unitsRight="px"
-        android:persistent="false" />
-
     <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="volume_dialog_bg_color"
         android:title="@string/background_title"
@@ -79,5 +48,42 @@
         android:key="volume_dialog_slider_icon_color"
         android:title="@string/volume_dialog_slider_icon"
         android:defaultValue="0xffffffff" />
+
+    <PreferenceCategory
+        android:key="stroke_settings"
+        android:title="@string/stroke_category_title">
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="volume_dialog_corner_radius"
+            android:title="@string/corner_radius_title"
+            android:max="50"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="volume_dialog_stroke"
+            android:title="@string/stroke_title"
+            android:dialogTitle="@string/stroke_title"
+            android:entries="@array/volume_dialog_stroke_entries"
+            android:entryValues="@array/volume_dialog_stroke_values"
+            android:defaultValue="1" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="volume_dialog_stroke_color"
+            android:title="@string/stroke_color_title"
+            android:defaultValue="0xffffffff" />
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="volume_dialog_stroke_thickness"
+            android:title="@string/stroke_thickness_title"
+            android:max="25"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

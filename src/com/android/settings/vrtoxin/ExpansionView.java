@@ -62,7 +62,6 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_WEATHER_ICON_COLOR = "expansion_view_weather_icon_color";
     private static final String EXPANSION_VIEW_WEATHER_TEXT_COLOR = "expansion_view_weather_text_color";
     private static final String EXPANSION_VIEW_WEATHER_TEXT_SIZE = "expansion_view_weather_text_size";
-    private static final String EXPANSION_VIEW_BACKGROUND = "expansion_view_background";
     private static final String EXPANSION_VIEW_BACKGROUND_COLOR = "expansion_view_background_color";
     private static final String EXPANSION_VIEW_ANIMATION = "expansion_view_animation";
     private static final String EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE = "expansion_view_activity_panel_text_size";
@@ -72,11 +71,16 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_FORCE_SHOW = "expansion_view_force_show";
     private static final String EXPANSION_VIEW_VIBRATION = "expansion_view_vibration";
     private static final String EXPANSION_VIEW_PANEL_SHORTCUTS = "expansion_view_panel_shortcuts";
+    private static final String EXPANSION_VIEW_STROKE = "expansion_view_stroke";
+    private static final String EXPANSION_VIEW_STROKE_COLOR = "expansion_view_stroke_color";
+    private static final String EXPANSION_VIEW_STROKE_THICKNESS = "expansion_view_stroke_thickness";
+    private static final String EXPANSION_VIEW_CORNER_RADIUS = "expansion_view_corner_radius";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
-    private static final int VRTOXIN_BLUE = 0xff1976D2;
-    private static final int VRTOXIN_GREEN = 0xff00ff00;
+    private static final int CYANIDE_BLUE = 0xff1976D2;
+    private static final int CYANIDE_GREEN = 0xff00ff00;
+    private static final int DEFAULT_STROKE_COLOR = 0xffffffff;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET  = 0;
@@ -104,6 +108,10 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private SwitchPreference mForceView;
     private SwitchPreference mVibrate;
     private SwitchPreference mShowShortcutBar;
+    private ListPreference mStroke;
+    private ColorPickerPreference mStrokeColor;
+    private SeekBarPreference mStrokeThickness;
+    private SeekBarPreference mCornerRadius;
 
     private ContentResolver mResolver;
 
@@ -125,9 +133,6 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         int intColor;
         String hexColor;
 
-        boolean showBg = Settings.System.getInt(mResolver,
-                Settings.System.EXPANSION_VIEW_BACKGROUND, 0) == 1;
-
         PreferenceCategory catColors =
                 (PreferenceCategory) findPreference(PREF_CAT_COLORS);
 
@@ -139,7 +144,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewTextColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewTextColor.setSummary(hexColor);
-        mExpansionViewTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewTextColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewTextColor.setOnPreferenceChangeListener(this);
 
         mExpansionViewFontStyle = (ListPreference) findPreference(EXPANSION_VIEW_FONT_STYLE);
@@ -168,7 +173,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewIconColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewIconColor.setSummary(hexColor);
-        mExpansionViewIconColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewIconColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewIconColor.setOnPreferenceChangeListener(this);
 
         mExpansionViewRippleColor =
@@ -179,7 +184,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewRippleColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewRippleColor.setSummary(hexColor);
-        mExpansionViewRippleColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewRippleColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewRippleColor.setOnPreferenceChangeListener(this);
 
         mShowCurrent =
@@ -203,7 +208,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewWeatherIconColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewWeatherIconColor.setSummary(hexColor);
-        mExpansionViewWeatherIconColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewWeatherIconColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewWeatherIconColor.setOnPreferenceChangeListener(this);
 
         mExpansionViewWeatherTextColor =
@@ -214,7 +219,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewWeatherTextColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewWeatherTextColor.setSummary(hexColor);
-        mExpansionViewWeatherTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewWeatherTextColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewWeatherTextColor.setOnPreferenceChangeListener(this);
 
         mExpansionViewWeatherTextSize =
@@ -222,11 +227,6 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewWeatherTextSize.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 14));
         mExpansionViewWeatherTextSize.setOnPreferenceChangeListener(this);
-
-        mShowBg =
-                (SwitchPreference) findPreference(EXPANSION_VIEW_BACKGROUND);
-        mShowBg.setChecked(showBg);
-        mShowBg.setOnPreferenceChangeListener(this);
 
         mExpansionViewBgColor =
                 (ColorPickerPreference) findPreference(EXPANSION_VIEW_BACKGROUND_COLOR);
@@ -257,7 +257,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mExpansionViewActivityPanelTextColor.setNewPreviewColor(intColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mExpansionViewActivityPanelTextColor.setSummary(hexColor);
-        mExpansionViewActivityPanelTextColor.setDefaultColors(WHITE, VRTOXIN_BLUE);
+        mExpansionViewActivityPanelTextColor.setDefaultColors(WHITE, CYANIDE_BLUE);
         mExpansionViewActivityPanelTextColor.setOnPreferenceChangeListener(this);
 
         mCustomLogo = findPreference(EXPANSION_VIEW_CUSTOM_LOGO);
@@ -280,6 +280,35 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mShowShortcutBar.setChecked(Settings.System.getInt(mResolver,
                Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 1) == 1);
         mShowShortcutBar.setOnPreferenceChangeListener(this);
+
+        mStroke = (ListPreference) findPreference(EXPANSION_VIEW_STROKE);
+        mStroke.setOnPreferenceChangeListener(this);
+        mStroke.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.EXPANSION_VIEW_STROKE, 1)));
+        mStroke.setSummary(mStroke.getEntry());
+
+        mStrokeColor =
+                (ColorPickerPreference) findPreference(EXPANSION_VIEW_STROKE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_STROKE_COLOR, CYANIDE_BLUE); 
+        mStrokeColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mStrokeColor.setSummary(hexColor);
+        mStrokeColor.setOnPreferenceChangeListener(this);
+
+        mStrokeThickness =
+                (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_THICKNESS);
+        int strokeThickness = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 4);
+        mStrokeThickness.setValue(strokeThickness / 1);
+        mStrokeThickness.setOnPreferenceChangeListener(this);
+
+        mCornerRadius =
+                (SeekBarPreference) findPreference(EXPANSION_VIEW_CORNER_RADIUS);
+        int cornerRadius = Settings.System.getInt(mResolver,
+                Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 2);
+        mCornerRadius.setValue(cornerRadius / 1);
+        mCornerRadius.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -392,12 +421,6 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                 Settings.System.EXPANSION_VIEW_ICON_COLOR, intHex);
             preference.setSummary(hex);
-        } else if (preference == mShowBg) {
-            value = (Boolean) newValue;
-            Settings.System.putInt(mResolver,
-                    Settings.System.EXPANSION_VIEW_BACKGROUND,
-                    value ? 1 : 0);
-            return true;
         } else if (preference == mExpansionViewBgColor) {
             hex = ColorPickerPreference.convertToARGB(
                 Integer.valueOf(String.valueOf(newValue)));
@@ -440,6 +463,30 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                     Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS,
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mStroke) {
+            Settings.System.putInt(mResolver, Settings.System.EXPANSION_VIEW_STROKE,
+                    Integer.valueOf((String) newValue));
+            mStroke.setValue(String.valueOf(newValue));
+            mStroke.setSummary(mStroke.getEntry());
+            return true;
+        } else if (preference == mStrokeColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mStrokeThickness) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, val * 1);
+            return true;
+        } else if (preference == mCornerRadius) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_CORNER_RADIUS, val * 1);
             return true;
         }
         return false;
@@ -555,6 +602,20 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     Settings.System.EXPANSION_VIEW_VIBRATION, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_SIZE,
+                                    16);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_BACKGROUND_COLOR, 0xffffffff);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE,
+                                    0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE_COLOR, WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 4);
                             getOwner().refreshSettings();
                         }
                     })
@@ -563,7 +624,7 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_FONT_STYLE, 20);
                             Settings.System.putString(getOwner().mResolver,
@@ -573,16 +634,16 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     Settings.System.EXPANSION_VIEW_TEXT_SIZE, 25);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ICON_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_RIPPLE_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_ICON_COLOR,
-                                    VRTOXIN_GREEN);
+                                    CYANIDE_GREEN);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_WEATHER_TEXT_SIZE, 18);
                             Settings.System.putInt(getOwner().mResolver,
@@ -595,13 +656,24 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     20);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_ACTIVITY_PANEL_TEXT_COLOR,
-                                    VRTOXIN_BLUE);
+                                    CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_FORCE_SHOW, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_VIBRATION, 1);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_PANEL_SHORTCUTS, 1);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_BACKGROUND_COLOR, BLACK);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE,
+                                    2);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE_COLOR, CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 20);
                             getOwner().refreshSettings();
                         }
                     })

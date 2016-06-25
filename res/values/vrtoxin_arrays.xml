@@ -2584,14 +2584,40 @@
         <item>3</item>
     </string-array>
 
-    <!-- Stroke -->
-    <string-array name="stroke_entries" translatable="false">
+    <!-- Volume dialog stroke -->
+    <string-array name="volume_dialog_stroke_entries" translatable="false">
         <item>@string/stroke_disabled</item>
         <item>@string/stroke_accent</item>
         <item>@string/stroke_custom</item>
     </string-array>
 
-    <string-array name="stroke_values" translatable="false">
+    <string-array name="volume_dialog_stroke_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Volume dialog stroke -->
+    <string-array name="qs_stroke_entries" translatable="false">
+        <item>@string/stroke_disabled</item>
+        <item>@string/stroke_accent</item>
+        <item>@string/stroke_custom</item>
+    </string-array>
+
+    <string-array name="qs_stroke_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Volume dialog stroke -->
+    <string-array name="expansion_view_stroke_entries" translatable="false">
+        <item>@string/stroke_disabled</item>
+        <item>@string/stroke_accent</item>
+        <item>@string/stroke_custom</item>
+    </string-array>
+
+    <string-array name="expansion_view_stroke_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>

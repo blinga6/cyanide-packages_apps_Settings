@@ -29,13 +29,6 @@
         android:summary="@string/expansion_view_animation_summary"
         android:persistent="false" />
 
-    <!-- Background -->
-    <SwitchPreference
-        android:key="expansion_view_background"
-        android:title="@string/expansion_view_background"
-        android:summary="@string/expansion_view_background_summary"
-        android:defaultValue="false" />
-
     <!-- Font Styles -->
     <ListPreference
         android:key="expansion_view_font_style"
@@ -64,6 +57,42 @@
         android:title="@string/expansion_view_vibration_title"
         android:summary="@string/expansion_view_vibration_summary"
         android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="stroke_settings"
+        android:title="@string/stroke_category_title">
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="expansion_view_corner_radius"
+            android:title="@string/corner_radius_title"
+            android:max="50"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="expansion_view_stroke"
+            android:title="@string/stroke_title"
+            android:dialogTitle="@string/stroke_title"
+            android:entries="@array/expansion_view_stroke_entries"
+            android:entryValues="@array/expansion_view_stroke_values" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="expansion_view_stroke_color"
+            android:title="@string/stroke_color_title"
+            android:defaultValue="0xff1976D2" />
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="expansion_view_stroke_thickness"
+            android:title="@string/stroke_thickness_title"
+            android:max="25"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="colors"

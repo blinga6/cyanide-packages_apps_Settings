@@ -31,37 +31,6 @@
             android:summary="@string/qs_panel_tiles_summary"
             android:fragment="com.android.settings.vrtoxin.qs.QSTiles" />
 
-        <ListPreference
-            android:key="qs_stroke"
-            android:title="@string/stroke_title"
-            android:dialogTitle="@string/stroke_title"
-            android:entries="@arraystroke_entries"
-            android:entryValues="@array/stroke_values"
-            android:defaultValue="1" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="qs_stroke_color"
-            android:title="@string/stroke_color_title"
-            android:defaultValue="0xffffffff" />
-
-        <com.android.settings.vrtoxin.SeekBarPreference
-            android:key="qs_stroke_thickness"
-            android:title="@string/stroke_thickness_title"
-            android:max="25"
-            settings:min="1"
-            settings:unitsLeft=""
-            settings:unitsRight="px"
-            android:persistent="false" />
-
-        <com.android.settings.vrtoxin.SeekBarPreference
-            android:key="qs_corner_radius"
-            android:title="@string/corner_radius_title"
-            android:max="50"
-            settings:min="1"
-            settings:unitsLeft=""
-            settings:unitsRight="px"
-            android:persistent="false" />
-
         <PreferenceScreen
             android:key="navbar_targets_settings"
             android:fragment="com.android.settings.vrtoxin.dslv.ActionListViewSettings"
@@ -179,5 +148,42 @@
             android:title="@string/quick_settings_vibrate_title"
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
+
+    <PreferenceCategory
+        android:key="stroke_settings"
+        android:title="@string/stroke_category_title">
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="qs_corner_radius"
+            android:title="@string/corner_radius_title"
+            android:max="50"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="qs_stroke"
+            android:title="@string/stroke_title"
+            android:dialogTitle="@string/stroke_title"
+            android:entries="@array/qs_stroke_entries"
+            android:entryValues="@array/qs_stroke_values"
+            android:defaultValue="1" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="qs_stroke_color"
+            android:title="@string/stroke_color_title"
+            android:defaultValue="0xffffffff" />
+
+        <com.android.settings.vrtoxin.SeekBarPreference
+            android:key="qs_stroke_thickness"
+            android:title="@string/stroke_thickness_title"
+            android:max="25"
+            settings:min="1"
+            settings:unitsLeft=""
+            settings:unitsRight="px"
+            android:persistent="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
