@@ -55,6 +55,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private static final String PREF_QS_STROKE_COLOR = "qs_stroke_color";
     private static final String PREF_QS_STROKE_THICKNESS = "qs_stroke_thickness";
     private static final String PREF_QS_CORNER_RADIUS = "qs_corner_radius";
+    private static final String PREF_QS_STROKE_DASH_WIDTH = "qs_stroke_dash_width";
+    private static final String PREF_QS_STROKE_DASH_GAP = "qs_stroke_dash_gap";
 
     private static final int QS_TYPE_PANEL  = 0;
     private static final int QS_TYPE_BAR    = 1;
@@ -77,6 +79,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private ColorPickerPreference mQSStrokeColor;
     private SeekBarPreference mQSStrokeThickness;
     private SeekBarPreference mQSCornerRadius;
+    private SeekBarPreference mQSStrokeDashGap;
+    private SeekBarPreference mQSStrokeDashWidth;
 
     private ContentResolver mResolver;
 
@@ -214,6 +218,20 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         mQSCornerRadius.setOnPreferenceChangeListener(this);
 
         if (notDisabled) {
+            mQSStrokeDashGap =
+                    (SeekBarPreference) findPreference(PREF_QS_STROKE_DASH_GAP);
+            int qsStrokeDashGap = Settings.System.getInt(mResolver,
+                    Settings.System.QS_STROKE_DASH_GAP, 10);
+            mQSStrokeDashGap.setValue(qsStrokeDashGap / 1);
+            mQSStrokeDashGap.setOnPreferenceChangeListener(this);
+
+            mQSStrokeDashWidth =
+                    (SeekBarPreference) findPreference(PREF_QS_STROKE_DASH_WIDTH);
+            int qsStrokeDashWidth = Settings.System.getInt(mResolver,
+                    Settings.System.QS_STROKE_DASH_WIDTH, 0);
+            mQSStrokeDashWidth.setValue(qsStrokeDashWidth / 1);
+            mQSStrokeDashWidth.setOnPreferenceChangeListener(this);
+
             mQSStrokeThickness =
                     (SeekBarPreference) findPreference(PREF_QS_STROKE_THICKNESS);
             int qsStrokeThickness = Settings.System.getInt(mResolver,
@@ -236,6 +254,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
         } else if (strokeMode == DISABLED) {
             catStroke.removePreference(findPreference(PREF_QS_STROKE_THICKNESS));
             catStroke.removePreference(findPreference(PREF_QS_STROKE_COLOR));
+            catStroke.removePreference(findPreference(PREF_QS_STROKE_DASH_GAP));
+            catStroke.removePreference(findPreference(PREF_QS_STROKE_DASH_WIDTH));
         }
     }
 
@@ -328,6 +348,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             int val = (Integer) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.QS_CORNER_RADIUS, val * 1);
+            return true;
+        } else if (preference == mQSStrokeDashGap) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.QS_STROKE_DASH_GAP, val * 1);
+            return true;
+        } else if (preference == mQSStrokeDashWidth) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.QS_STROKE_DASH_WIDTH, val * 1);
             return true;
         }
         return false;

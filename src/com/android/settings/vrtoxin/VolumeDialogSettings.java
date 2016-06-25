@@ -56,6 +56,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final String PREF_VOLUME_DIALOG_STROKE_COLOR = "volume_dialog_stroke_color";
     private static final String PREF_VOLUME_DIALOG_STROKE_THICKNESS = "volume_dialog_stroke_thickness";
     private static final String PREF_VOLUME_DIALOG_CORNER_RADIUS = "volume_dialog_corner_radius";
+    private static final String PREF_VOLUME_DIALOG_STROKE_DASH_GAP = "volume_dialog_stroke_dash_gap";
+    private static final String PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH = "volume_dialog_stroke_dash_width";
 
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
@@ -80,6 +82,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private ColorPickerPreference mVolumeDialogStrokeColor;
     private SeekBarPreference mVolumeDialogStrokeThickness;
     private SeekBarPreference mVolumeDialogCornerRadius;
+    private SeekBarPreference mVolumeDialogStrokeDashGap;
+    private SeekBarPreference mVolumeDialogStrokeDashWidth;
 
     static final int DEFAULT_VOLUME_DIALOG_STROKE_COLOR = 0xFF80CBC4;
 
@@ -180,6 +184,20 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
         mVolumeDialogCornerRadius.setOnPreferenceChangeListener(this);
 
         if (notDisabled) {
+            mVolumeDialogStrokeDashGap =
+                    (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_GAP);
+            int volumeDialogStrokeDashGap = Settings.System.getInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_STROKE_DASH_GAP, 10);
+            mVolumeDialogStrokeDashGap.setValue(volumeDialogStrokeDashGap / 1);
+            mVolumeDialogStrokeDashGap.setOnPreferenceChangeListener(this);
+
+            mVolumeDialogStrokeDashWidth =
+                    (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH);
+            int volumeDialogStrokeDashWidth = Settings.System.getInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_STROKE_DASH_WIDTH, 0);
+            mVolumeDialogStrokeDashWidth.setValue(volumeDialogStrokeDashWidth / 1);
+            mVolumeDialogStrokeDashWidth.setOnPreferenceChangeListener(this);
+
             mVolumeDialogStrokeThickness =
                     (SeekBarPreference) findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS);
             int volumeDialogStrokeThickness = Settings.System.getInt(mResolver,
@@ -202,6 +220,8 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
         } else if (strokeMode == DISABLED) {
             catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_THICKNESS));
             catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_COLOR));
+            catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_GAP));
+            catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH));
         }
 
         setHasOptionsMenu(true);
@@ -306,6 +326,16 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
             int val = (Integer) newValue;
             Settings.System.putInt(mResolver,
                     Settings.System.VOLUME_DIALOG_CORNER_RADIUS, val * 1);
+            return true;
+        } else if (preference == mVolumeDialogStrokeDashGap) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_STROKE_DASH_GAP, val * 1);
+            return true;
+        } else if (preference == mVolumeDialogStrokeDashWidth) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_STROKE_DASH_WIDTH, val * 1);
             return true;
         }
         return false;

@@ -2772,5 +2772,7 @@
     <string name="stroke_color_title">Stroke Color</string>
     <string name="stroke_thickness_title">Stroke Thickness</string>
     <string name="corner_radius_title">Corner Radius</string>
+    <string name="dash_width_title">Stroke Dash Width</string>
+    <string name="dash_gap_title">Stroke Dash Gap</string>
 
 </resources>
