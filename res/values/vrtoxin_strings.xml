@@ -2775,4 +2775,8 @@
     <string name="dash_width_title">Stroke Dash Width</string>
     <string name="dash_gap_title">Stroke Dash Gap</string>
 
+    <!-- Volume Dialog Expanded -->
+    <string name="volume_dialog_force_expanded_title">Volume Panel Expanded</string>
+    <string name="volume_dialog_force_expanded_summary">Force the volume panel to always appear in expanded mode</string>
+
 </resources>
