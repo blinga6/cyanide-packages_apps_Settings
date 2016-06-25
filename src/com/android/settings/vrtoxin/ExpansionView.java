@@ -76,6 +76,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private static final String EXPANSION_VIEW_STROKE_COLOR = "expansion_view_stroke_color";
     private static final String EXPANSION_VIEW_STROKE_THICKNESS = "expansion_view_stroke_thickness";
     private static final String EXPANSION_VIEW_CORNER_RADIUS = "expansion_view_corner_radius";
+    private static final String EXPANSION_VIEW_STROKE_DASH_GAP = "expansion_view_stroke_dash_gap";
+    private static final String EXPANSION_VIEW_STROKE_DASH_WIDTH = "expansion_view_stroke_dash_width";
 
     private static final int BLACK = 0xff000000;
     private static final int WHITE = 0xffffffff;
@@ -117,6 +119,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
     private ColorPickerPreference mStrokeColor;
     private SeekBarPreference mStrokeThickness;
     private SeekBarPreference mCornerRadius;
+    private SeekBarPreference mStrokeDashGap;
+    private SeekBarPreference mStrokeDashWidth;
 
     private ContentResolver mResolver;
 
@@ -306,6 +310,20 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         mCornerRadius.setOnPreferenceChangeListener(this);
 
         if (notDisabled) {
+            mStrokeDashGap =
+                    (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_DASH_GAP);
+            int strokeDashGap = Settings.System.getInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_DASH_GAP, 10);
+            mStrokeDashGap.setValue(strokeDashGap / 1);
+            mStrokeDashGap.setOnPreferenceChangeListener(this);
+
+            mStrokeDashWidth =
+                    (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_DASH_WIDTH);
+            int strokeDashWidth = Settings.System.getInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_DASH_WIDTH, 0);
+            mStrokeDashWidth.setValue(strokeDashWidth / 1);
+            mStrokeDashWidth.setOnPreferenceChangeListener(this);
+
             mStrokeThickness =
                     (SeekBarPreference) findPreference(EXPANSION_VIEW_STROKE_THICKNESS);
             int strokeThickness = Settings.System.getInt(mResolver,
@@ -328,6 +346,8 @@ public class ExpansionView extends SettingsPreferenceFragment implements
         } else if (strokeMode == DISABLED) {
             catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_THICKNESS));
             catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_COLOR));
+            catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_DASH_GAP));
+            catStroke.removePreference(findPreference(EXPANSION_VIEW_STROKE_DASH_WIDTH));
         }
 
         setHasOptionsMenu(true);
@@ -509,6 +529,16 @@ public class ExpansionView extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                     Settings.System.EXPANSION_VIEW_CORNER_RADIUS, val * 1);
             return true;
+        } else if (preference == mStrokeDashGap) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_DASH_GAP, val * 1);
+            return true;
+        } else if (preference == mStrokeDashWidth) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.EXPANSION_VIEW_STROKE_DASH_WIDTH, val * 1);
+            return true;
         }
         return false;
     }
@@ -637,6 +667,10 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 4);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_STROKE_DASH_GAP, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_STROKE_DASH_WIDTH, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -695,6 +729,10 @@ public class ExpansionView extends SettingsPreferenceFragment implements
                                     Settings.System.EXPANSION_VIEW_STROKE_THICKNESS, 10);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.EXPANSION_VIEW_CORNER_RADIUS, 20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_STROKE_DASH_GAP, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_STROKE_DASH_WIDTH, 0);
                             getOwner().refreshSettings();
                         }
                     })

@@ -68,6 +68,8 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR = "status_bar_expanded_header_stroke_color";
     private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS = "status_bar_expanded_header_stroke_thickness";
     private static final String STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS = "status_bar_expanded_header_corner_radius";
+    private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP = "status_bar_expanded_header_stroke_dash_gap";
+    private static final String STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH = "status_bar_expanded_header_stroke_dash_width";
 
     private static final int SYSTEMUI_SECONDARY = 0xff384248;
     private static final int BLACK = 0xff000000;
@@ -101,6 +103,8 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mSBEHStrokeColor;
     private SeekBarPreference mSBEHStrokeThickness;
     private SeekBarPreference mSBEHCornerRadius;
+    private SeekBarPreference mSBEHStrokeDashGap;
+    private SeekBarPreference mSBEHStrokeDashWidth;
 
     private ContentResolver mResolver;
 
@@ -292,6 +296,20 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mSBEHCornerRadius.setOnPreferenceChangeListener(this);
 
         if (notDisabled) {
+            mSBEHStrokeDashGap =
+                    (SeekBarPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP);
+            int strokeDashGap = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP, 10);
+            mSBEHStrokeDashGap.setValue(strokeDashGap / 1);
+            mSBEHStrokeDashGap.setOnPreferenceChangeListener(this);
+
+            mSBEHStrokeDashWidth =
+                    (SeekBarPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH);
+            int strokeDashWidth = Settings.System.getInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH, 0);
+            mSBEHStrokeDashWidth.setValue(strokeDashWidth / 1);
+            mSBEHStrokeDashWidth.setOnPreferenceChangeListener(this);
+
             mSBEHStrokeThickness =
                     (SeekBarPreference) findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS);
             int strokeThickness = Settings.System.getInt(mResolver,
@@ -314,6 +332,8 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         } else if (strokeMode == DISABLED) {
             catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS));
             catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_COLOR));
+            catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP));
+            catStroke.removePreference(findPreference(STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH));
         }
 
         setHasOptionsMenu(true);
@@ -490,6 +510,16 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
             Settings.System.putInt(mResolver,
                     Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, val * 1);
             return true;
+        } else if (preference == mSBEHStrokeDashGap) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP, val * 1);
+            return true;
+        } else if (preference == mSBEHStrokeDashWidth) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH, val * 1);
+            return true;
         }
         return false;
     }
@@ -575,6 +605,10 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, 0);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH, 0);
                             getOwner().refreshSettings();
                         }
                     })
@@ -630,6 +664,10 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_THICKNESS, 10);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_CORNER_RADIUS, 20);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_GAP, 10);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE_DASH_WIDTH, 0);
                             getOwner().refreshSettings();
                         }
                     })
