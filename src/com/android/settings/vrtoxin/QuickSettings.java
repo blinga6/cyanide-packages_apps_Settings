@@ -35,6 +35,7 @@ import com.android.settings.vrtoxin.qs.QSTiles;
 import com.android.internal.logging.MetricsLogger;
 
 import com.android.internal.widget.LockPatternUtils;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,10 +50,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
     private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
+    private static final String PREF_QS_STROKE = "qs_stroke";
+    private static final String PREF_QS_STROKE_COLOR = "qs_stroke_color";
+    private static final String PREF_QS_STROKE_THICKNESS = "qs_stroke_thickness";
+    private static final String PREF_QS_CORNER_RADIUS = "qs_corner_radius";
 
     private static final int QS_TYPE_PANEL  = 0;
     private static final int QS_TYPE_BAR    = 1;
     private static final int QS_TYPE_HIDDEN = 2;
+    static final int DEFAULT_QS_STROKE_COLOR = 0xFF80CBC4;
 
     private ListPreference mQSType;
     private ListPreference mQuickPulldown;
@@ -62,6 +68,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
     private ListPreference mTileAnimationInterpolator;
+    private ListPreference mQSStroke;
+    private ColorPickerPreference mQSStrokeColor;
+    private SeekBarPreference mQSStrokeThickness;
+    private SeekBarPreference mQSCornerRadius;
 
     private ContentResolver mResolver;
 
@@ -85,6 +95,9 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
 
         addPreferencesFromResource(R.xml.quick_settings);
         mResolver = getActivity().getContentResolver();
+
+        int intColor;
+        String hexColor;
 
         final int qsType = Settings.System.getInt(mResolver,
                Settings.System.QS_TYPE, QS_TYPE_PANEL);
@@ -152,6 +165,44 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             removePreference("qs_bar_buttons");
         }
 
+        // Volume dialog stroke
+        mQSStroke =
+                (ListPreference) findPreference(PREF_QS_STROKE);
+        int qSStroke = Settings.System.getIntForUser(mResolver,
+                        Settings.System.QS_STROKE, 1,
+                        UserHandle.USER_CURRENT);
+        mQSStroke.setValue(String.valueOf(qSStroke));
+        mQSStroke.setSummary(mQSStroke.getEntry());
+        mQSStroke.setOnPreferenceChangeListener(this);
+
+        // Volume dialog stroke color
+        mQSStrokeColor =
+                (ColorPickerPreference) findPreference(PREF_QS_STROKE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.VOLUME_DIALOG_STROKE_COLOR, DEFAULT_QS_STROKE_COLOR); 
+        mQSStrokeColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mQSStrokeColor.setSummary(hexColor);
+        mQSStrokeColor.setOnPreferenceChangeListener(this);
+
+        // Volume dialog stroke thickness
+        mQSStrokeThickness =
+                (SeekBarPreference) findPreference(PREF_QS_STROKE_THICKNESS);
+        int qsStrokeThickness = Settings.System.getInt(mResolver,
+                Settings.System.QS_STROKE_THICKNESS, 4);
+        mQSStrokeThickness.setValue(qsStrokeThickness / 1);
+        mQSStrokeThickness.setOnPreferenceChangeListener(this);
+
+        // Volume dialog corner radius
+        mQSCornerRadius =
+                (SeekBarPreference) findPreference(PREF_QS_CORNER_RADIUS);
+        int qSCornerRadius = Settings.System.getInt(mResolver,
+                Settings.System.QS_CORNER_RADIUS, 2);
+        mQSCornerRadius.setValue(qSCornerRadius / 1);
+        mQSCornerRadius.setOnPreferenceChangeListener(this);
+
+        QSSettingsDisabler(qSStroke);
+
         mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
         int quickPulldownValue = Settings.System.getIntForUser(mResolver,
@@ -189,6 +240,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        String hex;
+        int intHex;
         if (preference == mQSType) {
             int intValue = Integer.valueOf((String) newValue);
             int index = mQSType.findIndexOfValue((String) newValue);
@@ -239,6 +292,32 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
             Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_INTERPOLATOR,
                     tileAnimationInterpolator, UserHandle.USER_CURRENT);
             updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
+            return true;
+        } else if (preference == mQSStroke) {
+            int qSStroke = Integer.parseInt((String) newValue);
+            int index = mQSStroke.findIndexOfValue((String) newValue);
+            Settings.System.putIntForUser(mResolver, Settings.System.
+                    QS_STROKE, qSStroke, UserHandle.USER_CURRENT);
+            mQSStroke.setSummary(mQSStroke.getEntries()[index]);
+            QSSettingsDisabler(qSStroke);
+            return true;
+        } else if (preference == mQSStrokeColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                    Settings.System.QS_STROKE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
+        } else if (preference == mQSStrokeThickness) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.QS_STROKE_THICKNESS, val * 1);
+            return true;
+        } else if (preference == mQSCornerRadius) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.QS_CORNER_RADIUS, val * 1);
             return true;
         }
         return false;
@@ -329,6 +408,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                 mTileAnimationDuration.setSelectable(true);
                 mTileAnimationInterpolator.setSelectable(true);
             }
+        }
+    }
+
+    private void QSSettingsDisabler(int qSStroke) {
+        if (qSStroke == 0) {
+            mQSStrokeColor.setEnabled(false);
+            mQSStrokeThickness.setEnabled(false);
+        } else if (qSStroke == 1) {
+            mQSStrokeColor.setEnabled(false);
+            mQSStrokeThickness.setEnabled(true);
+        } else {
+            mQSStrokeColor.setEnabled(true);
+            mQSStrokeThickness.setEnabled(true);
         }
     }
 
