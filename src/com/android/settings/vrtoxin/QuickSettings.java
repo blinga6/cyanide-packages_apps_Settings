@@ -243,7 +243,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements Prefere
                 mQSStrokeColor =
                         (ColorPickerPreference) findPreference(PREF_QS_STROKE_COLOR);
                 intColor = Settings.System.getInt(mResolver,
-                        Settings.System.VOLUME_DIALOG_STROKE_COLOR, DEFAULT_QS_STROKE_COLOR); 
+                        Settings.System.QS_STROKE_COLOR, DEFAULT_QS_STROKE_COLOR); 
                 mQSStrokeColor.setNewPreviewColor(intColor);
                 hexColor = String.format("#%08x", (0xffffffff & intColor));
                 mQSStrokeColor.setSummary(hexColor);
