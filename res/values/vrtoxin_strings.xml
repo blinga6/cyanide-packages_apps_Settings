@@ -2159,7 +2159,7 @@
     <string name="keyguard_torch_summary">Long press power button while screen is off to activate flashlight</string>
 
     <!-- Volume Dialog Colors -->
-    <string name="volume_dialog_settings_title">Volume Dialog Colors</string>
+    <string name="volume_dialog_settings_title">Volume Panel</string>
     <string name="volume_dialog_settings_summary">Customize various aspects of the volume dialog colors</string>
     <string name="volume_dialog_expand_button">Expand Button</string>
     <string name="volume_dialog_slider">Slider</string>
@@ -2776,7 +2776,8 @@
     <string name="dash_gap_title">Stroke Dash Gap</string>
 
     <!-- Volume Dialog Expanded -->
-    <string name="volume_dialog_force_expanded_title">Volume Panel Expanded</string>
+    <string name="volume_dialog_force_expanded_title">Expanded Panel</string>
     <string name="volume_dialog_force_expanded_summary">Force the volume panel to always appear in expanded mode</string>
+    <string name="volume_dialog_timeout_title">Panel Timeout</string>
 
 </resources>

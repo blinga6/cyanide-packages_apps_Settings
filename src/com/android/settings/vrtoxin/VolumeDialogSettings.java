@@ -58,6 +58,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private static final String PREF_VOLUME_DIALOG_CORNER_RADIUS = "volume_dialog_corner_radius";
     private static final String PREF_VOLUME_DIALOG_STROKE_DASH_GAP = "volume_dialog_stroke_dash_gap";
     private static final String PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH = "volume_dialog_stroke_dash_width";
+    private static final String VOLUME_DIALOG_TIMEOUT = "volume_dialog_timeout";
 
     private static final int WHITE = 0xffffffff;
     private static final int BLACK = 0xff000000;
@@ -84,6 +85,7 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
     private SeekBarPreference mVolumeDialogCornerRadius;
     private SeekBarPreference mVolumeDialogStrokeDashGap;
     private SeekBarPreference mVolumeDialogStrokeDashWidth;
+    private SeekBarPreference mVolumeDialogTimeout;
 
     static final int DEFAULT_VOLUME_DIALOG_STROKE_COLOR = 0xFF80CBC4;
 
@@ -224,6 +226,13 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
             catStroke.removePreference(findPreference(PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH));
         }
 
+        mVolumeDialogTimeout =
+                (SeekBarPreference) findPreference(VOLUME_DIALOG_TIMEOUT);
+        int volumeDialogTimeout = Settings.System.getInt(mResolver,
+                Settings.System.VOLUME_DIALOG_TIMEOUT, 5000);
+        mVolumeDialogTimeout.setValue(volumeDialogTimeout);
+        mVolumeDialogTimeout.setOnPreferenceChangeListener(this);
+
         setHasOptionsMenu(true);
     }
 
@@ -337,13 +346,13 @@ public class VolumeDialogSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(mResolver,
                     Settings.System.VOLUME_DIALOG_STROKE_DASH_WIDTH, val * 1);
             return true;
+        } else if (preference == mVolumeDialogTimeout) {
+            int val = (Integer) newValue;
+            Settings.System.putInt(mResolver,
+                    Settings.System.VOLUME_DIALOG_TIMEOUT, val * 1);
+            return true;
         }
         return false;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     @Override
