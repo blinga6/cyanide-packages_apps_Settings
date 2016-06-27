@@ -485,6 +485,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
          int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
          Settings.System.putInt(getContentResolver(),
                  Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
+			return true;
         } else if (preference == mSBEHStroke) {
             Settings.System.putInt(mResolver, Settings.System.STATUS_BAR_EXPANDED_HEADER_STROKE,
                     Integer.valueOf((String) newValue));
