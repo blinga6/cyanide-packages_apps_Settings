@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The VRToxin Project
+ * Copyright (C) 2015-2016 Cyanide Android (rogersb11)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,30 +17,27 @@
 package com.android.settings.vrtoxin;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.graphics.PorterDuff.Mode;
-import android.net.Uri;
-import android.text.Html;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.android.internal.util.vrtoxin.ScreenType;
 import com.android.settings.fuelgauge.PowerUsageSummary;
@@ -75,6 +72,7 @@ public class MainSettings extends SettingsPreferenceFragment {
     String titleString[];
     ViewGroup mContainer;
     PagerSlidingTabStrip mTabs;
+    FrameLayout mFragContainer;
     ContentResolver mResolver;
 
     static Bundle mSavedState;
@@ -97,16 +95,144 @@ public class MainSettings extends SettingsPreferenceFragment {
         View view = inflater.inflate(R.layout.preference_vrtoxin_shit, container, false);
         mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
         mTabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+        mFragContainer = (FrameLayout) view.findViewById(R.id.fragment_content);
         StatusBarAdapter StatusBarAdapter = new StatusBarAdapter(getFragmentManager());
         mViewPager.setAdapter(StatusBarAdapter);
         mTabs.setViewPager(mViewPager);
+        setHasOptionsMenu(true);
 
         return view;
     }
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-     }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        switch (item.getItemId()) {
+            case R.id.advanced_sounds:
+                Fragment otherSoundSettings = new OtherSoundSettings();
+                fragmentTransaction.replace(R.id.fragment_content, otherSoundSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.animations:
+                Fragment masterAnimationControl = new MasterAnimationControl();
+                fragmentTransaction.replace(R.id.fragment_content, masterAnimationControl);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.battery:
+                Fragment powerUsageSummary = new PowerUsageSummary();
+                fragmentTransaction.replace(R.id.fragment_content, powerUsageSummary);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.buttons:
+                Fragment hwKeySettings = new HwKeySettings();
+                fragmentTransaction.replace(R.id.fragment_content, hwKeySettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.dashboard:
+                Fragment dashboardOptions = new DashboardOptions();
+                fragmentTransaction.replace(R.id.fragment_content, dashboardOptions);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.floating_windows:
+                Fragment floatingWindows = new FloatingWindows();
+                fragmentTransaction.replace(R.id.fragment_content, floatingWindows);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.interface_settings:
+                Fragment interfaceSettings = new InterfaceSettings();
+                fragmentTransaction.replace(R.id.fragment_content, interfaceSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.lock_screen:
+                Fragment lockS = new LockS();
+                fragmentTransaction.replace(R.id.fragment_content, lockS);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.notifications:
+                Fragment vrtoxinNotifs = new VrtoxinNotifs();
+                fragmentTransaction.replace(R.id.fragment_content, vrtoxinNotifs);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.quick_settings:
+                Fragment quickSettings = new QuickSettings();
+                fragmentTransaction.replace(R.id.fragment_content, quickSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.power_menu:
+                Fragment powerMenuSettings = new PowerMenuSettings();
+                fragmentTransaction.replace(R.id.fragment_content, powerMenuSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.recents_panel:
+                Fragment androidRecentsSettings = new AndroidRecentsSettings();
+                fragmentTransaction.replace(R.id.fragment_content, androidRecentsSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.status_bar:
+                Fragment statusBarSettings = new StatusBarSettings();
+                fragmentTransaction.replace(R.id.fragment_content, statusBarSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.sizer:
+                Fragment slimSizer = new SlimSizer();
+                fragmentTransaction.replace(R.id.fragment_content, slimSizer);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            case R.id.wakelock_blocker:
+                Fragment wakelockBlocker = new WakelockBlocker();
+                fragmentTransaction.replace(R.id.fragment_content, wakelockBlocker);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.VISIBLE);
+                return true;
+            default:
+                Fragment mainSettings = new MainSettings();
+                fragmentTransaction.replace(R.id.fragment_content, mainSettings);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                mFragContainer.setVisibility(View.GONE);
+                return true;
+        }
+    }
 
      @Override
      public void onResume() {
