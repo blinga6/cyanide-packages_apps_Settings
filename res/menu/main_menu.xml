@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/advanced_sounds" 
+          android:title="@string/advanced_sound_title"/>
+    <item android:id="@+id/animations" 
+          android:title="@string/vrtoxin_animations_settings"/>
+    <item android:id="@+id/battery"
+          android:title="@string/battery"/>
+    <item android:id="@+id/buttons"
+          android:title="@string/buttons_title"/>
+    <item android:id="@+id/dashboard" 
+          android:title="@string/settings_colors_title"/>  
+    <item android:id="@+id/floating_windows" 
+          android:title="@string/floating_windows"/>
+    <item android:id="@+id/interface_settings" 
+          android:title="@string/interface_settings_title"/>
+    <item android:id="@+id/lock_screen" 
+          android:title="@string/lockscreen_settings"/>
+    <item android:id="@+id/notifications"
+          android:title="@string/vrtoxin_notifications_title"/>
+    <item android:id="@+id/power_menu"
+          android:title="@string/power_menu_settings_title"/>
+    <item android:id="@+id/quick_settings" 
+          android:title="@string/quick_settings_title"/>  
+    <item android:id="@+id/recents_panel" 
+          android:title="@string/recents_panel"/>
+    <item android:id="@+id/status_bar"
+          android:title="@string/status_bar_title"/>
+    <item android:id="@+id/sizer" 
+          android:title="@string/sizer_title"/>  
+    <item android:id="@+id/wakelock_blocker" 
+          android:title="@string/wakelock_blocker_title"/>
+</menu> 
