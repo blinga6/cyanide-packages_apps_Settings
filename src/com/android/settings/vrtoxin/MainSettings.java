@@ -139,6 +139,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 mFragContainer.setVisibility(View.VISIBLE);
+                mViewPager.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.buttons:
                 Fragment hwKeySettings = new HwKeySettings();
@@ -225,12 +226,7 @@ public class MainSettings extends SettingsPreferenceFragment {
                 mFragContainer.setVisibility(View.VISIBLE);
                 return true;
             default:
-                Fragment mainSettings = new MainSettings();
-                fragmentTransaction.replace(R.id.fragment_content, mainSettings);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                mFragContainer.setVisibility(View.GONE);
-                return true;
+                return super.onOptionsItemSelected(item);
         }
     }
 
