@@ -41,7 +41,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import com.android.settings.vrtoxin.SeekBarPreferenceCham;
+import com.android.settings.vrtoxin.SeekBarPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment implements
@@ -98,7 +98,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mSettingsColor;
     private ColorPickerPreference mVRToxinColor;
     private ColorPickerPreference mWeatherColor;
-    private SeekBarPreferenceCham mHeaderShadow;
+    private SeekBarPreference mHeaderShadow;
     private ListPreference mSBEHStroke;
     private ColorPickerPreference mSBEHStrokeColor;
     private SeekBarPreference mSBEHStrokeThickness;
@@ -154,7 +154,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                 .getContentResolver(), Settings.System.STATUS_BAR_HEADER_FONT_STYLE, 0)));
         mStatusBarHeaderFontStyle.setSummary(mStatusBarHeaderFontStyle.getEntry());
 
-        mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+        mHeaderShadow = (SeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
         final int headerShadow = Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
         mHeaderShadow.setValue((int)(((double) headerShadow / 255) * 100));
