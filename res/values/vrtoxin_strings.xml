@@ -2780,4 +2780,16 @@
     <string name="volume_dialog_force_expanded_summary">Force the volume panel to always appear in expanded mode</string>
     <string name="volume_dialog_timeout_title">Panel Timeout</string>
 
+    <!-- Task Manager -->
+    <string name="task_manager_title">Task Manager</string>
+    <string name="task_manager_summary">Fully customize the task manager</string>
+    <string name="task_manager_show_summary">Show/hide the task manager button in the expanded header</string>
+    <string name="task_manager_memory_text_title">Memory Text</string>
+    <string name="task_manager_task_kill_button_title">Task Kill Button</string>
+    <string name="task_manager_task_text_title">Task Text</string>
+    <string name="task_manager_title_text_title">Title Text</string>
+    <string name="task_manager_kill_all_text_title">Kill All Text</string>
+    <string name="task_manager_ram_used_title">RAM Used</string>
+    <string name="task_manager_ram_free_title">RAM Free</string>
+
 </resources>

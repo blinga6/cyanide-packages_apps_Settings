@@ -147,4 +147,5 @@ public class Settings extends SettingsActivity {
     public static class ExpansionViewTrafficSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ExpansionViewBatterySettingsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ExpandedHeaderSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class TaskManagerSettingsActivity extends SettingsActivity { /* empty */ }
 }
