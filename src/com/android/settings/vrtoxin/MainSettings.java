@@ -19,6 +19,7 @@ package com.android.settings.vrtoxin;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentManager.OnBackStackChangedListener;
 import android.app.FragmentTransaction;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -66,7 +67,7 @@ import com.android.internal.logging.MetricsLogger;
 
 import java.util.List;
 
-public class MainSettings extends SettingsPreferenceFragment {
+public class MainSettings extends SettingsPreferenceFragment implements OnBackStackChangedListener {
 
     ViewPager mViewPager;
     String titleString[];
@@ -99,7 +100,9 @@ public class MainSettings extends SettingsPreferenceFragment {
         StatusBarAdapter StatusBarAdapter = new StatusBarAdapter(getFragmentManager());
         mViewPager.setAdapter(StatusBarAdapter);
         mTabs.setViewPager(mViewPager);
+
         setHasOptionsMenu(true);
+        getFragmentManager().addOnBackStackChangedListener(this);
 
         return view;
     }
@@ -111,6 +114,16 @@ public class MainSettings extends SettingsPreferenceFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        int backStackEntryCount = getFragmentManager().getBackStackEntryCount();
+        if(backStackEntryCount > 0){
+            // Relax
+        } else {
+            mFragContainer.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -139,7 +152,6 @@ public class MainSettings extends SettingsPreferenceFragment {
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 mFragContainer.setVisibility(View.VISIBLE);
-                mViewPager.setVisibility(View.INVISIBLE);
                 return true;
             case R.id.buttons:
                 Fragment hwKeySettings = new HwKeySettings();
@@ -226,8 +238,9 @@ public class MainSettings extends SettingsPreferenceFragment {
                 mFragContainer.setVisibility(View.VISIBLE);
                 return true;
             default:
+                getFragmentManager().addOnBackStackChangedListener(this);
                 return super.onOptionsItemSelected(item);
-        }
+         }
     }
 
      @Override
