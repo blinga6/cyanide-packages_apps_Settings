@@ -61,6 +61,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String POWER_MENU_COLOR = "expanded_header_power_menu_color";
     private static final String SETTINGS_COLOR = "expanded_header_settings_color";
     private static final String VRTOXIN_COLOR = "expanded_header_vrtoxin_color";
+    private static final String TASK_MANAGER_COLOR = "expanded_header_task_manager_color";
     private static final String WEATHER_COLOR = "expanded_header_weather_color";
     private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
     private static final String STROKE_CATEGORY = "stroke_settings";
@@ -97,6 +98,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mPowerMenuColor;
     private ColorPickerPreference mSettingsColor;
     private ColorPickerPreference mVRToxinColor;
+    private ColorPickerPreference mTaskManagerColor;
     private ColorPickerPreference mWeatherColor;
     private SeekBarPreference mHeaderShadow;
     private ListPreference mSBEHStroke;
@@ -271,6 +273,17 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mVRToxinColor.setSummary(hexColor);
         mVRToxinColor.setDefaultColors(WHITE, WHITE);
         mVRToxinColor.setOnPreferenceChangeListener(this);
+
+        mTaskManagerColor =
+                (ColorPickerPreference) findPreference(TASK_MANAGER_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_TASK_MANAGER_COLOR,
+                WHITE); 
+        mTaskManagerColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mTaskManagerColor.setSummary(hexColor);
+        mTaskManagerColor.setDefaultColors(WHITE, WHITE);
+        mTaskManagerColor.setOnPreferenceChangeListener(this);
 
         mWeatherColor =
                 (ColorPickerPreference) findPreference(WEATHER_COLOR);
@@ -464,6 +477,14 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                 Settings.System.STATUS_BAR_EXPANDED_HEADER_POWER_MENU_COLOR, intHex);
             preference.setSummary(hex);
             return true;
+        } else if (preference == mTaskManagerColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+                Settings.System.STATUS_BAR_EXPANDED_HEADER_TASK_MANAGER_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         } else if (preference == mVRToxinColor) {
             hex = ColorPickerPreference.convertToARGB(
                 Integer.valueOf(String.valueOf(newValue)));
@@ -596,6 +617,9 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_TASK_MANAGER_COLOR,
+                                    WHITE);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,
                                     WHITE);
                             Settings.System.putInt(getOwner().mResolver,
@@ -653,6 +677,9 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
                                     CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_VRTOXIN_COLOR,
+                                    CYANIDE_BLUE);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.STATUS_BAR_EXPANDED_HEADER_TASK_MANAGER_COLOR,
                                     CYANIDE_BLUE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.STATUS_BAR_EXPANDED_HEADER_WEATHER_COLOR,

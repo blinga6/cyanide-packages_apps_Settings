@@ -219,6 +219,11 @@
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="expanded_header_task_manager_color"
+            android:title="@string/task_manager_title"
+            android:defaultValue="0xffffffff" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="expanded_header_weather_color"
             android:title="@string/expanded_header_weather_color"
             android:defaultValue="0xffffffff" />
