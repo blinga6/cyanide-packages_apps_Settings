@@ -119,7 +119,7 @@
         android:title="@string/memory_bar_options_title">
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="memory_bar_used_color"
+            android:key="memory_bar_color"
             android:title="@string/membar_bar_color"
             android:defaultValue="0xffffffff" />
 
@@ -129,7 +129,7 @@
             android:defaultValue="0xffffffff" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="memory_bar_color"
+            android:key="memory_bar_used_color"
             android:title="@string/membar_bar_used_color"
             android:defaultValue="0xffffffff" />
 

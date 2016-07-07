@@ -22,6 +22,8 @@ import android.app.DialogFragment;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.SwitchPreference;
@@ -53,6 +55,9 @@ public class LockS extends SettingsPreferenceFragment implements
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String PREF_LOCKSCREEN_ALPHA = "lockscreen_alpha";
     private static final String PREF_LOCKSCREEN_SECURITY_ALPHA = "lockscreen_security_alpha";
+
+    private static final int MENU_RESET = Menu.FIRST;
+    private static final int DLG_RESET = 0;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
     private LockPatternUtils mLockPatternUtils;
@@ -131,6 +136,30 @@ public class LockS extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_SECURITY_ALPHA, 0.75f);
         mLsSecurityAlpha.setValue((int)(100 * alpha2));
         mLsSecurityAlpha.setOnPreferenceChangeListener(this);
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        int color = Settings.System.getInt(mResolver,
+                Settings.System.SETTINGS_ICON_COLOR, 0xFFFFFFFF);
+        Drawable d = getResources().getDrawable(com.android.internal.R.drawable.ic_settings_backup_restore).mutate();
+        d.setColorFilter(color, Mode.SRC_IN);
+        menu.add(0, MENU_RESET, 0, R.string.reset)
+                .setIcon(d)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                showDialogInner(DLG_RESET);
+                return true;
+             default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -167,6 +196,82 @@ public class LockS extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        LockS getOwner() {
+            return (LockS) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_RESET:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.reset)
+                    .setMessage(R.string.reset_message)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setNeutralButton(R.string.reset_android,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.OWNER_INFO_FONT_SIZE, 14);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE,
+                                    88);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONTS, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE,
+                                    88);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_ALARM_DATE_FONT_SIZE, 14);
+                            getOwner().refreshSettings();
+                        }
+                    })
+                    .setPositiveButton(R.string.reset_vrtoxin,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.OWNER_INFO_FONT_SIZE, 22);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE,
+                                    88);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONTS, 24);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LOCK_CLOCK_FONT_SIZE,
+                                    88);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.LS_ALARM_DATE_FONT_SIZE, 14);
+                            getOwner().refreshSettings();
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+
+        }
     }
 
     @Override
