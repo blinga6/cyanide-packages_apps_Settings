@@ -51,6 +51,8 @@ public class LockS extends SettingsPreferenceFragment implements
     private static final String LS_ALARM_DATE_FONT_SIZE  = "ls_alarm_date_font_size";
     private static final String LOCK_CLOCK_FONT_SIZE  = "lock_clock_font_size";
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
+    private static final String PREF_LOCKSCREEN_ALPHA = "lockscreen_alpha";
+    private static final String PREF_LOCKSCREEN_SECURITY_ALPHA = "lockscreen_security_alpha";
 
     private static final int MY_USER_ID = UserHandle.myUserId();
     private LockPatternUtils mLockPatternUtils;
@@ -59,6 +61,8 @@ public class LockS extends SettingsPreferenceFragment implements
     private SeekBarPreference mLCFontSize;
     private SeekBarPreference mLSAlarmDateFontSize;
     private ListPreference mLockClockFonts;
+    private SeekBarPreference mLsAlpha;
+    private SeekBarPreference mLsSecurityAlpha;
 
     private boolean mIsPrimary;
     private ContentResolver mResolver;
@@ -112,6 +116,21 @@ public class LockS extends SettingsPreferenceFragment implements
         mLSAlarmDateFontSize.setValue(Settings.System.getInt(mResolver,
                 Settings.System.LS_ALARM_DATE_FONT_SIZE, 14));
         mLSAlarmDateFontSize.setOnPreferenceChangeListener(this);
+
+        // LS alpha
+        mLsAlpha =
+                (SeekBarPreference) findPreference(PREF_LOCKSCREEN_ALPHA);
+        float alpha = Settings.System.getFloat(mResolver,
+                Settings.System.LOCKSCREEN_ALPHA, 0.45f);
+        mLsAlpha.setValue((int)(100 * alpha));
+        mLsAlpha.setOnPreferenceChangeListener(this);
+
+        mLsSecurityAlpha =
+                (SeekBarPreference) findPreference(PREF_LOCKSCREEN_SECURITY_ALPHA);
+        float alpha2 = Settings.System.getFloat(mResolver,
+                Settings.System.LOCKSCREEN_SECURITY_ALPHA, 0.75f);
+        mLsSecurityAlpha.setValue((int)(100 * alpha2));
+        mLsSecurityAlpha.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -135,6 +154,16 @@ public class LockS extends SettingsPreferenceFragment implements
             int width = ((Integer)newValue).intValue();
             Settings.System.putInt(mResolver,
                     Settings.System.LS_ALARM_DATE_FONT_SIZE, width);
+            return true;
+        } else if (preference == mLsAlpha) {
+            int alpha = (Integer) newValue;
+            Settings.System.putFloat(mResolver,
+                    Settings.System.LOCKSCREEN_ALPHA, alpha / 100.0f);
+            return true;
+        } else if (preference == mLsSecurityAlpha) {
+            int alpha2 = (Integer) newValue;
+            Settings.System.putFloat(mResolver,
+                    Settings.System.LOCKSCREEN_SECURITY_ALPHA, alpha2 / 100.0f);
             return true;
         }
         return false;

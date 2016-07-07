@@ -2792,4 +2792,8 @@
     <string name="task_manager_ram_used_title">RAM Used</string>
     <string name="task_manager_ram_free_title">RAM Free</string>
 
+    <!-- Lockscreen alpha -->
+    <string name="lockscreen_alpha">Alpha Setting</string>
+    <string name="lockscreen_security_alpha">Bouncer Alpha Setting</string>
+
 </resources>

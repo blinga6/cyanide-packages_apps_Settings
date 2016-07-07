@@ -18,6 +18,26 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/vrtoxin_ls_shortcuts_title" >
 
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="lockscreen_alpha"
+        android:title="@string/lockscreen_alpha"
+        android:max="100"
+        settings:minimum="0"
+        settings:interval="1"
+        settings:unitsLeft=""
+        settings:unitsRight="%"
+        android:persistent="false" />
+
+    <com.android.settings.vrtoxin.SeekBarPreference
+        android:key="lockscreen_security_alpha"
+        android:title="@string/lockscreen_security_alpha"
+        android:max="100"
+        settings:minimum="0"
+        settings:interval="1"
+        settings:unitsLeft=""
+        settings:unitsRight="%"
+        android:persistent="false" />
+
     <com.android.settings.vrtoxin.SystemSettingSwitchPreference
         android:key="hide_lockscreen_alarm"
         android:title="@string/hide_lockscreen_alarm_title"
